@@ -1,11 +1,18 @@
 {
-    "name": "@galipette/content-builder",
-    "private": true,
-    "version": "0.0.0",
-    "type": "module",
-    "dependencies": {
-        "fast-glob": "^3.3.3",
-        "gray-matter": "^4.0.3",
-        "zod": "^4.4.3"
-    }
+  "name": "@galipette/content-builder",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsx src/index.ts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "fast-glob": "^3.3.3",
+    "gray-matter": "^4.0.3",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.4"
+  }
 }

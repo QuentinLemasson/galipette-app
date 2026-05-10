@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:content": "pnpm --filter @galipette/content-builder build",
+    "test:content": "pnpm --filter @galipette/content-builder test"
   },
   "keywords": [],
   "author": "",

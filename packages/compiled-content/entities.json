@@ -1,0 +1,31 @@
+[
+  {
+    "id": "affliction.stunned",
+    "name": "Étourdi",
+    "content": "# Étourdi\n\n## Effet\nLe personnage perd 1 action par niveau de l'affliction.\nDiminue de 1 niveau au début du tour.",
+    "sourcePath": "wiki\\compendium\\afflictions\\stunned.md",
+    "type": "affliction"
+  },
+  {
+    "id": "damage.lightning",
+    "name": "Foudre",
+    "content": "# Foudre  \n  \nLes dégâts électriques.",
+    "sourcePath": "wiki\\compendium\\damage-types\\lightning.md",
+    "type": "damage-type",
+    "color": "#ffee44"
+  },
+  {
+    "id": "spell.lightning-arc",
+    "name": "Arc Electrique",
+    "content": "# Arc Electrique \n\nCrée un arc d'éclairs jusqu'à une cible visible. Elle subit 2 dégâts [[lightning|électrique]].\nSur un effet critique, la elle peut être [[stunned|étourdie]].",
+    "sourcePath": "wiki\\skills\\spells\\lightning-arc.md",
+    "type": "spell",
+    "damage": {
+      "type": "[[lightning|damage.lightning]]",
+      "amount": 2
+    },
+    "afflictions": [
+      "afflictions.stunned"
+    ]
+  }
+]
