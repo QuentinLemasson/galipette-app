@@ -1,12 +1,19 @@
 /**
  * CLI entry and programmatic API for compiling vault Markdown into JSON artifacts.
  */
-
+import { loadEnv } from "./loadEnv";
 import { createInterface } from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
 import { dirname, resolve } from "node:path";
 import { mkdir, writeFile } from "node:fs/promises";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import {
+  graphPathFromEntitiesPath,
+  printCliIntro,
+  printConfigSummary,
+  printFailure,
+  printSuccessSummary,
+} from "./cli/cliOutput.ts";
 import { scanVault } from "./core/scanVault.ts";
 import { parseFile } from "./core/parseFile.ts";
 import { validateEntity } from "./core/validateEntity.ts";
@@ -103,6 +110,7 @@ async function promptForMissingOptions(
  * @throws Error when validation errors occurred; message lists issues and log path.
  */
 export async function buildContent(options: BuildContentOptions): Promise<BuildResult> {
+  loadEnv();
   const markdownFiles = await scanVault(options.vaultPath, options.subFolder);
   const entities: EntityWithReferences[] = [];
   const knownIds = new Map<string, string>();
@@ -194,21 +202,53 @@ function parseCliArgs(args: string[]): { vaultPathArg?: string; subFolderArg?: s
 }
 
 /**
+ * How the vault path was obtained (for CLI messaging only).
+ */
+function vaultConfigurationSource(vaultPathArg?: string): "cli" | "env" | "prompt" {
+  if (vaultPathArg) {
+    return "cli";
+  }
+  if (process.env.OBSIDIAN_VAULT_PATH) {
+    return "env";
+  }
+  return "prompt";
+}
+
+/**
+ * Extracts a written error log path from a thrown build error message, if present.
+ */
+function errorLogPathFromMessage(message: string): string | undefined {
+  const match = message.match(/Error log:\s*(.+?)(?:\r?\n)?$/m);
+  return match?.[1]?.trim();
+}
+
+/**
  * Runs an interactive or flag-driven build and prints progress to stdout.
  *
  * @returns Resolves when compilation succeeds; rejects on validation failure.
  */
 async function runCli(): Promise<void> {
+  loadEnv();
+  printCliIntro();
   const { vaultPathArg, subFolderArg } = parseCliArgs(process.argv.slice(2));
-  output.write("Starting content build...\n");
+  const configSource = vaultConfigurationSource(vaultPathArg);
   const options = await promptForMissingOptions(vaultPathArg, subFolderArg);
+  printConfigSummary({
+    vaultPath: options.vaultPath,
+    subFolder: options.subFolder,
+    source: configSource,
+  });
+
   const result = await buildContent(options);
 
-  const scannedPath = resolve(options.vaultPath, options.subFolder);
-  output.write(
-    `Scanned ${result.diagnostics.markdownFilesScanned} markdown file(s) in "${scannedPath}".\n`,
-  );
-  output.write(`Compiled content generated at "${result.diagnostics.outputFilePath}".\n`);
+  printSuccessSummary({
+    markdownFiles: result.diagnostics.markdownFilesScanned,
+    entityCount: result.entities.length,
+    graphNodeCount: result.graph.nodes.length,
+    graphEdgeCount: result.graph.edges.length,
+    entitiesJsonPath: result.diagnostics.outputFilePath,
+    graphJsonPath: graphPathFromEntitiesPath(result.diagnostics.outputFilePath),
+  });
 }
 
 const isExecutedAsScript =
@@ -217,8 +257,9 @@ const isExecutedAsScript =
 
 if (isExecutedAsScript) {
   runCli().catch((error: unknown) => {
-    const message = error instanceof Error ? error.message : "Unknown error";
-    output.write(`Content build failed: ${message}\n`);
+    const message = error instanceof Error ? error.message : String(error);
+    const logPath = error instanceof Error ? errorLogPathFromMessage(message) : undefined;
+    printFailure(message, logPath);
     process.exitCode = 1;
   });
 }
