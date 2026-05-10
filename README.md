@@ -2,6 +2,15 @@
 
 This repository is a pnpm workspace that hosts a web client and supporting packages. Shared tooling compiles authored Markdown content into JSON consumed by the application, keeping runtime bundles free of parsers and keeping gameplay data auditable in source control.
 
+## Quick links
+
+| Package | README |
+|---------|--------|
+| `@galipette/content-builder` | [packages/content-builder/README.md](packages/content-builder/README.md) |
+| `@galipette/compiled-content` | [packages/compiled-content/README.md](packages/compiled-content/README.md) |
+| `@galipette/content-schema` | [packages/content-schema/README.md](packages/content-schema/README.md) |
+| Web app | [apps/web/README.md](apps/web/README.md) |
+
 ## Layout
 
 At the top level you will find applications under one folder name pattern and reusable libraries under another. Compiled output from the content pipeline is written into a dedicated package folder so multiple consumers can depend on one artifact without copying files.

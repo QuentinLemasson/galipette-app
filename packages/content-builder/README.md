@@ -57,6 +57,12 @@ flowchart LR
 
 Successful runs produce a dense list of entities under the shared compiled-content package area, plus a separate graph file whose nodes carry only identifiers and labels needed for visualization or navigation, and whose edges record directional references between entity ids. Failures write a Markdown report under this package so every validation issue from the full pass is visible in one place.
 
+## Consuming compiled output
+
+Runtime code should import **`@galipette/compiled-content`**, not raw JSON paths. That package bundles the emitted `entities.json` and `graph.json`, re-exports `@galipette/content-schema` types, and exposes a readonly **`contentRepository`** (id/type lookups, reference resolution, graph navigation helpers). Prefer the repository for lookups and indexes; fall back to `entities` / `graph` exports when you need the full arrays.
+
+See the [compiled-content README](../compiled-content/README.md) for philosophy, API snippets, and how wikilink operands align with graph edges.
+
 ## Wikilink rules
 
 Obsidian-style links use the text before the pipe when an alias is present, and the whole link text when there is no pipe. References are gathered from structured front matter and from the prose body; only front matter values are rewritten for validation. Body text is left unchanged so authoring tools and players still see the original markup.

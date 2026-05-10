@@ -1,15 +1,13 @@
 /**
- * Typed access to compiled vault artifacts (`entities.json`, `graph.json`).
+ * Typed access to compiled vault artifacts (`entities.json`, `graph.json`) and a readonly repository API.
  */
 
-import type { CompiledEntity, EntityGraph } from "@galipette/content-schema";
-import entitiesJson from "./data/entities.json" with { type: "json" };
-import graphJson from "./data/graph.json" with { type: "json" };
+export type { CompiledEntity, EntityGraph, GraphNode } from "@galipette/content-schema";
 
-/** Validated entity records from the latest content build. */
-export const entities = entitiesJson as unknown as CompiledEntity[];
-
-/** Lightweight navigation graph (nodes + directed reference edges). */
-export const graph = graphJson as unknown as EntityGraph;
-
-export type { CompiledEntity, EntityGraph } from "@galipette/content-schema";
+export { entities, graph } from "./artifacts.js";
+export {
+  contentRepository,
+  resolveReferenceToken,
+  EntityNotFoundError,
+  type ContentRepository,
+} from "./content-repository.js";
