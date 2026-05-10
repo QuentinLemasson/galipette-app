@@ -2,7 +2,7 @@
  * Builds a lightweight directed graph from compiled entities and their reference lists.
  */
 
-import type { CompiledEntity, EntityGraph, GraphNode } from "../types/Entity.ts";
+import type { CompiledEntity, EntityGraph, GraphNode } from "@galipette/content-schema";
 
 /** Compiled entity augmented with outgoing reference ids from link extraction. */
 export type EntityWithReferences = CompiledEntity & { references: string[] };

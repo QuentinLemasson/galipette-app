@@ -23,7 +23,7 @@ import {
 } from "./core/resolveObsidianLinks.ts";
 import { writeCompiledContent } from "./core/writeCompiledContent.ts";
 import { buildEntityGraph, type EntityWithReferences } from "./core/buildEntityGraph.ts";
-import type { EntityGraph } from "./types/Entity.ts";
+import type { EntityGraph } from "@galipette/content-schema";
 
 /** Options for {@link buildContent}. */
 export type BuildContentOptions = {
@@ -56,6 +56,8 @@ const defaultCompiledContentPath = resolve(
   "..",
   "..",
   "compiled-content",
+  "src",
+  "data",
   "entities.json",
 );
 

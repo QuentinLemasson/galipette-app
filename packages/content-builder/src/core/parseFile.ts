@@ -5,7 +5,7 @@
 import { readFile } from "node:fs/promises";
 import { relative } from "node:path";
 import matter from "gray-matter";
-import type { ParsedMarkdownFile } from "../types/Entity.js";
+import type { ParsedMarkdownFile } from "@galipette/content-schema";
 
 /**
  * Normalizes Windows-style separators to forward slashes for stable JSON output.

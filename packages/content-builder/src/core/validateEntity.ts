@@ -3,8 +3,8 @@
  */
 
 import { ZodError } from "zod";
-import { schemaByType } from "../schemas/SchemaRegistry.js";
-import type { CompiledEntity, ParsedMarkdownFile } from "../types/Entity.js";
+import { schemaByType } from "@galipette/content-schema";
+import type { CompiledEntity, ParsedMarkdownFile } from "@galipette/content-schema";
 
 /**
  * Validates normalized front matter against the schema for its declared `type`.

@@ -4,7 +4,7 @@
 
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
-import type { EntityGraph } from "../types/Entity.js";
+import type { EntityGraph } from "@galipette/content-schema";
 import type { EntityWithReferences } from "./buildEntityGraph.ts";
 
 /**
