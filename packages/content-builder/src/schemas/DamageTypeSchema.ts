@@ -1,3 +1,7 @@
+/**
+ * Validation schema for damage-type entities with optional hex color metadata.
+ */
+
 import { z } from "zod";
 import { createEntitySchema } from "./EntitySchema.js";
 
@@ -10,6 +14,7 @@ const damageTypeSpecificSchema = {
     .optional(),
 } satisfies z.ZodRawShape;
 
+/** Zod schema instance registered under the `damage-type` type key. */
 export const damageTypeSchema = createEntitySchema(
   "damage-type",
   damageTypeSpecificSchema,

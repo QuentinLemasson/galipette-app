@@ -1,0 +1,32 @@
+{
+  "nodes": [
+    {
+      "id": "affliction.stunned",
+      "type": "affliction",
+      "label": "Étourdi",
+      "sourcePath": "wiki/compendium/afflictions/stunned.md"
+    },
+    {
+      "id": "damage.lightning",
+      "type": "damage-type",
+      "label": "Foudre",
+      "sourcePath": "wiki/compendium/damage-types/lightning.md"
+    },
+    {
+      "id": "spell.lightning-arc",
+      "type": "spell",
+      "label": "Arc Electrique",
+      "sourcePath": "wiki/skills/spells/lightning-arc.md"
+    }
+  ],
+  "edges": [
+    [
+      "spell.lightning-arc",
+      "lightning"
+    ],
+    [
+      "spell.lightning-arc",
+      "stunned"
+    ]
+  ]
+}

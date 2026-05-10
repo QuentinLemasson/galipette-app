@@ -1,3 +1,7 @@
+/**
+ * CLI entry and programmatic API for compiling vault Markdown into JSON artifacts.
+ */
+
 import { createInterface } from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
 import { dirname, resolve } from "node:path";
@@ -6,23 +10,35 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { scanVault } from "./core/scanVault.ts";
 import { parseFile } from "./core/parseFile.ts";
 import { validateEntity } from "./core/validateEntity.ts";
+import {
+  collectObsidianReferences,
+  normalizeObsidianFrontmatter,
+} from "./core/resolveObsidianLinks.ts";
 import { writeCompiledContent } from "./core/writeCompiledContent.ts";
-import type { CompiledEntity } from "./types/Entity.ts";
+import { buildEntityGraph, type EntityWithReferences } from "./core/buildEntityGraph.ts";
+import type { EntityGraph } from "./types/Entity.ts";
 
+/** Options for {@link buildContent}. */
 export type BuildContentOptions = {
+  /** Absolute path to the Obsidian vault root. */
   vaultPath: string;
+  /** Folder inside the vault to scan (relative path segments). */
   subFolder: string;
+  /** Override output JSON path; defaults to workspace compiled-content package. */
   outputFilePath?: string;
 };
 
+/** Summary counters and paths returned alongside compiled artifacts. */
 type BuildDiagnostics = {
   markdownFilesScanned: number;
   outputFilePath: string;
   errorLogPath?: string;
 };
 
+/** Result of a successful {@link buildContent} invocation. */
 type BuildResult = {
-  entities: CompiledEntity[];
+  entities: EntityWithReferences[];
+  graph: EntityGraph;
   diagnostics: BuildDiagnostics;
 };
 
@@ -36,6 +52,13 @@ const defaultCompiledContentPath = resolve(
   "entities.json",
 );
 
+/**
+ * Resolves vault path and scan subfolder from CLI args, environment variables, or prompts.
+ *
+ * @param vaultPathArg - Optional vault path from `--vault` or first positional argument.
+ * @param subFolderArg - Optional subfolder from `--subfolder` or second positional argument.
+ * @returns Resolved {@link BuildContentOptions}.
+ */
 async function promptForMissingOptions(
   vaultPathArg?: string,
   subFolderArg?: string,
@@ -71,9 +94,17 @@ async function promptForMissingOptions(
   }
 }
 
+/**
+ * Scans the vault, validates every Markdown entity, aggregates errors, then writes
+ * `entities.json`, `graph.json`, or a consolidated error log under `logs/` on failure.
+ *
+ * @param options - Vault location, subfolder to scan, and optional output override.
+ * @returns Compiled entities, lightweight graph, and diagnostic counters/paths.
+ * @throws Error when validation errors occurred; message lists issues and log path.
+ */
 export async function buildContent(options: BuildContentOptions): Promise<BuildResult> {
   const markdownFiles = await scanVault(options.vaultPath, options.subFolder);
-  const entities: CompiledEntity[] = [];
+  const entities: EntityWithReferences[] = [];
   const knownIds = new Map<string, string>();
   const errors: string[] = [];
 
@@ -84,7 +115,12 @@ export async function buildContent(options: BuildContentOptions): Promise<BuildR
   for (const filePath of markdownFiles) {
     try {
       const parsedFile = await parseFile(filePath, options.vaultPath);
-      const entity = validateEntity(parsedFile.frontmatter, parsedFile);
+      const references = collectObsidianReferences(
+        parsedFile.frontmatter,
+        parsedFile.content,
+      );
+      const normalizedFrontmatter = normalizeObsidianFrontmatter(parsedFile.frontmatter);
+      const entity = validateEntity(normalizedFrontmatter, parsedFile);
 
       const firstSeenIn = knownIds.get(entity.id);
       if (firstSeenIn) {
@@ -95,7 +131,10 @@ export async function buildContent(options: BuildContentOptions): Promise<BuildR
       }
 
       knownIds.set(entity.id, parsedFile.sourcePath);
-      entities.push(entity);
+      entities.push({
+        ...entity,
+        references,
+      });
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : String(error);
       errors.push(message);
@@ -123,9 +162,12 @@ export async function buildContent(options: BuildContentOptions): Promise<BuildR
     );
   }
 
-  await writeCompiledContent(entities, outputPath);
+  const graph: EntityGraph = buildEntityGraph(entities);
+
+  await writeCompiledContent(entities, outputPath, graph);
   return {
     entities,
+    graph,
     diagnostics: {
       markdownFilesScanned: markdownFiles.length,
       outputFilePath: outputPath,
@@ -133,6 +175,12 @@ export async function buildContent(options: BuildContentOptions): Promise<BuildR
   };
 }
 
+/**
+ * Parses optional `--vault` / `--subfolder` flags and positional vault and subfolder args.
+ *
+ * @param args - Typically `process.argv.slice(2)` when running as CLI.
+ * @returns Parsed optional vault and subfolder strings.
+ */
 function parseCliArgs(args: string[]): { vaultPathArg?: string; subFolderArg?: string } {
   const vaultFlag = args.findIndex((arg) => arg === "--vault");
   const subFolderFlag = args.findIndex((arg) => arg === "--subfolder");
@@ -145,6 +193,11 @@ function parseCliArgs(args: string[]): { vaultPathArg?: string; subFolderArg?: s
   return { vaultPathArg, subFolderArg };
 }
 
+/**
+ * Runs an interactive or flag-driven build and prints progress to stdout.
+ *
+ * @returns Resolves when compilation succeeds; rejects on validation failure.
+ */
 async function runCli(): Promise<void> {
   const { vaultPathArg, subFolderArg } = parseCliArgs(process.argv.slice(2));
   output.write("Starting content build...\n");

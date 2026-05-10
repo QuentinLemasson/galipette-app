@@ -1,16 +1,36 @@
+/**
+ * Maps parsed front matter plus file metadata to a typed, validated entity record.
+ */
+
 import { ZodError } from "zod";
 import { schemaByType } from "../schemas/SchemaRegistry.js";
 import type { CompiledEntity, ParsedMarkdownFile } from "../types/Entity.js";
 
+/**
+ * Validates normalized front matter against the schema for its declared `type`.
+ * Shell fields (`id`, `type`, `name`) stay at the root; all other keys sit under `data`.
+ *
+ * @param frontmatter - YAML object after Obsidian link normalization (not raw strings only).
+ * @param file - Parsed file carrying `content` and `sourcePath` for the shell.
+ * @returns A validated entity matching the registry schema for that type.
+ * @throws Error on unknown type or Zod validation failure with path details.
+ */
 export function validateEntity(frontmatter: unknown, file: ParsedMarkdownFile): CompiledEntity {
   if (!frontmatter || Array.isArray(frontmatter) || typeof frontmatter !== "object") {
     throw new Error(`Invalid frontmatter in "${file.sourcePath}".`);
   }
 
+  const frontmatterObject = frontmatter as Record<string, unknown>;
+  const { id, type, name, ...specificData } = frontmatterObject;
+
   const mergedCandidate = {
-    ...frontmatter,
+    id,
+    type,
+    name,
+    data: specificData,
     content: file.content,
     sourcePath: file.sourcePath,
+    references: [],
   } as Record<string, unknown>;
 
   const rawType = mergedCandidate.type;

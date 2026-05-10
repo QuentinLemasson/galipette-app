@@ -1,3 +1,7 @@
+/**
+ * Type-level mirrors of Zod schemas plus graph and parse helper shapes used across core modules.
+ */
+
 import type { z } from "zod";
 import type { spellSchema } from "../schemas/SpellSchema.js";
 import type { damageTypeSchema } from "../schemas/DamageTypeSchema.js";
@@ -10,6 +14,20 @@ export type AfflictionEntity = z.infer<typeof afflictionSchema>;
 
 export type CompiledEntity = SpellEntity | DamageTypeEntity | AfflictionEntity;
 export type EntityType = RegisteredEntityType;
+
+/** Minimal vertex for `graph.json` (no duplicated entity payload). */
+export type GraphNode = {
+  id: string;
+  type: string;
+  label: string;
+  sourcePath: string;
+};
+
+/** Directional edges `[fromId, toId]` (reference from → to). */
+export type EntityGraph = {
+  nodes: GraphNode[];
+  edges: [string, string][];
+};
 
 export type ParsedMarkdownFile = {
   absolutePath: string;
