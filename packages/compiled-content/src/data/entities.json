@@ -9,6 +9,15 @@
     "data": {}
   },
   {
+    "id": "affliction.vulnerable",
+    "type": "affliction",
+    "name": "Vulnérable",
+    "content": "# Vulnérable\n\n## Effet\nLe personnage subit 1 dégât supplémentaire sur le physique.",
+    "sourcePath": "wiki/compendium/afflictions/vulnerable.md",
+    "references": [],
+    "data": {}
+  },
+  {
     "id": "damage.lightning",
     "type": "damage-type",
     "name": "Foudre",

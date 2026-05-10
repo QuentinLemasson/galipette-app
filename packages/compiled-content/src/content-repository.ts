@@ -13,6 +13,10 @@ import {
   buildEdgeAdjacencyMaps,
   buildGraphNodeByIdMap,
 } from "./utils/graph-indexes.js";
+import {
+  buildNavigationTree,
+  type NavigationCategory,
+} from "./utils/build-navigation-tree.js";
 import { resolveReferenceToken as resolveToken } from "./utils/resolve-reference-token.js";
 
 /** Thrown by {@link contentRepository.requireById} when no entity matches. */
@@ -34,6 +38,8 @@ const { outgoing: outgoingEdgeTargets, incoming: incomingEdgeSources } =
   buildEdgeAdjacencyMaps(graph.edges);
 
 const graphNodeById = buildGraphNodeByIdMap(graph.nodes);
+
+const navigationTree = buildNavigationTree(entities);
 
 /**
  * Resolves an Obsidian reference operand / graph edge target to an entity when unambiguous.
@@ -165,6 +171,15 @@ export const contentRepository = {
   /** The compiled entity with the given source path. */
   getBySourcePath(sourcePath: string): CompiledEntity | undefined {
     return entities.find((e) => e.sourcePath === sourcePath);
+  },
+
+  /**
+   * Lightweight navigation tree (entities grouped by `type`) carrying only
+   * `id`, `type`, `name`, and `sourcePath` — suitable for menus and link rendering
+   * without shipping body content or type-specific payloads.
+   */
+  getNavigationTree(): readonly NavigationCategory[] {
+    return navigationTree;
   },
 };
 

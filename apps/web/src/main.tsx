@@ -1,10 +1,17 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { RouterProvider } from "@tanstack/react-router";
+import { router } from "./router";
+import "./index.css";
+import "./styles/app.css";
 
-createRoot(document.getElementById('root')!).render(
+const rootElement = document.getElementById("root");
+if (!rootElement) {
+  throw new Error("Missing #root mount element in index.html");
+}
+
+createRoot(rootElement).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </StrictMode>,
-)
+);

@@ -28,7 +28,7 @@ flowchart TB
 
 ## Content workflow
 
-Authors maintain notes in an Obsidian vault layout. The content builder scans a chosen subfolder, validates entities, resolves cross-references for graphs, and emits JSON. The web application reads those artifacts as static data.
+Authors maintain notes in an Obsidian vault layout. The content builder scans a chosen subfolder, validates entities, resolves cross-references for graphs, and emits JSON. The web application reads those artifacts as static data through the `@galipette/compiled-content` package — never re-parsing Markdown — and exposes a TanStack Router-powered explorer where every entity is reachable through a URL that mirrors its `sourcePath`.
 
 ```mermaid
 sequenceDiagram

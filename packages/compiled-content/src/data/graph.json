@@ -7,6 +7,12 @@
       "sourcePath": "wiki/compendium/afflictions/stunned.md"
     },
     {
+      "id": "affliction.vulnerable",
+      "type": "affliction",
+      "label": "Vulnérable",
+      "sourcePath": "wiki/compendium/afflictions/vulnerable.md"
+    },
+    {
       "id": "damage.lightning",
       "type": "damage-type",
       "label": "Foudre",

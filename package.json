@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "pnpm --filter web dev",
     "build:content-schema": "pnpm --filter @galipette/content-schema build",
     "build:content-builder": "pnpm --filter @galipette/content-builder build",
     "build:compiled-content": "pnpm --filter @galipette/compiled-content build",

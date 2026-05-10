@@ -23,6 +23,7 @@ Internal index construction lives under `src/utils/`; the public surface remains
 | `contentRepository` | Query helpers over those artifacts. |
 | `resolveReferenceToken` | Map wikilink operands to entities (see below). |
 | `EntityNotFoundError` | Thrown by `requireById` / `requireGraphNode`. |
+| `NavigationEntry` / `NavigationCategory` | Lightweight types for the navigation tree. |
 
 Wikilink operands in `references` and graph edge targets are the **same strings** the content builder emitted (often short tokens like `lightning`, not always full ids).
 
@@ -201,6 +202,23 @@ const many = contentRepository.filter((e) => e.type === "affliction");
 import { contentRepository } from "@galipette/compiled-content";
 
 const entity = contentRepository.getBySourcePath("wiki/skills/spells/lightning-arc.md");
+```
+
+### `contentRepository.getNavigationTree`
+
+Lightweight projection of the corpus suitable for menus / link rendering: entities are grouped by `type` and each entry exposes only `id`, `type`, `name`, and `sourcePath` (no Markdown body, no type-specific `data`). Categories are sorted alphabetically by `type`; entries within a category are sorted by `name` (locale-aware).
+
+```ts
+import { contentRepository, type NavigationCategory } from "@galipette/compiled-content";
+
+const tree: readonly NavigationCategory[] = contentRepository.getNavigationTree();
+
+for (const category of tree) {
+  console.log(category.type, category.entries.length);
+  for (const entry of category.entries) {
+    console.log("  ", entry.name, "->", entry.sourcePath);
+  }
+}
 ```
 
 ### `resolveReferenceToken`
