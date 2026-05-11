@@ -74,6 +74,7 @@ export function printSuccessSummary(params: {
   graphEdgeCount: number;
   entitiesJsonPath: string;
   graphJsonPath: string;
+  slugIndexJsonPath: string;
 }): void {
   printSection("Build succeeded");
   printRow("Markdown files", String(params.markdownFiles));
@@ -83,6 +84,7 @@ export function printSuccessSummary(params: {
   process.stdout.write("\n");
   printRow("Entities file", params.entitiesJsonPath);
   printRow("Graph file", params.graphJsonPath);
+  printRow("Slug index", params.slugIndexJsonPath);
   process.stdout.write(`\n${LINE}\n\n`);
 }
 
@@ -94,6 +96,16 @@ export function printSuccessSummary(params: {
  */
 export function graphPathFromEntitiesPath(entitiesJsonPath: string): string {
   return resolve(dirname(entitiesJsonPath), "graph.json");
+}
+
+/**
+ * Resolves the slug ↔ id index artifact path next to the entities JSON file.
+ *
+ * @param entitiesJsonPath - Absolute or resolved path to entities.json.
+ * @returns Absolute path to slug-index.json in the same directory.
+ */
+export function slugIndexPathFromEntitiesPath(entitiesJsonPath: string): string {
+  return resolve(dirname(entitiesJsonPath), "slug-index.json");
 }
 
 /**

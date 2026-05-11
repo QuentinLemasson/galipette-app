@@ -10,6 +10,7 @@ export const entityShellSchema = z.object({
   type: z.string().min(1),
   name: z.string().min(1),
   content: z.string(),
+  slug: z.string().min(1),
   sourcePath: z.string(),
   references: z.array(z.string().min(1)).default([]),
 });

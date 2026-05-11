@@ -1,0 +1,24 @@
+---
+description: Where runtime, schemas, build pipeline, and compiled-content APIs belong in this monorepo
+alwaysApply: true
+---
+
+# Package scope (Galipette monorepo)
+
+Follow these boundaries when adding or moving code. Keep each concern in its designated area.
+
+| Concern | Location | Put here |
+|--------|-----------|----------|
+| **Runtime UI, routes, client/server app behavior** | `apps/web` | Pages, components, hooks, app-specific API routes, runtime config consumed by the web app. |
+| **Build-time schemas & shared types** | `packages/content-schema` | Zod (or similar) schemas, TypeScript types/interfaces for entities and content that **both** builder and consumers rely on. No markdown parsing, no I/O to disk beyond what that package needs for schema utilities. |
+| **Markdown compiler & content build pipeline** | `packages/content-builder` | Parsing markdown, validation orchestration, slug generation, writing outputs, CLI/build scripts that produce artifacts. Depends on `content-schema`; does **not** define long-lived runtime APIs over compiled data. |
+| **Local API over compiled artifacts** | `packages/compiled-content` | Reading bundled JSON (or generated data), resolving slugs/references, navigation trees, graph helpers — the **stable library** the web app imports at runtime after a build. Generated files under this package are **outputs** of `content-builder`, not hand-edited source of truth. |
+
+## Quick checks
+
+- **New React page or route?** → `apps/web`.
+- **New/changed entity shape or validation rules shared by build + app?** → `packages/content-schema`.
+- **New transform from `.md` to structured data or build step?** → `packages/content-builder`.
+- **New query/helper over built `entities.json` / graph / slug index?** → `packages/compiled-content`.
+
+Avoid duplicating schema definitions outside `content-schema`. Avoid embedding markdown compilation inside `apps/web` or `compiled-content`.

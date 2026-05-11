@@ -29,6 +29,12 @@ export type EntityGraph = {
   edges: [string, string][];
 };
 
+/** Bidirectional maps in `slug-index.json` (URL slug ↔ canonical entity id). */
+export type SlugIndex = {
+  slugToId: Record<string, string>;
+  idToSlug: Record<string, string>;
+};
+
 export type ParsedMarkdownFile = {
   absolutePath: string;
   sourcePath: string;

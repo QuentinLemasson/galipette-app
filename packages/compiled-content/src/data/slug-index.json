@@ -1,0 +1,14 @@
+{
+  "slugToId": {
+    "wiki/compendium/afflictions/stunned": "affliction.stunned",
+    "wiki/compendium/afflictions/vulnerable": "affliction.vulnerable",
+    "wiki/compendium/damage-types/lightning": "damage.lightning",
+    "wiki/skills/spells/lightning-arc": "spell.lightning-arc"
+  },
+  "idToSlug": {
+    "affliction.stunned": "wiki/compendium/afflictions/stunned",
+    "affliction.vulnerable": "wiki/compendium/afflictions/vulnerable",
+    "damage.lightning": "wiki/compendium/damage-types/lightning",
+    "spell.lightning-arc": "wiki/skills/spells/lightning-arc"
+  }
+}

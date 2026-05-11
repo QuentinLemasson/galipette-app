@@ -35,6 +35,7 @@ flowchart LR
   subgraph outputs
     E[Entities JSON]
     GR[Graph JSON]
+    SI[Slug index JSON]
     LOG[Error log on failure]
   end
   V --> G
@@ -50,12 +51,19 @@ flowchart LR
   Z --> DUP
   DUP --> E
   DUP --> GR
+  DUP --> SI
   DUP -.->|errors| LOG
 ```
 
 ## Artifacts
 
-Successful runs produce a dense list of entities under the shared compiled-content package area, plus a separate graph file whose nodes carry only identifiers and labels needed for visualization or navigation, and whose edges record directional references between entity ids. Failures write a Markdown report under this package so every validation issue from the full pass is visible in one place.
+Successful runs produce a dense list of entities under the shared compiled-content package area, plus a separate graph file whose nodes carry only identifiers and labels needed for visualization or navigation, and whose edges record directional references between entity ids. A **`slug-index.json`** file is written beside them with two flat maps: `slugToId` and `idToSlug`, derived from each entity’s generated slug (see below). Failures write a Markdown report under this package so every validation issue from the full pass is visible in one place.
+
+## Slugs
+
+Each entity gets a **`slug`** field computed from the vault-relative file path (Obsidian source path): the Markdown extension is stripped, path segments stay separated by `/`, and each segment is normalized with [`slugify`](https://github.com/simov/slugify) (`lower`, `strict`, `trim`). The slugified **`WIKI_NAMESPACE`** (default **`wiki`**) is prefixed once—unless the path already begins with that same segment (after slugifying the first folder name), so `wiki/notes/foo.md` becomes `wiki/notes/foo`, not `wiki/wiki/notes/foo`. Front matter does not supply `slug`; it is deterministic from the file location.
+
+Duplicate ids and **duplicate slugs** (two files resolving to the same slug) both fail the build with explicit errors.
 
 ## Consuming compiled output
 

@@ -4,6 +4,7 @@
     "type": "affliction",
     "name": "Étourdi",
     "content": "# Étourdi\n\n## Effet\nLe personnage perd 1 action par niveau de l'affliction.\nDiminue de 1 niveau au début du tour.",
+    "slug": "wiki/compendium/afflictions/stunned",
     "sourcePath": "wiki/compendium/afflictions/stunned.md",
     "references": [],
     "data": {}
@@ -13,6 +14,7 @@
     "type": "affliction",
     "name": "Vulnérable",
     "content": "# Vulnérable\n\n## Effet\nLe personnage subit 1 dégât supplémentaire sur le physique.",
+    "slug": "wiki/compendium/afflictions/vulnerable",
     "sourcePath": "wiki/compendium/afflictions/vulnerable.md",
     "references": [],
     "data": {}
@@ -22,6 +24,7 @@
     "type": "damage-type",
     "name": "Foudre",
     "content": "# Foudre  \n  \nLes dégâts électriques.",
+    "slug": "wiki/compendium/damage-types/lightning",
     "sourcePath": "wiki/compendium/damage-types/lightning.md",
     "references": [],
     "data": {
@@ -33,6 +36,7 @@
     "type": "spell",
     "name": "Arc Electrique",
     "content": "# Arc Electrique \n\nCrée un arc d'éclairs jusqu'à une cible visible. Elle subit 2 dégâts [[lightning|électrique]].\nSur un effet critique, la elle peut être [[stunned|étourdie]].",
+    "slug": "wiki/skills/spells/lightning-arc",
     "sourcePath": "wiki/skills/spells/lightning-arc.md",
     "references": [
       "lightning",

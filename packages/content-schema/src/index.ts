@@ -17,5 +17,6 @@ export type {
   EntityType,
   GraphNode,
   EntityGraph,
+  SlugIndex,
   ParsedMarkdownFile,
 } from "./types/Entity.js";

@@ -9,6 +9,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import {
   graphPathFromEntitiesPath,
+  slugIndexPathFromEntitiesPath,
   printCliIntro,
   printConfigSummary,
   printFailure,
@@ -23,7 +24,7 @@ import {
 } from "./core/resolveObsidianLinks.ts";
 import { writeCompiledContent } from "./core/writeCompiledContent.ts";
 import { buildEntityGraph, type EntityWithReferences } from "./core/buildEntityGraph.ts";
-import type { EntityGraph } from "@galipette/content-schema";
+import type { EntityGraph, SlugIndex } from "@galipette/content-schema";
 
 /** Options for {@link buildContent}. */
 export type BuildContentOptions = {
@@ -39,6 +40,7 @@ export type BuildContentOptions = {
 type BuildDiagnostics = {
   markdownFilesScanned: number;
   outputFilePath: string;
+  slugIndexFilePath: string;
   errorLogPath?: string;
 };
 
@@ -46,6 +48,7 @@ type BuildDiagnostics = {
 type BuildResult = {
   entities: EntityWithReferences[];
   graph: EntityGraph;
+  slugIndex: SlugIndex;
   diagnostics: BuildDiagnostics;
 };
 
@@ -116,6 +119,7 @@ export async function buildContent(options: BuildContentOptions): Promise<BuildR
   const markdownFiles = await scanVault(options.vaultPath, options.subFolder);
   const entities: EntityWithReferences[] = [];
   const knownIds = new Map<string, string>();
+  const knownSlugs = new Map<string, string>();
   const errors: string[] = [];
 
   const outputPath =
@@ -141,6 +145,16 @@ export async function buildContent(options: BuildContentOptions): Promise<BuildR
       }
 
       knownIds.set(entity.id, parsedFile.sourcePath);
+
+      const firstSlugFile = knownSlugs.get(entity.slug);
+      if (firstSlugFile) {
+        errors.push(
+          `Duplicate slug "${entity.slug}" in "${parsedFile.sourcePath}" (already used by "${firstSlugFile}").`,
+        );
+        continue;
+      }
+      knownSlugs.set(entity.slug, parsedFile.sourcePath);
+
       entities.push({
         ...entity,
         references,
@@ -174,13 +188,16 @@ export async function buildContent(options: BuildContentOptions): Promise<BuildR
 
   const graph: EntityGraph = buildEntityGraph(entities);
 
-  await writeCompiledContent(entities, outputPath, graph);
+  const slugIndex = await writeCompiledContent(entities, outputPath, graph);
+  const slugIndexFilePath = slugIndexPathFromEntitiesPath(outputPath);
   return {
     entities,
     graph,
+    slugIndex,
     diagnostics: {
       markdownFilesScanned: markdownFiles.length,
       outputFilePath: outputPath,
+      slugIndexFilePath,
     },
   };
 }
@@ -250,12 +267,17 @@ async function runCli(): Promise<void> {
     graphEdgeCount: result.graph.edges.length,
     entitiesJsonPath: result.diagnostics.outputFilePath,
     graphJsonPath: graphPathFromEntitiesPath(result.diagnostics.outputFilePath),
+    slugIndexJsonPath: result.diagnostics.slugIndexFilePath,
   });
 }
 
 const isExecutedAsScript =
   typeof process.argv[1] === "string" &&
   import.meta.url === pathToFileURL(resolve(process.argv[1])).href;
+
+export { generateEntitySlug, getWikiNamespace } from "./core/generateEntitySlug.ts";
+export type { SlugIndex } from "@galipette/content-schema";
+export { buildSlugIndex } from "./core/writeCompiledContent.ts";
 
 if (isExecutedAsScript) {
   runCli().catch((error: unknown) => {

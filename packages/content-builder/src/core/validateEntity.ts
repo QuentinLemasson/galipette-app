@@ -5,6 +5,7 @@
 import { ZodError } from "zod";
 import { schemaByType } from "@galipette/content-schema";
 import type { CompiledEntity, ParsedMarkdownFile } from "@galipette/content-schema";
+import { generateEntitySlug } from "./generateEntitySlug.ts";
 
 /**
  * Validates normalized front matter against the schema for its declared `type`.
@@ -27,6 +28,7 @@ export function validateEntity(frontmatter: unknown, file: ParsedMarkdownFile): 
     id,
     type,
     name,
+    slug: generateEntitySlug(file.sourcePath),
     data: specificData,
     content: file.content,
     sourcePath: file.sourcePath,

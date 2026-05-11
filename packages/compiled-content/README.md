@@ -20,6 +20,7 @@ Internal index construction lives under `src/utils/`; the public surface remains
 |--------|---------|
 | `entities` | Full `CompiledEntity[]` from `entities.json`. |
 | `graph` | `EntityGraph` (`nodes` + directed `edges`) from `graph.json`. |
+| `slugIndex` | `{ slugToId, idToSlug }` maps from `slug-index.json` (built by content-builder). |
 | `contentRepository` | Query helpers over those artifacts. |
 | `resolveReferenceToken` | Map wikilink operands to entities (see below). |
 | `EntityNotFoundError` | Thrown by `requireById` / `requireGraphNode`. |
@@ -31,13 +32,15 @@ Wikilink operands in `references` and graph edge targets are the **same strings*
 
 ## Snippets
 
-### `entities` / `graph`
+### `entities` / `graph` / `slugIndex`
 
 ```ts
-import { entities, graph } from "@galipette/compiled-content";
+import { entities, graph, slugIndex } from "@galipette/compiled-content";
 
 const first = entities[0];
 const edgeCount = graph.edges.length;
+const id = slugIndex.slugToId["wiki/skills/spells/lightning-arc"];
+const slug = slugIndex.idToSlug["spell.lightning-arc"];
 ```
 
 ### `contentRepository.getAll()`
@@ -233,4 +236,4 @@ const damageType = resolveReferenceToken("lightning");
 
 ## Build
 
-From the workspace root, build this package with the workspace script, or `pnpm --filter @galipette/compiled-content build`. Artifacts under `src/data/` are produced by `@galipette/content-builder`.
+From the workspace root, build this package with the workspace script, or `pnpm --filter @galipette/compiled-content build`. Artifacts under `src/data/` (`entities.json`, `graph.json`, **`slug-index.json`**) are produced by `@galipette/content-builder`.

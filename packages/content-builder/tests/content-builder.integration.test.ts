@@ -39,6 +39,7 @@ Un projectile electrique.
         id: "spell.lightning-shot",
         type: "spell",
         name: "Tir de Foudre",
+        slug: "wiki/entities/spell",
         sourcePath: "entities/spell.md",
         data: {
           damage: {
@@ -71,6 +72,19 @@ Un projectile electrique.
         sourcePath: "entities/spell.md",
       });
       expect(graph.edges).toEqual([]);
+
+      const slugIndexOutput = await readFile(
+        join(temp.rootPath, "compiled-content", "slug-index.json"),
+        "utf8",
+      );
+      const slugIndex = JSON.parse(slugIndexOutput) as {
+        slugToId: Record<string, string>;
+        idToSlug: Record<string, string>;
+      };
+      expect(slugIndex.slugToId["wiki/entities/spell"]).toBe("spell.lightning-shot");
+      expect(slugIndex.idToSlug["spell.lightning-shot"]).toBe("wiki/entities/spell");
+
+      expect(result.slugIndex).toEqual(slugIndex);
     } finally {
       await temp.cleanup();
     }

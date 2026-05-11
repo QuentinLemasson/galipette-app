@@ -2,9 +2,14 @@
  * Typed access to compiled vault artifacts (`entities.json`, `graph.json`) and a readonly repository API.
  */
 
-export type { CompiledEntity, EntityGraph, GraphNode } from "@galipette/content-schema";
+export type {
+  CompiledEntity,
+  EntityGraph,
+  GraphNode,
+  SlugIndex,
+} from "@galipette/content-schema";
 
-export { entities, graph } from "./artifacts.js";
+export { entities, graph, slugIndex } from "./artifacts.js";
 export {
   contentRepository,
   resolveReferenceToken,
