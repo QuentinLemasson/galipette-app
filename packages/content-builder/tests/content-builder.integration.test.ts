@@ -242,13 +242,26 @@ color: "#55aaff"
       const spell = result.entities.find((entity) => entity.id === "spell.lightning-arc");
       expect(spell).toBeDefined();
       expect(spell).toMatchObject({
-        references: expect.arrayContaining(["lightning", "stunned"]),
+        references: expect.arrayContaining([
+          expect.objectContaining({
+            operand: "lightning",
+            refSources: expect.arrayContaining(["frontMatter"]),
+            targetLabel: "Lightning",
+            targetEntityId: "damage.lightning",
+            targetEntitySlug: "wiki/entities/damage",
+          }),
+          expect.objectContaining({
+            operand: "stunned",
+            refSources: expect.arrayContaining(["frontMatter"]),
+            targetLabel: "stunned",
+          }),
+        ]),
         data: {
           damage: {
-            type: "lightning",
+            type: "damage.lightning",
             amount: 2,
           },
-          afflictions: ["stunned"],
+          afflictions: ["affliction.stunned"],
         },
       });
 
@@ -286,7 +299,18 @@ See [[display|damage.lightning]] and [[Other|affliction.stunned]] for details.
       const spell = result.entities.find((entity) => entity.id === "spell.body-only-links");
       expect(spell).toBeDefined();
       expect(spell!.references).toEqual(
-        expect.arrayContaining(["display", "Other"]),
+        expect.arrayContaining([
+          expect.objectContaining({
+            operand: "display",
+            refSources: ["body"],
+            targetLabel: "display",
+          }),
+          expect.objectContaining({
+            operand: "Other",
+            refSources: ["body"],
+            targetLabel: "Other",
+          }),
+        ]),
       );
       expect(spell!.content).toContain("[[display|damage.lightning]]");
       expect(spell!.content).toContain("[[Other|affliction.stunned]]");

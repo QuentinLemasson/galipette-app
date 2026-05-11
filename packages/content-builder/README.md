@@ -8,7 +8,7 @@ Game or narrative content lives in Markdown files with YAML front matter. The bu
 
 ## Pipeline
 
-The flow is linear: discover files, parse each note, collect link references from both front matter and the body, normalize wiki links only inside front matter values, validate with schema rules, merge duplicate detection across the whole run, then emit entity payloads plus a lightweight graph summary.
+The flow is linear: discover files, parse each note, collect **front-matter-only** wikilink operands, normalize wiki links inside YAML so structured data stores **display** text (`[[target|alias]]` → `alias`), validate with schema rules, dedupe ids/slugs across the run, then **`@galipette/content-resolver`** parses Markdown bodies with Remark into mdast (`compiledContent`), merges operands from body + front matter with `refSources`, resolves wiki targets to entity ids/slugs on AST nodes, builds the reference graph, and writes JSON artifacts.
 
 ```mermaid
 flowchart LR
@@ -25,12 +25,15 @@ flowchart LR
     MD[Body content]
   end
   subgraph links
-    REF[Collect references]
-    NORM[Normalize FM wikilinks]
+    FMREF[FM operands]
+    NORM[Normalize FM display]
   end
   subgraph validate
     Z[Schema per type]
-    DUP[Unique ids]
+    DUP[Unique ids / slugs]
+  end
+  subgraph resolve
+    RES[@galipette/content-resolver]
   end
   subgraph outputs
     E[Entities JSON]
@@ -43,21 +46,22 @@ flowchart LR
   G --> R
   R --> FM
   R --> MD
-  FM --> REF
-  MD --> REF
+  FM --> FMREF
   FM --> NORM
   NORM --> Z
-  REF --> Z
+  FMREF --> RES
+  MD --> RES
   Z --> DUP
-  DUP --> E
-  DUP --> GR
-  DUP --> SI
+  DUP --> RES
+  RES --> E
+  RES --> GR
+  RES --> SI
   DUP -.->|errors| LOG
 ```
 
 ## Artifacts
 
-Successful runs produce a dense list of entities under the shared compiled-content package area, plus a separate graph file whose nodes carry only identifiers and labels needed for visualization or navigation, and whose edges record directional references between entity ids. A **`slug-index.json`** file is written beside them with two flat maps: `slugToId` and `idToSlug`, derived from each entity’s generated slug (see below). Failures write a Markdown report under this package so every validation issue from the full pass is visible in one place.
+Successful runs produce a dense list of entities under the shared compiled-content package area (each with optional **`compiledContent`** mdast JSON from Remark), plus a separate graph file whose nodes carry only identifiers and labels needed for visualization or navigation, and whose edges record directional references between entity ids using **operand** strings. A **`slug-index.json`** file is written beside them with two flat maps: `slugToId` and `idToSlug`, derived from each entity’s generated slug (see below). Failures write a Markdown report under this package so every validation issue from the full pass is visible in one place.
 
 ## Slugs
 
@@ -73,7 +77,10 @@ See the [compiled-content README](../compiled-content/README.md) for philosophy,
 
 ## Wikilink rules
 
-Obsidian-style links use the text before the pipe when an alias is present, and the whole link text when there is no pipe. References are gathered from structured front matter and from the prose body; only front matter values are rewritten for validation. Body text is left unchanged so authoring tools and players still see the original markup.
+- **Graph / reference operands** use the **left** segment of `[[left|right]]` (the link key), or the full inner text when there is no pipe — same as before for edges and `references[].operand`.
+- **Front matter substitution** rewrites each `[[...]]` to the **display** segment: with a pipe, the **right** side (alias); without a pipe, the full inner text. That keeps validated `data` fields human-facing while operands stay stable for the graph.
+- **Body** Markdown is stored verbatim in `content`; **`compiledContent`** holds the parsed mdast with `wikiLink` nodes and resolved `targetEntityId` / `targetEntitySlug` when the operand maps to an entity.
+- **`references`** is a merged list of `{ operand, refSources }` where `refSources` includes `frontMatter` and/or `body`.
 
 ## Operating the tool
 

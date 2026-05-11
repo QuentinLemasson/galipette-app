@@ -31,7 +31,8 @@ export function buildReferencerIdsByToken(
 ): Map<string, string[]> {
   const referencerIdsByToken = new Map<string, string[]>();
   for (const entity of entities) {
-    for (const token of entity.references) {
+    for (const ref of entity.references) {
+      const token = ref.operand;
       const list = referencerIdsByToken.get(token);
       if (list) {
         list.push(entity.id);

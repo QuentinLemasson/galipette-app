@@ -7,7 +7,41 @@
     "slug": "wiki/compendium/afflictions/stunned",
     "sourcePath": "wiki/compendium/afflictions/stunned.md",
     "references": [],
-    "data": {}
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Étourdi"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Effet"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le personnage perd 1 action par niveau de l'affliction.\nDiminue de 1 niveau au début du tour."
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "affliction.vulnerable",
@@ -17,7 +51,41 @@
     "slug": "wiki/compendium/afflictions/vulnerable",
     "sourcePath": "wiki/compendium/afflictions/vulnerable.md",
     "references": [],
-    "data": {}
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Vulnérable"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Effet"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le personnage subit 1 dégât supplémentaire sur le physique."
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "damage.lightning",
@@ -29,6 +97,30 @@
     "references": [],
     "data": {
       "color": "#ffee44"
+    },
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Foudre"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Les dégâts électriques."
+            }
+          ]
+        }
+      ]
     }
   },
   {
@@ -39,16 +131,81 @@
     "slug": "wiki/skills/spells/lightning-arc",
     "sourcePath": "wiki/skills/spells/lightning-arc.md",
     "references": [
-      "lightning",
-      "stunned"
+      {
+        "operand": "lightning",
+        "refSources": [
+          "body",
+          "frontMatter"
+        ],
+        "targetLabel": "Foudre",
+        "targetEntityId": "damage.lightning",
+        "targetEntitySlug": "wiki/compendium/damage-types/lightning"
+      },
+      {
+        "operand": "stunned",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Étourdi",
+        "targetEntityId": "affliction.stunned",
+        "targetEntitySlug": "wiki/compendium/afflictions/stunned"
+      }
     ],
     "data": {
       "damage": {
-        "type": "lightning",
+        "type": "damage.lightning",
         "amount": 2
       },
       "afflictions": [
         "affliction.stunned"
+      ]
+    },
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Arc Electrique"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Crée un arc d'éclairs jusqu'à une cible visible. Elle subit 2 dégâts "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "lightning",
+              "displayLabel": "électrique",
+              "value": "électrique",
+              "targetEntityId": "damage.lightning",
+              "targetEntitySlug": "wiki/compendium/damage-types/lightning"
+            },
+            {
+              "type": "text",
+              "value": ".\nSur un effet critique, la elle peut être "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "stunned",
+              "displayLabel": "étourdie",
+              "value": "étourdie",
+              "targetEntityId": "affliction.stunned",
+              "targetEntitySlug": "wiki/compendium/afflictions/stunned"
+            },
+            {
+              "type": "text",
+              "value": "."
+            }
+          ]
+        }
       ]
     }
   }

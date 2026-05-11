@@ -2,7 +2,12 @@
  * Readonly access layer over compiled entities and graph (indexes + queries).
  */
 
-import type { CompiledEntity, EntityGraph, GraphNode } from "@galipette/content-schema";
+import type {
+  CompiledEntity,
+  EntityGraph,
+  EntityReference,
+  GraphNode,
+} from "@galipette/content-schema";
 import { entities, graph } from "./artifacts.js";
 import {
   buildByIdMap,
@@ -112,9 +117,10 @@ export const contentRepository = {
   },
 
   /**
-   * Wikilink operands stored on the entity (same strings as in `graph.json` edge targets).
+   * Wikilink operands stored on the entity (same strings as in `graph.json` edge targets),
+   * each tagged with where it was collected (`body` vs `frontMatter`).
    */
-  getReferences(entityId: string): readonly string[] {
+  getReferences(entityId: string): readonly EntityReference[] {
     return byId.get(entityId)?.references ?? [];
   },
 
@@ -130,7 +136,7 @@ export const contentRepository = {
    */
   getReferencedBy(entityId: string): CompiledEntity[] {
     return entities.filter((e) =>
-      e.references.some((ref) => resolveToken(ref, entities, byId)?.id === entityId),
+      e.references.some((ref) => resolveToken(ref.operand, entities, byId)?.id === entityId),
     );
   },
 

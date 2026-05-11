@@ -11,3 +11,5 @@
 | `affliction` | Status effects / conditions. |
 
 The union `CompiledEntity` covers all of the above; `schemaByType` maps each key to its Zod schema.
+
+Every entity shares a shell that includes **`references`**: an array of **`EntityReference`** objects — `operand`, `refSources`, **`targetLabel`**, and when the operand resolves in the corpus, **`targetEntityId`** and **`targetEntitySlug`** (same resolution rules as graph tokens). Optional **`compiledContent`** is the serialized mdast root from the build pipeline. **`resolveReferenceToken`** maps operands to entities (exact id, then suffix match).

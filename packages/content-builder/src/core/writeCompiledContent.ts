@@ -4,10 +4,9 @@
 
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
-import type { EntityGraph, SlugIndex } from "@galipette/content-schema";
-import type { EntityWithReferences } from "./buildEntityGraph.ts";
+import type { CompiledEntity, EntityGraph, SlugIndex } from "@galipette/content-schema";
 
-export function buildSlugIndex(entities: EntityWithReferences[]): SlugIndex {
+export function buildSlugIndex(entities: CompiledEntity[]): SlugIndex {
   const slugToId: Record<string, string> = {};
   const idToSlug: Record<string, string> = {};
   for (const entity of entities) {
@@ -26,7 +25,7 @@ export function buildSlugIndex(entities: EntityWithReferences[]): SlugIndex {
  * @returns The slug/id maps written to `slug-index.json`.
  */
 export async function writeCompiledContent(
-  entities: EntityWithReferences[],
+  entities: CompiledEntity[],
   outputFilePath: string,
   graph: EntityGraph,
 ): Promise<SlugIndex> {

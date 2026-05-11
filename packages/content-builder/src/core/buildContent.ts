@@ -4,17 +4,18 @@
 
 import { dirname } from "node:path";
 import { mkdir, writeFile } from "node:fs/promises";
-import type { EntityGraph } from "@galipette/content-schema";
+import type { CompiledEntity, EntityGraph } from "@galipette/content-schema";
 import { loadEnv } from "../loadEnv";
 import { scanVault } from "./scanVault.ts";
 import { parseFile } from "./parseFile.ts";
 import { validateEntity } from "./validateEntity.ts";
 import {
-  collectObsidianReferences,
+  collectObsidianReferencesFromFrontmatter,
   normalizeObsidianFrontmatter,
 } from "./resolveObsidianLinks.ts";
+import { resolveCompiledEntities } from "@galipette/content-resolver";
 import { writeCompiledContent } from "./writeCompiledContent.ts";
-import { buildEntityGraph, type EntityWithReferences } from "./buildEntityGraph.ts";
+import { buildEntityGraph } from "./buildEntityGraph.ts";
 import { slugIndexPathFromEntitiesPath } from "../utils/artifactPaths.ts";
 import { buildErrorLogPath, defaultCompiledContentPath } from "../paths.ts";
 import type { BuildContentOptions, BuildResult } from "../types/build.ts";
@@ -30,7 +31,8 @@ import type { BuildContentOptions, BuildResult } from "../types/build.ts";
 export async function buildContent(options: BuildContentOptions): Promise<BuildResult> {
   loadEnv();
   const markdownFiles = await scanVault(options.vaultPath, options.subFolder);
-  const entities: EntityWithReferences[] = [];
+  const validatedEntities: CompiledEntity[] = [];
+  const fmOperandsPerEntity: string[][] = [];
   const knownIds = new Map<string, string>();
   const knownSlugs = new Map<string, string>();
   const errors: string[] = [];
@@ -41,10 +43,7 @@ export async function buildContent(options: BuildContentOptions): Promise<BuildR
   for (const filePath of markdownFiles) {
     try {
       const parsedFile = await parseFile(filePath, options.vaultPath);
-      const references = collectObsidianReferences(
-        parsedFile.frontmatter,
-        parsedFile.content,
-      );
+      const fmOperands = collectObsidianReferencesFromFrontmatter(parsedFile.frontmatter);
       const normalizedFrontmatter = normalizeObsidianFrontmatter(parsedFile.frontmatter);
       const entity = validateEntity(normalizedFrontmatter, parsedFile);
 
@@ -67,10 +66,8 @@ export async function buildContent(options: BuildContentOptions): Promise<BuildR
       }
       knownSlugs.set(entity.slug, parsedFile.sourcePath);
 
-      entities.push({
-        ...entity,
-        references,
-      });
+      validatedEntities.push(entity);
+      fmOperandsPerEntity.push(fmOperands);
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : String(error);
       errors.push(message);
@@ -97,6 +94,12 @@ export async function buildContent(options: BuildContentOptions): Promise<BuildR
         .join("\n")}\nError log: ${errorLogPath}`,
     );
   }
+
+  const pending = validatedEntities.map((entity, index) => ({
+    entity,
+    fmOperands: fmOperandsPerEntity[index] ?? [],
+  }));
+  const entities = resolveCompiledEntities(pending, validatedEntities);
 
   const graph: EntityGraph = buildEntityGraph(entities);
 

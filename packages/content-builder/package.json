@@ -8,6 +8,8 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@galipette/content-parser": "workspace:*",
+    "@galipette/content-resolver": "workspace:*",
     "@galipette/content-schema": "workspace:*",
     "dotenv": "^17.4.2",
     "fast-glob": "^3.3.3",

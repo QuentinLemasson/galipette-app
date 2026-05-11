@@ -4,7 +4,10 @@
 
 export type {
   CompiledEntity,
+  CompiledMarkdownAst,
   EntityGraph,
+  EntityReference,
+  EntityReferenceSource,
   GraphNode,
   SlugIndex,
 } from "@galipette/content-schema";

@@ -3,6 +3,11 @@
  */
 
 import type { z } from "zod";
+import {
+  compiledMarkdownAstSchema,
+  entityReferenceSchema,
+  entityReferenceSourceSchema,
+} from "../schemas/EntitySchema.js";
 import type { spellSchema } from "../schemas/SpellSchema.js";
 import type { damageTypeSchema } from "../schemas/DamageTypeSchema.js";
 import type { afflictionSchema } from "../schemas/AfflictionSchema.js";
@@ -14,6 +19,10 @@ export type AfflictionEntity = z.infer<typeof afflictionSchema>;
 
 export type CompiledEntity = SpellEntity | DamageTypeEntity | AfflictionEntity;
 export type EntityType = RegisteredEntityType;
+
+export type EntityReferenceSource = z.infer<typeof entityReferenceSourceSchema>;
+export type EntityReference = z.infer<typeof entityReferenceSchema>;
+export type CompiledMarkdownAst = z.infer<typeof compiledMarkdownAstSchema>;
 
 /** Minimal vertex for `graph.json` (no duplicated entity payload). */
 export type GraphNode = {

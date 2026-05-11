@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { extractObsidianLinkLeftOperand } from "../src/core/obsidianLinkOperands.ts";
+import { extractObsidianLinkLeftOperand } from "@galipette/content-parser";
 
 describe("extractObsidianLinkLeftOperand", () => {
   it("returns the whole label when there is no pipe", () => {

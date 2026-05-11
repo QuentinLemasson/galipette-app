@@ -18,7 +18,7 @@ Internal index construction lives under `src/utils/`; the public surface remains
 
 | Export | Purpose |
 |--------|---------|
-| `entities` | Full `CompiledEntity[]` from `entities.json`. |
+| `entities` | Full `CompiledEntity[]` from `entities.json` (includes optional **`compiledContent`** mdast JSON and structured **`references`**). |
 | `graph` | `EntityGraph` (`nodes` + directed `edges`) from `graph.json`. |
 | `slugIndex` | `{ slugToId, idToSlug }` maps from `slug-index.json` (built by content-builder). |
 | `contentRepository` | Query helpers over those artifacts. |
@@ -26,7 +26,7 @@ Internal index construction lives under `src/utils/`; the public surface remains
 | `EntityNotFoundError` | Thrown by `requireById` / `requireGraphNode`. |
 | `NavigationEntry` / `NavigationCategory` | Lightweight types for the navigation tree. |
 
-Wikilink operands in `references` and graph edge targets are the **same strings** the content builder emitted (often short tokens like `lightning`, not always full ids).
+Each `references` entry is a **`EntityReference`**: `operand` (same token as in `graph.json` edges), `refSources`, **`targetLabel`**, and when the operand resolves to an entity, **`targetEntityId`** and **`targetEntitySlug`**. Use this shape as the standard cross-link API in the app.
 
 ---
 
@@ -133,12 +133,15 @@ const n = contentRepository.count();
 
 ### `contentRepository.getReferences`
 
-Operands collected from front matter and body wikilinks for this entity id.
+Reference operands for this entity id, each with `refSources` (`body` / `frontMatter`) indicating where the wikilink was collected during build.
 
 ```ts
 import { contentRepository } from "@galipette/compiled-content";
 
-const tokens = contentRepository.getReferences("spell.lightning-arc");
+const refs = contentRepository.getReferences("spell.lightning-arc");
+for (const ref of refs) {
+  console.log(ref.operand, ref.refSources);
+}
 ```
 
 ### `contentRepository.getReferencersByToken`
@@ -236,4 +239,4 @@ const damageType = resolveReferenceToken("lightning");
 
 ## Build
 
-From the workspace root, build this package with the workspace script, or `pnpm --filter @galipette/compiled-content build`. Artifacts under `src/data/` (`entities.json`, `graph.json`, **`slug-index.json`**) are produced by `@galipette/content-builder`.
+From the workspace root, build this package with the workspace script, or `pnpm --filter @galipette/compiled-content build`. Artifacts under `src/data/` (`entities.json`, `graph.json`, **`slug-index.json`**) are produced by `@galipette/content-builder` (after `@galipette/content-resolver` enriches entities with mdast and merged references).

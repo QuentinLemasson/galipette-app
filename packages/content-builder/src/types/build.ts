@@ -2,8 +2,7 @@
  * Options and results for the programmatic {@link buildContent} API.
  */
 
-import type { EntityGraph, SlugIndex } from "@galipette/content-schema";
-import type { EntityWithReferences } from "../core/buildEntityGraph.ts";
+import type { CompiledEntity, EntityGraph, SlugIndex } from "@galipette/content-schema";
 
 /** Options for {@link buildContent}. */
 export type BuildContentOptions = {
@@ -25,7 +24,7 @@ export type BuildDiagnostics = {
 
 /** Result of a successful {@link buildContent} invocation. */
 export type BuildResult = {
-  entities: EntityWithReferences[];
+  entities: CompiledEntity[];
   graph: EntityGraph;
   slugIndex: SlugIndex;
   diagnostics: BuildDiagnostics;

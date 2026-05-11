@@ -49,9 +49,25 @@ export function EntityContent({ entity }: EntityContentProps) {
         <section className="entity-content__references">
           <h3>References</h3>
           <ul>
-            {entity.references.map((token) => (
-              <li key={token}>
-                <code>{token}</code>
+            {entity.references.map((ref) => (
+              <li key={`${ref.operand}:${ref.refSources.join(",")}`}>
+                <code>{ref.targetLabel}</code>
+                {ref.targetEntityId ? (
+                  <>
+                    {" "}
+                    → <code>{ref.targetEntityId}</code>
+                    {ref.targetEntitySlug ? (
+                      <>
+                        {" "}
+                        · <code>{ref.targetEntitySlug}</code>
+                      </>
+                    ) : null}
+                  </>
+                ) : null}
+                <span className="entity-content__ref-sources">
+                  {" "}
+                  (operand <code>{ref.operand}</code> · {ref.refSources.join(", ")})
+                </span>
               </li>
             ))}
           </ul>

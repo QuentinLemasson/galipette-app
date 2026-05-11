@@ -1,7 +1,11 @@
 export {
   entityShellSchema,
+  entityReferenceSchema,
+  entityReferenceSourceSchema,
+  compiledMarkdownAstSchema,
   createEntitySchema,
 } from "./schemas/EntitySchema.js";
+export { resolveReferenceToken } from "./resolve-reference-token.js";
 export { afflictionSchema } from "./schemas/AfflictionSchema.js";
 export { damageTypeSchema } from "./schemas/DamageTypeSchema.js";
 export { spellSchema } from "./schemas/SpellSchema.js";
@@ -15,6 +19,9 @@ export type {
   AfflictionEntity,
   CompiledEntity,
   EntityType,
+  EntityReference,
+  EntityReferenceSource,
+  CompiledMarkdownAst,
   GraphNode,
   EntityGraph,
   SlugIndex,

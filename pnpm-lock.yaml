@@ -287,6 +287,12 @@ importers:
 
   packages/content-builder:
     dependencies:
+      '@galipette/content-parser':
+        specifier: workspace:*
+        version: link:../content-parser
+      '@galipette/content-resolver':
+        specifier: workspace:*
+        version: link:../content-resolver
       '@galipette/content-schema':
         specifier: workspace:*
         version: link:../content-schema
@@ -306,6 +312,53 @@ importers:
         specifier: ^4.4.3
         version: 4.4.3
     devDependencies:
+      vitest:
+        specifier: ^3.2.4
+        version: 3.2.4(@types/debug@4.1.13)(@types/node@24.12.3)(lightningcss@1.32.0)(tsx@4.21.0)
+
+  packages/content-parser:
+    dependencies:
+      '@galipette/content-schema':
+        specifier: workspace:*
+        version: link:../content-schema
+      '@types/mdast':
+        specifier: ^4.0.4
+        version: 4.0.4
+      remark-parse:
+        specifier: ^11.0.0
+        version: 11.0.0
+      unified:
+        specifier: ^11.0.0
+        version: 11.0.5
+      unist-util-remove-position:
+        specifier: ^5.0.0
+        version: 5.0.0
+      unist-util-visit:
+        specifier: ^5.0.0
+        version: 5.1.0
+    devDependencies:
+      typescript:
+        specifier: ~6.0.3
+        version: 6.0.3
+      vitest:
+        specifier: ^3.2.4
+        version: 3.2.4(@types/debug@4.1.13)(@types/node@24.12.3)(lightningcss@1.32.0)(tsx@4.21.0)
+
+  packages/content-resolver:
+    dependencies:
+      '@galipette/content-parser':
+        specifier: workspace:*
+        version: link:../content-parser
+      '@galipette/content-schema':
+        specifier: workspace:*
+        version: link:../content-schema
+      '@types/mdast':
+        specifier: ^4.0.4
+        version: 4.0.4
+    devDependencies:
+      typescript:
+        specifier: ~6.0.3
+        version: 6.0.3
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/debug@4.1.13)(@types/node@24.12.3)(lightningcss@1.32.0)(tsx@4.21.0)
@@ -1924,6 +1977,9 @@ packages:
 
   unist-util-position@5.0.0:
     resolution: {integrity: sha512-fucsC7HjXvkB5R3kTCO7kUjRdrS0BJt3M/FPxmHMBOm8JQi2BsHAHFsy27E0EolP8rp0NzXsJ+jNPyDWvOJZPA==}
+
+  unist-util-remove-position@5.0.0:
+    resolution: {integrity: sha512-Hp5Kh3wLxv0PHj9m2yZhhLt58KzPtEYKQQ4yxfYFEO7EvHwzyDYnduhHnY1mDxoqr7VUwVuHXk9RXKIiYS1N8Q==}
 
   unist-util-stringify-position@4.0.0:
     resolution: {integrity: sha512-0ASV06AAoKCDkS2+xw5RXJywruurpbC4JZSm7nr7MOt1ojAzvyyaO+UxZf18j8FCF6kmzCZKcAgN/yu2gm2XgQ==}
@@ -3730,6 +3786,11 @@ snapshots:
   unist-util-position@5.0.0:
     dependencies:
       '@types/unist': 3.0.3
+
+  unist-util-remove-position@5.0.0:
+    dependencies:
+      '@types/unist': 3.0.3
+      unist-util-visit: 5.1.0
 
   unist-util-stringify-position@4.0.0:
     dependencies:

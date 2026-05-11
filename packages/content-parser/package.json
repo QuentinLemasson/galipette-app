@@ -1,0 +1,33 @@
+{
+  "name": "@galipette/content-parser",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@galipette/content-schema": "workspace:*",
+    "@types/mdast": "^4.0.4",
+    "remark-parse": "^11.0.0",
+    "unified": "^11.0.0",
+    "unist-util-remove-position": "^5.0.0",
+    "unist-util-visit": "^5.0.0"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.3",
+    "vitest": "^3.2.4"
+  }
+}

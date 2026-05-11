@@ -2,19 +2,22 @@
  * Wikilink discovery and front matter normalization for Obsidian-style references.
  */
 
-import { extractObsidianLinkLeftOperand } from "./obsidianLinkOperands.ts";
+import {
+  extractObsidianLinkDisplay,
+  extractObsidianLinkLeftOperand,
+} from "@galipette/content-parser";
 
 const OBSIDIAN_LINK_PATTERN = /\[\[([^[\]]+)\]\]/g;
 
 /**
- * Replaces every `[[link]]` substring with the left-operand resolution for string values.
+ * Replaces every `[[link]]` substring with the alias / display segment for string values.
  *
  * @param value - Raw string possibly containing multiple wikilinks.
- * @returns Same structure with links substituted by resolved operands.
+ * @returns Same structure with links substituted by display text (`target|alias` → `alias`).
  */
 function normalizeString(value: string): string {
   return value.replace(OBSIDIAN_LINK_PATTERN, (_match, linkBody: string) =>
-    extractObsidianLinkLeftOperand(linkBody),
+    extractObsidianLinkDisplay(linkBody),
   );
 }
 
@@ -77,22 +80,15 @@ function visitNormalize(value: unknown): unknown {
 }
 
 /**
- * Collects unique left operands from wikilinks in front matter and optionally in body text.
- * Body text is scanned for references only; it is not mutated (normalization is separate).
+ * Collects unique left operands from wikilinks embedded in YAML front matter only.
+ * Body references are merged later via `@galipette/content-resolver` after markdown → mdast.
  *
- * @param frontmatter - Parsed YAML object from gray-matter.
- * @param markdownBody - Optional note body; links here contribute to the reference list only.
- * @returns Deduplicated list of operands used for `references` arrays and graph edges.
+ * @param frontmatter - Parsed YAML object from gray-matter (before operand substitution).
+ * @returns Deduplicated operands contributed by front matter for merged `references`.
  */
-export function collectObsidianReferences(
-  frontmatter: unknown,
-  markdownBody?: string,
-): string[] {
+export function collectObsidianReferencesFromFrontmatter(frontmatter: unknown): string[] {
   const references: string[] = [];
   visitCollect(frontmatter, references);
-  if (markdownBody && markdownBody.length > 0) {
-    visitCollect(markdownBody, references);
-  }
   return Array.from(new Set(references));
 }
 
@@ -106,4 +102,4 @@ export function normalizeObsidianFrontmatter<T>(frontmatter: T): T {
   return visitNormalize(frontmatter) as T;
 }
 
-export { extractObsidianLinkLeftOperand } from "./obsidianLinkOperands.ts";
+export { extractObsidianLinkLeftOperand } from "@galipette/content-parser";
