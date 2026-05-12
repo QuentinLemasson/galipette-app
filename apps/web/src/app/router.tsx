@@ -5,10 +5,20 @@
 import { createRouter } from "@tanstack/react-router";
 import { rootRoute } from "./routes/root";
 import { homeRoute } from "./routes/home";
+import {
+  characterListRoute,
+  characterSheetRoute,
+} from "./routes/characters";
 import { entityRoute } from "./routes/entity";
 import { notFoundRoute } from "./routes/not-found";
 
-const routeTree = rootRoute.addChildren([homeRoute, entityRoute, notFoundRoute]);
+const routeTree = rootRoute.addChildren([
+  homeRoute,
+  characterSheetRoute,
+  characterListRoute,
+  entityRoute,
+  notFoundRoute,
+]);
 
 /**
  * Application router instance shared by `RouterProvider`.

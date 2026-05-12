@@ -3,6 +3,7 @@
  */
 
 import { contentRepository } from "@galipette/compiled-content";
+import { Link } from "@tanstack/react-router";
 import { formatTypeLabel } from "../../common/utils/format-type-label";
 import { useNavigationTree } from "../../features/wiki/hooks/useNavigationTree";
 
@@ -25,6 +26,12 @@ export function HomePage() {
       </p>
 
       <ul className="home-page__stats">
+        <li>
+          <Link to="/characters" className="character-page__link">
+            Character roster (API)
+          </Link>{" "}
+          — list & edit via HTTP
+        </li>
         <li>
           <strong>{totalEntities}</strong> entities total
         </li>

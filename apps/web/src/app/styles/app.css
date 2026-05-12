@@ -31,6 +31,24 @@
   color: var(--text);
 }
 
+.app-layout__nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app-layout__nav-link {
+  font-size: 14px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.app-layout__nav-link:hover {
+  text-decoration: underline;
+}
+
 .app-layout__body {
   display: flex;
   flex: 1 1 0;
@@ -169,6 +187,172 @@
   color: var(--text-h);
   font-size: 18px;
   margin-right: 6px;
+}
+
+.character-page {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.character-page__muted {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.character-page__muted code {
+  font-size: 12px;
+}
+
+.character-page__error {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--text-h) 8%, transparent);
+  color: var(--text-h);
+  font-size: 14px;
+}
+
+.character-page__ok {
+  margin: 0;
+  font-size: 14px;
+  color: var(--accent);
+}
+
+.character-page__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.character-page__link {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.character-page__link:hover {
+  text-decoration: underline;
+}
+
+.character-page__meta {
+  color: var(--text);
+  font-weight: 400;
+}
+
+.character-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 520px;
+}
+
+.character-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.character-form__field span {
+  color: var(--text-h);
+  font-weight: 500;
+}
+
+.character-form__field input,
+.character-form__field textarea {
+  font: inherit;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-h);
+}
+
+.character-form__actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.character-form__actions button {
+  font: inherit;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-h);
+  cursor: pointer;
+}
+
+.character-form__actions button:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.character-form__actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.character-form__fieldset {
+  margin: 0;
+  padding: 12px 14px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.character-form__legend {
+  padding: 0 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.character-form__skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 280px;
+  overflow-y: auto;
+  margin-top: 8px;
+}
+
+.character-form__skill-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.character-form__skill-row input {
+  flex: 0 0 auto;
+}
+
+.character-form__skill-row span {
+  flex: 1 1 auto;
+}
+
+.character-form__skill-id {
+  flex: 0 1 auto;
+  font-size: 11px;
+  color: var(--text);
+  max-width: 42%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.character-form__orphan-skills {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
 }
 
 .entity-content {

@@ -9,16 +9,25 @@ Minimal MVP that validates the [`@galipette/compiled-content`](../../packages/co
 - **TanStack Router** (code-based routes; entity detail uses a splat on **slug**)
 - **Compiled mdast** (`entity.compiledContent`) rendered via small React components (paragraphs, headings, text, wikilinks, thematic breaks, and a generic fallback for other mdast nodes)
 - **react-markdown** (fallback only when an entity has no `compiledContent`)
+- **Plain `fetch`** against **`apps/api`** for the character roster (optional; see [HTTP API](../../apps/api/README.md))
 
 ## Routes
 
 | Path | Component | Purpose |
 |------|-----------|---------|
-| `/` | `app/pages/HomePage` | Welcome screen + per-type entity counts |
+| `/` | `app/pages/HomePage` | Welcome screen + per-type entity counts + link to characters |
+| `/characters` | `features/character/pages/CharacterListPage` | Lists characters from **`GET /characters`** (Hono API) |
+| `/characters/<id>` | `features/character/pages/CharacterSheetPage` | Loads one character; edits attributes (JSON); **skills** = multi-select of compiled **`spell`** entities via `contentRepository.getByType("spell")`; **PATCH** saves |
 | `/entity/<slug>` | `features/wiki/pages/EntityPage` | Resolves the entity by **`CompiledEntity.slug`** and renders metadata + compiled body |
-| `/not-found` | `app/routes/not-found` | Optional **`?operand=`** / **`?link=`** search params (used when opening an unresolved wikilink from entity content) |
+| `/not-found` | `app/pages/NotFoundRoutePage` | Optional **`?operand=`** / **`?link=`** search params (used when opening an unresolved wikilink from entity content) |
 
 The entity route uses a TanStack splat (`entity/$`) so the full **slug** (e.g. `wiki/skills/spells/lightning-arc`, no `.md` suffix) is represented as URL path segments, each segment URL-encoded where needed.
+
+## HTTP API (characters)
+
+During **`pnpm dev`**, Vite proxies **`/api/*`** → `http://localhost:3001` (see `vite.config.ts`), so the character feature calls paths like **`/api/characters`** without CORS setup. Start the API with **`pnpm dev:api`** from the repo root.
+
+For **`pnpm preview`** or other hosts without that proxy, set **`VITE_API_BASE_URL`** to the API origin (see `.env.example`).
 
 ## Source layout (feature-first)
 
@@ -28,23 +37,33 @@ src/
 │   ├── layout/
 │   │   └── AppLayout.tsx       # Header, sidebar (wiki nav), `<Outlet>`
 │   ├── pages/
-│   │   └── HomePage.tsx        # `/` landing
+│   │   ├── HomePage.tsx        # `/` landing
+│   │   └── NotFoundRoutePage.tsx
 │   ├── routes/                 # TanStack route definitions (URLs + bindings only)
 │   │   ├── root.tsx
 │   │   ├── home.tsx
+│   │   ├── characters.tsx      # character list + sheet routes
 │   │   ├── entity.tsx          # mounts wiki `EntityPage`
-│   │   └── not-found.tsx
+│   │   ├── not-found.tsx
+│   │   └── not-found-search.ts
 │   ├── styles/
 │   │   └── app.css             # Layout + wiki explorer presentation (shared chrome)
 │   └── router.tsx
 ├── features/
-│   └── wiki/                   # Compiled wiki / vault explorer (entity detail, nav, mdast)
-│       ├── components/         # NavigationTree, EntityContent, CompiledMdast, …
-│       ├── hooks/              # `useEntityBySlug`, `useNavigationTree`
-│       ├── pages/
-│       │   └── EntityPage.tsx  # `/entity/$` page
-│       └── utils/
-│           └── source-path.ts  # slug ↔ URL splat (`buildEntityHref`, `decodeEntitySlug`)
+│   ├── wiki/                   # Compiled wiki / vault explorer (entity detail, nav, mdast)
+│   │   ├── components/         # NavigationTree, EntityContent, CompiledMdast, …
+│   │   ├── hooks/              # `useEntityBySlug`, `useNavigationTree`
+│   │   ├── pages/
+│   │   │   └── EntityPage.tsx  # `/entity/$` page
+│   │   └── utils/
+│   │       └── source-path.ts  # slug ↔ URL splat (`buildEntityHref`, `decodeEntitySlug`)
+│   └── character/              # DB-backed roster (consumes `apps/api`)
+│       ├── api.ts              # `fetch` helpers + DTO types
+│       ├── skill-select-options.ts  # `getSkillSelectOptions()` → `contentRepository.getByType("spell")`
+│       └── pages/
+│           ├── CharacterListPage.tsx
+│           ├── CharacterSheetPage.tsx
+│           └── CharacterSheetRoutePage.tsx
 ├── common/                     # App-wide helpers not living in workspace packages
 │   ├── components/
 │   │   └── NotFound.tsx
