@@ -201,7 +201,7 @@
   color: var(--text);
 }
 
-.entity-content__source-path {
+.entity-content__slug {
   font-size: 12px;
   color: var(--text);
   font-family: var(--mono);
@@ -225,6 +225,41 @@
 
 .entity-content__body p {
   margin: 0 0 12px;
+}
+
+.entity-content__ast-paragraph {
+  margin: 0 0 12px;
+  white-space: pre-wrap;
+}
+
+.entity-content__wikilink {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.entity-content__wikilink--internal {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.entity-content__wikilink--internal:hover {
+  color: var(--text-h);
+}
+
+.entity-content__wikilink--external {
+  color: var(--accent);
+}
+
+.entity-content__wikilink--broken {
+  color: var(--text);
+  text-decoration-style: dashed;
+  cursor: help;
+}
+
+.entity-content__ast-hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 20px 0;
 }
 
 .entity-content__data,

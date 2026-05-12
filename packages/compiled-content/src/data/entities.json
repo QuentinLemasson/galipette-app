@@ -124,6 +124,117 @@
     }
   },
   {
+    "id": "rule.character.creation",
+    "type": "rule",
+    "name": "Créer son Personnage",
+    "content": "# Guide de création de personnage\n\n- Choisir sa [[Race]]\n- Répartir 30 points d'attributs\n- Choisir 3 domaines en plus du domaine d'aventurier\n- Répartir 10 points de compétence",
+    "slug": "wiki/rules/creer-son-personnage",
+    "sourcePath": "wiki/rules/Creer son Personnage.md",
+    "references": [
+      {
+        "operand": "Race",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Race"
+      }
+    ],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Guide de création de personnage"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Choisir sa "
+                    },
+                    {
+                      "type": "wikiLink",
+                      "operand": "Race",
+                      "displayLabel": "Race",
+                      "value": "Race"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Répartir 30 points d'attributs"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Choisir 3 domaines en plus du domaine d'aventurier"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Répartir 10 points de compétence"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "id": "spell.lightning-arc",
     "type": "spell",
     "name": "Arc Electrique",

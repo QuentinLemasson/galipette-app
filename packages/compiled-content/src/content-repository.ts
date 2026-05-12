@@ -11,6 +11,7 @@ import type {
 import { entities, graph } from "./artifacts.js";
 import {
   buildByIdMap,
+  buildBySlugMap,
   buildIdsByType,
   buildReferencerIdsByToken,
 } from "./utils/entity-indexes.js";
@@ -36,6 +37,7 @@ export class EntityNotFoundError extends Error {
 }
 
 const byId = buildByIdMap(entities);
+const bySlug = buildBySlugMap(entities);
 const idsByType = buildIdsByType(entities);
 const referencerIdsByToken = buildReferencerIdsByToken(entities);
 
@@ -179,9 +181,14 @@ export const contentRepository = {
     return entities.find((e) => e.sourcePath === sourcePath);
   },
 
+  /** The compiled entity with the given public URL slug (no `.md` suffix). */
+  getBySlug(slug: string): CompiledEntity | undefined {
+    return bySlug.get(slug);
+  },
+
   /**
    * Lightweight navigation tree (entities grouped by `type`) carrying only
-   * `id`, `type`, `name`, and `sourcePath` — suitable for menus and link rendering
+   * `id`, `type`, `name`, `slug`, and `sourcePath` — suitable for menus and link rendering
    * without shipping body content or type-specific payloads.
    */
   getNavigationTree(): readonly NavigationCategory[] {

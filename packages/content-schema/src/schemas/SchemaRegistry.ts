@@ -5,12 +5,14 @@
 import { spellSchema } from "./SpellSchema.js";
 import { damageTypeSchema } from "./DamageTypeSchema.js";
 import { afflictionSchema } from "./AfflictionSchema.js";
+import { ruleSchema } from "./RuleSchema.js";
 
 /** Maps supported entity type keys to their validation schemas. */
 export const schemaByType = {
   spell: spellSchema,
   "damage-type": damageTypeSchema,
   affliction: afflictionSchema,
+  rule: ruleSchema,
 } as const;
 
 /** Union of keys present in {@link schemaByType}. */

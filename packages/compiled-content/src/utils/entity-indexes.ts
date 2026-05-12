@@ -10,6 +10,12 @@ export function buildByIdMap(
   return new Map(entities.map((entity) => [entity.id, entity]));
 }
 
+export function buildBySlugMap(
+  entities: readonly CompiledEntity[],
+): Map<string, CompiledEntity> {
+  return new Map(entities.map((entity) => [entity.slug, entity]));
+}
+
 export function buildIdsByType(
   entities: readonly CompiledEntity[],
 ): Map<string, string[]> {

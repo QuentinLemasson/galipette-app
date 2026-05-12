@@ -1,17 +1,18 @@
 /**
- * Renders a compiled entity's metadata and Markdown body.
+ * Renders a compiled entity's metadata and body from resolved mdast.
  */
 
 import ReactMarkdown from "react-markdown";
 import type { CompiledEntity } from "@galipette/compiled-content";
 import { formatTypeLabel } from "../utils/format-type-label";
+import { CompiledMdast } from "./CompiledMdast";
 
 type EntityContentProps = {
   entity: CompiledEntity;
 };
 
 /**
- * @description Renders the Markdown content of a compiled entity along with a
+ * @description Renders the compiled mdast body of a compiled entity along with a
  *   metadata header and a debug dump of the type-specific `data` payload.
  * @param props - Component props.
  * @param props.entity - The compiled entity to display.
@@ -31,11 +32,15 @@ export function EntityContent({ entity }: EntityContentProps) {
         <span className="entity-content__type">{formatTypeLabel(entity.type)}</span>
         <h1>{entity.name}</h1>
         <code className="entity-content__id">{entity.id}</code>
-        <p className="entity-content__source-path">{entity.sourcePath}</p>
+        <p className="entity-content__slug">{entity.slug}</p>
       </header>
 
       <div className="entity-content__body">
-        <ReactMarkdown>{entity.content}</ReactMarkdown>
+        {entity.compiledContent ? (
+          <CompiledMdast ast={entity.compiledContent} />
+        ) : (
+          <ReactMarkdown>{entity.content}</ReactMarkdown>
+        )}
       </div>
 
       {hasData ? (

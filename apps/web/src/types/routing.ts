@@ -3,6 +3,6 @@
  */
 
 /**
- * Path segment used for entity detail routes: prefix + URL-encoded source path.
+ * Path segment used for entity detail routes: prefix + URL-encoded entity slug.
  */
 export const ENTITY_ROUTE_PREFIX = "/entity";

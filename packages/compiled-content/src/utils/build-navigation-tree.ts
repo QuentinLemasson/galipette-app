@@ -12,6 +12,8 @@ export type NavigationEntry = {
   id: string;
   type: CompiledEntity["type"];
   name: string;
+  /** Public path segment used in `/entity/...` URLs (no `.md` suffix). */
+  slug: string;
   sourcePath: string;
 };
 
@@ -40,6 +42,7 @@ export function buildNavigationTree(
       id: entity.id,
       type: entity.type,
       name: entity.name,
+      slug: entity.slug,
       sourcePath: entity.sourcePath,
     };
     const bucket = entriesByType.get(entity.type);

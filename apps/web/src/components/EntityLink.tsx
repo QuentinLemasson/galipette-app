@@ -12,7 +12,7 @@ type EntityLinkProps = {
 
 /**
  * @description Renders a router-aware `<Link>` to an entity detail page.
- *   Uses the entity's `sourcePath` to build the URL.
+ *   Uses the entity's public `slug` to build the URL.
  * @param props - Component props.
  * @param props.entry - Navigation entry describing the target entity.
  * @returns A TanStack Router `<Link>` element.
@@ -20,10 +20,10 @@ type EntityLinkProps = {
 export function EntityLink({ entry }: EntityLinkProps) {
   return (
     <Link
-      to={buildEntityHref(entry.sourcePath)}
+      to={buildEntityHref(entry.slug)}
       className="entity-link"
       activeProps={{ className: "entity-link entity-link--active" }}
-      title={entry.sourcePath}
+      title={entry.slug}
     >
       <span className="entity-link__name">{entry.name}</span>
       <code className="entity-link__id">{entry.id}</code>

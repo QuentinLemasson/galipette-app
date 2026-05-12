@@ -19,6 +19,12 @@
       "sourcePath": "wiki/compendium/damage-types/lightning.md"
     },
     {
+      "id": "rule.character.creation",
+      "type": "rule",
+      "label": "Créer son Personnage",
+      "sourcePath": "wiki/rules/Creer son Personnage.md"
+    },
+    {
       "id": "spell.lightning-arc",
       "type": "spell",
       "label": "Arc Electrique",
@@ -26,6 +32,10 @@
     }
   ],
   "edges": [
+    [
+      "rule.character.creation",
+      "Race"
+    ],
     [
       "spell.lightning-arc",
       "lightning"
