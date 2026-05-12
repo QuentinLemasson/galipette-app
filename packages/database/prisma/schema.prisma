@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// Playable persona; stats live on `CharacterSheet`.
+model Character {
+  id        String           @id @default(cuid())
+  name      String
+  /// Player display name or account id (refine later).
+  player    String
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+  sheet     CharacterSheet?
+
+  @@index([player])
+}
+
+/// Game stats for a character: free-form numeric attributes and skill ids (content slugs / ids).
+model CharacterSheet {
+  id          String    @id @default(cuid())
+  characterId String    @unique
+  character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  /// Arbitrary numeric stats, e.g. `{ "force": 12, "agilite": 14 }`.
+  attributes Json       @default("{}")
+  /// References into compiled content; no `Skill` table yet.
+  skillIds   String[]   @default([])
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+}

@@ -1,0 +1,68 @@
+# `@galipette/database`
+
+PostgreSQL persistence for Galipette using **Prisma ORM 7**: schema, migrations, and a shared **`PrismaClient`** wired with the **`@prisma/adapter-pg`** driver adapter.
+
+## Models
+
+- **`Character`** — `name`, `player`, timestamps; optional one-to-one **`CharacterSheet`**.
+- **`CharacterSheet`** — `attributes` (`Json`, string → number map at the app layer), `skillIds` (`String[]`, references into compiled content later; no `Skill` table yet).
+
+## Setup
+
+1. Copy [`.env.example`](./.env.example) to **`.env`** in this package (`packages/database/.env`).
+2. Set **`DATABASE_URL`** to a PostgreSQL connection string (direct TCP; not `prisma://` Accelerate URLs unless you follow the Accelerate client path instead of `PrismaPg`).
+3. From the repo root, apply migrations (or push for a throwaway local DB):
+
+   ```bash
+   pnpm db:migrate
+   ```
+
+4. Build the package (runs **`prisma generate`** then **`tsc`**):
+
+   ```bash
+   pnpm build:database
+   ```
+
+Generated client code lives under **`src/generated/prisma`** (gitignored); **`dist/`** is what consumers import.
+
+## Configuration (Prisma 7)
+
+| File | Role |
+|------|------|
+| [`prisma/schema.prisma`](./prisma/schema.prisma) | Models + `datasource` **provider only** (no `url` in schema). |
+| [`prisma.config.ts`](./prisma.config.ts) | CLI datasource URL, schema path, migrations path (`DATABASE_URL` via `env()` + `dotenv`). |
+| [`src/client.ts`](./src/client.ts) | Singleton **`PrismaClient`** with **`PrismaPg`** using **`process.env.DATABASE_URL`**. |
+
+Runtime code must have **`DATABASE_URL`** set (your app or process manager loads env; the Prisma CLI loads **`.env`** from this package via **`prisma.config.ts`**).
+
+## Scripts
+
+Defined in **`package.json`**; the same commands are exposed at the **monorepo root** as **`pnpm db:*`** (see root [README](../../README.md)).
+
+| Script | Command |
+|--------|---------|
+| `db:generate` | `prisma generate` |
+| `db:validate` | `prisma validate` |
+| `db:migrate` | `prisma migrate dev` |
+| `db:deploy` | `prisma migrate deploy` |
+| `db:push` | `prisma db push` (prototype / local only; prefer migrate for anything you care to version) |
+| `db:studio` | `prisma studio` |
+| `db:status` | `prisma migrate status` |
+| `build` | `prisma generate` + `tsc` |
+
+**Note (Prisma 7):** `migrate dev` / `db push` do **not** run **`generate`** automatically. Use **`pnpm build:database`** or **`pnpm db:generate`** after schema changes before building dependents.
+
+## Consumers
+
+Import **`prisma`** and types from **`@galipette/database`**:
+
+```ts
+import { prisma, type Character } from "@galipette/database";
+```
+
+For HTTP / UI payloads, prefer **`@galipette/shared-schemas`** validators alongside these types.
+
+## Further reading
+
+- **[Database cheat sheet](../../docs/database-cheatsheet.md)** — migrations, Studio, raw SQL, manual data edits.
+- **[Shared schemas README](../shared-schemas/README.md)** — Zod DTOs aligned with these models.

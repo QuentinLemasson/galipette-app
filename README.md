@@ -13,7 +13,11 @@ The content stack is split by concern: **schemas** define shared shapes, **parse
 | `@galipette/content-resolver` | [packages/content-resolver/README.md](packages/content-resolver/README.md) |
 | `@galipette/content-builder` | [packages/content-builder/README.md](packages/content-builder/README.md) |
 | `@galipette/compiled-content` | [packages/compiled-content/README.md](packages/compiled-content/README.md) |
+| `@galipette/database` | [packages/database/README.md](packages/database/README.md) |
+| `@galipette/shared-schemas` | [packages/shared-schemas/README.md](packages/shared-schemas/README.md) |
 | Web app | [apps/web/README.md](apps/web/README.md) |
+| Database operations (cheat sheet) | [docs/database-cheatsheet.md](docs/database-cheatsheet.md) |
+| Changelog | [CHANGELOG.md](CHANGELOG.md) |
 
 ## Layout
 
@@ -76,11 +80,20 @@ From the repository root, after `pnpm install`:
 | `pnpm build:content-resolver` | TypeScript build for `@galipette/content-resolver` only. |
 | `pnpm build:content-builder` | Runs the content builder package entry (vault → JSON). |
 | `pnpm build:compiled-content` | TypeScript build for `@galipette/compiled-content` only. |
+| `pnpm build:database` | `prisma generate` + TypeScript build for `@galipette/database`. |
+| `pnpm build:shared-schemas` | TypeScript build for `@galipette/shared-schemas` (run after `build:database` when the Prisma schema changed). |
+| `pnpm db:generate` | Regenerate Prisma Client in `@galipette/database`. |
+| `pnpm db:validate` | Validate `schema.prisma` (no DB connection required). |
+| `pnpm db:migrate` | `prisma migrate dev` in `@galipette/database` (requires `DATABASE_URL` in `packages/database/.env`). |
+| `pnpm db:deploy` | `prisma migrate deploy` — apply pending migrations (CI/production). |
+| `pnpm db:push` | `prisma db push` — prototype sync without migration files (local only). |
+| `pnpm db:studio` | Open Prisma Studio for the configured database. |
+| `pnpm db:status` | `prisma migrate status` — migration drift / history. |
 | `pnpm test:content` | Runs tests for schema, content-builder, and compiled-content. |
 | `pnpm dev` | Starts the web app. |
 
-Package-level scripts and CLI flags (vault path, subfolder, env) are documented in [packages/content-builder/README.md](packages/content-builder/README.md).
+Package-level scripts and CLI flags (vault path, subfolder, env) are documented in [packages/content-builder/README.md](packages/content-builder/README.md). Database workflows (migrations, SQL, Studio) are summarized in [docs/database-cheatsheet.md](docs/database-cheatsheet.md).
 
 ## Contributing
 
-Keep behavioral changes covered by the **content-builder** test suite when touching validation, graph output, resolver behavior, or **`broken-links.json`** output. Prefer extending **content-schema** registries over special-casing the pipeline. Changes to Remark wikilink parsing belong in **content-parser**; orchestration, merged `references`, and the **`brokenWikiLinks`** aggregate belong in **content-resolver**.
+Keep behavioral changes covered by the **content-builder** test suite when touching validation, graph output, resolver behavior, or **`broken-links.json`** output. Prefer extending **content-schema** registries over special-casing the pipeline. Changes to Remark wikilink parsing belong in **content-parser**; orchestration, merged `references`, and the **`brokenWikiLinks`** aggregate belong in **content-resolver**. For database schema or migration changes, follow [docs/database-cheatsheet.md](docs/database-cheatsheet.md) and record notable workspace updates in [CHANGELOG.md](CHANGELOG.md).
