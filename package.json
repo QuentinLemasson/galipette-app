@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "pnpm --filter web dev",
+    "dev:api": "pnpm --filter api dev",
+    "build:api": "pnpm --filter api build",
+    "generate:openapi": "pnpm --filter api generate:openapi",
     "build:content-schema": "pnpm --filter @galipette/content-schema build",
     "build:content-parser": "pnpm --filter @galipette/content-parser build",
     "build:content-resolver": "pnpm --filter @galipette/content-resolver build",

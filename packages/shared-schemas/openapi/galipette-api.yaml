@@ -1,0 +1,241 @@
+openapi: 3.0.0
+info:
+  title: Galipette API
+  version: 0.0.0
+components:
+  schemas:
+    Character:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        player:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        sheet:
+          $ref: "#/components/schemas/CharacterSheet"
+      required:
+        - id
+        - name
+        - player
+        - createdAt
+        - updatedAt
+        - sheet
+    CharacterSheet:
+      type: object
+      nullable: true
+      properties:
+        id:
+          type: string
+        characterId:
+          type: string
+        attributes:
+          type: object
+          additionalProperties:
+            type: number
+          description: Numeric stats keyed by attribute name.
+        skillIds:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - characterId
+        - attributes
+        - skillIds
+        - createdAt
+        - updatedAt
+    ApiError:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+    CharacterCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          example: Ariane
+        player:
+          type: string
+          minLength: 1
+          example: PlayerOne
+        sheet:
+          $ref: "#/components/schemas/CharacterSheetWrite"
+      required:
+        - name
+        - player
+    CharacterSheetWrite:
+      type: object
+      properties:
+        attributes:
+          type: object
+          additionalProperties:
+            type: number
+          default: {}
+          description: Numeric stats keyed by attribute name.
+        skillIds:
+          type: array
+          items:
+            type: string
+          default: []
+          description: Opaque skill or compiled-content identifiers.
+    CharacterPatch:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        player:
+          type: string
+          minLength: 1
+        sheet:
+          $ref: "#/components/schemas/CharacterSheetUpdate"
+      additionalProperties: false
+    CharacterSheetUpdate:
+      type: object
+      properties:
+        attributes:
+          type: object
+          additionalProperties:
+            type: number
+          description: Numeric stats keyed by attribute name.
+        skillIds:
+          type: array
+          items:
+            type: string
+          description: Opaque skill or compiled-content identifiers.
+      additionalProperties: false
+  parameters: {}
+paths:
+  /characters:
+    get:
+      tags:
+        - Characters
+      summary: List characters
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Character"
+    post:
+      tags:
+        - Characters
+      summary: Create a character
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CharacterCreate"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Character"
+  /characters/{id}:
+    get:
+      tags:
+        - Characters
+      summary: Get a character
+      parameters:
+        - schema:
+            type: string
+            minLength: 1
+            example: clxxxxxxxx
+          required: true
+          name: id
+          in: path
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Character"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+    patch:
+      tags:
+        - Characters
+      summary: Update a character
+      parameters:
+        - schema:
+            type: string
+            minLength: 1
+            example: clxxxxxxxx
+          required: true
+          name: id
+          in: path
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CharacterPatch"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Character"
+        "400":
+          description: Empty patch
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+    delete:
+      tags:
+        - Characters
+      summary: Delete a character
+      parameters:
+        - schema:
+            type: string
+            minLength: 1
+            example: clxxxxxxxx
+          required: true
+          name: id
+          in: path
+      responses:
+        "204":
+          description: Deleted
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"

@@ -16,6 +16,7 @@ The content stack is split by concern: **schemas** define shared shapes, **parse
 | `@galipette/database` | [packages/database/README.md](packages/database/README.md) |
 | `@galipette/shared-schemas` | [packages/shared-schemas/README.md](packages/shared-schemas/README.md) |
 | Web app | [apps/web/README.md](apps/web/README.md) |
+| HTTP API (characters CRUD) | [apps/api/README.md](apps/api/README.md) |
 | Database operations (cheat sheet) | [docs/database-cheatsheet.md](docs/database-cheatsheet.md) |
 | Changelog | [CHANGELOG.md](CHANGELOG.md) |
 
@@ -91,6 +92,9 @@ From the repository root, after `pnpm install`:
 | `pnpm db:status` | `prisma migrate status` — migration drift / history. |
 | `pnpm test:content` | Runs tests for schema, content-builder, and compiled-content. |
 | `pnpm dev` | Starts the web app. |
+| `pnpm dev:api` | Starts the Hono API on port **3001** (override with `PORT`). |
+| `pnpm build:api` | TypeScript build for `apps/api`. |
+| `pnpm generate:openapi` | Writes `packages/shared-schemas/openapi/galipette-api.yaml` from the live route registry. |
 
 Package-level scripts and CLI flags (vault path, subfolder, env) are documented in [packages/content-builder/README.md](packages/content-builder/README.md). Database workflows (migrations, SQL, Studio) are summarized in [docs/database-cheatsheet.md](docs/database-cheatsheet.md).
 

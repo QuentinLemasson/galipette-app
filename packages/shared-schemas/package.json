@@ -11,12 +11,17 @@
       "import": "./dist/index.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist",
+    "openapi"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json"
   },
   "dependencies": {
     "@galipette/database": "workspace:*",
+    "@hono/zod-openapi": "^1.4.0",
+    "hono": "^4.12.18",
     "zod": "^4.4.3"
   },
   "devDependencies": {

@@ -62,6 +62,8 @@ import { prisma, type Character } from "@galipette/database";
 
 For HTTP / UI payloads, prefer **`@galipette/shared-schemas`** validators alongside these types.
 
+Reference HTTP service: **`apps/api`** (Hono CRUD + OpenAPI + Swagger UI at `/docs`).
+
 ## Further reading
 
 - **[Database cheat sheet](../../docs/database-cheatsheet.md)** — migrations, Studio, raw SQL, manual data edits.

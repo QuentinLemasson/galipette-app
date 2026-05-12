@@ -6,11 +6,22 @@ Shared **Zod** validators and **TypeScript** types for API boundaries (and later
 
 | Area | Exports |
 |------|---------|
-| Character DTOs | `characterCreateSchema`, `characterUpdateSchema`, `characterSheetWriteSchema`, `characterSheetUpdateSchema`, `characterAttributesSchema`, `skillIdsSchema` |
-| Inferred types | `CharacterCreate`, `CharacterUpdate`, `CharacterSheetWrite`, `CharacterSheetUpdate`, `CharacterAttributes`, `SkillIds` |
+| Character DTOs | `characterCreateSchema`, `characterUpdateSchema`, `characterPatchSchema`, `characterSheetWriteSchema`, `characterSheetUpdateSchema`, `characterAttributesSchema`, `skillIdsSchema` |
+| API / OpenAPI | `characterResponseSchema`, `characterSheetResponseSchema`, `apiErrorSchema`, `idPathParamsSchema`; generated [`openapi/galipette-api.yaml`](./openapi/galipette-api.yaml) |
+| Inferred types | `CharacterCreate`, `CharacterUpdate`, `CharacterPatch`, `CharacterSheetWrite`, `CharacterSheetUpdate`, `CharacterResponse`, `CharacterAttributes`, `SkillIds` |
 | Prisma models (types) | `Character`, `CharacterSheet`, `Prisma` |
 
 Source: [`src/character.ts`](./src/character.ts), barrel [`src/index.ts`](./src/index.ts).
+
+## OpenAPI
+
+DTO Zod objects are extended for OpenAPI (`extendZodWithOpenApi` via `@hono/zod-openapi`) so the **`apps/api`** Hono app can emit a machine-readable spec. Regenerate the checked-in contract after changing routes or DTO metadata:
+
+```bash
+pnpm generate:openapi
+```
+
+Output: [`openapi/galipette-api.yaml`](./openapi/galipette-api.yaml) (OpenAPI 3.0).
 
 ## Build order
 

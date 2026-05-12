@@ -10,6 +10,7 @@ Follow these boundaries when adding or moving code. Keep each concern in its des
 | Concern | Location | Put here |
 |--------|-----------|----------|
 | **Runtime UI, routes, client/server app behavior** | `apps/web` | Pages, components, hooks, app-specific API routes, runtime config consumed by the web app. |
+| **HTTP API over PostgreSQL (CRUD, OpenAPI)** | `apps/api` | Hono + `@hono/zod-openapi` + Swagger UI; imports `@galipette/shared-schemas` and `@galipette/database`. |
 | **Build-time schemas & shared types** | `packages/content-schema` | Zod (or similar) schemas, TypeScript types/interfaces for entities and content that **both** builder and consumers rely on. No markdown parsing, no I/O to disk beyond what that package needs for schema utilities. |
 | **Markdown → mdast & wiki syntax** | `packages/content-parser` | Remark/unified pipeline, Obsidian wikilink parsing into mdast (`wikiLink` nodes), operand/display helpers, resolving wiki nodes against the entity corpus (depends on `content-schema`). No vault scanning or artifact writes. |
 | **Compile-step orchestration over parsed markdown** | `packages/content-resolver` | Merges front-matter operands with body AST operands, attaches `compiledContent` and merged `references` (`refSources`), returns **`brokenWikiLinks`** for debugging. Consumed by `content-builder`; depends on `content-parser` + `content-schema`. |
@@ -19,6 +20,7 @@ Follow these boundaries when adding or moving code. Keep each concern in its des
 ## Quick checks
 
 - **New React page or route?** → `apps/web`.
+- **New REST route, OpenAPI operation, or DB-backed API handler?** → `apps/api`.
 - **New/changed entity shape or validation rules shared by build + app?** → `packages/content-schema`.
 - **New Remark plugin, mdast shape, or wikilink parsing helper?** → `packages/content-parser`.
 - **New merge/resolve step after validation but before graph/write?** → `packages/content-resolver` (or extend it).
