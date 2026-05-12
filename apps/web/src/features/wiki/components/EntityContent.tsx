@@ -4,7 +4,7 @@
 
 import ReactMarkdown from "react-markdown";
 import type { CompiledEntity } from "@galipette/compiled-content";
-import { formatTypeLabel } from "../utils/format-type-label";
+import { formatTypeLabel } from "../../../common/utils/format-type-label";
 import { CompiledMdast } from "./CompiledMdast";
 
 type EntityContentProps = {

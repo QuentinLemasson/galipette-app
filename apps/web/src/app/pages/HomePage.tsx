@@ -3,8 +3,8 @@
  */
 
 import { contentRepository } from "@galipette/compiled-content";
-import { useNavigationTree } from "../hooks/useNavigationTree";
-import { formatTypeLabel } from "../utils/format-type-label";
+import { formatTypeLabel } from "../../common/utils/format-type-label";
+import { useNavigationTree } from "../../features/wiki/hooks/useNavigationTree";
 
 /**
  * @description Top-level welcome page summarising the compiled-content corpus.

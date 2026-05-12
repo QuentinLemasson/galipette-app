@@ -3,8 +3,8 @@
  */
 
 import { createRoute } from "@tanstack/react-router";
+import { HomePage } from "../pages/HomePage";
 import { rootRoute } from "./root";
-import { HomePage } from "../components/HomePage";
 
 /**
  * Index route mounted at `/`.

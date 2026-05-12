@@ -3,7 +3,7 @@
  */
 
 import type { NavigationCategory } from "@galipette/compiled-content";
-import { formatTypeLabel } from "../utils/format-type-label";
+import { formatTypeLabel } from "../../../common/utils/format-type-label";
 import { EntityLink } from "./EntityLink";
 
 type EntityTypeSectionProps = {

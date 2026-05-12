@@ -3,7 +3,7 @@
  */
 
 import { Link, Outlet } from "@tanstack/react-router";
-import { NavigationTree } from "./NavigationTree";
+import { NavigationTree } from "../../features/wiki/components/NavigationTree";
 
 /**
  * @description Renders the application chrome (header + sidebar) and an

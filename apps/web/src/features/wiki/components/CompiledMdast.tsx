@@ -6,8 +6,8 @@
 import { Fragment, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import type { CompiledMarkdownAst } from "@galipette/compiled-content";
+import { NOT_FOUND_ROUTE } from "../../../common/routing/constants";
 import { buildEntityHref } from "../utils/source-path";
-import { NOT_FOUND_ROUTE } from "../types/routing";
 
 type JsonNode = {
   type: string;
@@ -141,10 +141,10 @@ export function AstNode({ node }: AstNodeProps) {
     ? n.children.map((child, i) => <AstNode key={i} node={child} />)
     : null;
 
-    // TODO : use a lazy registry approach to avoid 
+    // TODO : use a lazy registry approach to avoid
     // - re-rendering the whole tree when a single node changes
     // - lazy rendering of nodes that are not in the viewport
-    // - node-caching 
+    // - node-caching
   switch (n.type) {
     case "root":
       return <Fragment>{kids}</Fragment>;

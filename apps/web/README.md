@@ -14,47 +14,51 @@ Minimal MVP that validates the [`@galipette/compiled-content`](../../packages/co
 
 | Path | Component | Purpose |
 |------|-----------|---------|
-| `/` | `HomePage` | Welcome screen + per-type entity counts |
-| `/entity/<slug>` | `EntityPage` | Resolves the entity by **`CompiledEntity.slug`** and renders metadata + compiled body |
-| `/not-found` | `not-found` route | Optional **`?operand=`** / **`?link=`** search params (used when opening an unresolved wikilink from entity content) |
+| `/` | `app/pages/HomePage` | Welcome screen + per-type entity counts |
+| `/entity/<slug>` | `features/wiki/pages/EntityPage` | Resolves the entity by **`CompiledEntity.slug`** and renders metadata + compiled body |
+| `/not-found` | `app/routes/not-found` | Optional **`?operand=`** / **`?link=`** search params (used when opening an unresolved wikilink from entity content) |
 
 The entity route uses a TanStack splat (`entity/$`) so the full **slug** (e.g. `wiki/skills/spells/lightning-arc`, no `.md` suffix) is represented as URL path segments, each segment URL-encoded where needed.
 
-## Source layout
+## Source layout (feature-first)
 
 ```
 src/
-├── components/        # Presentational + page components
-│   ├── AppLayout.tsx
-│   ├── CompiledMdast.tsx   # mdast → React (wikilinks, headings, …)
-│   ├── EntityContent.tsx
-│   ├── EntityLink.tsx
-│   ├── EntityPage.tsx
-│   ├── EntityTypeSection.tsx
-│   ├── HomePage.tsx
-│   ├── NavigationTree.tsx
-│   └── NotFound.tsx
-├── hooks/             # Reusable React hooks over the content repository
-│   ├── useEntityBySlug.ts
-│   └── useNavigationTree.ts
-├── routes/            # TanStack Router route definitions (no JSX bodies)
-│   ├── entity.tsx
-│   ├── home.tsx
-│   ├── not-found.tsx
-│   └── root.tsx
-├── styles/            # App-level CSS (layout, sidebar, content)
-│   └── app.css
-├── types/             # Shared route-level constants/types
-│   └── routing.ts     # ENTITY_ROUTE_PREFIX, NOT_FOUND_ROUTE
-├── utils/             # Pure helpers (formatting, slug ↔ URL splat)
-│   ├── format-type-label.ts
-│   └── source-path.ts # buildEntityHref(slug), decodeEntitySlug(splat)
-├── index.css          # Global tokens + base typography
-├── main.tsx           # Mounts <RouterProvider>
-└── router.tsx         # Composes the route tree
+├── app/                      # Shell & routing: router, layout, shell pages, route modules
+│   ├── layout/
+│   │   └── AppLayout.tsx       # Header, sidebar (wiki nav), `<Outlet>`
+│   ├── pages/
+│   │   └── HomePage.tsx        # `/` landing
+│   ├── routes/                 # TanStack route definitions (URLs + bindings only)
+│   │   ├── root.tsx
+│   │   ├── home.tsx
+│   │   ├── entity.tsx          # mounts wiki `EntityPage`
+│   │   └── not-found.tsx
+│   ├── styles/
+│   │   └── app.css             # Layout + wiki explorer presentation (shared chrome)
+│   └── router.tsx
+├── features/
+│   └── wiki/                   # Compiled wiki / vault explorer (entity detail, nav, mdast)
+│       ├── components/         # NavigationTree, EntityContent, CompiledMdast, …
+│       ├── hooks/              # `useEntityBySlug`, `useNavigationTree`
+│       ├── pages/
+│       │   └── EntityPage.tsx  # `/entity/$` page
+│       └── utils/
+│           └── source-path.ts  # slug ↔ URL splat (`buildEntityHref`, `decodeEntitySlug`)
+├── common/                     # App-wide helpers not living in workspace packages
+│   ├── components/
+│   │   └── NotFound.tsx
+│   ├── routing/
+│   │   └── constants.ts        # `ENTITY_ROUTE_PREFIX`, `NOT_FOUND_ROUTE`
+│   └── utils/
+│       └── format-type-label.ts
+├── index.css                   # Global tokens + base typography
+└── main.tsx                    # Mounts `<RouterProvider>`; imports `app/router`
 ```
 
-Each module follows the **Single Responsibility Principle**: routes only declare URLs and bind a component, components only render, hooks only read from the content repository, utils are pure.
+**Boundaries:** `app` owns the router and top-level routes; feature folders own domain UI and data hooks for that domain. `common` holds small shared pieces (constants, pure formatters, cross-feature UI like `NotFound`) that are not worth extracting to `packages/` yet.
+
+Each module still follows a **single responsibility**: routes only declare URLs and bind a component; feature components focus on rendering; hooks read from the content repository; utils stay pure.
 
 ## Data flow
 
@@ -69,7 +73,7 @@ flowchart LR
   CC -->|getBySlug| H2 --> EC
 ```
 
-The web app never reaches into raw artifacts; it only consumes the public API of `@galipette/compiled-content`. Sidebar links use each entry’s **`slug`** to build `/entity/...` URLs. Resolved wikilinks in the body use the same **`buildEntityHref(targetEntitySlug)`**; unresolved wikilinks render as links to **`/not-found`** with search params (see `CompiledMdast.tsx`).
+The web app never reaches into raw artifacts; it only consumes the public API of `@galipette/compiled-content`. Sidebar links use each entry’s **`slug`** to build `/entity/...` URLs. Resolved wikilinks in the body use the same **`buildEntityHref(targetEntitySlug)`**; unresolved wikilinks render as links to **`/not-found`** with search params (see `features/wiki/components/CompiledMdast.tsx`).
 
 ## Commands
 

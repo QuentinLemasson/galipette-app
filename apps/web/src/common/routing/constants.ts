@@ -1,5 +1,5 @@
 /**
- * Shared route-related type aliases for the web app.
+ * Shared route-related constants for the web app shell and feature routes.
  */
 
 /**

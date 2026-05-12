@@ -3,8 +3,8 @@
  */
 
 import { createRoute } from "@tanstack/react-router";
+import { NotFound } from "../../common/components/NotFound";
 import { rootRoute } from "./root";
-import { NotFound } from "../components/NotFound";
 
 export type NotFoundSearch = {
   operand?: string;

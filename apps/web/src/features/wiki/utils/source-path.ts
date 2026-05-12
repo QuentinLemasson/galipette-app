@@ -6,7 +6,7 @@
  * needed (spaces, accents, …).
  */
 
-import { ENTITY_ROUTE_PREFIX } from "../types/routing";
+import { ENTITY_ROUTE_PREFIX } from "../../../common/routing/constants";
 
 /**
  * @description Builds the full router URL for an entity detail page from its slug.

@@ -3,8 +3,8 @@
  */
 
 import { createRootRoute } from "@tanstack/react-router";
-import { AppLayout } from "../components/AppLayout";
-import { NotFound } from "../components/NotFound";
+import { NotFound } from "../../common/components/NotFound";
+import { AppLayout } from "../layout/AppLayout";
 
 /**
  * Root route used to nest every other route under the shared application layout.
