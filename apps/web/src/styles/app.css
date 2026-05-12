@@ -250,10 +250,17 @@
   color: var(--accent);
 }
 
-.entity-content__wikilink--broken {
-  color: var(--text);
-  text-decoration-style: dashed;
-  cursor: help;
+.entity-content__wikilink--broken-nav {
+  color: #b45309;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.entity-content__wikilink--broken-nav:hover {
+  color: #92400e;
 }
 
 .entity-content__ast-hr {

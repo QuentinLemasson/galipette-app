@@ -5,6 +5,7 @@
 import type { Parent } from "mdast";
 import type { Root } from "mdast";
 import type {
+  BrokenWikiLinkRecord,
   CompiledEntity,
   CompiledMarkdownAst,
   EntityReference,
@@ -15,6 +16,7 @@ import {
   parseEntityMarkdownToAst,
   resolveWikiLinksInAst,
 } from "@galipette/content-parser";
+import { collectBrokenWikiLinksForEntity } from "./collectBrokenWikiLinks.js";
 
 function collectWikiOperands(tree: Root): string[] {
   const operands: string[] = [];
@@ -90,6 +92,12 @@ export type PendingCompiledEntity = {
   fmOperands: readonly string[];
 };
 
+/** Result of {@link resolveCompiledEntities}: resolved entities plus a flat broken-link report. */
+export type ResolveCompiledEntitiesResult = {
+  entities: CompiledEntity[];
+  brokenWikiLinks: BrokenWikiLinkRecord[];
+};
+
 /**
  * Parses each entity's Markdown body to mdast, resolves wiki targets to ids/slugs, and merges
  * reference operands from front matter and body with `refSources`.
@@ -97,19 +105,33 @@ export type PendingCompiledEntity = {
 export function resolveCompiledEntities(
   pending: readonly PendingCompiledEntity[],
   corpus: readonly CompiledEntity[],
-): CompiledEntity[] {
+): ResolveCompiledEntitiesResult {
   const byId = new Map(corpus.map((e) => [e.id, e]));
+  const brokenWikiLinks: BrokenWikiLinkRecord[] = [];
 
-  return pending.map(({ entity, fmOperands }) => {
+  const entities = pending.map(({ entity, fmOperands }) => {
     const tree = parseEntityMarkdownToAst(entity.content);
     resolveWikiLinksInAst(tree, corpus, byId);
     const bodyOperands = collectWikiOperands(tree);
     const references = mergeReferenceRecords(fmOperands, bodyOperands, corpus, byId);
 
-    return {
+    const resolved: CompiledEntity = {
       ...entity,
       compiledContent: tree as unknown as CompiledMarkdownAst,
       references,
     };
+
+    brokenWikiLinks.push(...collectBrokenWikiLinksForEntity(resolved));
+    return resolved;
   });
+
+  brokenWikiLinks.sort((a, b) => {
+    const p = a.sourcePath.localeCompare(b.sourcePath);
+    if (p !== 0) {
+      return p;
+    }
+    return a.operand.localeCompare(b.operand);
+  });
+
+  return { entities, brokenWikiLinks };
 }

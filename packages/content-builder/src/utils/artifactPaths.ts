@@ -23,3 +23,13 @@ export function graphPathFromEntitiesPath(entitiesJsonPath: string): string {
 export function slugIndexPathFromEntitiesPath(entitiesJsonPath: string): string {
   return resolve(dirname(entitiesJsonPath), "slug-index.json");
 }
+
+/**
+ * Resolves the broken-link debug artifact path next to `entities.json`.
+ *
+ * @param entitiesJsonPath - Absolute or resolved path to entities.json.
+ * @returns Absolute path to broken-links.json in the same directory.
+ */
+export function brokenLinksPathFromEntitiesPath(entitiesJsonPath: string): string {
+  return resolve(dirname(entitiesJsonPath), "broken-links.json");
+}

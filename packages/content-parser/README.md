@@ -9,4 +9,4 @@ Build-only Markdown tooling using **unified** / **remark-parse** plus a Galipett
 - **`parseEntityMarkdownToAst`** — runs parse + plugin pipeline (`runSync`) and strips **`position`** from all nodes (`unist-util-remove-position`) so bundled mdast JSON stays small.
 - **`resolveWikiLinksInAst`** — fills `targetEntityId` / `targetEntitySlug` on each `wikiLink` using `@galipette/content-schema` **`resolveReferenceToken`**.
 
-Does **not** scan vaults or write JSON; `@galipette/content-resolver` orchestrates this package against the validated entity corpus.
+Does **not** scan vaults or write JSON; `@galipette/content-resolver` orchestrates this package against the validated entity corpus and aggregates **unresolved** operands (for **`broken-links.json`**) after resolution.

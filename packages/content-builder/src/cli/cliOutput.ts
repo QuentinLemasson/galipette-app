@@ -5,6 +5,7 @@
 export {
   graphPathFromEntitiesPath,
   slugIndexPathFromEntitiesPath,
+  brokenLinksPathFromEntitiesPath,
 } from "../utils/artifactPaths.ts";
 
 const LINE = "─".repeat(58);
@@ -78,6 +79,7 @@ export function printSuccessSummary(params: {
   entitiesJsonPath: string;
   graphJsonPath: string;
   slugIndexJsonPath: string;
+  brokenLinksJsonPath: string;
 }): void {
   printSection("Build succeeded");
   printRow("Markdown files", String(params.markdownFiles));
@@ -88,6 +90,7 @@ export function printSuccessSummary(params: {
   printRow("Entities file", params.entitiesJsonPath);
   printRow("Graph file", params.graphJsonPath);
   printRow("Slug index", params.slugIndexJsonPath);
+  printRow("Broken links", params.brokenLinksJsonPath);
   process.stdout.write(`\n${LINE}\n\n`);
 }
 

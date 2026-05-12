@@ -124,5 +124,6 @@ export async function runCli(): Promise<void> {
     entitiesJsonPath: result.diagnostics.outputFilePath,
     graphJsonPath: graphPathFromEntitiesPath(result.diagnostics.outputFilePath),
     slugIndexJsonPath: result.diagnostics.slugIndexFilePath,
+    brokenLinksJsonPath: result.diagnostics.brokenLinksFilePath,
   });
 }

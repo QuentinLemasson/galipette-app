@@ -7,6 +7,7 @@ import { Fragment, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import type { CompiledMarkdownAst } from "@galipette/compiled-content";
 import { buildEntityHref } from "../utils/source-path";
+import { NOT_FOUND_ROUTE } from "../types/routing";
 
 type JsonNode = {
   type: string;
@@ -80,10 +81,18 @@ export function AstWikiLink({ node }: AstWikiLinkProps) {
     );
   }
 
+  const operand =
+    typeof node.operand === "string" && node.operand.length > 0 ? node.operand : "_";
+
   return (
-    <span className="entity-content__wikilink entity-content__wikilink--broken" title={node.operand}>
+    <Link
+      to={NOT_FOUND_ROUTE}
+      search={{ operand, link: label }}
+      className="entity-content__wikilink entity-content__wikilink--broken-nav"
+      title={`Unresolved wikilink (operand: ${operand})`}
+    >
       {label}
-    </span>
+    </Link>
   );
 }
 

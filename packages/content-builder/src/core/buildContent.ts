@@ -16,13 +16,13 @@ import {
 import { resolveCompiledEntities } from "@galipette/content-resolver";
 import { writeCompiledContent } from "./writeCompiledContent.ts";
 import { buildEntityGraph } from "./buildEntityGraph.ts";
-import { slugIndexPathFromEntitiesPath } from "../utils/artifactPaths.ts";
+import { slugIndexPathFromEntitiesPath, brokenLinksPathFromEntitiesPath } from "../utils/artifactPaths.ts";
 import { buildErrorLogPath, defaultCompiledContentPath } from "../paths.ts";
 import type { BuildContentOptions, BuildResult } from "../types/build.ts";
 
 /**
  * Scans the vault, validates every Markdown entity, aggregates errors, then writes
- * `entities.json`, `graph.json`, `slug-index.json`, or a consolidated error log under `logs/` on failure.
+ * `entities.json`, `graph.json`, `slug-index.json`, `broken-links.json`, or a consolidated error log under `logs/` on failure.
  *
  * @param options - Vault location, subfolder to scan, and optional output override.
  * @returns Compiled entities, lightweight graph, slug index, and diagnostic counters/paths.
@@ -99,20 +99,23 @@ export async function buildContent(options: BuildContentOptions): Promise<BuildR
     entity,
     fmOperands: fmOperandsPerEntity[index] ?? [],
   }));
-  const entities = resolveCompiledEntities(pending, validatedEntities);
+  const { entities, brokenWikiLinks } = resolveCompiledEntities(pending, validatedEntities);
 
   const graph: EntityGraph = buildEntityGraph(entities);
 
-  const slugIndex = await writeCompiledContent(entities, outputPath, graph);
+  const slugIndex = await writeCompiledContent(entities, outputPath, graph, brokenWikiLinks);
   const slugIndexFilePath = slugIndexPathFromEntitiesPath(outputPath);
+  const brokenLinksFilePath = brokenLinksPathFromEntitiesPath(outputPath);
   return {
     entities,
     graph,
     slugIndex,
+    brokenWikiLinks,
     diagnostics: {
       markdownFilesScanned: markdownFiles.length,
       outputFilePath: outputPath,
       slugIndexFilePath,
+      brokenLinksFilePath,
     },
   };
 }

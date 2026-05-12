@@ -17,7 +17,7 @@ export { generateEntitySlug, getWikiNamespace } from "./core/generateEntitySlug.
 export type { SlugIndex } from "@galipette/content-schema";
 export { buildSlugIndex } from "./core/writeCompiledContent.ts";
 
-export { graphPathFromEntitiesPath, slugIndexPathFromEntitiesPath } from "./utils/artifactPaths.ts";
+export { graphPathFromEntitiesPath, slugIndexPathFromEntitiesPath, brokenLinksPathFromEntitiesPath } from "./utils/artifactPaths.ts";
 
 const isExecutedAsScript =
   typeof process.argv[1] === "string" &&

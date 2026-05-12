@@ -26,4 +26,6 @@ export type {
   EntityGraph,
   SlugIndex,
   ParsedMarkdownFile,
+  BrokenWikiLinkOrigin,
+  BrokenWikiLinkRecord,
 } from "./types/Entity.js";

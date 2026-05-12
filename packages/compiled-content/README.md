@@ -7,7 +7,7 @@ This package is the **stable read surface** for vault output: JSON artifacts bun
 Goals:
 
 - **Predictable imports** — same shapes as `@galipette/content-schema`.
-- **Fast lookups** — maps built at module load (by id, type, graph edges, reverse reference index).
+- **Fast lookups** — maps built at module load (by id, **slug**, type, graph edges, reverse reference index).
 - **No hidden I/O** — data is static; suitable for bundlers and SSR.
 
 Internal index construction lives under `src/utils/`; the public surface remains `src/index.ts`.
@@ -22,11 +22,14 @@ Internal index construction lives under `src/utils/`; the public surface remains
 | `graph` | `EntityGraph` (`nodes` + directed `edges`) from `graph.json`. |
 | `slugIndex` | `{ slugToId, idToSlug }` maps from `slug-index.json` (built by content-builder). |
 | `contentRepository` | Query helpers over those artifacts. |
+| On-disk only | **`broken-links.json`** — written next to `entities.json` by the builder (flat list of unresolved operands for debugging). Not imported by this package yet; read the file from `src/data/` after a build if you need it in tooling. |
 | `resolveReferenceToken` | Map wikilink operands to entities (see below). |
 | `EntityNotFoundError` | Thrown by `requireById` / `requireGraphNode`. |
 | `NavigationEntry` / `NavigationCategory` | Lightweight types for the navigation tree. |
 
-Each `references` entry is a **`EntityReference`**: `operand` (same token as in `graph.json` edges), `refSources`, **`targetLabel`**, and when the operand resolves to an entity, **`targetEntityId`** and **`targetEntitySlug`**. Use this shape as the standard cross-link API in the app.
+Each `references` entry is a **`EntityReference`**: `operand` (same token as in `graph.json` edges), `refSources`, **`targetLabel`**, and when the operand resolves to an entity, **`targetEntityId`** and **`targetEntitySlug`**. Use this shape as the standard cross-link API in the app. Each entity may also carry optional **`compiledContent`**: the serialized mdast root (with `wikiLink` nodes); the web app renders that instead of re-parsing `content` when present.
+
+Rows in **`broken-links.json`** match **`BrokenWikiLinkRecord`** from `@galipette/content-schema` (`entityId`, `sourcePath`, `entitySlug`, `operand`, `linkText`, `origins`). That file is optional for runtime consumers; it exists for debugging and CI inspection.
 
 ---
 
@@ -202,7 +205,19 @@ const one = contentRepository.find((e) => e.name.includes("Arc"));
 const many = contentRepository.filter((e) => e.type === "affliction");
 ```
 
+### `contentRepository.getBySlug`
+
+Preferred lookup for **URL-facing** entity pages: matches `CompiledEntity.slug` (no `.md` suffix).
+
+```ts
+import { contentRepository } from "@galipette/compiled-content";
+
+const entity = contentRepository.getBySlug("wiki/skills/spells/lightning-arc");
+```
+
 ### `contentRepository.getBySourcePath`
+
+Looks up by the vault-relative Markdown path (e.g. `wiki/skills/spells/lightning-arc.md`). Useful for tooling; the web app routes by **slug** instead.
 
 ```ts
 import { contentRepository } from "@galipette/compiled-content";
@@ -212,7 +227,7 @@ const entity = contentRepository.getBySourcePath("wiki/skills/spells/lightning-a
 
 ### `contentRepository.getNavigationTree`
 
-Lightweight projection of the corpus suitable for menus / link rendering: entities are grouped by `type` and each entry exposes only `id`, `type`, `name`, and `sourcePath` (no Markdown body, no type-specific `data`). Categories are sorted alphabetically by `type`; entries within a category are sorted by `name` (locale-aware).
+Lightweight projection of the corpus suitable for menus / link rendering: entities are grouped by `type` and each entry exposes `id`, `type`, `name`, **`slug`** (for `/entity/...` links), and `sourcePath` (vault file path; no body or type-specific `data`). Categories are sorted alphabetically by `type`; entries within a category are sorted by `name` (locale-aware).
 
 ```ts
 import { contentRepository, type NavigationCategory } from "@galipette/compiled-content";
@@ -222,7 +237,7 @@ const tree: readonly NavigationCategory[] = contentRepository.getNavigationTree(
 for (const category of tree) {
   console.log(category.type, category.entries.length);
   for (const entry of category.entries) {
-    console.log("  ", entry.name, "->", entry.sourcePath);
+    console.log("  ", entry.name, "->", entry.slug);
   }
 }
 ```
@@ -239,4 +254,4 @@ const damageType = resolveReferenceToken("lightning");
 
 ## Build
 
-From the workspace root, build this package with the workspace script, or `pnpm --filter @galipette/compiled-content build`. Artifacts under `src/data/` (`entities.json`, `graph.json`, **`slug-index.json`**) are produced by `@galipette/content-builder` (after `@galipette/content-resolver` enriches entities with mdast and merged references).
+From the workspace root, build this package with the workspace script, or `pnpm --filter @galipette/compiled-content build`. Artifacts under `src/data/` (`entities.json`, `graph.json`, **`slug-index.json`**, **`broken-links.json`**) are produced by `@galipette/content-builder` (after `@galipette/content-resolver` enriches entities with mdast, merged references, and aggregates unresolved wiki operands into `brokenWikiLinks` for the JSON file).

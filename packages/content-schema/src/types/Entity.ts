@@ -50,3 +50,21 @@ export type ParsedMarkdownFile = {
   frontmatter: unknown;
   content: string;
 };
+
+/** Where an unresolved operand was observed (markdown body vs YAML). */
+export type BrokenWikiLinkOrigin = "markdown" | "frontMatter";
+
+/**
+ * One unresolved wiki-style reference after corpus resolution, for debugging
+ * (`broken-links.json` and resolver output).
+ */
+export type BrokenWikiLinkRecord = {
+  entityId: string;
+  sourcePath: string;
+  entitySlug: string;
+  /** Left-hand operand from `[[operand]]` / `[[operand|alias]]` or front matter. */
+  operand: string;
+  /** Display text in the note (alias in markdown, label or operand elsewhere). */
+  linkText: string;
+  origins: readonly BrokenWikiLinkOrigin[];
+};

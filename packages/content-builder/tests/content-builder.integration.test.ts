@@ -85,6 +85,18 @@ Un projectile electrique.
       expect(slugIndex.idToSlug["spell.lightning-shot"]).toBe("wiki/entities/spell");
 
       expect(result.slugIndex).toEqual(slugIndex);
+
+      expect(result.brokenWikiLinks).toEqual([]);
+
+      const brokenOutput = await readFile(
+        join(temp.rootPath, "compiled-content", "broken-links.json"),
+        "utf8",
+      );
+      expect(JSON.parse(brokenOutput)).toEqual([]);
+
+      expect(result.diagnostics.brokenLinksFilePath).toBe(
+        join(temp.rootPath, "compiled-content", "broken-links.json"),
+      );
     } finally {
       await temp.cleanup();
     }
@@ -267,6 +279,17 @@ color: "#55aaff"
 
       expect(result.graph.edges).toContainEqual(["spell.lightning-arc", "lightning"]);
       expect(result.graph.edges).toContainEqual(["spell.lightning-arc", "stunned"]);
+
+      expect(result.brokenWikiLinks).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            entityId: "spell.lightning-arc",
+            operand: "stunned",
+            linkText: "stunned",
+            origins: expect.arrayContaining(["frontMatter"]),
+          }),
+        ]),
+      );
     } finally {
       await temp.cleanup();
     }
@@ -317,6 +340,23 @@ See [[display|damage.lightning]] and [[Other|affliction.stunned]] for details.
       expect(spell!.content).not.toMatch(/^damage\.lightning$/m);
       expect(result.graph.edges).toContainEqual(["spell.body-only-links", "display"]);
       expect(result.graph.edges).toContainEqual(["spell.body-only-links", "Other"]);
+
+      expect(result.brokenWikiLinks).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            entityId: "spell.body-only-links",
+            operand: "Other",
+            linkText: "affliction.stunned",
+            origins: ["markdown"],
+          }),
+          expect.objectContaining({
+            entityId: "spell.body-only-links",
+            operand: "display",
+            linkText: "damage.lightning",
+            origins: ["markdown"],
+          }),
+        ]),
+      );
     } finally {
       await temp.cleanup();
     }

@@ -43,7 +43,7 @@ flowchart TB
 
 ## Content workflow
 
-Authors maintain notes in an Obsidian vault layout. The **content builder** scans a chosen subfolder, validates each file against **content-schema**, then **content-resolver** (using **content-parser** / Remark) produces `compiledContent` and merged `references` before the graph and JSON files are written. The web application loads artifacts through **compiled-content** — it does not re-parse Markdown — and exposes a TanStack Router-powered explorer where entities are reachable via URLs aligned with `sourcePath`.
+Authors maintain notes in an Obsidian vault layout. The **content builder** scans a chosen subfolder, validates each file against **content-schema**, then **content-resolver** (using **content-parser** / Remark) produces `compiledContent` and merged `references`, plus a flat **`brokenWikiLinks`** report for debugging. The builder then writes **`entities.json`**, **`graph.json`**, **`slug-index.json`**, and **`broken-links.json`** (same directory). The web application loads artifacts through **compiled-content** — it does not re-parse Markdown for resolved entities — and exposes a TanStack Router explorer where entity detail URLs use each note’s public **`slug`** (path derived from the vault file, without `.md`). Unresolved in-body wikilinks in the UI link to **`/not-found`** with search params carrying operand context.
 
 ```mermaid
 sequenceDiagram
@@ -59,8 +59,8 @@ sequenceDiagram
   Builder->>Builder: Validate (content-schema)
   Builder->>Resolver: Resolved entities + corpus
   Resolver->>Parser: Parse body mdast + wikilinks
-  Resolver->>Artifacts: merged references + compiledContent
-  Builder->>Artifacts: entities, graph, slug-index
+  Resolver->>Artifacts: merged references + compiledContent + brokenWikiLinks list
+  Builder->>Artifacts: entities, graph, slug-index, broken-links.json
   App->>Artifacts: Load at build or runtime
 ```
 
@@ -83,4 +83,4 @@ Package-level scripts and CLI flags (vault path, subfolder, env) are documented 
 
 ## Contributing
 
-Keep behavioral changes covered by the **content-builder** test suite when touching validation, graph output, or resolver behavior. Prefer extending **content-schema** registries over special-casing the pipeline. Changes to Remark wikilink parsing belong in **content-parser**; orchestration and merged `references` belong in **content-resolver**.
+Keep behavioral changes covered by the **content-builder** test suite when touching validation, graph output, resolver behavior, or **`broken-links.json`** output. Prefer extending **content-schema** registries over special-casing the pipeline. Changes to Remark wikilink parsing belong in **content-parser**; orchestration, merged `references`, and the **`brokenWikiLinks`** aggregate belong in **content-resolver**.
