@@ -10,11 +10,15 @@
     "generate:openapi": "tsx scripts/generate-openapi.ts"
   },
   "dependencies": {
+    "@better-auth/cli": "^1.4.21",
+    "@better-auth/prisma-adapter": "^1.6.11",
     "@galipette/database": "workspace:*",
     "@galipette/shared-schemas": "workspace:*",
     "@hono/node-server": "^1.19.7",
     "@hono/swagger-ui": "^0.5.3",
     "@hono/zod-openapi": "^1.4.0",
+    "@prisma/client": "^7.8.0",
+    "better-auth": "^1.6.11",
     "dotenv": "^16.5.0",
     "hono": "^4.11.3",
     "zod": "^4.4.3"

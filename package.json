@@ -23,6 +23,7 @@
     "db:push": "pnpm --filter @galipette/database db:push",
     "db:studio": "pnpm --filter @galipette/database db:studio",
     "db:status": "pnpm --filter @galipette/database db:status",
+    "db:reset": "pnpm --filter @galipette/database db:reset",
     "build:content": "pnpm build:content-schema && pnpm build:content-parser && pnpm build:content-resolver && pnpm build:content-builder && pnpm build:compiled-content",
     "test:content-schema": "pnpm --filter @galipette/content-schema test",
     "test:content-builder": "pnpm --filter @galipette/content-builder test",

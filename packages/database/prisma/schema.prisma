@@ -32,3 +32,17 @@ model CharacterSheet {
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
 }
+
+// ================================
+// Authentication
+// ================================
+
+model InviteToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  used      Boolean  @default(false)
+  usedBy    String?
+  usedAt    DateTime?
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
