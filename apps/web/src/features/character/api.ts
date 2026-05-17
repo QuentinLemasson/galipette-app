@@ -1,9 +1,10 @@
 /**
  * Minimal client for the Galipette HTTP API (KISS: plain fetch, no cache library).
  *
- * In dev, Vite proxies `/api` → the API server (see `vite.config.ts`). Set
- * `VITE_API_BASE_URL` to call a remote API (no proxy rewrite).
+ * Calls the API cross-origin via `VITE_API_ORIGIN` (see `src/lib/api-origin.ts`).
  */
+
+import { getRestApiBase } from "../../lib/api-origin";
 
 export type CharacterSheetDto = {
   id: string;
@@ -23,13 +24,7 @@ export type CharacterDto = {
   sheet: CharacterSheetDto | null;
 };
 
-function apiBase(): string {
-  const raw = import.meta.env.VITE_API_BASE_URL;
-  if (typeof raw === "string" && raw.length > 0) {
-    return raw.replace(/\/$/, "");
-  }
-  return "/api";
-}
+const fetchOptions: RequestInit = { credentials: "include" };
 
 async function parseError(res: Response): Promise<string> {
   try {
@@ -41,7 +36,7 @@ async function parseError(res: Response): Promise<string> {
 }
 
 export async function fetchCharacters(): Promise<CharacterDto[]> {
-  const res = await fetch(`${apiBase()}/characters`);
+  const res = await fetch(`${getRestApiBase()}/characters`, fetchOptions);
   if (!res.ok) {
     throw new Error(await parseError(res));
   }
@@ -49,7 +44,10 @@ export async function fetchCharacters(): Promise<CharacterDto[]> {
 }
 
 export async function fetchCharacter(id: string): Promise<CharacterDto> {
-  const res = await fetch(`${apiBase()}/characters/${encodeURIComponent(id)}`);
+  const res = await fetch(
+    `${getRestApiBase()}/characters/${encodeURIComponent(id)}`,
+    fetchOptions,
+  );
   if (!res.ok) {
     throw new Error(await parseError(res));
   }
@@ -69,11 +67,15 @@ export async function patchCharacter(
   id: string,
   body: CharacterPatchBody,
 ): Promise<CharacterDto> {
-  const res = await fetch(`${apiBase()}/characters/${encodeURIComponent(id)}`, {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
+  const res = await fetch(
+    `${getRestApiBase()}/characters/${encodeURIComponent(id)}`,
+    {
+      ...fetchOptions,
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    },
+  );
   if (!res.ok) {
     throw new Error(await parseError(res));
   }

@@ -1,10 +1,9 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
 import { swaggerUI } from "@hono/swagger-ui";
+import { corsMiddleware } from "./middlewares/cors.js";
 import { requireAuth } from "./middlewares/require-auth.js";
 import { registerAuthRoutes } from "./routes/auth/register.js";
 import { registerCharacterRoutes } from "./routes/characters/register.js";
-
-
 
 export function createApp() {
   const app = new OpenAPIHono({
@@ -28,6 +27,8 @@ export function createApp() {
     },
   });
 
+  app.use("*", corsMiddleware);
+
   // Public routes
   registerAuthRoutes(app);
   app.doc("/openapi.json", {
@@ -43,7 +44,7 @@ export function createApp() {
   // Protected routes
   protectedApi.use("*", requireAuth);
   registerCharacterRoutes(protectedApi);
-  app.route("/", protectedApi);
+  app.route("/api", protectedApi);
 
 
   return app;

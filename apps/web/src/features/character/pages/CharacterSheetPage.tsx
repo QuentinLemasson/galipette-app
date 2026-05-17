@@ -181,7 +181,7 @@ export function CharacterSheetPage({ characterId }: CharacterSheetPageProps) {
       </p>
       <h1>{row?.name ?? "Character"}</h1>
       <p className="character-page__muted">
-        <code>GET/PATCH /characters/{characterId}</code>
+        <code>GET/PATCH /api/characters/{characterId}</code>
       </p>
 
       {saveMessage !== null ? (

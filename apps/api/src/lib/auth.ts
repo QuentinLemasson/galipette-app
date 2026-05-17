@@ -5,6 +5,7 @@ import {
   createInviteDatabaseHooks,
   inviteBeforeHook,
 } from "./auth-invite-hooks.js";
+import { parseWebOrigins } from "./cors.js";
 
 const port = Number(process.env.PORT ?? 3001);
 const baseURL = process.env.BETTER_AUTH_URL ?? `http://localhost:${port}`;
@@ -22,10 +23,7 @@ export const auth = betterAuth({
   },
   secret: process.env.BETTER_AUTH_SECRET,
   baseURL,
-  trustedOrigins: [
-    process.env.WEB_ORIGIN ?? "http://localhost:5173",
-    baseURL,
-  ],
+  trustedOrigins: [...parseWebOrigins(), baseURL],
   hooks: {
     before: inviteBeforeHook,
   },

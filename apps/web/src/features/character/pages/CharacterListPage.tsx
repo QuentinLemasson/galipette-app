@@ -47,7 +47,7 @@ export function CharacterListPage() {
         </p>
         <p className="character-page__muted">
           Is the API running (<code>pnpm dev:api</code>) and is{" "}
-          <code>VITE_API_BASE_URL</code> / the Vite proxy configured?
+          <code>VITE_API_ORIGIN</code> (API running, CORS + session cookie)?
         </p>
       </section>
     );
@@ -57,7 +57,7 @@ export function CharacterListPage() {
     <section className="character-page">
       <h1>Characters</h1>
       <p className="character-page__muted">
-        Data from <code>GET /characters</code>.
+        Data from <code>GET /api/characters</code>.
       </p>
       {rows !== null && rows.length === 0 ? (
         <p>No characters yet. Create one via the API or Prisma Studio.</p>
@@ -66,7 +66,7 @@ export function CharacterListPage() {
           {rows?.map((c) => (
             <li key={c.id}>
               <Link
-                to="/characters/$characterId"
+                to="/app/characters/$characterId"
                 params={{ characterId: c.id }}
                 className="character-page__link"
               >

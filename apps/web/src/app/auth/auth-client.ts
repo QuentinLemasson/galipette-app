@@ -1,5 +1,9 @@
 import { createAuthClient } from "better-auth/client";
+import { getApiOrigin } from "../../lib/api-origin";
 
 export const authClient = createAuthClient({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL: getApiOrigin(),
+  fetchOptions: {
+    credentials: "include",
+  },
 });

@@ -124,7 +124,7 @@ components:
       additionalProperties: false
   parameters: {}
 paths:
-  /characters:
+  /api/characters:
     get:
       tags:
         - Characters
@@ -155,7 +155,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Character"
-  /characters/{id}:
+  /api/characters/{id}:
     get:
       tags:
         - Characters
