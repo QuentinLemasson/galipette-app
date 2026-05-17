@@ -3,6 +3,7 @@ import { prisma } from "@galipette/database";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import {
   createInviteDatabaseHooks,
+  inviteAfterHook,
   inviteBeforeHook,
 } from "./auth-invite-hooks.js";
 import { parseWebOrigins } from "./cors.js";
@@ -19,6 +20,7 @@ export const auth = betterAuth({
       clientId: process.env.DISCORD_CLIENT_ID!,
       clientSecret: process.env.DISCORD_CLIENT_SECRET!,
       redirectUri: `${baseURL}/api/auth/callback/discord`,
+      disableImplicitSignUp: true,
     },
   },
   secret: process.env.BETTER_AUTH_SECRET,
@@ -26,6 +28,7 @@ export const auth = betterAuth({
   trustedOrigins: [...parseWebOrigins(), baseURL],
   hooks: {
     before: inviteBeforeHook,
+    after: inviteAfterHook,
   },
   databaseHooks: createInviteDatabaseHooks(),
 });

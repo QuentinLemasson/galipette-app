@@ -1,5 +1,5 @@
 /**
- * `/login` — Discord OAuth when an invite token is present; otherwise ask for a DM invite.
+ * `/login` — Discord sign-in for everyone; invite link required only to register.
  */
 
 import { useCallback, useState } from "react";
@@ -28,19 +28,22 @@ export function LoginPage() {
   const [pending, setPending] = useState(false);
 
   const connectDiscord = useCallback(async () => {
-    if (!invite) return;
-
     setError(null);
     setPending(true);
     try {
       const { error: signInError } = await authClient.signIn.social({
         provider: "discord",
         callbackURL: resolveCallbackURL(redirect),
-        fetchOptions: {
-          headers: {
-            [INVITE_HEADER]: invite,
-          },
-        },
+        ...(invite
+          ? {
+              requestSignUp: true,
+              fetchOptions: {
+                headers: {
+                  [INVITE_HEADER]: invite,
+                },
+              },
+            }
+          : {}),
       });
       if (signInError) {
         setError(signInError.message ?? "Could not start Discord sign-in.");
@@ -57,28 +60,28 @@ export function LoginPage() {
       <h1>Sign in</h1>
 
       {invite ? (
-        <>
-          <p className="login-page__lead">
-            Use the invitation link you received to connect your Discord account.
-          </p>
-          {error && <p className="login-page__error">{error}</p>}
-          <p className="login-page__actions">
-            <button
-              type="button"
-              className="login-page__primary"
-              disabled={pending}
-              onClick={() => void connectDiscord()}
-            >
-              {pending ? "Redirecting…" : "Connect via Discord"}
-            </button>
-          </p>
-        </>
+        <p className="login-page__lead">
+          You have an invitation link — connect Discord to sign in or create your
+          account.
+        </p>
       ) : (
         <p className="login-page__lead">
-          Galipette is invite-only. Ask for an invitation in your DM — when you
-          receive a link, open it here to sign in.
+          Connect with Discord if you already have an account. New players need
+          an invitation link from your DM.
         </p>
       )}
+
+      {error && <p className="login-page__error">{error}</p>}
+      <p className="login-page__actions">
+        <button
+          type="button"
+          className="login-page__primary"
+          disabled={pending}
+          onClick={() => void connectDiscord()}
+        >
+          {pending ? "Redirecting…" : "Connect via Discord"}
+        </button>
+      </p>
     </section>
   );
 }
