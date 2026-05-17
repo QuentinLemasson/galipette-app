@@ -160,7 +160,7 @@ export function CharacterSheetPage({ characterId }: CharacterSheetPageProps) {
     return (
       <section className="character-page">
         <p>
-          <Link to="/characters" className="character-page__link">
+          <Link to="/app/characters" className="character-page__link">
             ← Characters
           </Link>
         </p>
@@ -175,7 +175,7 @@ export function CharacterSheetPage({ characterId }: CharacterSheetPageProps) {
   return (
     <section className="character-page">
       <p>
-        <Link to="/characters" className="character-page__link">
+        <Link to="/app/characters" className="character-page__link">
           ← Characters
         </Link>
       </p>

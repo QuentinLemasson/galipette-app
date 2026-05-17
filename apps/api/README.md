@@ -92,8 +92,17 @@ pnpm generate:openapi
 
 **Port:** `PORT` overrides the default **3001** (`src/index.ts`).
 
+## Authentication (Better Auth)
+
+Auth is configured in `src/lib/auth.ts` (Discord OAuth, invite hooks). Database tables are managed through Prisma in `@galipette/database`.
+
+When you change auth providers or plugins, regenerate the Prisma models and migrate:
+
+See **[Auth & invite database migrations](../../docs/auth-database-migrations.md)**.
+
 ## Related
 
 - [`@galipette/shared-schemas`](../../packages/shared-schemas/README.md) — DTOs and generated OpenAPI YAML
 - [`@galipette/database`](../../packages/database/README.md) — schema, migrations, Prisma
 - [Database cheat sheet](../../docs/database-cheatsheet.md) — local DB workflows
+- [Auth & invite database migrations](../../docs/auth-database-migrations.md) — Better Auth schema + Prisma migrate

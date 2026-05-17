@@ -12,6 +12,7 @@
   "dependencies": {
     "@galipette/compiled-content": "workspace:*",
     "@tanstack/react-router": "^1.169.2",
+    "better-auth": "^1.6.11",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "react-markdown": "^10.1.0"

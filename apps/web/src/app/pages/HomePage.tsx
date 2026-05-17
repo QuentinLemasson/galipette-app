@@ -27,7 +27,7 @@ export function HomePage() {
 
       <ul className="home-page__stats">
         <li>
-          <Link to="/characters" className="character-page__link">
+          <Link to="/app/characters" className="character-page__link">
             Character roster (API)
           </Link>{" "}
           — list & edit via HTTP

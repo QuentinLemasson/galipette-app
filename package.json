@@ -28,7 +28,8 @@
     "test:content-schema": "pnpm --filter @galipette/content-schema test",
     "test:content-builder": "pnpm --filter @galipette/content-builder test",
     "test:compiled-content": "pnpm --filter @galipette/compiled-content test",
-    "test:content": "pnpm test:content-schema && pnpm test:content-builder && pnpm test:compiled-content"
+    "test:content": "pnpm test:content-schema && pnpm test:content-builder && pnpm test:compiled-content",
+    "create-invite-link": "pnpm tsx scripts/create-invite-link.ts $1"
   },
   "keywords": [],
   "author": "",

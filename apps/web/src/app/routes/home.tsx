@@ -4,13 +4,13 @@
 
 import { createRoute } from "@tanstack/react-router";
 import { HomePage } from "../pages/HomePage";
-import { rootRoute } from "./root";
+import { appRoute } from "./app";
 
 /**
  * Index route mounted at `/`.
  */
 export const homeRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/",
+  getParentRoute: () => appRoute,
+  path: "/home",
   component: HomePage,
 });

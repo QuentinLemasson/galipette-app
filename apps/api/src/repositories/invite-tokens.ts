@@ -1,5 +1,7 @@
 import { prisma } from "@galipette/database";
 import { APIError } from "better-auth/api";
+import { createToken } from "../lib/create-token.js";
+import { InviteToken } from "../../../../packages/database/dist/generated/prisma/client.js";
 
 export const INVITE_HEADER = "x-invite-token";
 
@@ -57,4 +59,25 @@ export async function consumeInviteToken(
       message: "Invalid, expired, or already used invite token",
     });
   }
+}
+
+/**
+ * Create an invite token.
+ * @param expiresAt - Numbers of days until the invite token will expire.
+ * @returns The invite token.
+ */
+export async function createInviteToken(expiresAt: number): Promise<InviteToken> {
+  // token creation
+  const token = createToken();
+  // date calculation
+  const date = new Date();
+  date.setDate(date.getDate() + expiresAt);
+  // prisma transaction
+  const invite = await prisma.inviteToken.create({
+    data: {
+      token,
+      expiresAt: date,
+    },
+  });
+  return invite;
 }

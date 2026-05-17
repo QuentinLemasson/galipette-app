@@ -148,7 +148,16 @@ Set **`DATABASE_URL`** in the environment before running.
 
 ---
 
+## Better Auth + invite tables
+
+Better Auth uses the Prisma adapter: **`better-auth generate`** updates `schema.prisma`, then use the normal **`pnpm db:migrate`** flow above. Do **not** use `better-auth migrate` with Prisma.
+
+Full step-by-step: **[Auth & invite database migrations](./auth-database-migrations.md)**.
+
+---
+
 ## Package docs
 
 - [`packages/database/README.md`](../packages/database/README.md) — architecture and scripts reference.
+- [Auth & invite database migrations](./auth-database-migrations.md) — Better Auth schema generation + Prisma migrate.
 - [Main README](../README.md) — full workspace command table.

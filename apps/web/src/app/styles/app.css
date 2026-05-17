@@ -474,3 +474,57 @@
   gap: 12px;
   max-width: 520px;
 }
+
+.login-page {
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-page__lead {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.login-page__error {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--text-h) 8%, transparent);
+  color: var(--text-h);
+  font-size: 14px;
+}
+
+.login-page__actions {
+  margin: 0;
+}
+
+.login-page__primary {
+  font: inherit;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--accent-border);
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+.login-page__primary:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+
+.login-page__primary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+@media (prefers-color-scheme: dark) {
+  .login-page__primary {
+    color: var(--text-h);
+  }
+}

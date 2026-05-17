@@ -19,7 +19,7 @@ export function NotFound({ message }: NotFoundProps) {
     <section className="not-found">
       <h1>Not found</h1>
       <p>{message ?? "This route did not match any compiled entity."}</p>
-      <Link to="/">Back to home</Link>
+      <Link to="/app/home">Back to home</Link>
     </section>
   );
 }

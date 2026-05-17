@@ -14,12 +14,12 @@ export function AppLayout() {
   return (
     <div className="app-layout">
       <header className="app-layout__header">
-        <Link to="/" className="app-layout__brand">
+        <Link to="/app/home" className="app-layout__brand">
           Galipette App
         </Link>
         <span className="app-layout__subtitle">Compiled content explorer</span>
         <nav className="app-layout__nav">
-          <Link to="/characters" className="app-layout__nav-link">
+          <Link to="/app/characters" className="app-layout__nav-link">
             Characters
           </Link>
         </nav>

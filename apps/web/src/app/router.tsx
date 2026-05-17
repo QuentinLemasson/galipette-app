@@ -9,14 +9,21 @@ import {
   characterListRoute,
   characterSheetRoute,
 } from "./routes/characters";
-import { entityRoute } from "./routes/entity";
+import { wikiRoute } from "./routes/wiki";
 import { notFoundRoute } from "./routes/not-found";
+import { appRoute } from "./routes/app";
+import { loginRoute } from "./routes/login";
+import { indexRoute } from "./routes/index";
 
 const routeTree = rootRoute.addChildren([
-  homeRoute,
-  characterSheetRoute,
-  characterListRoute,
-  entityRoute,
+  indexRoute,
+  loginRoute,
+  appRoute.addChildren([
+    homeRoute,
+    characterSheetRoute,
+    characterListRoute,
+    wikiRoute,
+  ]),
   notFoundRoute,
 ]);
 
