@@ -16,16 +16,16 @@ Internal index construction lives under `src/utils/`; the public surface remains
 
 ## Overview
 
-| Export | Purpose |
-|--------|---------|
-| `entities` | Full `CompiledEntity[]` from `entities.json` (includes optional **`compiledContent`** mdast JSON and structured **`references`**). |
-| `graph` | `EntityGraph` (`nodes` + directed `edges`) from `graph.json`. |
-| `slugIndex` | `{ slugToId, idToSlug }` maps from `slug-index.json` (built by content-builder). |
-| `contentRepository` | Query helpers over those artifacts. |
-| On-disk only | **`broken-links.json`** — written next to `entities.json` by the builder (flat list of unresolved operands for debugging). Not imported by this package yet; read the file from `src/data/` after a build if you need it in tooling. |
-| `resolveReferenceToken` | Map wikilink operands to entities (see below). |
-| `EntityNotFoundError` | Thrown by `requireById` / `requireGraphNode`. |
-| `NavigationEntry` / `NavigationCategory` | Lightweight types for the navigation tree. |
+| Export                                   | Purpose                                                                                                                                                                                                                              |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `entities`                               | Full `CompiledEntity[]` from `entities.json` (includes optional **`compiledContent`** mdast JSON and structured **`references`**).                                                                                                   |
+| `graph`                                  | `EntityGraph` (`nodes` + directed `edges`) from `graph.json`.                                                                                                                                                                        |
+| `slugIndex`                              | `{ slugToId, idToSlug }` maps from `slug-index.json` (built by content-builder).                                                                                                                                                     |
+| `contentRepository`                      | Query helpers over those artifacts.                                                                                                                                                                                                  |
+| On-disk only                             | **`broken-links.json`** — written next to `entities.json` by the builder (flat list of unresolved operands for debugging). Not imported by this package yet; read the file from `src/data/` after a build if you need it in tooling. |
+| `resolveReferenceToken`                  | Map wikilink operands to entities (see below).                                                                                                                                                                                       |
+| `EntityNotFoundError`                    | Thrown by `requireById` / `requireGraphNode`.                                                                                                                                                                                        |
+| `NavigationEntry` / `NavigationCategory` | Lightweight types for the navigation tree.                                                                                                                                                                                           |
 
 Each `references` entry is a **`EntityReference`**: `operand` (same token as in `graph.json` edges), `refSources`, **`targetLabel`**, and when the operand resolves to an entity, **`targetEntityId`** and **`targetEntitySlug`**. Use this shape as the standard cross-link API in the app. Each entity may also carry optional **`compiledContent`**: the serialized mdast root (with `wikiLink` nodes); the web app renders that instead of re-parsing `content` when present.
 

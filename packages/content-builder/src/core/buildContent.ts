@@ -16,7 +16,10 @@ import {
 import { resolveCompiledEntities } from "@galipette/content-resolver";
 import { writeCompiledContent } from "./writeCompiledContent.ts";
 import { buildEntityGraph } from "./buildEntityGraph.ts";
-import { slugIndexPathFromEntitiesPath, brokenLinksPathFromEntitiesPath } from "../utils/artifactPaths.ts";
+import {
+  slugIndexPathFromEntitiesPath,
+  brokenLinksPathFromEntitiesPath,
+} from "../utils/artifactPaths.ts";
 import { buildErrorLogPath, defaultCompiledContentPath } from "../paths.ts";
 import type { BuildContentOptions, BuildResult } from "../types/build.ts";
 

@@ -9,7 +9,5 @@ export function CharacterSheetRoutePage() {
   const { characterId } = useParams({ strict: false }) as {
     characterId: string;
   };
-  return (
-    <CharacterSheetPage key={characterId} characterId={characterId} />
-  );
+  return <CharacterSheetPage key={characterId} characterId={characterId} />;
 }

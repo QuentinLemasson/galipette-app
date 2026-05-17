@@ -76,9 +76,7 @@ export const characterResponseSchema = z
   })
   .openapi("Character");
 
-export const apiErrorSchema = z
-  .object({ error: z.string() })
-  .openapi("ApiError");
+export const apiErrorSchema = z.object({ error: z.string() }).openapi("ApiError");
 
 export const idPathParamsSchema = z.object({
   id: z

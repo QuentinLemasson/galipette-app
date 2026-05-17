@@ -9,10 +9,7 @@ export { resolveReferenceToken } from "./resolve-reference-token.js";
 export { afflictionSchema } from "./schemas/AfflictionSchema.js";
 export { damageTypeSchema } from "./schemas/DamageTypeSchema.js";
 export { spellSchema } from "./schemas/SpellSchema.js";
-export {
-  schemaByType,
-  type RegisteredEntityType,
-} from "./schemas/SchemaRegistry.js";
+export { schemaByType, type RegisteredEntityType } from "./schemas/SchemaRegistry.js";
 export type {
   SpellEntity,
   DamageTypeEntity,

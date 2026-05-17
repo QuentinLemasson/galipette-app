@@ -13,13 +13,13 @@ Minimal MVP that validates the [`@galipette/compiled-content`](../../packages/co
 
 ## Routes
 
-| Path | Component | Purpose |
-|------|-----------|---------|
-| `/` | `app/pages/HomePage` | Welcome screen + per-type entity counts + link to characters |
-| `/characters` | `features/character/pages/CharacterListPage` | Lists characters from **`GET /characters`** (Hono API) |
+| Path               | Component                                     | Purpose                                                                                                                                                              |
+| ------------------ | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/`                | `app/pages/HomePage`                          | Welcome screen + per-type entity counts + link to characters                                                                                                         |
+| `/characters`      | `features/character/pages/CharacterListPage`  | Lists characters from **`GET /characters`** (Hono API)                                                                                                               |
 | `/characters/<id>` | `features/character/pages/CharacterSheetPage` | Loads one character; edits attributes (JSON); **skills** = multi-select of compiled **`spell`** entities via `contentRepository.getByType("spell")`; **PATCH** saves |
-| `/entity/<slug>` | `features/wiki/pages/EntityPage` | Resolves the entity by **`CompiledEntity.slug`** and renders metadata + compiled body |
-| `/not-found` | `app/pages/NotFoundRoutePage` | Optional **`?operand=`** / **`?link=`** search params (used when opening an unresolved wikilink from entity content) |
+| `/entity/<slug>`   | `features/wiki/pages/EntityPage`              | Resolves the entity by **`CompiledEntity.slug`** and renders metadata + compiled body                                                                                |
+| `/not-found`       | `app/pages/NotFoundRoutePage`                 | Optional **`?operand=`** / **`?link=`** search params (used when opening an unresolved wikilink from entity content)                                                 |
 
 The entity route uses a TanStack splat (`entity/$`) so the full **slug** (e.g. `wiki/skills/spells/lightning-arc`, no `.md` suffix) is represented as URL path segments, each segment URL-encoded where needed.
 

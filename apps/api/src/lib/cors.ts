@@ -8,5 +8,3 @@ export function parseWebOrigins(): string[] {
     .map((s) => s.trim())
     .filter(Boolean);
 }
-
-

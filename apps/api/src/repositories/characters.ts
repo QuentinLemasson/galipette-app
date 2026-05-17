@@ -44,12 +44,10 @@ export async function patchCharacterWithSheet(
   id: string,
   body: CharacterPatch,
 ): Promise<PatchCharacterResult> {
-  const hasCharacter =
-    body.name !== undefined || body.player !== undefined;
+  const hasCharacter = body.name !== undefined || body.player !== undefined;
   const hasSheet =
     body.sheet !== undefined &&
-    (body.sheet.attributes !== undefined ||
-      body.sheet.skillIds !== undefined);
+    (body.sheet.attributes !== undefined || body.sheet.skillIds !== undefined);
   if (!hasCharacter && !hasSheet) {
     return { kind: "empty_patch" };
   }
@@ -89,10 +87,7 @@ export async function patchCharacterWithSheet(
     });
     return { kind: "ok", row };
   } catch (e) {
-    if (
-      e instanceof Prisma.PrismaClientKnownRequestError &&
-      e.code === "P2025"
-    ) {
+    if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2025") {
       return { kind: "not_found" };
     }
     throw e;
@@ -101,17 +96,12 @@ export async function patchCharacterWithSheet(
 
 export type DeleteCharacterResult = "deleted" | "not_found";
 
-export async function deleteCharacterById(
-  id: string,
-): Promise<DeleteCharacterResult> {
+export async function deleteCharacterById(id: string): Promise<DeleteCharacterResult> {
   try {
     await prisma.character.delete({ where: { id } });
     return "deleted";
   } catch (e) {
-    if (
-      e instanceof Prisma.PrismaClientKnownRequestError &&
-      e.code === "P2025"
-    ) {
+    if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2025") {
       return "not_found";
     }
     throw e;

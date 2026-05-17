@@ -92,7 +92,10 @@ See the [compiled-content README](../compiled-content/README.md) for philosophy,
 Path helpers are re-exported from the package entry for scripts:
 
 ```ts
-import { brokenLinksPathFromEntitiesPath, graphPathFromEntitiesPath } from "@galipette/content-builder";
+import {
+  brokenLinksPathFromEntitiesPath,
+  graphPathFromEntitiesPath,
+} from "@galipette/content-builder";
 ```
 
 ## Operating the tool

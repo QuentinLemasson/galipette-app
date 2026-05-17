@@ -29,11 +29,11 @@ Generated client code lives under **`src/generated/prisma`** (gitignored); **`di
 
 ## Configuration (Prisma 7)
 
-| File | Role |
-|------|------|
-| [`prisma/schema.prisma`](./prisma/schema.prisma) | Models + `datasource` **provider only** (no `url` in schema). |
-| [`prisma.config.ts`](./prisma.config.ts) | CLI datasource URL, schema path, migrations path (`DATABASE_URL` via `env()` + `dotenv`). |
-| [`src/client.ts`](./src/client.ts) | Singleton **`PrismaClient`** with **`PrismaPg`** using **`process.env.DATABASE_URL`**. |
+| File                                             | Role                                                                                      |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| [`prisma/schema.prisma`](./prisma/schema.prisma) | Models + `datasource` **provider only** (no `url` in schema).                             |
+| [`prisma.config.ts`](./prisma.config.ts)         | CLI datasource URL, schema path, migrations path (`DATABASE_URL` via `env()` + `dotenv`). |
+| [`src/client.ts`](./src/client.ts)               | Singleton **`PrismaClient`** with **`PrismaPg`** using **`process.env.DATABASE_URL`**.    |
 
 Runtime code must have **`DATABASE_URL`** set (your app or process manager loads env; the Prisma CLI loads **`.env`** from this package via **`prisma.config.ts`**).
 
@@ -41,16 +41,16 @@ Runtime code must have **`DATABASE_URL`** set (your app or process manager loads
 
 Defined in **`package.json`**; the same commands are exposed at the **monorepo root** as **`pnpm db:*`** (see root [README](../../README.md)).
 
-| Script | Command |
-|--------|---------|
-| `db:generate` | `prisma generate` |
-| `db:validate` | `prisma validate` |
-| `db:migrate` | `prisma migrate dev` |
-| `db:deploy` | `prisma migrate deploy` |
-| `db:push` | `prisma db push` (prototype / local only; prefer migrate for anything you care to version) |
-| `db:studio` | `prisma studio` |
-| `db:status` | `prisma migrate status` |
-| `build` | `prisma generate` + `tsc` |
+| Script        | Command                                                                                    |
+| ------------- | ------------------------------------------------------------------------------------------ |
+| `db:generate` | `prisma generate`                                                                          |
+| `db:validate` | `prisma validate`                                                                          |
+| `db:migrate`  | `prisma migrate dev`                                                                       |
+| `db:deploy`   | `prisma migrate deploy`                                                                    |
+| `db:push`     | `prisma db push` (prototype / local only; prefer migrate for anything you care to version) |
+| `db:studio`   | `prisma studio`                                                                            |
+| `db:status`   | `prisma migrate status`                                                                    |
+| `build`       | `prisma generate` + `tsc`                                                                  |
 
 **Note (Prisma 7):** `migrate dev` / `db push` do **not** run **`generate`** automatically. Use **`pnpm build:database`** or **`pnpm db:generate`** after schema changes before building dependents.
 

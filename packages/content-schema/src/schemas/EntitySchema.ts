@@ -21,10 +21,9 @@ export const entityReferenceSchema = z.object({
  * Serialized mdast root (`type: "root"` plus arbitrary nested JSON).
  * `.passthrough()` keeps compatibility with full remark trees at runtime.
  */
-export const compiledMarkdownAstSchema = z
-  .looseObject({
-    type: z.literal("root"),
-  });
+export const compiledMarkdownAstSchema = z.looseObject({
+  type: z.literal("root"),
+});
 
 /** Fields common to all compiled entities before type-specific `data` is applied. */
 export const entityShellSchema = z.object({
@@ -46,10 +45,10 @@ export const entityShellSchema = z.object({
  * @param specificShape - Optional Zod shape for keys stored under `data`.
  * @returns Zod object schema for one entity kind.
  */
-export function createEntitySchema<
-  TType extends string,
-  TSpecific extends z.ZodRawShape,
->(type: TType, specificShape?: TSpecific) {
+export function createEntitySchema<TType extends string, TSpecific extends z.ZodRawShape>(
+  type: TType,
+  specificShape?: TSpecific,
+) {
   return entityShellSchema.extend({
     type: z.literal(type),
     data: z.object(specificShape ?? {}).default({}),

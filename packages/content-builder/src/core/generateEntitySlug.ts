@@ -50,7 +50,5 @@ export function generateEntitySlug(vaultRelativeSourcePath: string): string {
     return pathPart.length > 0 ? pathPart : namespaceSegment;
   }
 
-  return pathPart.length > 0
-    ? `${namespaceSegment}/${pathPart}`
-    : namespaceSegment;
+  return pathPart.length > 0 ? `${namespaceSegment}/${pathPart}` : namespaceSegment;
 }

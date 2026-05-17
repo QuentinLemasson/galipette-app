@@ -23,19 +23,13 @@ type SocialSignInBody = {
   };
 };
 
-function readRequestHeaders(ctx: {
-  request?: Request;
-  headers?: Headers;
-}): Headers | undefined {
+function readRequestHeaders(ctx: { request?: Request; headers?: Headers }): Headers | undefined {
   if (ctx.request?.headers) return ctx.request.headers;
   if (ctx.headers instanceof Headers) return ctx.headers;
   return undefined;
 }
 
-async function primePendingInviteCookie(
-  ctx: InviteCookieContext,
-  token: string,
-): Promise<void> {
+async function primePendingInviteCookie(ctx: InviteCookieContext, token: string): Promise<void> {
   await validateInviteToken(token);
   await setPendingInviteCookie(ctx, token);
 }

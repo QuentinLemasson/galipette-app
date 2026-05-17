@@ -44,10 +44,7 @@ export async function fetchCharacters(): Promise<CharacterDto[]> {
 }
 
 export async function fetchCharacter(id: string): Promise<CharacterDto> {
-  const res = await fetch(
-    `${getRestApiBase()}/characters/${encodeURIComponent(id)}`,
-    fetchOptions,
-  );
+  const res = await fetch(`${getRestApiBase()}/characters/${encodeURIComponent(id)}`, fetchOptions);
   if (!res.ok) {
     throw new Error(await parseError(res));
   }
@@ -63,19 +60,13 @@ export type CharacterPatchBody = {
   };
 };
 
-export async function patchCharacter(
-  id: string,
-  body: CharacterPatchBody,
-): Promise<CharacterDto> {
-  const res = await fetch(
-    `${getRestApiBase()}/characters/${encodeURIComponent(id)}`,
-    {
-      ...fetchOptions,
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    },
-  );
+export async function patchCharacter(id: string, body: CharacterPatchBody): Promise<CharacterDto> {
+  const res = await fetch(`${getRestApiBase()}/characters/${encodeURIComponent(id)}`, {
+    ...fetchOptions,
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
   if (!res.ok) {
     throw new Error(await parseError(res));
   }

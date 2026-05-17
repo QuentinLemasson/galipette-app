@@ -61,13 +61,12 @@ export function LoginPage() {
 
       {invite ? (
         <p className="login-page__lead">
-          You have an invitation link — connect Discord to sign in or create your
-          account.
+          You have an invitation link — connect Discord to sign in or create your account.
         </p>
       ) : (
         <p className="login-page__lead">
-          Connect with Discord if you already have an account. New players need
-          an invitation link from your DM.
+          Connect with Discord if you already have an account. New players need an invitation link
+          from your DM.
         </p>
       )}
 

@@ -133,9 +133,7 @@
     "references": [
       {
         "operand": "Race",
-        "refSources": [
-          "body"
-        ],
+        "refSources": ["body"],
         "targetLabel": "Race"
       }
     ],
@@ -244,19 +242,14 @@
     "references": [
       {
         "operand": "lightning",
-        "refSources": [
-          "body",
-          "frontMatter"
-        ],
+        "refSources": ["body", "frontMatter"],
         "targetLabel": "Foudre",
         "targetEntityId": "damage.lightning",
         "targetEntitySlug": "wiki/compendium/damage-types/lightning"
       },
       {
         "operand": "stunned",
-        "refSources": [
-          "body"
-        ],
+        "refSources": ["body"],
         "targetLabel": "Étourdi",
         "targetEntityId": "affliction.stunned",
         "targetEntitySlug": "wiki/compendium/afflictions/stunned"
@@ -267,9 +260,7 @@
         "type": "damage.lightning",
         "amount": 2
       },
-      "afflictions": [
-        "affliction.stunned"
-      ]
+      "afflictions": ["affliction.stunned"]
     },
     "compiledContent": {
       "type": "root",

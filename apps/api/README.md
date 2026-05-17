@@ -24,16 +24,16 @@ Small **Node** service that exposes a typed REST surface over PostgreSQL via **P
 
 ## HTTP surface
 
-| Method | Path | Purpose |
-|--------|------|---------|
-| `GET` | `/health` | Liveness (`{ "ok": true }`) |
-| `GET` | `/openapi.json` | OpenAPI 3.0 document |
-| `GET` | `/docs` | Swagger UI (loads `/openapi.json`) |
-| `GET` | `/characters` | List characters (newest first), including optional sheet |
-| `GET` | `/characters/{id}` | Get one character |
-| `POST` | `/characters` | Create character (optional nested sheet) |
-| `PATCH` | `/characters/{id}` | Partial update (character fields and/or sheet) |
-| `DELETE` | `/characters/{id}` | Delete character (cascade sheet) |
+| Method   | Path               | Purpose                                                  |
+| -------- | ------------------ | -------------------------------------------------------- |
+| `GET`    | `/health`          | Liveness (`{ "ok": true }`)                              |
+| `GET`    | `/openapi.json`    | OpenAPI 3.0 document                                     |
+| `GET`    | `/docs`            | Swagger UI (loads `/openapi.json`)                       |
+| `GET`    | `/characters`      | List characters (newest first), including optional sheet |
+| `GET`    | `/characters/{id}` | Get one character                                        |
+| `POST`   | `/characters`      | Create character (optional nested sheet)                 |
+| `PATCH`  | `/characters/{id}` | Partial update (character fields and/or sheet)           |
+| `DELETE` | `/characters/{id}` | Delete character (cascade sheet)                         |
 
 Validation failures on OpenAPI routes return **400** with `{ "error": string }` (see the app `defaultHook` in `src/app.ts`).
 

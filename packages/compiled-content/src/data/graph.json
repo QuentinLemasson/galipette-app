@@ -32,17 +32,8 @@
     }
   ],
   "edges": [
-    [
-      "rule.character.creation",
-      "Race"
-    ],
-    [
-      "spell.lightning-arc",
-      "lightning"
-    ],
-    [
-      "spell.lightning-arc",
-      "stunned"
-    ]
+    ["rule.character.creation", "Race"],
+    ["spell.lightning-arc", "lightning"],
+    ["spell.lightning-arc", "stunned"]
   ]
 }

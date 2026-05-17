@@ -7,17 +7,17 @@ import { pathToFileURL } from "node:url";
 import { printFailure } from "./cli/cliOutput.ts";
 import { errorLogPathFromMessage, runCli } from "./cli/runCli.ts";
 
-export type {
-  BuildContentOptions,
-  BuildDiagnostics,
-  BuildResult,
-} from "./types/build.ts";
+export type { BuildContentOptions, BuildDiagnostics, BuildResult } from "./types/build.ts";
 export { buildContent } from "./core/buildContent.ts";
 export { generateEntitySlug, getWikiNamespace } from "./core/generateEntitySlug.ts";
 export type { SlugIndex } from "@galipette/content-schema";
 export { buildSlugIndex } from "./core/writeCompiledContent.ts";
 
-export { graphPathFromEntitiesPath, slugIndexPathFromEntitiesPath, brokenLinksPathFromEntitiesPath } from "./utils/artifactPaths.ts";
+export {
+  graphPathFromEntitiesPath,
+  slugIndexPathFromEntitiesPath,
+  brokenLinksPathFromEntitiesPath,
+} from "./utils/artifactPaths.ts";
 
 const isExecutedAsScript =
   typeof process.argv[1] === "string" &&

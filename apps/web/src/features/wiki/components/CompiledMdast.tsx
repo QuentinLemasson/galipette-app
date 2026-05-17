@@ -60,11 +60,14 @@ export function AstWikiLink({ node }: AstWikiLinkProps) {
       ? node.displayLabel
       : typeof node.value === "string"
         ? node.value
-        : node.operand ?? "";
+        : (node.operand ?? "");
 
   if (typeof node.resource === "string" && node.resource.length > 0) {
     return (
-      <a href={node.resource} className="entity-content__wikilink entity-content__wikilink--external">
+      <a
+        href={node.resource}
+        className="entity-content__wikilink entity-content__wikilink--external"
+      >
         {label}
       </a>
     );
@@ -81,8 +84,7 @@ export function AstWikiLink({ node }: AstWikiLinkProps) {
     );
   }
 
-  const operand =
-    typeof node.operand === "string" && node.operand.length > 0 ? node.operand : "_";
+  const operand = typeof node.operand === "string" && node.operand.length > 0 ? node.operand : "_";
 
   return (
     <Link
@@ -141,10 +143,10 @@ export function AstNode({ node }: AstNodeProps) {
     ? n.children.map((child, i) => <AstNode key={i} node={child} />)
     : null;
 
-    // TODO : use a lazy registry approach to avoid
-    // - re-rendering the whole tree when a single node changes
-    // - lazy rendering of nodes that are not in the viewport
-    // - node-caching
+  // TODO : use a lazy registry approach to avoid
+  // - re-rendering the whole tree when a single node changes
+  // - lazy rendering of nodes that are not in the viewport
+  // - node-caching
   switch (n.type) {
     case "root":
       return <Fragment>{kids}</Fragment>;

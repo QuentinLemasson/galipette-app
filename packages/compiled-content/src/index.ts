@@ -19,7 +19,4 @@ export {
   EntityNotFoundError,
   type ContentRepository,
 } from "./content-repository.js";
-export type {
-  NavigationEntry,
-  NavigationCategory,
-} from "./utils/build-navigation-tree.js";
+export type { NavigationEntry, NavigationCategory } from "./utils/build-navigation-tree.js";

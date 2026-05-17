@@ -12,10 +12,7 @@ import type {
   EntityReferenceSource,
 } from "@galipette/content-schema";
 import { resolveReferenceToken } from "@galipette/content-schema";
-import {
-  parseEntityMarkdownToAst,
-  resolveWikiLinksInAst,
-} from "@galipette/content-parser";
+import { parseEntityMarkdownToAst, resolveWikiLinksInAst } from "@galipette/content-parser";
 import { collectBrokenWikiLinksForEntity } from "./collectBrokenWikiLinks.js";
 
 function collectWikiOperands(tree: Root): string[] {
@@ -27,9 +24,7 @@ function collectWikiOperands(tree: Root): string[] {
     }
     for (const child of node.children) {
       if ((child as { type?: string }).type === "wikiLink") {
-        operands.push(
-          (child as unknown as { type: "wikiLink"; operand: string }).operand,
-        );
+        operands.push((child as unknown as { type: "wikiLink"; operand: string }).operand);
       } else if ("children" in child && Array.isArray((child as Parent).children)) {
         walk(child as Parent);
       }
@@ -67,8 +62,8 @@ function mergeReferenceRecords(
   return Array.from(map.entries())
     .map(([operand, sources]) => {
       const target = resolveReferenceToken(operand, corpus, byId);
-      const refSources = Array.from(sources).sort(
-        (a, b) => a.localeCompare(b),
+      const refSources = Array.from(sources).sort((a, b) =>
+        a.localeCompare(b),
       ) as EntityReferenceSource[];
       const base: EntityReference = {
         operand,

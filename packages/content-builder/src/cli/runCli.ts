@@ -5,9 +5,7 @@
 import { createInterface } from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
 import { loadEnv } from "../loadEnv";
-import {
-  graphPathFromEntitiesPath,
-} from "../utils/artifactPaths.ts";
+import { graphPathFromEntitiesPath } from "../utils/artifactPaths.ts";
 import {
   printCliIntro,
   printConfigSummary,

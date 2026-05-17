@@ -1,8 +1,5 @@
 import { describe, expect, it, afterEach } from "vitest";
-import {
-  generateEntitySlug,
-  getWikiNamespace,
-} from "../src/core/generateEntitySlug.ts";
+import { generateEntitySlug, getWikiNamespace } from "../src/core/generateEntitySlug.ts";
 
 describe("generateEntitySlug", () => {
   const originalWikiNs = process.env.WIKI_NAMESPACE;
@@ -34,11 +31,7 @@ describe("generateEntitySlug", () => {
 
   it("does not duplicate namespace when source path already starts with that segment", () => {
     delete process.env.WIKI_NAMESPACE;
-    expect(generateEntitySlug("wiki/compendium/My Page.md")).toBe(
-      "wiki/compendium/my-page",
-    );
-    expect(generateEntitySlug("Wiki/caps-folder/note.md")).toBe(
-      "wiki/caps-folder/note",
-    );
+    expect(generateEntitySlug("wiki/compendium/My Page.md")).toBe("wiki/compendium/my-page");
+    expect(generateEntitySlug("Wiki/caps-folder/note.md")).toBe("wiki/caps-folder/note");
   });
 });

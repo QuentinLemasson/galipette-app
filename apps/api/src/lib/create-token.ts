@@ -6,4 +6,4 @@ import { randomBytes } from "node:crypto";
  */
 export const createToken = () => {
   return randomBytes(32).toString("hex");
-}
+};

@@ -3,10 +3,7 @@
  */
 
 import { useMemo } from "react";
-import {
-  contentRepository,
-  type NavigationCategory,
-} from "@galipette/compiled-content";
+import { contentRepository, type NavigationCategory } from "@galipette/compiled-content";
 
 /**
  * @description Returns the cached navigation tree (entities grouped by `type`)

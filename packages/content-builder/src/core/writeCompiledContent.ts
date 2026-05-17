@@ -40,16 +40,8 @@ export async function writeCompiledContent(
   const outDir = dirname(outputFilePath);
   await mkdir(outDir, { recursive: true });
   await writeFile(outputFilePath, JSON.stringify(entities, null, 2), "utf8");
-  await writeFile(
-    resolve(outDir, "graph.json"),
-    JSON.stringify(graph, null, 2),
-    "utf8",
-  );
-  await writeFile(
-    resolve(outDir, "slug-index.json"),
-    JSON.stringify(slugIndex, null, 2),
-    "utf8",
-  );
+  await writeFile(resolve(outDir, "graph.json"), JSON.stringify(graph, null, 2), "utf8");
+  await writeFile(resolve(outDir, "slug-index.json"), JSON.stringify(slugIndex, null, 2), "utf8");
   await writeFile(
     resolve(outDir, "broken-links.json"),
     JSON.stringify(brokenWikiLinks, null, 2),

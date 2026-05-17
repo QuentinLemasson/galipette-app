@@ -4,9 +4,7 @@
  */
 export function getApiOrigin(): string {
   const raw =
-    import.meta.env.VITE_API_ORIGIN ??
-    import.meta.env.VITE_API_BASE_URL ??
-    "http://localhost:3001";
+    import.meta.env.VITE_API_ORIGIN ?? import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3001";
   const trimmed = String(raw).replace(/\/$/, "");
   if (trimmed.endsWith("/api")) {
     return trimmed.slice(0, -4);

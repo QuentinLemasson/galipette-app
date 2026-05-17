@@ -9,20 +9,14 @@ export function createApp() {
   const app = new OpenAPIHono({
     defaultHook: (result, c) => {
       if (!result.success) {
-        return c.json(
-          { error: result.error.issues.map((i) => i.message).join("; ") },
-          400,
-        );
+        return c.json({ error: result.error.issues.map((i) => i.message).join("; ") }, 400);
       }
     },
   });
   const protectedApi = new OpenAPIHono({
     defaultHook: (result, c) => {
       if (!result.success) {
-        return c.json(
-          { error: result.error.issues.map((i) => i.message).join("; ") },
-          400,
-        );
+        return c.json({ error: result.error.issues.map((i) => i.message).join("; ") }, 400);
       }
     },
   });
@@ -45,7 +39,6 @@ export function createApp() {
   protectedApi.use("*", requireAuth);
   registerCharacterRoutes(protectedApi);
   app.route("/api", protectedApi);
-
 
   return app;
 }

@@ -15,14 +15,8 @@ import {
   buildIdsByType,
   buildReferencerIdsByToken,
 } from "./utils/entity-indexes.js";
-import {
-  buildEdgeAdjacencyMaps,
-  buildGraphNodeByIdMap,
-} from "./utils/graph-indexes.js";
-import {
-  buildNavigationTree,
-  type NavigationCategory,
-} from "./utils/build-navigation-tree.js";
+import { buildEdgeAdjacencyMaps, buildGraphNodeByIdMap } from "./utils/graph-indexes.js";
+import { buildNavigationTree, type NavigationCategory } from "./utils/build-navigation-tree.js";
 import { resolveReferenceToken as resolveToken } from "./utils/resolve-reference-token.js";
 
 /** Thrown by {@link contentRepository.requireById} when no entity matches. */
@@ -41,8 +35,9 @@ const bySlug = buildBySlugMap(entities);
 const idsByType = buildIdsByType(entities);
 const referencerIdsByToken = buildReferencerIdsByToken(entities);
 
-const { outgoing: outgoingEdgeTargets, incoming: incomingEdgeSources } =
-  buildEdgeAdjacencyMaps(graph.edges);
+const { outgoing: outgoingEdgeTargets, incoming: incomingEdgeSources } = buildEdgeAdjacencyMaps(
+  graph.edges,
+);
 
 const graphNodeById = buildGraphNodeByIdMap(graph.nodes);
 

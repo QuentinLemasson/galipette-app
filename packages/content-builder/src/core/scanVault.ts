@@ -14,10 +14,7 @@ import { stat } from "node:fs/promises";
  * @returns Sorted list of absolute file paths.
  * @throws Error if the target folder is missing or not a directory.
  */
-export async function scanVault(
-  vaultPath: string,
-  subFolder: string,
-): Promise<string[]> {
+export async function scanVault(vaultPath: string, subFolder: string): Promise<string[]> {
   const baseDirectory = resolve(vaultPath, subFolder);
 
   let folderStats;

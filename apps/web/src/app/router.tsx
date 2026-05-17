@@ -5,10 +5,7 @@
 import { createRouter } from "@tanstack/react-router";
 import { rootRoute } from "./routes/root";
 import { homeRoute } from "./routes/home";
-import {
-  characterListRoute,
-  characterSheetRoute,
-} from "./routes/characters";
+import { characterListRoute, characterSheetRoute } from "./routes/characters";
 import { wikiRoute } from "./routes/wiki";
 import { notFoundRoute } from "./routes/not-found";
 import { appRoute } from "./routes/app";
@@ -18,12 +15,7 @@ import { indexRoute } from "./routes/index";
 const routeTree = rootRoute.addChildren([
   indexRoute,
   loginRoute,
-  appRoute.addChildren([
-    homeRoute,
-    characterSheetRoute,
-    characterListRoute,
-    wikiRoute,
-  ]),
+  appRoute.addChildren([homeRoute, characterSheetRoute, characterListRoute, wikiRoute]),
   notFoundRoute,
 ]);
 

@@ -55,10 +55,7 @@ function createPendingInviteCookieDef(ctx: InviteCookieContext) {
   if (!ctx.context?.createAuthCookie) {
     throw new Error("Better Auth cookie context is required");
   }
-  return ctx.context.createAuthCookie(
-    INVITE_PENDING_COOKIE_NAME,
-    pendingInviteCookieAttributes(),
-  );
+  return ctx.context.createAuthCookie(INVITE_PENDING_COOKIE_NAME, pendingInviteCookieAttributes());
 }
 
 function getCookieFromRequest(request: Request, cookieName: string): string | undefined {

@@ -11,7 +11,5 @@ import { AppLayout } from "../layout/AppLayout";
  */
 export const rootRoute = createRootRoute({
   component: AppLayout,
-  notFoundComponent: () => (
-    <NotFound message="No route matched the requested URL." />
-  ),
+  notFoundComponent: () => <NotFound message="No route matched the requested URL." />,
 });

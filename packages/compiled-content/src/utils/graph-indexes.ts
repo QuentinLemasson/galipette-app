@@ -4,9 +4,7 @@
 
 import type { GraphNode } from "@galipette/content-schema";
 
-export function buildEdgeAdjacencyMaps(
-  edges: readonly [string, string][],
-): {
+export function buildEdgeAdjacencyMaps(edges: readonly [string, string][]): {
   outgoing: Map<string, string[]>;
   incoming: Map<string, string[]>;
 } {
@@ -31,8 +29,6 @@ export function buildEdgeAdjacencyMaps(
   return { outgoing, incoming };
 }
 
-export function buildGraphNodeByIdMap(
-  nodes: readonly GraphNode[],
-): Map<string, GraphNode> {
+export function buildGraphNodeByIdMap(nodes: readonly GraphNode[]): Map<string, GraphNode> {
   return new Map(nodes.map((node) => [node.id, node]));
 }

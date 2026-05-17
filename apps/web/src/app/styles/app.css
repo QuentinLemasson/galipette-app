@@ -134,7 +134,9 @@
   border: 1px solid transparent;
   text-decoration: none;
   color: var(--text-h);
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .entity-link:hover {

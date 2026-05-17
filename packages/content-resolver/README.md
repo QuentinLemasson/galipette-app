@@ -11,8 +11,12 @@ Depends on **`@galipette/content-parser`** and **`@galipette/content-schema`**. 
 ```ts
 import { resolveCompiledEntities, type PendingCompiledEntity } from "@galipette/content-resolver";
 
-const pending: PendingCompiledEntity[] = [/* … */];
-const corpus = [/* validated entities */];
+const pending: PendingCompiledEntity[] = [
+  /* … */
+];
+const corpus = [
+  /* validated entities */
+];
 
 const { entities, brokenWikiLinks } = resolveCompiledEntities(pending, corpus);
 ```

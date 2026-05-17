@@ -3,10 +3,7 @@
  */
 
 import { useMemo } from "react";
-import {
-  contentRepository,
-  type CompiledEntity,
-} from "@galipette/compiled-content";
+import { contentRepository, type CompiledEntity } from "@galipette/compiled-content";
 
 /**
  * @description Looks up a compiled entity by slug (same string as in entity URLs,

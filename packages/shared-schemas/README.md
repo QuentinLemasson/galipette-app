@@ -4,12 +4,12 @@ Shared **Zod** validators and **TypeScript** types for API boundaries (and later
 
 ## Contents
 
-| Area | Exports |
-|------|---------|
-| Character DTOs | `characterCreateSchema`, `characterUpdateSchema`, `characterPatchSchema`, `characterSheetWriteSchema`, `characterSheetUpdateSchema`, `characterAttributesSchema`, `skillIdsSchema` |
-| API / OpenAPI | `characterResponseSchema`, `characterSheetResponseSchema`, `apiErrorSchema`, `idPathParamsSchema`; generated [`openapi/galipette-api.yaml`](./openapi/galipette-api.yaml) |
-| Inferred types | `CharacterCreate`, `CharacterUpdate`, `CharacterPatch`, `CharacterSheetWrite`, `CharacterSheetUpdate`, `CharacterResponse`, `CharacterAttributes`, `SkillIds` |
-| Prisma models (types) | `Character`, `CharacterSheet`, `Prisma` |
+| Area                  | Exports                                                                                                                                                                            |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Character DTOs        | `characterCreateSchema`, `characterUpdateSchema`, `characterPatchSchema`, `characterSheetWriteSchema`, `characterSheetUpdateSchema`, `characterAttributesSchema`, `skillIdsSchema` |
+| API / OpenAPI         | `characterResponseSchema`, `characterSheetResponseSchema`, `apiErrorSchema`, `idPathParamsSchema`; generated [`openapi/galipette-api.yaml`](./openapi/galipette-api.yaml)          |
+| Inferred types        | `CharacterCreate`, `CharacterUpdate`, `CharacterPatch`, `CharacterSheetWrite`, `CharacterSheetUpdate`, `CharacterResponse`, `CharacterAttributes`, `SkillIds`                      |
+| Prisma models (types) | `Character`, `CharacterSheet`, `Prisma`                                                                                                                                            |
 
 Source: [`src/character.ts`](./src/character.ts), barrel [`src/index.ts`](./src/index.ts).
 

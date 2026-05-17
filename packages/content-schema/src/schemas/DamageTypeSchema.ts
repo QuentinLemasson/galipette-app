@@ -15,7 +15,4 @@ const damageTypeSpecificSchema = {
 } satisfies z.ZodRawShape;
 
 /** Zod schema instance registered under the `damage-type` type key. */
-export const damageTypeSchema = createEntitySchema(
-  "damage-type",
-  damageTypeSpecificSchema,
-);
+export const damageTypeSchema = createEntitySchema("damage-type", damageTypeSpecificSchema);

@@ -140,11 +140,11 @@ Set **`DATABASE_URL`** in the environment before running.
 
 ## Useful diagnostics
 
-| Goal | Command |
-|------|---------|
-| Migration history vs DB | `pnpm db:status` |
-| Regenerate client only | `pnpm db:generate` |
-| Build DB package | `pnpm build:database` |
+| Goal                    | Command               |
+| ----------------------- | --------------------- |
+| Migration history vs DB | `pnpm db:status`      |
+| Regenerate client only  | `pnpm db:generate`    |
+| Build DB package        | `pnpm build:database` |
 
 ---
 

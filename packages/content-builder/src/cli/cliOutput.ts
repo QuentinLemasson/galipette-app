@@ -16,7 +16,10 @@ const STRONG = "═".repeat(58);
  *
  * @param title - Short heading text.
  */
-export function printSection(title: string, write: (s: string) => void = process.stdout.write.bind(process.stdout)): void {
+export function printSection(
+  title: string,
+  write: (s: string) => void = process.stdout.write.bind(process.stdout),
+): void {
   write(`\n${STRONG}\n  ${title}\n${STRONG}\n`);
 }
 
@@ -26,7 +29,11 @@ export function printSection(title: string, write: (s: string) => void = process
  * @param label - Left column (kept short).
  * @param value - Right column (paths may wrap in narrow terminals).
  */
-export function printRow(label: string, value: string, write: (s: string) => void = process.stdout.write.bind(process.stdout)): void {
+export function printRow(
+  label: string,
+  value: string,
+  write: (s: string) => void = process.stdout.write.bind(process.stdout),
+): void {
   const labelPad = 18;
   const pad = Math.max(1, labelPad - label.length);
   write(`  ${label}${" ".repeat(pad)}${value}\n`);

@@ -46,8 +46,8 @@ export function CharacterListPage() {
           {error}
         </p>
         <p className="character-page__muted">
-          Is the API running (<code>pnpm dev:api</code>) and is{" "}
-          <code>VITE_API_ORIGIN</code> (API running, CORS + session cookie)?
+          Is the API running (<code>pnpm dev:api</code>) and is <code>VITE_API_ORIGIN</code> (API
+          running, CORS + session cookie)?
         </p>
       </section>
     );
@@ -71,10 +71,7 @@ export function CharacterListPage() {
                 className="character-page__link"
               >
                 <strong>{c.name}</strong>
-                <span className="character-page__meta">
-                  {" "}
-                  — {c.player}
-                </span>
+                <span className="character-page__meta"> — {c.player}</span>
               </Link>
             </li>
           ))}

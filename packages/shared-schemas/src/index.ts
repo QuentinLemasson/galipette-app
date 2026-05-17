@@ -20,8 +20,4 @@ export {
   type SkillIds,
 } from "./character.js";
 
-export type {
-  Character,
-  CharacterSheet,
-  Prisma,
-} from "@galipette/database";
+export type { Character, CharacterSheet, Prisma } from "@galipette/database";

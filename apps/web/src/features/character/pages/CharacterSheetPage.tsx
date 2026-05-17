@@ -4,11 +4,7 @@
 
 import { Link } from "@tanstack/react-router";
 import { useMemo, useCallback, useEffect, useState } from "react";
-import {
-  fetchCharacter,
-  patchCharacter,
-  type CharacterDto,
-} from "../api";
+import { fetchCharacter, patchCharacter, type CharacterDto } from "../api";
 import { getSkillSelectOptions, SKILL_OPTION_ENTITY_TYPE } from "../skill-select-options";
 
 export type CharacterSheetPageProps = {
@@ -34,10 +30,7 @@ function toggleSkillId(ids: string[], id: string, checked: boolean): string[] {
 
 export function CharacterSheetPage({ characterId }: CharacterSheetPageProps) {
   const skillOptions = useMemo(() => getSkillSelectOptions(), []);
-  const optionIdSet = useMemo(
-    () => new Set(skillOptions.map((o) => o.id)),
-    [skillOptions],
-  );
+  const optionIdSet = useMemo(() => new Set(skillOptions.map((o) => o.id)), [skillOptions]);
 
   const [row, setRow] = useState<CharacterDto | null>(null);
   const [name, setName] = useState("");
@@ -184,9 +177,7 @@ export function CharacterSheetPage({ characterId }: CharacterSheetPageProps) {
         <code>GET/PATCH /api/characters/{characterId}</code>
       </p>
 
-      {saveMessage !== null ? (
-        <p className="character-page__ok">{saveMessage}</p>
-      ) : null}
+      {saveMessage !== null ? <p className="character-page__ok">{saveMessage}</p> : null}
       {error !== null ? (
         <p className="character-page__error" role="alert">
           {error}
@@ -196,12 +187,7 @@ export function CharacterSheetPage({ characterId }: CharacterSheetPageProps) {
       <form className="character-form" onSubmit={onSubmit}>
         <label className="character-form__field">
           <span>Name</span>
-          <input
-            value={name}
-            onChange={(ev) => setName(ev.target.value)}
-            required
-            minLength={1}
-          />
+          <input value={name} onChange={(ev) => setName(ev.target.value)} required minLength={1} />
         </label>
         <label className="character-form__field">
           <span>Player</span>
@@ -227,30 +213,23 @@ export function CharacterSheetPage({ characterId }: CharacterSheetPageProps) {
             Skills{" "}
             <span className="character-page__muted">
               (compiled <code>{SKILL_OPTION_ENTITY_TYPE}</code> entities —{" "}
-              <code>contentRepository.getByType(&quot;{SKILL_OPTION_ENTITY_TYPE}&quot;)</code>
-              )
+              <code>contentRepository.getByType(&quot;{SKILL_OPTION_ENTITY_TYPE}&quot;)</code>)
             </span>
           </legend>
           {skillOptions.length === 0 ? (
             <p className="character-page__muted">
-              No compiled spells in the bundle. Run the content builder so
-              entities exist for this type.
+              No compiled spells in the bundle. Run the content builder so entities exist for this
+              type.
             </p>
           ) : (
-            <div
-              className="character-form__skill-list"
-              role="group"
-              aria-label="Skill selection"
-            >
+            <div className="character-form__skill-list" role="group" aria-label="Skill selection">
               {skillOptions.map((opt) => (
                 <label key={opt.id} className="character-form__skill-row">
                   <input
                     type="checkbox"
                     checked={selectedSkillIds.includes(opt.id)}
                     onChange={(ev) =>
-                      setSelectedSkillIds((prev) =>
-                        toggleSkillId(prev, opt.id, ev.target.checked),
-                      )
+                      setSelectedSkillIds((prev) => toggleSkillId(prev, opt.id, ev.target.checked))
                     }
                   />
                   <span>{opt.name}</span>
@@ -262,8 +241,7 @@ export function CharacterSheetPage({ characterId }: CharacterSheetPageProps) {
           {orphanSkillIds.length > 0 ? (
             <div className="character-form__orphan-skills">
               <p className="character-page__muted">
-                Selected ids not present in the current spell catalog (uncheck to
-                remove):
+                Selected ids not present in the current spell catalog (uncheck to remove):
               </p>
               <div className="character-form__skill-list">
                 {orphanSkillIds.map((id) => (
@@ -272,9 +250,7 @@ export function CharacterSheetPage({ characterId }: CharacterSheetPageProps) {
                       type="checkbox"
                       checked
                       onChange={(ev) =>
-                        setSelectedSkillIds((prev) =>
-                          toggleSkillId(prev, id, ev.target.checked),
-                        )
+                        setSelectedSkillIds((prev) => toggleSkillId(prev, id, ev.target.checked))
                       }
                     />
                     <code>{id}</code>

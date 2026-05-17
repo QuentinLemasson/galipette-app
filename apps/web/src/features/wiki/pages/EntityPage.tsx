@@ -22,11 +22,7 @@ export function EntityPage() {
   if (!entity) {
     return (
       <NotFound
-        message={
-          slug
-            ? `No compiled entity matched slug "${slug}".`
-            : "Missing slug in URL."
-        }
+        message={slug ? `No compiled entity matched slug "${slug}".` : "Missing slug in URL."}
       />
     );
   }

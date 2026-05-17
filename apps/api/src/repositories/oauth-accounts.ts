@@ -11,9 +11,6 @@ export async function isExistingOAuthAccount(
   providerId: string,
   providerAccountId: string,
 ): Promise<boolean> {
-  const account = await adapter.findAccountByProviderId(
-    providerAccountId,
-    providerId,
-  );
+  const account = await adapter.findAccountByProviderId(providerAccountId, providerId);
   return account != null;
 }

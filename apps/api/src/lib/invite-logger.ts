@@ -29,10 +29,7 @@ function redact(value: unknown): unknown {
     ) {
       out[key] = maskToken(typeof entry === "string" ? entry : undefined);
     } else if (key === "cookie" || key === "cookieHeader") {
-      out[key] =
-        typeof entry === "string"
-          ? entry.replace(/=([^;]+)/g, "=***")
-          : entry;
+      out[key] = typeof entry === "string" ? entry.replace(/=([^;]+)/g, "=***") : entry;
     } else {
       out[key] = redact(entry);
     }
@@ -40,11 +37,7 @@ function redact(value: unknown): unknown {
   return out;
 }
 
-export function inviteLog(
-  phase: string,
-  message: string,
-  details?: Record<string, unknown>,
-): void {
+export function inviteLog(phase: string, message: string, details?: Record<string, unknown>): void {
   if (!isEnabled()) return;
   const suffix = details ? ` ${JSON.stringify(redact(details))}` : "";
   console.log(`[invite] ${phase}: ${message}${suffix}`);

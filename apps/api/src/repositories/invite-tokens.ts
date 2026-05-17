@@ -15,9 +15,7 @@ export const INVITE_HEADER = "x-invite-token";
  * @param headers - The headers of the request.
  * @returns The invite token.
  */
-export function readInviteTokenFromHeaders(
-  headers: Headers | undefined,
-): string | undefined {
+export function readInviteTokenFromHeaders(headers: Headers | undefined): string | undefined {
   const value = headers?.get(INVITE_HEADER)?.trim();
   return value || undefined;
 }
@@ -43,9 +41,7 @@ function readHeadersFromHookContext(hookCtx: unknown): Headers | undefined {
  * @param hookCtx - The hook context.
  * @returns The invite token.
  */
-async function readInviteFromOAuthState(
-  hookCtx: InviteCookieContext,
-): Promise<string | undefined> {
+async function readInviteFromOAuthState(hookCtx: InviteCookieContext): Promise<string | undefined> {
   if (!hookCtx.path?.includes("/callback")) return undefined;
 
   const oauthState = await getOAuthState();

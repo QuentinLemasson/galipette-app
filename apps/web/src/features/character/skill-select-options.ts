@@ -19,7 +19,5 @@ export function getSkillSelectOptions(): SkillSelectOption[] {
   return contentRepository
     .getByType(SKILL_OPTION_ENTITY_TYPE)
     .map((entity) => ({ id: entity.id, name: entity.name }))
-    .sort((a, b) =>
-      a.name.localeCompare(b.name, undefined, { sensitivity: "base" }),
-    );
+    .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
 }

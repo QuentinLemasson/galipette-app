@@ -8,8 +8,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { stringify } from "yaml";
 
-process.env.DATABASE_URL ??=
-  "postgresql://openapi:openapi@127.0.0.1:5432/_openapi_codegen";
+process.env.DATABASE_URL ??= "postgresql://openapi:openapi@127.0.0.1:5432/_openapi_codegen";
 process.env.BETTER_AUTH_SECRET ??= "openapi-codegen-secret-not-for-production";
 process.env.DISCORD_CLIENT_ID ??= "openapi-discord-client-id";
 process.env.DISCORD_CLIENT_SECRET ??= "openapi-discord-client-secret";
