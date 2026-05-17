@@ -3,9 +3,6 @@
  */
 
 import "@galipette/content-parser";
-import type { Parent } from "mdast";
-import type { Root } from "mdast";
-import type { WikiLink } from "mdast";
 import type {
   BrokenWikiLinkOrigin,
   BrokenWikiLinkRecord,
@@ -13,6 +10,9 @@ import type {
   CompiledMarkdownAst,
   EntityReference,
 } from "@galipette/content-schema";
+import type { Parent } from "mdast";
+import type { Root } from "mdast";
+import type { WikiLink } from "mdast";
 
 type Agg = {
   linkText: string;

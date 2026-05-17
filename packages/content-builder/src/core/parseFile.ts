@@ -4,8 +4,9 @@
 
 import { readFile } from "node:fs/promises";
 import { relative } from "node:path";
-import matter from "gray-matter";
+
 import type { ParsedMarkdownFile } from "@galipette/content-schema";
+import matter from "gray-matter";
 
 /**
  * Normalizes Windows-style separators to forward slashes for stable JSON output.

@@ -3,15 +3,16 @@
  */
 
 import type { z } from "zod";
+
+import type { afflictionSchema } from "../schemas/AfflictionSchema.js";
+import type { damageTypeSchema } from "../schemas/DamageTypeSchema.js";
 import {
   compiledMarkdownAstSchema,
   entityReferenceSchema,
   entityReferenceSourceSchema,
 } from "../schemas/EntitySchema.js";
-import type { spellSchema } from "../schemas/SpellSchema.js";
-import type { damageTypeSchema } from "../schemas/DamageTypeSchema.js";
-import type { afflictionSchema } from "../schemas/AfflictionSchema.js";
 import type { RegisteredEntityType } from "../schemas/SchemaRegistry.js";
+import type { spellSchema } from "../schemas/SpellSchema.js";
 
 export type SpellEntity = z.infer<typeof spellSchema>;
 export type DamageTypeEntity = z.infer<typeof damageTypeSchema>;

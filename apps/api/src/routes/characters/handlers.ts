@@ -1,6 +1,8 @@
 import type { RouteHandler } from "@hono/zod-openapi";
-import * as charactersRepo from "../../repositories/characters.js";
+
 import { serializeCharacter } from "../../lib/serialize-character.js";
+import * as charactersRepo from "../../repositories/characters.js";
+
 import {
   createCharacterRoute,
   deleteCharacterRoute,

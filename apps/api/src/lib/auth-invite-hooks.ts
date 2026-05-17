@@ -1,10 +1,5 @@
 import { APIError, createAuthMiddleware } from "better-auth/api";
-import {
-  clearPendingInviteCookie,
-  setPendingInviteCookie,
-  type InviteCookieContext,
-} from "./invite-pending-cookie.js";
-import { inviteLog, INVITE_OAUTH_STATE_KEY } from "./invite-logger.js";
+
 import {
   consumeInviteToken,
   readInviteTokenFromHeaders,
@@ -12,6 +7,13 @@ import {
   validateInviteToken,
 } from "../repositories/invite-tokens.js";
 import { isExistingOAuthAccount } from "../repositories/oauth-accounts.js";
+
+import { inviteLog, INVITE_OAUTH_STATE_KEY } from "./invite-logger.js";
+import {
+  clearPendingInviteCookie,
+  setPendingInviteCookie,
+  type InviteCookieContext,
+} from "./invite-pending-cookie.js";
 
 type SocialSignInBody = {
   provider?: string;

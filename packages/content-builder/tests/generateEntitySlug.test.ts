@@ -1,4 +1,5 @@
 import { describe, expect, it, afterEach } from "vitest";
+
 import { generateEntitySlug, getWikiNamespace } from "../src/core/generateEntitySlug.ts";
 
 describe("generateEntitySlug", () => {

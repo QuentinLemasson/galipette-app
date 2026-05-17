@@ -3,6 +3,7 @@
  */
 
 import { z } from "zod";
+
 import { createEntitySchema } from "./EntitySchema.js";
 
 const spellSpecificSchema = {

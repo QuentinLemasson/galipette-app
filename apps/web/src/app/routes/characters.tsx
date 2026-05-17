@@ -3,8 +3,10 @@
  */
 
 import { createRoute } from "@tanstack/react-router";
+
 import { CharacterListPage } from "../../features/character/pages/CharacterListPage";
 import { CharacterSheetRoutePage } from "../../features/character/pages/CharacterSheetRoutePage";
+
 import { appRoute } from "./app";
 
 /** `/characters/:characterId` — register before the static `/characters` path. */

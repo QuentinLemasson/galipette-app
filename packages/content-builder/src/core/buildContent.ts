@@ -2,26 +2,30 @@
  * Main vault scan → validate → write artifacts pipeline.
  */
 
-import { dirname } from "node:path";
 import { mkdir, writeFile } from "node:fs/promises";
-import type { CompiledEntity, EntityGraph } from "@galipette/content-schema";
-import { loadEnv } from "../loadEnv";
-import { scanVault } from "./scanVault.ts";
-import { parseFile } from "./parseFile.ts";
-import { validateEntity } from "./validateEntity.ts";
-import {
-  collectObsidianReferencesFromFrontmatter,
-  normalizeObsidianFrontmatter,
-} from "./resolveObsidianLinks.ts";
+import { dirname } from "node:path";
+
 import { resolveCompiledEntities } from "@galipette/content-resolver";
-import { writeCompiledContent } from "./writeCompiledContent.ts";
-import { buildEntityGraph } from "./buildEntityGraph.ts";
+import type { CompiledEntity, EntityGraph } from "@galipette/content-schema";
+
+import { loadEnv } from "../loadEnv";
+import { buildErrorLogPath, defaultCompiledContentPath } from "../paths.ts";
+import type { BuildContentOptions, BuildResult } from "../types/build.ts";
 import {
   slugIndexPathFromEntitiesPath,
   brokenLinksPathFromEntitiesPath,
 } from "../utils/artifactPaths.ts";
-import { buildErrorLogPath, defaultCompiledContentPath } from "../paths.ts";
-import type { BuildContentOptions, BuildResult } from "../types/build.ts";
+
+import { buildEntityGraph } from "./buildEntityGraph.ts";
+import { parseFile } from "./parseFile.ts";
+import {
+  collectObsidianReferencesFromFrontmatter,
+  normalizeObsidianFrontmatter,
+} from "./resolveObsidianLinks.ts";
+import { scanVault } from "./scanVault.ts";
+import { validateEntity } from "./validateEntity.ts";
+import { writeCompiledContent } from "./writeCompiledContent.ts";
+
 
 /**
  * Scans the vault, validates every Markdown entity, aggregates errors, then writes

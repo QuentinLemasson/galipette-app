@@ -2,8 +2,8 @@
  * Hook exposing the compiled-content navigation tree to React components.
  */
 
-import { useMemo } from "react";
 import { contentRepository, type NavigationCategory } from "@galipette/compiled-content";
+import { useMemo } from "react";
 
 /**
  * @description Returns the cached navigation tree (entities grouped by `type`)

@@ -4,6 +4,7 @@
 
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+
 import { fetchCharacters, type CharacterDto } from "../api";
 
 export function CharacterListPage() {

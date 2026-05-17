@@ -4,6 +4,7 @@
 
 import { contentRepository } from "@galipette/compiled-content";
 import { Link } from "@tanstack/react-router";
+
 import { formatTypeLabel } from "../../common/utils/format-type-label";
 import { useNavigationTree } from "../../features/wiki/hooks/useNavigationTree";
 

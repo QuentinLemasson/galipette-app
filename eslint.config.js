@@ -1,14 +1,35 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
 import js from "@eslint/js";
+import { defineConfig } from "eslint/config";
 import tseslint from "typescript-eslint";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactPlugin from "eslint-plugin-react";
-import importPlugin from "eslint-plugin-import";
+import importX from "eslint-plugin-import-x";
 import globals from "globals";
 import prettier from "eslint-config-prettier";
 
-export default [
+const tsconfigRootDir = path.dirname(fileURLToPath(import.meta.url));
+
+export default defineConfig(
   {
-    ignores: ["**/dist/**", "**/build/**", "**/.turbo/**", "**/node_modules/**"],
+    ignores: [
+      "**/dist/**",
+      "**/build/**",
+      "**/.turbo/**",
+      "**/node_modules/**",
+      "**/coverage/**",
+      "pnpm-lock.yaml",
+    ],
+  },
+
+  {
+    languageOptions: {
+      parserOptions: {
+        tsconfigRootDir,
+      },
+    },
   },
 
   js.configs.recommended,
@@ -28,7 +49,7 @@ export default [
     plugins: {
       react: reactPlugin,
       "react-hooks": reactHooks,
-      import: importPlugin,
+      "import-x": importX,
     },
 
     rules: {
@@ -37,7 +58,7 @@ export default [
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
 
-      "import/order": [
+      "import-x/order": [
         "warn",
         {
           alphabetize: {
@@ -56,4 +77,4 @@ export default [
   },
 
   prettier,
-];
+);

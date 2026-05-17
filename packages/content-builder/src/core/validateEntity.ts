@@ -2,9 +2,10 @@
  * Maps parsed front matter plus file metadata to a typed, validated entity record.
  */
 
-import { ZodError } from "zod";
 import { schemaByType } from "@galipette/content-schema";
 import type { CompiledEntity, ParsedMarkdownFile } from "@galipette/content-schema";
+import { ZodError } from "zod";
+
 import { generateEntitySlug } from "./generateEntitySlug.ts";
 
 /**
@@ -47,7 +48,9 @@ export function validateEntity(frontmatter: unknown, file: ParsedMarkdownFile): 
       const details = error.issues
         .map((issue) => `${issue.path.join(".") || "root"}: ${issue.message}`)
         .join("; ");
-      throw new Error(`Validation failed in "${file.sourcePath}": ${details}`);
+      throw new Error(`Validation failed in "${file.sourcePath}": ${details}`, {
+        cause: error,
+      });
     }
     throw error;
   }

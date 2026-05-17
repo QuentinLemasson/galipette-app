@@ -3,10 +3,11 @@
  */
 
 import "./remark/galipette-mdast.js";
-import remarkParse from "remark-parse";
-import { removePosition } from "unist-util-remove-position";
-import { unified } from "unified";
 import type { Root } from "mdast";
+import remarkParse from "remark-parse";
+import { unified } from "unified";
+import { removePosition } from "unist-util-remove-position";
+
 import { remarkGalipetteWikiLinks } from "./remark/wikiLinkPlugin.js";
 
 const processor = unified().use(remarkParse).use(remarkGalipetteWikiLinks);

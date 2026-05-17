@@ -2,18 +2,15 @@
  * Interactive / flag-driven CLI entry that delegates to {@link buildContent}.
  */
 
-import { createInterface } from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
-import { loadEnv } from "../loadEnv";
-import { graphPathFromEntitiesPath } from "../utils/artifactPaths.ts";
-import {
-  printCliIntro,
-  printConfigSummary,
-  printFailure,
-  printSuccessSummary,
-} from "./cliOutput.ts";
+import { createInterface } from "node:readline/promises";
+
 import { buildContent } from "../core/buildContent.ts";
+import { loadEnv } from "../loadEnv";
 import type { BuildContentOptions } from "../types/build.ts";
+import { graphPathFromEntitiesPath } from "../utils/artifactPaths.ts";
+
+import { printCliIntro, printConfigSummary, printSuccessSummary } from "./cliOutput.ts";
 
 /**
  * Parses optional `--vault` / `--subfolder` flags and positional vault and subfolder args.

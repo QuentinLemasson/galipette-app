@@ -1,5 +1,6 @@
 import { symmetricDecrypt, symmetricEncrypt } from "better-auth/crypto";
 import type { SymmetricEncryptOptions } from "better-auth/crypto";
+
 import { inviteLog } from "./invite-logger.js";
 
 /** Logical cookie name passed to `createAuthCookie` (Better Auth adds prefix). */

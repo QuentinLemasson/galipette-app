@@ -3,7 +3,9 @@
  */
 
 import { createRoute } from "@tanstack/react-router";
+
 import { NotFoundRoutePage } from "../pages/NotFoundRoutePage";
+
 import { parseNotFoundSearch } from "./not-found-search";
 import { rootRoute } from "./root";
 

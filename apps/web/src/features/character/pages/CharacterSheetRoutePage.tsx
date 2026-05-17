@@ -3,6 +3,7 @@
  */
 
 import { useParams } from "@tanstack/react-router";
+
 import { CharacterSheetPage } from "./CharacterSheetPage";
 
 export function CharacterSheetRoutePage() {

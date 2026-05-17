@@ -3,6 +3,7 @@
  */
 
 import { Link, Outlet } from "@tanstack/react-router";
+
 import { NavigationTree } from "../../features/wiki/components/NavigationTree";
 
 /**

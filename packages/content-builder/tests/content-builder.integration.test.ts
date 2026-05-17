@@ -1,7 +1,10 @@
-import { describe, expect, it } from "vitest";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+
+import { describe, expect, it } from "vitest";
+
 import { buildContent } from "../src/index.ts";
+
 import { createTempVault, writeVaultMarkdown } from "./helpers/tempVault.ts";
 
 describe("content builder (integration)", () => {

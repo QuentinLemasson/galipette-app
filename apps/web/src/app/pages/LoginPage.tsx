@@ -2,8 +2,9 @@
  * `/login` — Discord sign-in for everyone; invite link required only to register.
  */
 
-import { useCallback, useState } from "react";
 import { useSearch } from "@tanstack/react-router";
+import { useCallback, useState } from "react";
+
 import { authClient } from "../auth/auth-client";
 import { INVITE_HEADER } from "../auth/invite-header";
 import type { LoginSearch } from "../routes/login-search";

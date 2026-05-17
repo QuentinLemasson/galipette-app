@@ -2,8 +2,8 @@
  * Hook resolving a compiled entity from its public URL `slug`.
  */
 
-import { useMemo } from "react";
 import { contentRepository, type CompiledEntity } from "@galipette/compiled-content";
+import { useMemo } from "react";
 
 /**
  * @description Looks up a compiled entity by slug (same string as in entity URLs,

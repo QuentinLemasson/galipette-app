@@ -3,10 +3,10 @@
  */
 
 import "./remark/galipette-mdast.js";
-import type { Root } from "mdast";
-import type { WikiLink } from "mdast";
 import type { CompiledEntity } from "@galipette/content-schema";
 import { resolveReferenceToken } from "@galipette/content-schema";
+import type { Root } from "mdast";
+import type { WikiLink } from "mdast";
 import type { Parent } from "mdast";
 
 function walk(node: Root | Parent, resolve: (operand: string) => CompiledEntity | undefined): void {

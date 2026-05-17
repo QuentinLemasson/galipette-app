@@ -1,7 +1,9 @@
 // routes/index.tsx
 import { createRoute, redirect } from "@tanstack/react-router";
-import { rootRoute } from "./root";
+
 import { authClient } from "../auth/auth-client";
+
+import { rootRoute } from "./root";
 
 export const indexRoute = createRoute({
   getParentRoute: () => rootRoute,

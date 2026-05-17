@@ -2,8 +2,9 @@
  * Single clickable navigation entry for one compiled entity.
  */
 
-import { Link } from "@tanstack/react-router";
 import type { NavigationEntry } from "@galipette/compiled-content";
+import { Link } from "@tanstack/react-router";
+
 import { buildEntityHref } from "../utils/source-path";
 
 type EntityLinkProps = {

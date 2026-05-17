@@ -3,9 +3,10 @@
  * block/inline nodes used in the vault pipeline (paragraphs, headings, wikilinks, …).
  */
 
-import { Fragment, type ReactNode } from "react";
-import { Link } from "@tanstack/react-router";
 import type { CompiledMarkdownAst } from "@galipette/compiled-content";
+import { Link } from "@tanstack/react-router";
+import { Fragment, type ReactNode } from "react";
+
 import { NOT_FOUND_ROUTE } from "../../../common/routing/constants";
 import { buildEntityHref } from "../utils/source-path";
 

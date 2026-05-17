@@ -4,7 +4,9 @@
  */
 
 import { createRoute } from "@tanstack/react-router";
+
 import { EntityPage } from "../../features/wiki/pages/EntityPage";
+
 import { appRoute } from "./app";
 
 /**

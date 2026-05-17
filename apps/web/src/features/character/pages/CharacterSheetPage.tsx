@@ -4,6 +4,7 @@
 
 import { Link } from "@tanstack/react-router";
 import { useMemo, useCallback, useEffect, useState } from "react";
+
 import { fetchCharacter, patchCharacter, type CharacterDto } from "../api";
 import { getSkillSelectOptions, SKILL_OPTION_ENTITY_TYPE } from "../skill-select-options";
 

@@ -1,4 +1,5 @@
 import { createMiddleware } from "hono/factory";
+
 import { auth } from "../lib/auth.js";
 import type { AuthVariables } from "../types/hono-env.js";
 

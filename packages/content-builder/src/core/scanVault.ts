@@ -2,9 +2,10 @@
  * Recursively lists Markdown files under a vault subfolder using fast-glob.
  */
 
-import fg from "fast-glob";
-import { resolve } from "node:path";
 import { stat } from "node:fs/promises";
+import { resolve } from "node:path";
+
+import fg from "fast-glob";
 
 /**
  * Returns sorted absolute paths to every `.md` file under `vaultPath/subFolder`.

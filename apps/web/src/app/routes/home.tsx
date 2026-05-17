@@ -3,7 +3,9 @@
  */
 
 import { createRoute } from "@tanstack/react-router";
+
 import { HomePage } from "../pages/HomePage";
+
 import { appRoute } from "./app";
 
 /**

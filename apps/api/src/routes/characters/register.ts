@@ -1,4 +1,5 @@
 import type { OpenAPIHono } from "@hono/zod-openapi";
+
 import {
   createCharacterRoute,
   deleteCharacterRoute,

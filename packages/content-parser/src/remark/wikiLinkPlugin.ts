@@ -5,6 +5,7 @@
 import "./galipette-mdast.js";
 import type { Parent, Root, Text } from "mdast";
 import type { WikiLink } from "mdast";
+
 import {
   extractObsidianLinkDisplay,
   extractObsidianLinkLeftOperand,

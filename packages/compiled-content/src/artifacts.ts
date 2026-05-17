@@ -3,6 +3,7 @@
  */
 
 import type { CompiledEntity, EntityGraph, SlugIndex } from "@galipette/content-schema";
+
 import entitiesJson from "./data/entities.json" with { type: "json" };
 import graphJson from "./data/graph.json" with { type: "json" };
 import slugIndexJson from "./data/slug-index.json" with { type: "json" };

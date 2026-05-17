@@ -1,6 +1,7 @@
 import { cors } from "hono/cors";
-import { INVITE_HEADER } from "../repositories/invite-tokens.js";
+
 import { parseWebOrigins } from "../lib/cors.js";
+import { INVITE_HEADER } from "../repositories/invite-tokens.js";
 
 export const corsMiddleware = cors({
   origin: (origin) => {

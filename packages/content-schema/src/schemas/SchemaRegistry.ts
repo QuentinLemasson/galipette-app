@@ -2,10 +2,10 @@
  * Central lookup from front matter `type` string to the matching Zod schema.
  */
 
-import { spellSchema } from "./SpellSchema.js";
-import { damageTypeSchema } from "./DamageTypeSchema.js";
 import { afflictionSchema } from "./AfflictionSchema.js";
+import { damageTypeSchema } from "./DamageTypeSchema.js";
 import { ruleSchema } from "./RuleSchema.js";
+import { spellSchema } from "./SpellSchema.js";
 
 /** Maps supported entity type keys to their validation schemas. */
 export const schemaByType = {

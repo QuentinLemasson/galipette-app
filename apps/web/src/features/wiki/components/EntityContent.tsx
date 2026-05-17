@@ -2,9 +2,11 @@
  * Renders a compiled entity's metadata and body from resolved mdast.
  */
 
-import ReactMarkdown from "react-markdown";
 import type { CompiledEntity } from "@galipette/compiled-content";
+import ReactMarkdown from "react-markdown";
+
 import { formatTypeLabel } from "../../../common/utils/format-type-label";
+
 import { CompiledMdast } from "./CompiledMdast";
 
 type EntityContentProps = {

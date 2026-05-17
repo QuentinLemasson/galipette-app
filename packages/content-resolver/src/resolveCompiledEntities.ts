@@ -2,8 +2,7 @@
  * Post-validation step: mdast + merged references with sources, wired to the entity corpus.
  */
 
-import type { Parent } from "mdast";
-import type { Root } from "mdast";
+import { parseEntityMarkdownToAst, resolveWikiLinksInAst } from "@galipette/content-parser";
 import type {
   BrokenWikiLinkRecord,
   CompiledEntity,
@@ -12,7 +11,9 @@ import type {
   EntityReferenceSource,
 } from "@galipette/content-schema";
 import { resolveReferenceToken } from "@galipette/content-schema";
-import { parseEntityMarkdownToAst, resolveWikiLinksInAst } from "@galipette/content-parser";
+import type { Parent } from "mdast";
+import type { Root } from "mdast";
+
 import { collectBrokenWikiLinksForEntity } from "./collectBrokenWikiLinks.js";
 
 function collectWikiOperands(tree: Root): string[] {

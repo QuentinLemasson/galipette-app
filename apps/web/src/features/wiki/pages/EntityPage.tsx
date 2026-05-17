@@ -3,6 +3,7 @@
  */
 
 import { useParams } from "@tanstack/react-router";
+
 import { NotFound } from "../../../common/components/NotFound";
 import { EntityContent } from "../components/EntityContent";
 import { useEntityBySlug } from "../hooks/useEntityBySlug";

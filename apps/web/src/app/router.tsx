@@ -3,14 +3,15 @@
  */
 
 import { createRouter } from "@tanstack/react-router";
-import { rootRoute } from "./routes/root";
-import { homeRoute } from "./routes/home";
-import { characterListRoute, characterSheetRoute } from "./routes/characters";
-import { wikiRoute } from "./routes/wiki";
-import { notFoundRoute } from "./routes/not-found";
+
 import { appRoute } from "./routes/app";
-import { loginRoute } from "./routes/login";
+import { characterListRoute, characterSheetRoute } from "./routes/characters";
+import { homeRoute } from "./routes/home";
 import { indexRoute } from "./routes/index";
+import { loginRoute } from "./routes/login";
+import { notFoundRoute } from "./routes/not-found";
+import { rootRoute } from "./routes/root";
+import { wikiRoute } from "./routes/wiki";
 
 const routeTree = rootRoute.addChildren([
   indexRoute,

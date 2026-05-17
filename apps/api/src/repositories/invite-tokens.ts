@@ -1,5 +1,6 @@
 import { prisma } from "@galipette/database";
 import { APIError, getOAuthState } from "better-auth/api";
+
 import { createToken } from "../lib/create-token.js";
 import { inviteLog, INVITE_OAUTH_STATE_KEY } from "../lib/invite-logger.js";
 import {

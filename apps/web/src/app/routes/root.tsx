@@ -3,6 +3,7 @@
  */
 
 import { createRootRoute } from "@tanstack/react-router";
+
 import { NotFound } from "../../common/components/NotFound";
 import { AppLayout } from "../layout/AppLayout";
 

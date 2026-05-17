@@ -6,6 +6,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+
 import { stringify } from "yaml";
 
 process.env.DATABASE_URL ??= "postgresql://openapi:openapi@127.0.0.1:5432/_openapi_codegen";

@@ -8,7 +8,9 @@ import type {
   EntityReference,
   GraphNode,
 } from "@galipette/content-schema";
+
 import { entities, graph } from "./artifacts.js";
+import { buildNavigationTree, type NavigationCategory } from "./utils/build-navigation-tree.js";
 import {
   buildByIdMap,
   buildBySlugMap,
@@ -16,7 +18,6 @@ import {
   buildReferencerIdsByToken,
 } from "./utils/entity-indexes.js";
 import { buildEdgeAdjacencyMaps, buildGraphNodeByIdMap } from "./utils/graph-indexes.js";
-import { buildNavigationTree, type NavigationCategory } from "./utils/build-navigation-tree.js";
 import { resolveReferenceToken as resolveToken } from "./utils/resolve-reference-token.js";
 
 /** Thrown by {@link contentRepository.requireById} when no entity matches. */

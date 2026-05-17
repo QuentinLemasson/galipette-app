@@ -3,7 +3,9 @@
  */
 
 import { createRoute } from "@tanstack/react-router";
+
 import { LoginPage } from "../pages/LoginPage";
+
 import { parseLoginSearch } from "./login-search";
 import { rootRoute } from "./root";
 

@@ -1,5 +1,6 @@
-import { OpenAPIHono } from "@hono/zod-openapi";
 import { swaggerUI } from "@hono/swagger-ui";
+import { OpenAPIHono } from "@hono/zod-openapi";
+
 import { corsMiddleware } from "./middlewares/cors.js";
 import { requireAuth } from "./middlewares/require-auth.js";
 import { registerAuthRoutes } from "./routes/auth/register.js";

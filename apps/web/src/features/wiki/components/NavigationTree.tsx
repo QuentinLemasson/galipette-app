@@ -3,6 +3,7 @@
  */
 
 import { useNavigationTree } from "../hooks/useNavigationTree";
+
 import { EntityTypeSection } from "./EntityTypeSection";
 
 /**

@@ -1,4 +1,5 @@
 import type { OpenAPIHono } from "@hono/zod-openapi";
+
 import { auth } from "../../lib/auth.js";
 
 export function registerAuthRoutes(app: OpenAPIHono) {

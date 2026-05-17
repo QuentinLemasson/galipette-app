@@ -3,6 +3,7 @@
  */
 
 import { useSearch } from "@tanstack/react-router";
+
 import { NotFound } from "../../common/components/NotFound";
 import type { NotFoundSearch } from "../routes/not-found-search";
 
