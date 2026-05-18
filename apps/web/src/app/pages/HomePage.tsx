@@ -19,7 +19,7 @@ export function HomePage() {
 
   return (
     <section className="home-page">
-      <h1>Welcome</h1>
+      <h1 className="text-2xl font-bold">Welcome</h1>
       <p>
         This MVP validates the compiled-content pipeline by browsing every authored entity from the
         local artifact bundle. Pick an item in the sidebar to read its content.

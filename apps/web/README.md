@@ -6,6 +6,7 @@ Minimal MVP that validates the [`@galipette/compiled-content`](../../packages/co
 
 - **React 19** + **TypeScript**
 - **Vite** (dev server / bundler)
+- **Tailwind CSS v4** (`@tailwindcss/vite`; utilities in `src/index.css` via `@import "tailwindcss"`)
 - **TanStack Router** (code-based routes; entity detail uses a splat on **slug**)
 - **Compiled mdast** (`entity.compiledContent`) rendered via small React components (paragraphs, headings, text, wikilinks, thematic breaks, and a generic fallback for other mdast nodes)
 - **react-markdown** (fallback only when an entity has no `compiledContent`)
@@ -71,7 +72,7 @@ src/
 │   │   └── constants.ts        # `ENTITY_ROUTE_PREFIX`, `NOT_FOUND_ROUTE`
 │   └── utils/
 │       └── format-type-label.ts
-├── index.css                   # Global tokens + base typography
+├── index.css                   # Tailwind import + global tokens + base typography
 └── main.tsx                    # Mounts `<RouterProvider>`; imports `app/router`
 ```
 
