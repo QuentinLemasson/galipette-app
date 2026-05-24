@@ -3,6 +3,12 @@
  */
 
 import { contentRepository } from "@galipette/compiled-content";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@galipette/ui/components/avatar";
+import { Button } from "@galipette/ui/components/button";
 import { Link } from "@tanstack/react-router";
 
 import { formatTypeLabel } from "../../common/utils/format-type-label";
@@ -42,6 +48,14 @@ export function HomePage() {
           </li>
         ))}
       </ul>
+
+      <div className="mt-6 flex flex-wrap items-center gap-4">
+        <Avatar>
+          <AvatarImage src="/vite.svg" alt="Galipette" />
+          <AvatarFallback>GP</AvatarFallback>
+        </Avatar>
+        <Button onClick={() => alert("Test ui Package")}>Test ui Package</Button>
+      </div>
     </section>
   );
 }

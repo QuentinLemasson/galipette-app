@@ -20,6 +20,7 @@
     "build:compiled-content": "pnpm --filter @galipette/compiled-content build",
     "build:database": "pnpm --filter @galipette/database build",
     "build:shared-schemas": "pnpm --filter @galipette/shared-schemas build",
+    "build:ui": "pnpm --filter @galipette/ui build",
     "db:generate": "pnpm --filter @galipette/database db:generate",
     "db:validate": "pnpm --filter @galipette/database db:validate",
     "db:migrate": "pnpm --filter @galipette/database db:migrate",
