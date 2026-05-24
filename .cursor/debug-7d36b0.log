@@ -1,2 +1,0 @@
-{"sessionId":"7d36b0","location":"scripts/create-invite-link.ts:env-check","message":"DATABASE_URL after env load","data":{"hasDatabaseUrl":true,"databaseUrlLength":57},"timestamp":1779011156864,"hypothesisId":"A","runId":"pre-fix"}
-{"sessionId":"7d36b0","location":"scripts/create-invite-link.ts:env-check","message":"DATABASE_URL after env load","data":{"hasDatabaseUrl":true,"databaseUrlLength":57},"timestamp":1779012095982,"hypothesisId":"A","runId":"pre-fix"}
