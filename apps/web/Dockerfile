@@ -9,7 +9,8 @@
 # ---- build ----
 FROM node:24-alpine AS builder
 
-RUN corepack enable && corepack prepare pnpm@11.0.9 --activate
+# Corepack rejects devEngines' semver range (^11.0.9); install pnpm directly instead.
+RUN npm install -g pnpm@11.3.0
 
 WORKDIR /app
 
