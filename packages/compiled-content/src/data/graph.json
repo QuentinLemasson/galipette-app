@@ -1,6 +1,12 @@
 {
   "nodes": [
     {
+      "id": "affliction.blinded",
+      "type": "affliction",
+      "label": "Aveuglé",
+      "sourcePath": "wiki/compendium/afflictions/blinded.md"
+    },
+    {
       "id": "affliction.burned",
       "type": "affliction",
       "label": "Brûlé",
@@ -47,6 +53,12 @@
       "type": "damage-type",
       "label": "Foudre",
       "sourcePath": "wiki/compendium/damage-types/lightning.md"
+    },
+    {
+      "id": "damage.radiant",
+      "type": "damage-type",
+      "label": "Radiance",
+      "sourcePath": "wiki/compendium/damage-types/radiant.md"
     },
     {
       "id": "rule.character.creation",
@@ -211,6 +223,18 @@
     [
       "skill.spell.lightning-arc",
       "stunned"
+    ],
+    [
+      "skill.spell.puppeteer",
+      "Magie Mentale"
+    ],
+    [
+      "skill.spell.solar-ray",
+      "blinded"
+    ],
+    [
+      "skill.spell.solar-ray",
+      "radiant"
     ]
   ]
 }

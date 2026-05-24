@@ -1,5 +1,49 @@
 [
   {
+    "id": "affliction.blinded",
+    "type": "affliction",
+    "name": "Aveuglé",
+    "content": "# Aveuglé\n\n## Effet\nLe personnage ne peut plus utiliser sa vue, et donc ne peut rien percevoir via ce sens.",
+    "slug": "wiki/compendium/afflictions/blinded",
+    "sourcePath": "wiki/compendium/afflictions/blinded.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Aveuglé"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Effet"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le personnage ne peut plus utiliser sa vue, et donc ne peut rien percevoir via ce sens."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "id": "affliction.burned",
     "type": "affliction",
     "name": "Brûlé",
@@ -233,6 +277,42 @@
             {
               "type": "text",
               "value": "Les dégâts électriques."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "damage.radiant",
+    "type": "damage-type",
+    "name": "Radiance",
+    "content": "# Feu  \n  \nLes dégâts de lumière.",
+    "slug": "wiki/compendium/damage-types/radiant",
+    "sourcePath": "wiki/compendium/damage-types/radiant.md",
+    "references": [],
+    "data": {
+      "color": "#ffdd11"
+    },
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Feu"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Les dégâts de lumière."
             }
           ]
         }
@@ -657,7 +737,7 @@
     "id": "skill.spell.fiery-shot",
     "type": "spell",
     "name": "Trait de feu",
-    "content": "# Trait de feu\r\n\r\nTire un trait de feu sur une cible qui subit 2 dégâts de [[fire|feu]].\r\nSur un effet critique, elle peut être [[burned|brûlée]].",
+    "content": "# Trait de feu\n\nTire un trait de feu sur une cible qui subit 2 dégâts de [[fire|feu]].\nSur un effet critique, elle peut être [[burned|brûlée]].",
     "slug": "wiki/skills/spells/fire-bolt",
     "sourcePath": "wiki/skills/spells/fire-bolt.md",
     "references": [
@@ -720,7 +800,7 @@
             },
             {
               "type": "text",
-              "value": ".\r\nSur un effet critique, elle peut être "
+              "value": ".\nSur un effet critique, elle peut être "
             },
             {
               "type": "wikiLink",
@@ -768,7 +848,7 @@
     "id": "skill.spell.lightning-arc",
     "type": "spell",
     "name": "Arc Electrique",
-    "content": "# Arc Electrique\r\n\r\nCrée un arc d'éclairs jusqu'à une cible visible. Elle subit 2 dégâts [[lightning|électrique]].\r\nSur un effet critique, elle peut être [[stunned|étourdie]].",
+    "content": "# Arc Electrique\n\nCrée un arc d'éclairs jusqu'à une cible visible. Elle subit 2 dégâts [[lightning|électrique]].\nSur un effet critique, elle peut être [[stunned|étourdie]].",
     "slug": "wiki/skills/spells/lightning-arc",
     "sourcePath": "wiki/skills/spells/lightning-arc.md",
     "references": [
@@ -831,7 +911,7 @@
             },
             {
               "type": "text",
-              "value": ".\r\nSur un effet critique, elle peut être "
+              "value": ".\nSur un effet critique, elle peut être "
             },
             {
               "type": "wikiLink",
@@ -879,7 +959,7 @@
     "id": "skill.spell.omen",
     "type": "spell",
     "name": "Présage",
-    "content": "# Présage\r\n\r\nAu moment de choisir le sort, le personnage choisi également de lui associer une condition\r\n\r\n- lecture dans les étoiles\r\n- lecture dans les ossements\r\n- lecture dans l'eau\r\n- etc\r\n\r\nLe lanceur note le résultat de chacun de ses dés.\r\nIl peut à tout moment, gratuitement, remplacer le résultat d'un lancé (un seul dé) par l'un de ses dés de présage - ce dernier est consommé\r\n\r\n_Note de jeu - il est de convenance d'assumer que le dé remplacé est en faveur du joueur - par exemple, si le joueur remplace l'un dé dés d'un adversaire par un 1, ce sera le dé avec la plus grande valeur_",
+    "content": "# Présage\n\nAu moment de choisir le sort, le personnage choisi également de lui associer une condition\n\n- lecture dans les étoiles\n- lecture dans les ossements\n- lecture dans l'eau\n- etc\n\nLe lanceur note le résultat de chacun de ses dés.\nIl peut à tout moment, gratuitement, remplacer le résultat d'un lancé (un seul dé) par l'un de ses dés de présage - ce dernier est consommé\n\n_Note de jeu - il est de convenance d'assumer que le dé remplacé est en faveur du joueur - par exemple, si le joueur remplace l'un dé dés d'un adversaire par un 1, ce sera le dé avec la plus grande valeur_",
     "slug": "wiki/skills/spells/omen",
     "sourcePath": "wiki/skills/spells/omen.md",
     "references": [],
@@ -983,7 +1063,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Le lanceur note le résultat de chacun de ses dés.\r\nIl peut à tout moment, gratuitement, remplacer le résultat d'un lancé (un seul dé) par l'un de ses dés de présage - ce dernier est consommé"
+              "value": "Le lanceur note le résultat de chacun de ses dés.\nIl peut à tout moment, gratuitement, remplacer le résultat d'un lancé (un seul dé) par l'un de ses dés de présage - ce dernier est consommé"
             }
           ]
         },
@@ -1033,10 +1113,18 @@
     "id": "skill.spell.puppeteer",
     "type": "spell",
     "name": "Marionnettiste",
-    "content": "# Marionnettiste",
+    "content": "# Marionnettiste\n\nEtabli un lien mental avec la cible. Tant que ce lien est actif, le lanceur peut utiliser une action pour forcer la cible à effectuer une action de son choix.\nLa cible peut neutraliser les effets du lien pour 1 tour grâce à jet d'opposition Courage vs Magie.\nLe lien requiert de la focalisation.\n\nEchec - 1 dégat psychique + affliction\nEffet néfaste - 1 dégat psychique + affliction\nEffet critique - affliction mentale | augmentation de la quantité d'actions (2 EF)\nLien brisé - 2 dégats psychiques + Etourdi 2\n\n# Améliorations\n\n## Extension de portée\nLe lanceur peut canaliser +1/2/3/4 pour modifier la porté à \"courte\" / \"moyenne\" / \"grande\" / \"très grande\". \n\n## Majoration d'influence\nLe lanceur peut canaliser +2 répétable. Pour chaque : augmente le nombre d'actions imposable de 1.\n\n## Contrôle total\nSi le lanceur parviens à contrôler toutes les actions de la cibles grâce à une seule action, il peut alors canaliser X et concentrer X. X étant la volonté ou sauvagerie (si applicable) de la cible.\n\nEn cas de réussite, la cible ne peut plus se libérer par elle même , le sort n'est plus focalisé, et il devient persistant.\nLa cible devient incapable d'effectuer la moindre action par elle même.\n\nEffet Critique - la cible subit -1 à tous les jets pour se libérer\nEchec - le lien est brisé\nEffet néfaste - 1 dégat psychique + affliction",
     "slug": "wiki/skills/spells/puppeteer",
     "sourcePath": "wiki/skills/spells/puppeteer.md",
-    "references": [],
+    "references": [
+      {
+        "operand": "Magie Mentale",
+        "refSources": [
+          "frontMatter"
+        ],
+        "targetLabel": "Magie Mentale"
+      }
+    ],
     "data": {},
     "compiledContent": {
       "type": "root",
@@ -1050,6 +1138,109 @@
               "value": "Marionnettiste"
             }
           ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Etabli un lien mental avec la cible. Tant que ce lien est actif, le lanceur peut utiliser une action pour forcer la cible à effectuer une action de son choix.\nLa cible peut neutraliser les effets du lien pour 1 tour grâce à jet d'opposition Courage vs Magie.\nLe lien requiert de la focalisation."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Echec - 1 dégat psychique + affliction\nEffet néfaste - 1 dégat psychique + affliction\nEffet critique - affliction mentale | augmentation de la quantité d'actions (2 EF)\nLien brisé - 2 dégats psychiques + Etourdi 2"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Améliorations"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Extension de portée"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le lanceur peut canaliser +1/2/3/4 pour modifier la porté à \"courte\" / \"moyenne\" / \"grande\" / \"très grande\"."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Majoration d'influence"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le lanceur peut canaliser +2 répétable. Pour chaque : augmente le nombre d'actions imposable de 1."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Contrôle total"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Si le lanceur parviens à contrôler toutes les actions de la cibles grâce à une seule action, il peut alors canaliser X et concentrer X. X étant la volonté ou sauvagerie (si applicable) de la cible."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "En cas de réussite, la cible ne peut plus se libérer par elle même , le sort n'est plus focalisé, et il devient persistant.\nLa cible devient incapable d'effectuer la moindre action par elle même."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Effet Critique - la cible subit -1 à tous les jets pour se libérer\nEchec - le lien est brisé\nEffet néfaste - 1 dégat psychique + affliction"
+            }
+          ]
         }
       ]
     }
@@ -1058,11 +1249,39 @@
     "id": "skill.spell.solar-ray",
     "type": "spell",
     "name": "Rayon Solaire",
-    "content": "# Rayon Solaire",
+    "content": "# Rayon Solaire\n\nTire un rayon de lumière sur une cible qui subit 2 dégâts [[radiant|radiants]].\nSur un effet critique, elle peut être [[blinded|aveuglée]].",
     "slug": "wiki/skills/spells/solar-ray",
     "sourcePath": "wiki/skills/spells/solar-ray.md",
-    "references": [],
-    "data": {},
+    "references": [
+      {
+        "operand": "blinded",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Aveuglé",
+        "targetEntityId": "affliction.blinded",
+        "targetEntitySlug": "wiki/compendium/afflictions/blinded"
+      },
+      {
+        "operand": "radiant",
+        "refSources": [
+          "body",
+          "frontMatter"
+        ],
+        "targetLabel": "Radiance",
+        "targetEntityId": "damage.radiant",
+        "targetEntitySlug": "wiki/compendium/damage-types/radiant"
+      }
+    ],
+    "data": {
+      "damage": {
+        "type": "damage.radiant",
+        "amount": 2
+      },
+      "afflictions": [
+        "affliction.blinded"
+      ]
+    },
     "compiledContent": {
       "type": "root",
       "children": [
@@ -1073,6 +1292,39 @@
             {
               "type": "text",
               "value": "Rayon Solaire"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Tire un rayon de lumière sur une cible qui subit 2 dégâts "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "radiant",
+              "displayLabel": "radiants",
+              "value": "radiants",
+              "targetEntityId": "damage.radiant",
+              "targetEntitySlug": "wiki/compendium/damage-types/radiant"
+            },
+            {
+              "type": "text",
+              "value": ".\nSur un effet critique, elle peut être "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "blinded",
+              "displayLabel": "aveuglée",
+              "value": "aveuglée",
+              "targetEntityId": "affliction.blinded",
+              "targetEntitySlug": "wiki/compendium/afflictions/blinded"
+            },
+            {
+              "type": "text",
+              "value": "."
             }
           ]
         }

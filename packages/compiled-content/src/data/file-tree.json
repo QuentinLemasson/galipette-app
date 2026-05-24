@@ -20,6 +20,14 @@
             "children": [
               {
                 "kind": "entity",
+                "id": "affliction.blinded",
+                "type": "affliction",
+                "name": "Aveuglé",
+                "slug": "wiki/compendium/afflictions/blinded",
+                "sourcePath": "wiki/compendium/afflictions/blinded.md"
+              },
+              {
+                "kind": "entity",
                 "id": "affliction.burned",
                 "type": "affliction",
                 "name": "Brûlé",
@@ -65,6 +73,14 @@
                 "name": "Foudre",
                 "slug": "wiki/compendium/damage-types/lightning",
                 "sourcePath": "wiki/compendium/damage-types/lightning.md"
+              },
+              {
+                "kind": "entity",
+                "id": "damage.radiant",
+                "type": "damage-type",
+                "name": "Radiance",
+                "slug": "wiki/compendium/damage-types/radiant",
+                "sourcePath": "wiki/compendium/damage-types/radiant.md"
               }
             ]
           }

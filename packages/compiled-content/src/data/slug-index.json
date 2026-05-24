@@ -1,10 +1,12 @@
 {
   "slugToId": {
+    "wiki/compendium/afflictions/blinded": "affliction.blinded",
     "wiki/compendium/afflictions/burned": "affliction.burned",
     "wiki/compendium/afflictions/stunned": "affliction.stunned",
     "wiki/compendium/afflictions/vulnerable": "affliction.vulnerable",
     "wiki/compendium/damage-types/fire": "damage.fire",
     "wiki/compendium/damage-types/lightning": "damage.lightning",
+    "wiki/compendium/damage-types/radiant": "damage.radiant",
     "wiki/creatures/kuromaru": "creature.kuromaru",
     "wiki/creatures/ryuk": "creature.ryuk",
     "wiki/creatures/shiromaru": "creature.shiromaru",
@@ -33,11 +35,13 @@
     "wiki/skills/techniques/straight-line": "skill.technique.straight-line"
   },
   "idToSlug": {
+    "affliction.blinded": "wiki/compendium/afflictions/blinded",
     "affliction.burned": "wiki/compendium/afflictions/burned",
     "affliction.stunned": "wiki/compendium/afflictions/stunned",
     "affliction.vulnerable": "wiki/compendium/afflictions/vulnerable",
     "damage.fire": "wiki/compendium/damage-types/fire",
     "damage.lightning": "wiki/compendium/damage-types/lightning",
+    "damage.radiant": "wiki/compendium/damage-types/radiant",
     "creature.kuromaru": "wiki/creatures/kuromaru",
     "creature.ryuk": "wiki/creatures/ryuk",
     "creature.shiromaru": "wiki/creatures/shiromaru",

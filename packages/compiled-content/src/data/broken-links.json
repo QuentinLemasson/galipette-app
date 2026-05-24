@@ -8,5 +8,15 @@
     "origins": [
       "markdown"
     ]
+  },
+  {
+    "entityId": "skill.spell.puppeteer",
+    "sourcePath": "wiki/skills/spells/puppeteer.md",
+    "entitySlug": "wiki/skills/spells/puppeteer",
+    "operand": "Magie Mentale",
+    "linkText": "Magie Mentale",
+    "origins": [
+      "frontMatter"
+    ]
   }
 ]
