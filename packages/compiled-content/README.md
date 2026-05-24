@@ -21,11 +21,12 @@ Internal index construction lives under `src/utils/`; the public surface remains
 | `entities`                               | Full `CompiledEntity[]` from `entities.json` (includes optional **`compiledContent`** mdast JSON and structured **`references`**).                                                                                                   |
 | `graph`                                  | `EntityGraph` (`nodes` + directed `edges`) from `graph.json`.                                                                                                                                                                        |
 | `slugIndex`                              | `{ slugToId, idToSlug }` maps from `slug-index.json` (built by content-builder).                                                                                                                                                     |
+| `fileTree`                               | Precompiled vault-like folder tree from `file-tree.json` (folder + entity nodes).                                                                                                                                                    |
 | `contentRepository`                      | Query helpers over those artifacts.                                                                                                                                                                                                  |
 | On-disk only                             | **`broken-links.json`** — written next to `entities.json` by the builder (flat list of unresolved operands for debugging). Not imported by this package yet; read the file from `src/data/` after a build if you need it in tooling. |
 | `resolveReferenceToken`                  | Map wikilink operands to entities (see below).                                                                                                                                                                                       |
 | `EntityNotFoundError`                    | Thrown by `requireById` / `requireGraphNode`.                                                                                                                                                                                        |
-| `NavigationEntry` / `NavigationCategory` | Lightweight types for the navigation tree.                                                                                                                                                                                           |
+| `NavigationEntry` / `NavigationCategory` | Legacy type-grouped navigation tree types (kept for compatibility).                                                                                                                                                                  |
 
 Each `references` entry is a **`EntityReference`**: `operand` (same token as in `graph.json` edges), `refSources`, **`targetLabel`**, and when the operand resolves to an entity, **`targetEntityId`** and **`targetEntitySlug`**. Use this shape as the standard cross-link API in the app. Each entity may also carry optional **`compiledContent`**: the serialized mdast root (with `wikiLink` nodes); the web app renders that instead of re-parsing `content` when present.
 
@@ -35,15 +36,16 @@ Rows in **`broken-links.json`** match **`BrokenWikiLinkRecord`** from `@galipett
 
 ## Snippets
 
-### `entities` / `graph` / `slugIndex`
+### `entities` / `graph` / `slugIndex` / `fileTree`
 
 ```ts
-import { entities, graph, slugIndex } from "@galipette/compiled-content";
+import { entities, fileTree, graph, slugIndex } from "@galipette/compiled-content";
 
 const first = entities[0];
 const edgeCount = graph.edges.length;
 const id = slugIndex.slugToId["wiki/skills/spells/lightning-arc"];
 const slug = slugIndex.idToSlug["spell.lightning-arc"];
+const rootName = fileTree.root.name;
 ```
 
 ### `contentRepository.getAll()`
@@ -225,6 +227,18 @@ import { contentRepository } from "@galipette/compiled-content";
 const entity = contentRepository.getBySourcePath("wiki/skills/spells/lightning-arc.md");
 ```
 
+### `contentRepository.getFileTree`
+
+Returns the precompiled vault-like tree from `file-tree.json`.
+
+```ts
+import { contentRepository } from "@galipette/compiled-content";
+
+const fileTree = contentRepository.getFileTree();
+const root = fileTree.root;
+console.log(root.sourcePath, root.slug);
+```
+
 ### `contentRepository.getNavigationTree`
 
 Lightweight projection of the corpus suitable for menus / link rendering: entities are grouped by `type` and each entry exposes `id`, `type`, `name`, **`slug`** (for `/entity/...` links), and `sourcePath` (vault file path; no body or type-specific `data`). Categories are sorted alphabetically by `type`; entries within a category are sorted by `name` (locale-aware).
@@ -254,4 +268,4 @@ const damageType = resolveReferenceToken("lightning");
 
 ## Build
 
-From the workspace root, build this package with the workspace script, or `pnpm --filter @galipette/compiled-content build`. Artifacts under `src/data/` (`entities.json`, `graph.json`, **`slug-index.json`**, **`broken-links.json`**) are produced by `@galipette/content-builder` (after `@galipette/content-resolver` enriches entities with mdast, merged references, and aggregates unresolved wiki operands into `brokenWikiLinks` for the JSON file).
+From the workspace root, build this package with the workspace script, or `pnpm --filter @galipette/compiled-content build`. Artifacts under `src/data/` (`entities.json`, `graph.json`, **`slug-index.json`**, **`file-tree.json`**, **`broken-links.json`**) are produced by `@galipette/content-builder` (after `@galipette/content-resolver` enriches entities with mdast, merged references, and aggregates unresolved wiki operands into `brokenWikiLinks` for the JSON file).

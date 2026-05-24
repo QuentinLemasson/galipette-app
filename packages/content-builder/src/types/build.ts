@@ -5,6 +5,7 @@
 import type {
   CompiledEntity,
   EntityGraph,
+  FileTree,
   SlugIndex,
   BrokenWikiLinkRecord,
 } from "@galipette/content-schema";
@@ -23,6 +24,7 @@ export type BuildContentOptions = {
 export type BuildDiagnostics = {
   markdownFilesScanned: number;
   outputFilePath: string;
+  fileTreeFilePath: string;
   slugIndexFilePath: string;
   brokenLinksFilePath: string;
   errorLogPath?: string;
@@ -32,6 +34,7 @@ export type BuildDiagnostics = {
 export type BuildResult = {
   entities: CompiledEntity[];
   graph: EntityGraph;
+  fileTree: FileTree;
   slugIndex: SlugIndex;
   brokenWikiLinks: BrokenWikiLinkRecord[];
   diagnostics: BuildDiagnostics;

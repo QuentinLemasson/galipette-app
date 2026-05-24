@@ -15,6 +15,16 @@ export function graphPathFromEntitiesPath(entitiesJsonPath: string): string {
 }
 
 /**
+ * Resolves the precompiled file-tree artifact path next to `entities.json`.
+ *
+ * @param entitiesJsonPath - Absolute or resolved path to entities.json.
+ * @returns Absolute path to file-tree.json in the same directory.
+ */
+export function fileTreePathFromEntitiesPath(entitiesJsonPath: string): string {
+  return resolve(dirname(entitiesJsonPath), "file-tree.json");
+}
+
+/**
  * Resolves the slug ↔ id index artifact path next to the entities JSON file.
  *
  * @param entitiesJsonPath - Absolute or resolved path to entities.json.

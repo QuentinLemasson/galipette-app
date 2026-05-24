@@ -6,17 +6,29 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { dirname } from "node:path";
 
 import { resolveCompiledEntities } from "@galipette/content-resolver";
-import type { CompiledEntity, EntityGraph } from "@galipette/content-schema";
+import type {
+  CompiledEntity,
+  EntityGraph,
+  FolderIndexFrontmatter,
+} from "@galipette/content-schema";
 
 import { loadEnv } from "../loadEnv";
 import { buildErrorLogPath, defaultCompiledContentPath } from "../paths.ts";
 import type { BuildContentOptions, BuildResult } from "../types/build.ts";
 import {
+  fileTreePathFromEntitiesPath,
   slugIndexPathFromEntitiesPath,
   brokenLinksPathFromEntitiesPath,
 } from "../utils/artifactPaths.ts";
 
 import { buildEntityGraph } from "./buildEntityGraph.ts";
+import { buildFileTree } from "./buildFileTree.ts";
+import {
+  folderPathFromNotePath,
+  isFolderIndexFile,
+  normalizeVaultPath,
+  parseFolderIndexFrontmatter,
+} from "./folderIndex.ts";
 import { parseFile } from "./parseFile.ts";
 import {
   collectObsidianReferencesFromFrontmatter,
@@ -26,10 +38,9 @@ import { scanVault } from "./scanVault.ts";
 import { validateEntity } from "./validateEntity.ts";
 import { writeCompiledContent } from "./writeCompiledContent.ts";
 
-
 /**
  * Scans the vault, validates every Markdown entity, aggregates errors, then writes
- * `entities.json`, `graph.json`, `slug-index.json`, `broken-links.json`, or a consolidated error log under `logs/` on failure.
+ * `entities.json`, `graph.json`, `slug-index.json`, `file-tree.json`, `broken-links.json`, or a consolidated error log under `logs/` on failure.
  *
  * @param options - Vault location, subfolder to scan, and optional output override.
  * @returns Compiled entities, lightweight graph, slug index, and diagnostic counters/paths.
@@ -42,6 +53,7 @@ export async function buildContent(options: BuildContentOptions): Promise<BuildR
   const fmOperandsPerEntity: string[][] = [];
   const knownIds = new Map<string, string>();
   const knownSlugs = new Map<string, string>();
+  const folderIndexes = new Map<string, FolderIndexFrontmatter>();
   const errors: string[] = [];
 
   const outputPath = options.outputFilePath ?? defaultCompiledContentPath;
@@ -50,6 +62,12 @@ export async function buildContent(options: BuildContentOptions): Promise<BuildR
   for (const filePath of markdownFiles) {
     try {
       const parsedFile = await parseFile(filePath, options.vaultPath);
+      if (isFolderIndexFile(parsedFile.sourcePath)) {
+        const folderPath = folderPathFromNotePath(parsedFile.sourcePath);
+        const metadata = parseFolderIndexFrontmatter(parsedFile);
+        folderIndexes.set(folderPath, metadata);
+        continue;
+      }
       const fmOperands = collectObsidianReferencesFromFrontmatter(parsedFile.frontmatter);
       const normalizedFrontmatter = normalizeObsidianFrontmatter(parsedFile.frontmatter);
       const entity = validateEntity(normalizedFrontmatter, parsedFile);
@@ -109,18 +127,32 @@ export async function buildContent(options: BuildContentOptions): Promise<BuildR
   const { entities, brokenWikiLinks } = resolveCompiledEntities(pending, validatedEntities);
 
   const graph: EntityGraph = buildEntityGraph(entities);
+  const fileTree = buildFileTree({
+    entities,
+    folderIndexes,
+    scanRoot: normalizeVaultPath(options.subFolder),
+  });
 
-  const slugIndex = await writeCompiledContent(entities, outputPath, graph, brokenWikiLinks);
+  const slugIndex = await writeCompiledContent(
+    entities,
+    outputPath,
+    graph,
+    brokenWikiLinks,
+    fileTree,
+  );
+  const fileTreeFilePath = fileTreePathFromEntitiesPath(outputPath);
   const slugIndexFilePath = slugIndexPathFromEntitiesPath(outputPath);
   const brokenLinksFilePath = brokenLinksPathFromEntitiesPath(outputPath);
   return {
     entities,
     graph,
+    fileTree,
     slugIndex,
     brokenWikiLinks,
     diagnostics: {
       markdownFilesScanned: markdownFiles.length,
       outputFilePath: outputPath,
+      fileTreeFilePath,
       slugIndexFilePath,
       brokenLinksFilePath,
     },

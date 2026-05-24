@@ -5,6 +5,13 @@ export {
   compiledMarkdownAstSchema,
   createEntitySchema,
 } from "./schemas/EntitySchema.js";
+export {
+  folderIndexFrontmatterSchema,
+  fileTreeEntityNodeSchema,
+  fileTreeFolderNodeSchema,
+  fileTreeNodeSchema,
+  fileTreeSchema,
+} from "./schemas/FileTreeSchema.js";
 export { resolveReferenceToken } from "./resolve-reference-token.js";
 export { afflictionSchema } from "./schemas/AfflictionSchema.js";
 export { damageTypeSchema } from "./schemas/DamageTypeSchema.js";
@@ -25,4 +32,9 @@ export type {
   ParsedMarkdownFile,
   BrokenWikiLinkOrigin,
   BrokenWikiLinkRecord,
+  FolderIndexFrontmatter,
+  FileTreeEntityNode,
+  FileTreeFolderNode,
+  FileTreeNode,
+  FileTree,
 } from "./types/Entity.js";

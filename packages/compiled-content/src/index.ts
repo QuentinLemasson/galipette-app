@@ -8,11 +8,15 @@ export type {
   EntityGraph,
   EntityReference,
   EntityReferenceSource,
+  FileTree,
+  FileTreeEntityNode,
+  FileTreeFolderNode,
+  FileTreeNode,
   GraphNode,
   SlugIndex,
 } from "@galipette/content-schema";
 
-export { entities, graph, slugIndex } from "./artifacts.js";
+export { entities, fileTree, graph, slugIndex } from "./artifacts.js";
 export {
   contentRepository,
   resolveReferenceToken,

@@ -1,6 +1,12 @@
 {
   "nodes": [
     {
+      "id": "affliction.burned",
+      "type": "affliction",
+      "label": "Brûlé",
+      "sourcePath": "wiki/compendium/afflictions/burned.md"
+    },
+    {
       "id": "affliction.stunned",
       "type": "affliction",
       "label": "Étourdi",
@@ -11,6 +17,30 @@
       "type": "affliction",
       "label": "Vulnérable",
       "sourcePath": "wiki/compendium/afflictions/vulnerable.md"
+    },
+    {
+      "id": "creature.kuromaru",
+      "type": "creature",
+      "label": "Kuromaru",
+      "sourcePath": "wiki/creatures/Kuromaru.md"
+    },
+    {
+      "id": "creature.ryuk",
+      "type": "creature",
+      "label": "Ryuk",
+      "sourcePath": "wiki/creatures/Ryuk.md"
+    },
+    {
+      "id": "creature.shiromaru",
+      "type": "creature",
+      "label": "Shiromaru",
+      "sourcePath": "wiki/creatures/Shiromaru.md"
+    },
+    {
+      "id": "damage.fire",
+      "type": "damage-type",
+      "label": "Feu",
+      "sourcePath": "wiki/compendium/damage-types/fire.md"
     },
     {
       "id": "damage.lightning",
@@ -25,15 +55,162 @@
       "sourcePath": "wiki/rules/Creer son Personnage.md"
     },
     {
-      "id": "spell.lightning-arc",
+      "id": "skill.canalization.canalized-faith",
+      "type": "skill",
+      "label": "Croyance canalisée",
+      "sourcePath": "wiki/skills/canalization/canalized-faith.md"
+    },
+    {
+      "id": "skill.canalization.canalized-rage",
+      "type": "skill",
+      "label": "Rage canalisée",
+      "sourcePath": "wiki/skills/canalization/canalized-rage.md"
+    },
+    {
+      "id": "skill.canalization.critical-synergy",
+      "type": "skill",
+      "label": "Synergie critique",
+      "sourcePath": "wiki/skills/canalization/critical-synergy.md"
+    },
+    {
+      "id": "skill.canalization.gift-of-life",
+      "type": "skill",
+      "label": "Don de vie",
+      "sourcePath": "wiki/skills/canalization/gift-of-life.md"
+    },
+    {
+      "id": "skill.spell.clairvoyant-eye",
+      "type": "spell",
+      "label": "Oeil clairvoyant",
+      "sourcePath": "wiki/skills/spells/clairvoyant-eye.md"
+    },
+    {
+      "id": "skill.spell.detect-magic",
+      "type": "spell",
+      "label": "Détection de la Magie",
+      "sourcePath": "wiki/skills/spells/detect-magic.md"
+    },
+    {
+      "id": "skill.spell.elemental-spark",
+      "type": "spell",
+      "label": "Flammiche élémentaire",
+      "sourcePath": "wiki/skills/spells/elemental-spark.md"
+    },
+    {
+      "id": "skill.spell.elemental-weapon",
+      "type": "spell",
+      "label": "Arme élémentaire",
+      "sourcePath": "wiki/skills/spells/elemental-weapon.md"
+    },
+    {
+      "id": "skill.spell.fiery-shot",
+      "type": "spell",
+      "label": "Trait de feu",
+      "sourcePath": "wiki/skills/spells/fire-bolt.md"
+    },
+    {
+      "id": "skill.spell.healing",
+      "type": "spell",
+      "label": "Soin",
+      "sourcePath": "wiki/skills/spells/healing.md"
+    },
+    {
+      "id": "skill.spell.lightning-arc",
       "type": "spell",
       "label": "Arc Electrique",
       "sourcePath": "wiki/skills/spells/lightning-arc.md"
+    },
+    {
+      "id": "skill.spell.nausea-resistance",
+      "type": "spell",
+      "label": "Résistance à la nausée",
+      "sourcePath": "wiki/skills/spells/nausea-resistance.md"
+    },
+    {
+      "id": "skill.spell.omen",
+      "type": "spell",
+      "label": "Présage",
+      "sourcePath": "wiki/skills/spells/omen.md"
+    },
+    {
+      "id": "skill.spell.psyche-alteration",
+      "type": "spell",
+      "label": "Altération de la psyché",
+      "sourcePath": "wiki/skills/spells/psyche-alteration.md"
+    },
+    {
+      "id": "skill.spell.puppeteer",
+      "type": "spell",
+      "label": "Marionnettiste",
+      "sourcePath": "wiki/skills/spells/puppeteer.md"
+    },
+    {
+      "id": "skill.spell.solar-ray",
+      "type": "spell",
+      "label": "Rayon Solaire",
+      "sourcePath": "wiki/skills/spells/solar-ray.md"
+    },
+    {
+      "id": "skill.spell.spirit-summoning",
+      "type": "spell",
+      "label": "Invocation d'Esprit",
+      "sourcePath": "wiki/skills/spells/spirit-summoning.md"
+    },
+    {
+      "id": "skill.spell.summoning",
+      "type": "spell",
+      "label": "Invocation",
+      "sourcePath": "wiki/skills/spells/summoning.md"
+    },
+    {
+      "id": "skill.spell.wind-blessing",
+      "type": "spell",
+      "label": "Bénédiction des vents",
+      "sourcePath": "wiki/skills/spells/wind-blessing.md"
+    },
+    {
+      "id": "skill.technique.counter-attack",
+      "type": "technique",
+      "label": "Contre-Attaque",
+      "sourcePath": "wiki/skills/techniques/counter-attack.md"
+    },
+    {
+      "id": "skill.technique.lightning-draw",
+      "type": "technique",
+      "label": "Dégainage Eclair",
+      "sourcePath": "wiki/skills/techniques/lightning-draw.md"
+    },
+    {
+      "id": "skill.technique.straight-line",
+      "type": "technique",
+      "label": "Ligne Droite",
+      "sourcePath": "wiki/skills/techniques/straight-line.md"
     }
   ],
   "edges": [
-    ["rule.character.creation", "Race"],
-    ["spell.lightning-arc", "lightning"],
-    ["spell.lightning-arc", "stunned"]
+    [
+      "affliction.burned",
+      "fire"
+    ],
+    [
+      "rule.character.creation",
+      "Race"
+    ],
+    [
+      "skill.spell.fiery-shot",
+      "burned"
+    ],
+    [
+      "skill.spell.fiery-shot",
+      "fire"
+    ],
+    [
+      "skill.spell.lightning-arc",
+      "lightning"
+    ],
+    [
+      "skill.spell.lightning-arc",
+      "stunned"
+    ]
   ]
 }

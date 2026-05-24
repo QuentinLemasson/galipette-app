@@ -7,10 +7,12 @@ import { z } from "zod";
 import { createEntitySchema } from "./EntitySchema.js";
 
 const spellSpecificSchema = {
-  damage: z.object({
-    type: z.string().min(1),
-    amount: z.number(),
-  }),
+  damage: z
+    .object({
+      type: z.string().min(1),
+      amount: z.number(),
+    })
+    .optional(),
   afflictions: z.array(z.string().min(1)).optional(),
 } satisfies z.ZodRawShape;
 

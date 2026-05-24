@@ -9,6 +9,7 @@ import type {
   BrokenWikiLinkRecord,
   CompiledEntity,
   EntityGraph,
+  FileTree,
   SlugIndex,
 } from "@galipette/content-schema";
 
@@ -23,12 +24,13 @@ export function buildSlugIndex(entities: CompiledEntity[]): SlugIndex {
 }
 
 /**
- * Writes `entities.json`, `graph.json`, `slug-index.json`, and `broken-links.json` under the output directory.
+ * Writes `entities.json`, `graph.json`, `slug-index.json`, `file-tree.json`, and `broken-links.json` under the output directory.
  *
  * @param entities - Final entity array including references for traceability.
  * @param outputFilePath - Absolute path for the entities artifact file.
  * @param graph - Lightweight nodes and edges derived from the same build pass.
  * @param brokenWikiLinks - Flat list of unresolved wiki operands (debugging).
+ * @param fileTree - Precompiled vault-like folder tree for navigation.
  * @returns The slug/id maps written to `slug-index.json`.
  */
 export async function writeCompiledContent(
@@ -36,6 +38,7 @@ export async function writeCompiledContent(
   outputFilePath: string,
   graph: EntityGraph,
   brokenWikiLinks: readonly BrokenWikiLinkRecord[],
+  fileTree: FileTree,
 ): Promise<SlugIndex> {
   const slugIndex = buildSlugIndex(entities);
   const outDir = dirname(outputFilePath);
@@ -43,6 +46,7 @@ export async function writeCompiledContent(
   await writeFile(outputFilePath, JSON.stringify(entities, null, 2), "utf8");
   await writeFile(resolve(outDir, "graph.json"), JSON.stringify(graph, null, 2), "utf8");
   await writeFile(resolve(outDir, "slug-index.json"), JSON.stringify(slugIndex, null, 2), "utf8");
+  await writeFile(resolve(outDir, "file-tree.json"), JSON.stringify(fileTree, null, 2), "utf8");
   await writeFile(
     resolve(outDir, "broken-links.json"),
     JSON.stringify(brokenWikiLinks, null, 2),

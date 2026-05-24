@@ -4,6 +4,7 @@
 
 export {
   graphPathFromEntitiesPath,
+  fileTreePathFromEntitiesPath,
   slugIndexPathFromEntitiesPath,
   brokenLinksPathFromEntitiesPath,
 } from "../utils/artifactPaths.ts";
@@ -85,6 +86,7 @@ export function printSuccessSummary(params: {
   graphEdgeCount: number;
   entitiesJsonPath: string;
   graphJsonPath: string;
+  fileTreeJsonPath: string;
   slugIndexJsonPath: string;
   brokenLinksJsonPath: string;
 }): void {
@@ -96,6 +98,7 @@ export function printSuccessSummary(params: {
   process.stdout.write("\n");
   printRow("Entities file", params.entitiesJsonPath);
   printRow("Graph file", params.graphJsonPath);
+  printRow("File tree", params.fileTreeJsonPath);
   printRow("Slug index", params.slugIndexJsonPath);
   printRow("Broken links", params.brokenLinksJsonPath);
   process.stdout.write(`\n${LINE}\n\n`);

@@ -6,10 +6,11 @@ import type {
   CompiledEntity,
   EntityGraph,
   EntityReference,
+  FileTree,
   GraphNode,
 } from "@galipette/content-schema";
 
-import { entities, graph } from "./artifacts.js";
+import { entities, fileTree, graph } from "./artifacts.js";
 import { buildNavigationTree, type NavigationCategory } from "./utils/build-navigation-tree.js";
 import {
   buildByIdMap,
@@ -64,6 +65,11 @@ export const contentRepository = {
   /** The compiled graph. */
   get graph(): EntityGraph {
     return graph;
+  },
+
+  /** Precompiled vault-like file tree (`file-tree.json`). */
+  get fileTree(): FileTree {
+    return fileTree;
   },
 
   /** All compiled entities. */
@@ -180,6 +186,11 @@ export const contentRepository = {
   /** The compiled entity with the given public URL slug (no `.md` suffix). */
   getBySlug(slug: string): CompiledEntity | undefined {
     return bySlug.get(slug);
+  },
+
+  /** Precompiled vault-like file tree (`file-tree.json`). */
+  getFileTree(): FileTree {
+    return fileTree;
   },
 
   /**

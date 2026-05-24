@@ -118,6 +118,7 @@ export async function runCli(): Promise<void> {
     graphEdgeCount: result.graph.edges.length,
     entitiesJsonPath: result.diagnostics.outputFilePath,
     graphJsonPath: graphPathFromEntitiesPath(result.diagnostics.outputFilePath),
+    fileTreeJsonPath: result.diagnostics.fileTreeFilePath,
     slugIndexJsonPath: result.diagnostics.slugIndexFilePath,
     brokenLinksJsonPath: result.diagnostics.brokenLinksFilePath,
   });

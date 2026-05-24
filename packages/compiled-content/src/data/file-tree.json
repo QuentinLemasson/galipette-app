@@ -1,0 +1,338 @@
+{
+  "scanRoot": "wiki",
+  "root": {
+    "kind": "folder",
+    "name": "Wiki",
+    "sourcePath": "wiki",
+    "slug": "wiki",
+    "children": [
+      {
+        "kind": "folder",
+        "name": "Compendium",
+        "sourcePath": "wiki/compendium",
+        "slug": "wiki/compendium",
+        "children": [
+          {
+            "kind": "folder",
+            "name": "Afflictions",
+            "sourcePath": "wiki/compendium/afflictions",
+            "slug": "wiki/compendium/afflictions",
+            "children": [
+              {
+                "kind": "entity",
+                "id": "affliction.burned",
+                "type": "affliction",
+                "name": "Brûlé",
+                "slug": "wiki/compendium/afflictions/burned",
+                "sourcePath": "wiki/compendium/afflictions/burned.md"
+              },
+              {
+                "kind": "entity",
+                "id": "affliction.stunned",
+                "type": "affliction",
+                "name": "Étourdi",
+                "slug": "wiki/compendium/afflictions/stunned",
+                "sourcePath": "wiki/compendium/afflictions/stunned.md"
+              },
+              {
+                "kind": "entity",
+                "id": "affliction.vulnerable",
+                "type": "affliction",
+                "name": "Vulnérable",
+                "slug": "wiki/compendium/afflictions/vulnerable",
+                "sourcePath": "wiki/compendium/afflictions/vulnerable.md"
+              }
+            ]
+          },
+          {
+            "kind": "folder",
+            "name": "Damage Types",
+            "sourcePath": "wiki/compendium/damage-types",
+            "slug": "wiki/compendium/damage-types",
+            "children": [
+              {
+                "kind": "entity",
+                "id": "damage.fire",
+                "type": "damage-type",
+                "name": "Feu",
+                "slug": "wiki/compendium/damage-types/fire",
+                "sourcePath": "wiki/compendium/damage-types/fire.md"
+              },
+              {
+                "kind": "entity",
+                "id": "damage.lightning",
+                "type": "damage-type",
+                "name": "Foudre",
+                "slug": "wiki/compendium/damage-types/lightning",
+                "sourcePath": "wiki/compendium/damage-types/lightning.md"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "folder",
+        "name": "Compétences",
+        "sourcePath": "wiki/skills",
+        "slug": "wiki/skills",
+        "children": [
+          {
+            "kind": "folder",
+            "name": "Améliorations",
+            "sourcePath": "wiki/skills/upgrades",
+            "slug": "wiki/skills/upgrades",
+            "children": []
+          },
+          {
+            "kind": "folder",
+            "name": "Canalisation",
+            "sourcePath": "wiki/skills/canalization",
+            "slug": "wiki/skills/canalization",
+            "children": [
+              {
+                "kind": "entity",
+                "id": "skill.canalization.canalized-faith",
+                "type": "skill",
+                "name": "Croyance canalisée",
+                "slug": "wiki/skills/canalization/canalized-faith",
+                "sourcePath": "wiki/skills/canalization/canalized-faith.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.canalization.gift-of-life",
+                "type": "skill",
+                "name": "Don de vie",
+                "slug": "wiki/skills/canalization/gift-of-life",
+                "sourcePath": "wiki/skills/canalization/gift-of-life.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.canalization.canalized-rage",
+                "type": "skill",
+                "name": "Rage canalisée",
+                "slug": "wiki/skills/canalization/canalized-rage",
+                "sourcePath": "wiki/skills/canalization/canalized-rage.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.canalization.critical-synergy",
+                "type": "skill",
+                "name": "Synergie critique",
+                "slug": "wiki/skills/canalization/critical-synergy",
+                "sourcePath": "wiki/skills/canalization/critical-synergy.md"
+              }
+            ]
+          },
+          {
+            "kind": "folder",
+            "name": "Sorts",
+            "sourcePath": "wiki/skills/spells",
+            "slug": "wiki/skills/spells",
+            "children": [
+              {
+                "kind": "entity",
+                "id": "skill.spell.psyche-alteration",
+                "type": "spell",
+                "name": "Altération de la psyché",
+                "slug": "wiki/skills/spells/psyche-alteration",
+                "sourcePath": "wiki/skills/spells/psyche-alteration.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.spell.lightning-arc",
+                "type": "spell",
+                "name": "Arc Electrique",
+                "slug": "wiki/skills/spells/lightning-arc",
+                "sourcePath": "wiki/skills/spells/lightning-arc.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.spell.elemental-weapon",
+                "type": "spell",
+                "name": "Arme élémentaire",
+                "slug": "wiki/skills/spells/elemental-weapon",
+                "sourcePath": "wiki/skills/spells/elemental-weapon.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.spell.wind-blessing",
+                "type": "spell",
+                "name": "Bénédiction des vents",
+                "slug": "wiki/skills/spells/wind-blessing",
+                "sourcePath": "wiki/skills/spells/wind-blessing.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.spell.detect-magic",
+                "type": "spell",
+                "name": "Détection de la Magie",
+                "slug": "wiki/skills/spells/detect-magic",
+                "sourcePath": "wiki/skills/spells/detect-magic.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.spell.elemental-spark",
+                "type": "spell",
+                "name": "Flammiche élémentaire",
+                "slug": "wiki/skills/spells/elemental-spark",
+                "sourcePath": "wiki/skills/spells/elemental-spark.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.spell.summoning",
+                "type": "spell",
+                "name": "Invocation",
+                "slug": "wiki/skills/spells/summoning",
+                "sourcePath": "wiki/skills/spells/summoning.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.spell.spirit-summoning",
+                "type": "spell",
+                "name": "Invocation d'Esprit",
+                "slug": "wiki/skills/spells/spirit-summoning",
+                "sourcePath": "wiki/skills/spells/spirit-summoning.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.spell.puppeteer",
+                "type": "spell",
+                "name": "Marionnettiste",
+                "slug": "wiki/skills/spells/puppeteer",
+                "sourcePath": "wiki/skills/spells/puppeteer.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.spell.clairvoyant-eye",
+                "type": "spell",
+                "name": "Oeil clairvoyant",
+                "slug": "wiki/skills/spells/clairvoyant-eye",
+                "sourcePath": "wiki/skills/spells/clairvoyant-eye.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.spell.omen",
+                "type": "spell",
+                "name": "Présage",
+                "slug": "wiki/skills/spells/omen",
+                "sourcePath": "wiki/skills/spells/omen.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.spell.solar-ray",
+                "type": "spell",
+                "name": "Rayon Solaire",
+                "slug": "wiki/skills/spells/solar-ray",
+                "sourcePath": "wiki/skills/spells/solar-ray.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.spell.nausea-resistance",
+                "type": "spell",
+                "name": "Résistance à la nausée",
+                "slug": "wiki/skills/spells/nausea-resistance",
+                "sourcePath": "wiki/skills/spells/nausea-resistance.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.spell.healing",
+                "type": "spell",
+                "name": "Soin",
+                "slug": "wiki/skills/spells/healing",
+                "sourcePath": "wiki/skills/spells/healing.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.spell.fiery-shot",
+                "type": "spell",
+                "name": "Trait de feu",
+                "slug": "wiki/skills/spells/fire-bolt",
+                "sourcePath": "wiki/skills/spells/fire-bolt.md"
+              }
+            ]
+          },
+          {
+            "kind": "folder",
+            "name": "Techniques",
+            "sourcePath": "wiki/skills/techniques",
+            "slug": "wiki/skills/techniques",
+            "children": [
+              {
+                "kind": "entity",
+                "id": "skill.technique.counter-attack",
+                "type": "technique",
+                "name": "Contre-Attaque",
+                "slug": "wiki/skills/techniques/counter-attack",
+                "sourcePath": "wiki/skills/techniques/counter-attack.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.technique.lightning-draw",
+                "type": "technique",
+                "name": "Dégainage Eclair",
+                "slug": "wiki/skills/techniques/lightning-draw",
+                "sourcePath": "wiki/skills/techniques/lightning-draw.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.technique.straight-line",
+                "type": "technique",
+                "name": "Ligne Droite",
+                "slug": "wiki/skills/techniques/straight-line",
+                "sourcePath": "wiki/skills/techniques/straight-line.md"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "folder",
+        "name": "Créatures",
+        "sourcePath": "wiki/creatures",
+        "slug": "wiki/creatures",
+        "children": [
+          {
+            "kind": "entity",
+            "id": "creature.kuromaru",
+            "type": "creature",
+            "name": "Kuromaru",
+            "slug": "wiki/creatures/kuromaru",
+            "sourcePath": "wiki/creatures/Kuromaru.md"
+          },
+          {
+            "kind": "entity",
+            "id": "creature.ryuk",
+            "type": "creature",
+            "name": "Ryuk",
+            "slug": "wiki/creatures/ryuk",
+            "sourcePath": "wiki/creatures/Ryuk.md"
+          },
+          {
+            "kind": "entity",
+            "id": "creature.shiromaru",
+            "type": "creature",
+            "name": "Shiromaru",
+            "slug": "wiki/creatures/shiromaru",
+            "sourcePath": "wiki/creatures/Shiromaru.md"
+          }
+        ]
+      },
+      {
+        "kind": "folder",
+        "name": "Rules",
+        "sourcePath": "wiki/rules",
+        "slug": "wiki/rules",
+        "children": [
+          {
+            "kind": "entity",
+            "id": "rule.character.creation",
+            "type": "rule",
+            "name": "Créer son Personnage",
+            "slug": "wiki/rules/creer-son-personnage",
+            "sourcePath": "wiki/rules/Creer son Personnage.md"
+          }
+        ]
+      }
+    ]
+  }
+}

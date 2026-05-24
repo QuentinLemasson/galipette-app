@@ -16,6 +16,7 @@ export { buildSlugIndex } from "./core/writeCompiledContent.ts";
 
 export {
   graphPathFromEntitiesPath,
+  fileTreePathFromEntitiesPath,
   slugIndexPathFromEntitiesPath,
   brokenLinksPathFromEntitiesPath,
 } from "./utils/artifactPaths.ts";

@@ -1,6 +1,6 @@
 import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 
 /**
  * Paths for an isolated fake Obsidian vault used in integration tests.
@@ -43,5 +43,7 @@ export async function writeVaultMarkdown(
   filename: string,
   markdown: string,
 ): Promise<void> {
-  await writeFile(join(folderPath, filename), markdown, "utf8");
+  const filePath = join(folderPath, filename);
+  await mkdir(dirname(filePath), { recursive: true });
+  await writeFile(filePath, markdown, "utf8");
 }

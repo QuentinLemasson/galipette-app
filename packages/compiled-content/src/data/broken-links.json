@@ -5,6 +5,8 @@
     "entitySlug": "wiki/rules/creer-son-personnage",
     "operand": "Race",
     "linkText": "Race",
-    "origins": ["markdown"]
+    "origins": [
+      "markdown"
+    ]
   }
 ]

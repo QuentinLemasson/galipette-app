@@ -1,5 +1,85 @@
 [
   {
+    "id": "affliction.burned",
+    "type": "affliction",
+    "name": "Brûlé",
+    "content": "# Brûlé\n\n## Effet\nLe personnage subit 1 dégât de [[fire|Feu]] à la fin de son tour pour chaque niveau d'affliction.\nChaque action prise pour éteindre le feu diminue le niveau d'affliction.\n\n*Note : ces actions doivent avoir un RP les justifiant, à la discrétion du MJ - se rouler au sol, utiliser des couvertures, se jeter à l'eau, etc*",
+    "slug": "wiki/compendium/afflictions/burned",
+    "sourcePath": "wiki/compendium/afflictions/burned.md",
+    "references": [
+      {
+        "operand": "fire",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Feu",
+        "targetEntityId": "damage.fire",
+        "targetEntitySlug": "wiki/compendium/damage-types/fire"
+      }
+    ],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Brûlé"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Effet"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le personnage subit 1 dégât de "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "fire",
+              "displayLabel": "Feu",
+              "value": "Feu",
+              "targetEntityId": "damage.fire",
+              "targetEntitySlug": "wiki/compendium/damage-types/fire"
+            },
+            {
+              "type": "text",
+              "value": " à la fin de son tour pour chaque niveau d'affliction.\nChaque action prise pour éteindre le feu diminue le niveau d'affliction."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "emphasis",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Note : ces actions doivent avoir un RP les justifiant, à la discrétion du MJ - se rouler au sol, utiliser des couvertures, se jeter à l'eau, etc"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "id": "affliction.stunned",
     "type": "affliction",
     "name": "Étourdi",
@@ -88,6 +168,42 @@
     }
   },
   {
+    "id": "damage.fire",
+    "type": "damage-type",
+    "name": "Feu",
+    "content": "# Feu  \n  \nLes dégâts de feu ou chaleur.",
+    "slug": "wiki/compendium/damage-types/fire",
+    "sourcePath": "wiki/compendium/damage-types/fire.md",
+    "references": [],
+    "data": {
+      "color": "#ffdd11"
+    },
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Feu"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Les dégâts de feu ou chaleur."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "id": "damage.lightning",
     "type": "damage-type",
     "name": "Foudre",
@@ -124,6 +240,81 @@
     }
   },
   {
+    "id": "creature.kuromaru",
+    "type": "creature",
+    "name": "Kuromaru",
+    "content": "# Kuromaru",
+    "slug": "wiki/creatures/kuromaru",
+    "sourcePath": "wiki/creatures/Kuromaru.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Kuromaru"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "creature.ryuk",
+    "type": "creature",
+    "name": "Ryuk",
+    "content": "# Ryuk",
+    "slug": "wiki/creatures/ryuk",
+    "sourcePath": "wiki/creatures/Ryuk.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Ryuk"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "creature.shiromaru",
+    "type": "creature",
+    "name": "Shiromaru",
+    "content": "# Shiromaru",
+    "slug": "wiki/creatures/shiromaru",
+    "sourcePath": "wiki/creatures/Shiromaru.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Shiromaru"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "id": "rule.character.creation",
     "type": "rule",
     "name": "Créer son Personnage",
@@ -133,7 +324,9 @@
     "references": [
       {
         "operand": "Race",
-        "refSources": ["body"],
+        "refSources": [
+          "body"
+        ],
         "targetLabel": "Race"
       }
     ],
@@ -233,23 +426,367 @@
     }
   },
   {
-    "id": "spell.lightning-arc",
+    "id": "skill.canalization.canalized-faith",
+    "type": "skill",
+    "name": "Croyance canalisée",
+    "content": "# Croyance canalisée",
+    "slug": "wiki/skills/canalization/canalized-faith",
+    "sourcePath": "wiki/skills/canalization/canalized-faith.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Croyance canalisée"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.canalization.canalized-rage",
+    "type": "skill",
+    "name": "Rage canalisée",
+    "content": "# Rage canalisée",
+    "slug": "wiki/skills/canalization/canalized-rage",
+    "sourcePath": "wiki/skills/canalization/canalized-rage.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Rage canalisée"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.canalization.critical-synergy",
+    "type": "skill",
+    "name": "Synergie critique",
+    "content": "# Synergie critique",
+    "slug": "wiki/skills/canalization/critical-synergy",
+    "sourcePath": "wiki/skills/canalization/critical-synergy.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Synergie critique"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.canalization.gift-of-life",
+    "type": "skill",
+    "name": "Don de vie",
+    "content": "# Don de vie",
+    "slug": "wiki/skills/canalization/gift-of-life",
+    "sourcePath": "wiki/skills/canalization/gift-of-life.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Don de vie"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.spell.clairvoyant-eye",
+    "type": "spell",
+    "name": "Oeil clairvoyant",
+    "content": "# Oeil clairvoyant\n\nInvoque un œil d'arcane sur une surface au contact. Le lanceur peut voir à travers.\n\n### Œil Flottant\n\nL'œil peut désormais léviter.\nLe lanceur choisi s'il reste en place, ou si l'œil le suit.\nL'œil peut être déplacé volontairement avec une action.",
+    "slug": "wiki/skills/spells/clairvoyant-eye",
+    "sourcePath": "wiki/skills/spells/clairvoyant-eye.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Oeil clairvoyant"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Invoque un œil d'arcane sur une surface au contact. Le lanceur peut voir à travers."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "Œil Flottant"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "L'œil peut désormais léviter.\nLe lanceur choisi s'il reste en place, ou si l'œil le suit.\nL'œil peut être déplacé volontairement avec une action."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.spell.detect-magic",
+    "type": "spell",
+    "name": "Détection de la Magie",
+    "content": "# Détection de la Magie",
+    "slug": "wiki/skills/spells/detect-magic",
+    "sourcePath": "wiki/skills/spells/detect-magic.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Détection de la Magie"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.spell.elemental-spark",
+    "type": "spell",
+    "name": "Flammiche élémentaire",
+    "content": "# Flammiche élémentaire",
+    "slug": "wiki/skills/spells/elemental-spark",
+    "sourcePath": "wiki/skills/spells/elemental-spark.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Flammiche élémentaire"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.spell.elemental-weapon",
+    "type": "spell",
+    "name": "Arme élémentaire",
+    "content": "# Arme élémentaire",
+    "slug": "wiki/skills/spells/elemental-weapon",
+    "sourcePath": "wiki/skills/spells/elemental-weapon.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Arme élémentaire"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.spell.fiery-shot",
+    "type": "spell",
+    "name": "Trait de feu",
+    "content": "# Trait de feu\r\n\r\nTire un trait de feu sur une cible qui subit 2 dégâts de [[fire|feu]].\r\nSur un effet critique, elle peut être [[burned|brûlée]].",
+    "slug": "wiki/skills/spells/fire-bolt",
+    "sourcePath": "wiki/skills/spells/fire-bolt.md",
+    "references": [
+      {
+        "operand": "burned",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Brûlé",
+        "targetEntityId": "affliction.burned",
+        "targetEntitySlug": "wiki/compendium/afflictions/burned"
+      },
+      {
+        "operand": "fire",
+        "refSources": [
+          "body",
+          "frontMatter"
+        ],
+        "targetLabel": "Feu",
+        "targetEntityId": "damage.fire",
+        "targetEntitySlug": "wiki/compendium/damage-types/fire"
+      }
+    ],
+    "data": {
+      "damage": {
+        "type": "damage.fire",
+        "amount": 2
+      },
+      "afflictions": [
+        "affliction.burned"
+      ]
+    },
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Trait de feu"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Tire un trait de feu sur une cible qui subit 2 dégâts de "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "fire",
+              "displayLabel": "feu",
+              "value": "feu",
+              "targetEntityId": "damage.fire",
+              "targetEntitySlug": "wiki/compendium/damage-types/fire"
+            },
+            {
+              "type": "text",
+              "value": ".\r\nSur un effet critique, elle peut être "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "burned",
+              "displayLabel": "brûlée",
+              "value": "brûlée",
+              "targetEntityId": "affliction.burned",
+              "targetEntitySlug": "wiki/compendium/afflictions/burned"
+            },
+            {
+              "type": "text",
+              "value": "."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.spell.healing",
+    "type": "spell",
+    "name": "Soin",
+    "content": "# Soin",
+    "slug": "wiki/skills/spells/healing",
+    "sourcePath": "wiki/skills/spells/healing.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Soin"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.spell.lightning-arc",
     "type": "spell",
     "name": "Arc Electrique",
-    "content": "# Arc Electrique \n\nCrée un arc d'éclairs jusqu'à une cible visible. Elle subit 2 dégâts [[lightning|électrique]].\nSur un effet critique, la elle peut être [[stunned|étourdie]].",
+    "content": "# Arc Electrique\r\n\r\nCrée un arc d'éclairs jusqu'à une cible visible. Elle subit 2 dégâts [[lightning|électrique]].\r\nSur un effet critique, elle peut être [[stunned|étourdie]].",
     "slug": "wiki/skills/spells/lightning-arc",
     "sourcePath": "wiki/skills/spells/lightning-arc.md",
     "references": [
       {
         "operand": "lightning",
-        "refSources": ["body", "frontMatter"],
+        "refSources": [
+          "body",
+          "frontMatter"
+        ],
         "targetLabel": "Foudre",
         "targetEntityId": "damage.lightning",
         "targetEntitySlug": "wiki/compendium/damage-types/lightning"
       },
       {
         "operand": "stunned",
-        "refSources": ["body"],
+        "refSources": [
+          "body"
+        ],
         "targetLabel": "Étourdi",
         "targetEntityId": "affliction.stunned",
         "targetEntitySlug": "wiki/compendium/afflictions/stunned"
@@ -260,7 +797,9 @@
         "type": "damage.lightning",
         "amount": 2
       },
-      "afflictions": ["affliction.stunned"]
+      "afflictions": [
+        "affliction.stunned"
+      ]
     },
     "compiledContent": {
       "type": "root",
@@ -292,7 +831,7 @@
             },
             {
               "type": "text",
-              "value": ".\nSur un effet critique, la elle peut être "
+              "value": ".\r\nSur un effet critique, elle peut être "
             },
             {
               "type": "wikiLink",
@@ -305,6 +844,385 @@
             {
               "type": "text",
               "value": "."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.spell.nausea-resistance",
+    "type": "spell",
+    "name": "Résistance à la nausée",
+    "content": "# Résistance à la nausée",
+    "slug": "wiki/skills/spells/nausea-resistance",
+    "sourcePath": "wiki/skills/spells/nausea-resistance.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Résistance à la nausée"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.spell.omen",
+    "type": "spell",
+    "name": "Présage",
+    "content": "# Présage\r\n\r\nAu moment de choisir le sort, le personnage choisi également de lui associer une condition\r\n\r\n- lecture dans les étoiles\r\n- lecture dans les ossements\r\n- lecture dans l'eau\r\n- etc\r\n\r\nLe lanceur note le résultat de chacun de ses dés.\r\nIl peut à tout moment, gratuitement, remplacer le résultat d'un lancé (un seul dé) par l'un de ses dés de présage - ce dernier est consommé\r\n\r\n_Note de jeu - il est de convenance d'assumer que le dé remplacé est en faveur du joueur - par exemple, si le joueur remplace l'un dé dés d'un adversaire par un 1, ce sera le dé avec la plus grande valeur_",
+    "slug": "wiki/skills/spells/omen",
+    "sourcePath": "wiki/skills/spells/omen.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Présage"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Au moment de choisir le sort, le personnage choisi également de lui associer une condition"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "lecture dans les étoiles"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "lecture dans les ossements"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "lecture dans l'eau"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "etc"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le lanceur note le résultat de chacun de ses dés.\r\nIl peut à tout moment, gratuitement, remplacer le résultat d'un lancé (un seul dé) par l'un de ses dés de présage - ce dernier est consommé"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "emphasis",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Note de jeu - il est de convenance d'assumer que le dé remplacé est en faveur du joueur - par exemple, si le joueur remplace l'un dé dés d'un adversaire par un 1, ce sera le dé avec la plus grande valeur"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.spell.psyche-alteration",
+    "type": "spell",
+    "name": "Altération de la psyché",
+    "content": "# Altération de la psyché",
+    "slug": "wiki/skills/spells/psyche-alteration",
+    "sourcePath": "wiki/skills/spells/psyche-alteration.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Altération de la psyché"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.spell.puppeteer",
+    "type": "spell",
+    "name": "Marionnettiste",
+    "content": "# Marionnettiste",
+    "slug": "wiki/skills/spells/puppeteer",
+    "sourcePath": "wiki/skills/spells/puppeteer.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Marionnettiste"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.spell.solar-ray",
+    "type": "spell",
+    "name": "Rayon Solaire",
+    "content": "# Rayon Solaire",
+    "slug": "wiki/skills/spells/solar-ray",
+    "sourcePath": "wiki/skills/spells/solar-ray.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Rayon Solaire"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.spell.spirit-summoning",
+    "type": "spell",
+    "name": "Invocation d'Esprit",
+    "content": "# Invocation d'Esprit",
+    "slug": "wiki/skills/spells/spirit-summoning",
+    "sourcePath": "wiki/skills/spells/spirit-summoning.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Invocation d'Esprit"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.spell.summoning",
+    "type": "spell",
+    "name": "Invocation",
+    "content": "# Invocation",
+    "slug": "wiki/skills/spells/summoning",
+    "sourcePath": "wiki/skills/spells/summoning.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Invocation"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.spell.wind-blessing",
+    "type": "spell",
+    "name": "Bénédiction des vents",
+    "content": "# Bénédiction des vents",
+    "slug": "wiki/skills/spells/wind-blessing",
+    "sourcePath": "wiki/skills/spells/wind-blessing.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Bénédiction des vents"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.technique.counter-attack",
+    "type": "technique",
+    "name": "Contre-Attaque",
+    "content": "# Contre-Attaque",
+    "slug": "wiki/skills/techniques/counter-attack",
+    "sourcePath": "wiki/skills/techniques/counter-attack.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Contre-Attaque"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.technique.lightning-draw",
+    "type": "technique",
+    "name": "Dégainage Eclair",
+    "content": "# Dégainage Eclair",
+    "slug": "wiki/skills/techniques/lightning-draw",
+    "sourcePath": "wiki/skills/techniques/lightning-draw.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Dégainage Eclair"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.technique.straight-line",
+    "type": "technique",
+    "name": "Ligne Droite",
+    "content": "# Ligne Droite",
+    "slug": "wiki/skills/techniques/straight-line",
+    "sourcePath": "wiki/skills/techniques/straight-line.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Ligne Droite"
             }
           ]
         }

@@ -8,7 +8,7 @@ Game or narrative content lives in Markdown files with YAML front matter. The bu
 
 ## Pipeline
 
-The flow is linear: discover files, parse each note, collect **front-matter-only** wikilink operands, normalize wiki links inside YAML so structured data stores **display** text (`[[target|alias]]` → `alias`), validate with schema rules, dedupe ids/slugs across the run, then **`@galipette/content-resolver`** parses Markdown bodies with Remark into mdast (`compiledContent`), merges operands from body + front matter with `refSources`, resolves wiki targets to entity ids/slugs on AST nodes, and returns a deduped **`brokenWikiLinks`** list alongside resolved entities. The builder then builds the reference graph, writes **`entities.json`**, **`graph.json`**, **`slug-index.json`**, and **`broken-links.json`**.
+The flow is linear: discover files, parse each note, split regular entity notes from folder metadata notes (`_index.md`), collect **front-matter-only** wikilink operands, normalize wiki links inside YAML so structured data stores **display** text (`[[target|alias]]` → `alias`), validate with schema rules, dedupe ids/slugs across the run, then **`@galipette/content-resolver`** parses Markdown bodies with Remark into mdast (`compiledContent`), merges operands from body + front matter with `refSources`, resolves wiki targets to entity ids/slugs on AST nodes, and returns a deduped **`brokenWikiLinks`** list alongside resolved entities. The builder then builds the reference graph and file tree, writes **`entities.json`**, **`graph.json`**, **`slug-index.json`**, **`file-tree.json`**, and **`broken-links.json`**.
 
 ```mermaid
 flowchart LR
@@ -39,6 +39,7 @@ flowchart LR
     E[Entities JSON]
     GR[Graph JSON]
     SI[Slug index JSON]
+    FT[File tree JSON]
     BL[Broken links JSON]
     LOG[Error log on failure]
   end
@@ -57,14 +58,34 @@ flowchart LR
   RES --> E
   RES --> GR
   RES --> SI
+  RES --> FT
   DUP -.->|errors| LOG
 ```
 
-The diagram simplifies I/O: **`resolveCompiledEntities`** returns both **`entities`** and **`brokenWikiLinks`**; **`writeCompiledContent`** writes entities, graph, slug index, and **`broken-links.json`** in one directory.
+The diagram simplifies I/O: **`resolveCompiledEntities`** returns both **`entities`** and **`brokenWikiLinks`**; **`writeCompiledContent`** writes entities, graph, slug index, file tree, and **`broken-links.json`** in one directory.
 
 ## Artifacts
 
-Successful runs produce a dense list of entities under the shared compiled-content package area (each with optional **`compiledContent`** mdast JSON from Remark), plus a separate graph file whose nodes carry only identifiers and labels needed for visualization or navigation, and whose edges record directional references between entity ids using **operand** strings. A **`slug-index.json`** file is written beside them with two flat maps: `slugToId` and `idToSlug`, derived from each entity’s generated slug (see below). A **`broken-links.json`** file lists unresolved wiki operands (**`BrokenWikiLinkRecord`** from content-schema): `entityId`, `sourcePath`, `entitySlug`, `operand`, `linkText`, and **`origins`** (`markdown` and/or `frontMatter`) for debugging broken vault links. The programmatic **`buildContent`** API returns the same list as **`brokenWikiLinks`** on the result object, and **`diagnostics.brokenLinksFilePath`** points at the written JSON. Failures write a Markdown report under this package so every validation issue from the full pass is visible in one place.
+Successful runs produce a dense list of entities under the shared compiled-content package area (each with optional **`compiledContent`** mdast JSON from Remark), plus a separate graph file whose nodes carry only identifiers and labels needed for visualization or navigation, and whose edges record directional references between entity ids using **operand** strings. A **`slug-index.json`** file is written beside them with two flat maps: `slugToId` and `idToSlug`, derived from each entity’s generated slug (see below). A **`file-tree.json`** artifact precompiles the vault-like folder hierarchy (`folder` + `entity` nodes), including folder `sourcePath` and `slug` values for future folder entities/routes. A **`broken-links.json`** file lists unresolved wiki operands (**`BrokenWikiLinkRecord`** from content-schema): `entityId`, `sourcePath`, `entitySlug`, `operand`, `linkText`, and **`origins`** (`markdown` and/or `frontMatter`) for debugging broken vault links. The programmatic **`buildContent`** API returns the same list as **`brokenWikiLinks`** on the result object, and **`diagnostics.brokenLinksFilePath`** / **`diagnostics.fileTreeFilePath`** point at written JSON artifacts. Failures write a Markdown report under this package so every validation issue from the full pass is visible in one place.
+
+## Folder `_index.md` metadata notes
+
+Folders can define metadata with a note named `_index.md` at the folder root.
+
+- `_index.md` is **not** compiled as an entity.
+- Only frontmatter is read, and for now it is strict: `{ name: string }`.
+- `name` is used as the folder display label in `file-tree.json`.
+- Folder nodes also carry:
+  - `sourcePath`: vault-relative folder path
+  - `slug`: generated from that folder path with the same namespace + segment rules as entities
+
+Example:
+
+```md
+---
+name: Compendium
+---
+```
 
 ## Slugs
 
@@ -87,7 +108,7 @@ See the [compiled-content README](../compiled-content/README.md) for philosophy,
 
 ## Programmatic API
 
-`buildContent` resolves to **`BuildResult`**: `entities`, `graph`, `slugIndex`, **`brokenWikiLinks`** (same array written to **`broken-links.json`**), and **`diagnostics`** (includes **`brokenLinksFilePath`**, `outputFilePath`, `slugIndexFilePath`, …).
+`buildContent` resolves to **`BuildResult`**: `entities`, `graph`, `fileTree`, `slugIndex`, **`brokenWikiLinks`** (same array written to **`broken-links.json`**), and **`diagnostics`** (includes **`brokenLinksFilePath`**, **`fileTreeFilePath`**, `outputFilePath`, `slugIndexFilePath`, …).
 
 Path helpers are re-exported from the package entry for scripts:
 

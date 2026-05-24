@@ -5,20 +5,39 @@
 import type { z } from "zod";
 
 import type { afflictionSchema } from "../schemas/AfflictionSchema.js";
+import type { creatureSchema } from "../schemas/CreatureSchema.js";
 import type { damageTypeSchema } from "../schemas/DamageTypeSchema.js";
 import {
   compiledMarkdownAstSchema,
   entityReferenceSchema,
   entityReferenceSourceSchema,
 } from "../schemas/EntitySchema.js";
+import type {
+  fileTreeEntityNodeSchema,
+  fileTreeFolderNodeSchema,
+  fileTreeNodeSchema,
+  fileTreeSchema,
+  folderIndexFrontmatterSchema,
+} from "../schemas/FileTreeSchema.js";
 import type { RegisteredEntityType } from "../schemas/SchemaRegistry.js";
+import type { skillSchema } from "../schemas/SkillSchema.js";
 import type { spellSchema } from "../schemas/SpellSchema.js";
+import type { techniqueSchema } from "../schemas/TechniqueSchema.js";
 
 export type SpellEntity = z.infer<typeof spellSchema>;
 export type DamageTypeEntity = z.infer<typeof damageTypeSchema>;
 export type AfflictionEntity = z.infer<typeof afflictionSchema>;
+export type SkillEntity = z.infer<typeof skillSchema>;
+export type TechniqueEntity = z.infer<typeof techniqueSchema>;
+export type CreatureEntity = z.infer<typeof creatureSchema>;
 
-export type CompiledEntity = SpellEntity | DamageTypeEntity | AfflictionEntity;
+export type CompiledEntity =
+  | SpellEntity
+  | DamageTypeEntity
+  | AfflictionEntity
+  | SkillEntity
+  | TechniqueEntity
+  | CreatureEntity;
 export type EntityType = RegisteredEntityType;
 
 export type EntityReferenceSource = z.infer<typeof entityReferenceSourceSchema>;
@@ -69,3 +88,9 @@ export type BrokenWikiLinkRecord = {
   linkText: string;
   origins: readonly BrokenWikiLinkOrigin[];
 };
+
+export type FolderIndexFrontmatter = z.infer<typeof folderIndexFrontmatterSchema>;
+export type FileTreeEntityNode = z.infer<typeof fileTreeEntityNodeSchema>;
+export type FileTreeFolderNode = z.infer<typeof fileTreeFolderNodeSchema>;
+export type FileTreeNode = z.infer<typeof fileTreeNodeSchema>;
+export type FileTree = z.infer<typeof fileTreeSchema>;

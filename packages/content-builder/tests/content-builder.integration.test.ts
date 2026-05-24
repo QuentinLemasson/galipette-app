@@ -97,8 +97,37 @@ Un projectile electrique.
       );
       expect(JSON.parse(brokenOutput)).toEqual([]);
 
+      const fileTreeOutput = await readFile(
+        join(temp.rootPath, "compiled-content", "file-tree.json"),
+        "utf8",
+      );
+      const fileTree = JSON.parse(fileTreeOutput) as {
+        scanRoot: string;
+        root: {
+          kind: "folder";
+          name: string;
+          sourcePath: string;
+          slug: string;
+          children: Array<{ kind: "folder" | "entity"; name: string }>;
+        };
+      };
+      expect(fileTree.scanRoot).toBe("entities");
+      expect(fileTree.root.sourcePath).toBe("entities");
+      expect(fileTree.root.slug).toBe("wiki/entities");
+      expect(fileTree.root.children).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            kind: "entity",
+            name: "Tir de Foudre",
+          }),
+        ]),
+      );
+
       expect(result.diagnostics.brokenLinksFilePath).toBe(
         join(temp.rootPath, "compiled-content", "broken-links.json"),
+      );
+      expect(result.diagnostics.fileTreeFilePath).toBe(
+        join(temp.rootPath, "compiled-content", "file-tree.json"),
       );
     } finally {
       await temp.cleanup();
@@ -357,6 +386,67 @@ See [[display|damage.lightning]] and [[Other|affliction.stunned]] for details.
             operand: "display",
             linkText: "damage.lightning",
             origins: ["markdown"],
+          }),
+        ]),
+      );
+    } finally {
+      await temp.cleanup();
+    }
+  });
+
+  it("uses _index metadata for folders and excludes _index notes from entities", async () => {
+    const temp = await createTempVault();
+    try {
+      await writeVaultMarkdown(
+        temp.scanFolder,
+        "_index.md",
+        `---
+name: Entites
+---
+`,
+      );
+      await writeVaultMarkdown(
+        temp.scanFolder,
+        "spells/_index.md",
+        `---
+name: Sorts
+---
+`,
+      );
+      await writeVaultMarkdown(
+        temp.scanFolder,
+        "spells/shock.md",
+        `---
+id: spell.shock
+type: spell
+name: Choc
+damage:
+  type: damage.lightning
+  amount: 2
+---
+# Choc
+`,
+      );
+
+      const result = await buildContent({
+        vaultPath: temp.vaultPath,
+        subFolder: "entities",
+        outputFilePath: join(temp.rootPath, "compiled-content", "entities.json"),
+      });
+
+      expect(result.entities).toHaveLength(1);
+      expect(result.entities[0]?.id).toBe("spell.shock");
+      expect(result.entities.some((entity) => entity.sourcePath.endsWith("_index.md"))).toBe(false);
+
+      expect(result.fileTree.scanRoot).toBe("entities");
+      expect(result.fileTree.root.name).toBe("Entites");
+      expect(result.fileTree.root.children).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            kind: "folder",
+            name: "Sorts",
+            sourcePath: "entities/spells",
+            slug: "wiki/entities/spells",
           }),
         ]),
       );
