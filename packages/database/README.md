@@ -11,15 +11,14 @@ PostgreSQL persistence for Galipette using **Prisma ORM 7**: schema, migrations,
 
 ## Setup
 
-1. Copy [`.env.example`](./.env.example) to **`.env`** in this package (`packages/database/.env`).
-2. Set **`DATABASE_URL`** to a PostgreSQL connection string (direct TCP; not `prisma://` Accelerate URLs unless you follow the Accelerate client path instead of `PrismaPg`).
-3. From the repo root, apply migrations (or push for a throwaway local DB):
+1. Copy [`apps/api/.env.example`](../../apps/api/.env.example) to **`apps/api/.env`** and set **`DATABASE_URL`** to a PostgreSQL connection string (direct TCP; not `prisma://` Accelerate URLs unless you follow the Accelerate client path instead of `PrismaPg`).
+2. From the repo root, apply migrations (or push for a throwaway local DB):
 
    ```bash
    pnpm db:migrate
    ```
 
-4. Build the package (runs **`prisma generate`** then **`tsc`**):
+3. Build the package (runs **`prisma generate`** then **`tsc`**):
 
    ```bash
    pnpm build:database
@@ -32,10 +31,10 @@ Generated client code lives under **`src/generated/prisma`** (gitignored); **`di
 | File                                             | Role                                                                                      |
 | ------------------------------------------------ | ----------------------------------------------------------------------------------------- |
 | [`prisma/schema.prisma`](./prisma/schema.prisma) | Models + `datasource` **provider only** (no `url` in schema).                             |
-| [`prisma.config.ts`](./prisma.config.ts)         | CLI datasource URL, schema path, migrations path (`DATABASE_URL` via `env()` + `dotenv`). |
-| [`src/client.ts`](./src/client.ts)               | Singleton **`PrismaClient`** with **`PrismaPg`** using **`process.env.DATABASE_URL`**.    |
+| [`prisma.config.ts`](./prisma.config.ts)         | CLI datasource URL, schema path, migrations path (`DATABASE_URL` from **`apps/api/.env`** via `env()` + `dotenv`). |
+| [`src/client.ts`](./src/client.ts)               | Singleton **`PrismaClient`** with **`PrismaPg`** using **`process.env.DATABASE_URL`**.                            |
 
-Runtime code must have **`DATABASE_URL`** set (your app or process manager loads env; the Prisma CLI loads **`.env`** from this package via **`prisma.config.ts`**).
+Runtime code must have **`DATABASE_URL`** set (the API loads **`apps/api/.env`** at startup; the Prisma CLI loads the same file via **`prisma.config.ts`**).
 
 ## Scripts
 

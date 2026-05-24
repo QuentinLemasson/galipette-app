@@ -1,6 +1,6 @@
 # Database cheat sheet (Galipette)
 
-Commands assume **pnpm** from the **repository root** and a configured **`DATABASE_URL`** in **`packages/database/.env`** (see [`packages/database/.env.example`](../packages/database/.env.example)). Prisma reads that file via **`packages/database/prisma.config.ts`**.
+Commands assume **pnpm** from the **repository root** and a configured **`DATABASE_URL`** in **`apps/api/.env`** (see [`apps/api/.env.example`](../apps/api/.env.example)). Prisma reads that file via **`packages/database/prisma.config.ts`**.
 
 ---
 

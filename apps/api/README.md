@@ -12,9 +12,7 @@ Small **Node** service that exposes a typed REST surface over PostgreSQL via **P
 
 ## Prerequisites
 
-1. **`DATABASE_URL`** must be available when the process starts. The API loads env in this order (see `src/env.ts`):
-   - [`packages/database/.env`](../../packages/database/.env) — primary (same file as Prisma CLI; copy from [`packages/database/.env.example`](../../packages/database/.env.example)).
-   - Optional **`apps/api/.env`** — overrides keys from the database file (useful if you keep `DATABASE_URL` only under the API app).
+1. Copy [`.env.example`](./.env.example) to **`.env`** and set **`DATABASE_URL`** (and auth/CORS vars as needed). The API and Prisma CLI both read this file (see `src/env.ts` and [`packages/database/prisma.config.ts`](../../packages/database/prisma.config.ts)).
 2. Workspace packages built so imports resolve:
 
    ```sh

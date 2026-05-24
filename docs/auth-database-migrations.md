@@ -20,7 +20,7 @@ With the Prisma adapter you always: **generate schema → Prisma migrate**.
 
 ## Prerequisites
 
-1. **`DATABASE_URL`** in [`packages/database/.env`](../packages/database/.env) (see [`.env.example`](../packages/database/.env.example)).
+1. **`DATABASE_URL`** in [`apps/api/.env`](../apps/api/.env) (see [`.env.example`](../apps/api/.env.example)).
 2. PostgreSQL running and reachable (`pnpm db:status` from the repo root).
 3. Workspace dependency **`@better-auth/cli`** in `apps/api` (already installed).
 
