@@ -30,11 +30,16 @@ RUN pnpm --filter @galipette/content-schema build \
 # ---- serve ----
 FROM nginxinc/nginx-unprivileged:alpine AS runner
 
+# Image defaults to non-root; root is required to chmod and normalize the entrypoint.
+USER root
+
 COPY apps/web/nginx.conf /etc/nginx/nginx.conf
 COPY apps/web/docker-entrypoint.sh /docker-entrypoint.sh
 RUN sed -i 's/\r$//' /docker-entrypoint.sh && chmod +x /docker-entrypoint.sh
 
 COPY --from=builder /app/apps/web/dist /usr/share/nginx/html
+
+USER nginx
 
 EXPOSE 8080
 
