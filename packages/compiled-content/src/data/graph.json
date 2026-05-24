@@ -13,6 +13,12 @@
       "sourcePath": "wiki/compendium/afflictions/burned.md"
     },
     {
+      "id": "affliction.nauseous",
+      "type": "affliction",
+      "label": "Nauséeux",
+      "sourcePath": "wiki/compendium/afflictions/nauseous.md"
+    },
+    {
       "id": "affliction.stunned",
       "type": "affliction",
       "label": "Étourdi",
@@ -61,10 +67,28 @@
       "sourcePath": "wiki/compendium/damage-types/radiant.md"
     },
     {
+      "id": "rule.affliction-resistence",
+      "type": "rule",
+      "label": "Résistance aux afflictions",
+      "sourcePath": "wiki/rules/affliction-resistence.md"
+    },
+    {
+      "id": "rule.canalization",
+      "type": "rule",
+      "label": "Canalisation",
+      "sourcePath": "wiki/rules/canalization.md"
+    },
+    {
       "id": "rule.character.creation",
       "type": "rule",
       "label": "Créer son Personnage",
       "sourcePath": "wiki/rules/Creer son Personnage.md"
+    },
+    {
+      "id": "rule.clumsiness",
+      "type": "rule",
+      "label": "Maladresse",
+      "sourcePath": "wiki/rules/clumsiness.md"
     },
     {
       "id": "skill.canalization.canalized-faith",
@@ -205,8 +229,16 @@
       "fire"
     ],
     [
+      "affliction.nauseous",
+      "clumsiness"
+    ],
+    [
       "rule.character.creation",
       "Race"
+    ],
+    [
+      "rule.clumsiness",
+      "nauseous"
     ],
     [
       "skill.spell.fiery-shot",
@@ -225,12 +257,32 @@
       "stunned"
     ],
     [
+      "skill.spell.nausea-resistance",
+      "affliction-resistence"
+    ],
+    [
+      "skill.spell.nausea-resistance",
+      "Magie Mentale"
+    ],
+    [
+      "skill.spell.nausea-resistance",
+      "nauseous"
+    ],
+    [
+      "skill.spell.psyche-alteration",
+      "Magie Mentale"
+    ],
+    [
       "skill.spell.puppeteer",
       "Magie Mentale"
     ],
     [
       "skill.spell.solar-ray",
       "blinded"
+    ],
+    [
+      "skill.spell.solar-ray",
+      "Magie Crépusculaire"
     ],
     [
       "skill.spell.solar-ray",

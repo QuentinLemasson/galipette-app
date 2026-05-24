@@ -3,7 +3,10 @@
  */
 
 import { SidebarTrigger } from "@galipette/ui/components/sidebar";
+import { cn } from "@galipette/ui/lib/utils";
 import { Link } from "@tanstack/react-router";
+
+import { appShellHeaderRowClassName } from "./app-header";
 
 /**
  * @description Top bar above the routed page outlet inside `SidebarInset`.
@@ -11,7 +14,7 @@ import { Link } from "@tanstack/react-router";
  */
 export function AppMainHeader() {
   return (
-    <header className="flex h-14 shrink-0 items-center gap-3 border-b px-4">
+    <header className={cn(appShellHeaderRowClassName, "gap-3 border-b px-4")}>
       <SidebarTrigger />
       <Link
         to="/app/home"

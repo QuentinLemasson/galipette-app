@@ -4,13 +4,14 @@ import * as React from "react";
 
 import { cn } from "@galipette/ui/lib/utils";
 
-const wikilinkVariants = cva("underline underline-offset-2", {
+const wikilinkVariants = cva("underline underline-offset-2 transition-colors", {
   variants: {
     variant: {
-      internal: "font-medium text-primary hover:text-foreground",
-      external: "text-primary hover:text-foreground",
+      internal:
+        "font-medium text-wiki-accent decoration-wiki-accent/40 hover:text-wiki-accent/80 hover:decoration-wiki-accent",
+      external: "text-wiki-accent decoration-wiki-accent/40 hover:text-wiki-accent/80",
       broken:
-        "cursor-pointer font-medium text-amber-700 decoration-wavy underline-offset-[3px] hover:text-amber-800 dark:text-amber-500 dark:hover:text-amber-400",
+        "cursor-pointer font-medium text-wiki-broken decoration-wavy decoration-wiki-broken/60 underline-offset-[3px] hover:text-wiki-broken/80",
     },
   },
   defaultVariants: {

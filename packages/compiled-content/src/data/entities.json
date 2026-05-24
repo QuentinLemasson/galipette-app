@@ -124,6 +124,86 @@
     }
   },
   {
+    "id": "affliction.nauseous",
+    "type": "affliction",
+    "name": "Nauséeux",
+    "content": "# Nauséeux\nLe [[clumsiness|degré de maladresse]] minimal pour chacun des jets de ce personnage est de X.\nSubir une [[clumsiness|maladresse]] mineure entraine la perte d'une action.\nSubir une [[clumsiness|maladresse]] majeure met fin au tour.",
+    "slug": "wiki/compendium/afflictions/nauseous",
+    "sourcePath": "wiki/compendium/afflictions/nauseous.md",
+    "references": [
+      {
+        "operand": "clumsiness",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Maladresse",
+        "targetEntityId": "rule.clumsiness",
+        "targetEntitySlug": "wiki/rules/clumsiness"
+      }
+    ],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Nauséeux"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "clumsiness",
+              "displayLabel": "degré de maladresse",
+              "value": "degré de maladresse",
+              "targetEntityId": "rule.clumsiness",
+              "targetEntitySlug": "wiki/rules/clumsiness"
+            },
+            {
+              "type": "text",
+              "value": " minimal pour chacun des jets de ce personnage est de X.\nSubir une "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "clumsiness",
+              "displayLabel": "maladresse",
+              "value": "maladresse",
+              "targetEntityId": "rule.clumsiness",
+              "targetEntitySlug": "wiki/rules/clumsiness"
+            },
+            {
+              "type": "text",
+              "value": " mineure entraine la perte d'une action.\nSubir une "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "clumsiness",
+              "displayLabel": "maladresse",
+              "value": "maladresse",
+              "targetEntityId": "rule.clumsiness",
+              "targetEntitySlug": "wiki/rules/clumsiness"
+            },
+            {
+              "type": "text",
+              "value": " majeure met fin au tour."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "id": "affliction.stunned",
     "type": "affliction",
     "name": "Étourdi",
@@ -388,6 +468,1074 @@
             {
               "type": "text",
               "value": "Shiromaru"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "rule.affliction-resistence",
+    "type": "rule",
+    "name": "Résistance aux afflictions",
+    "content": "Le personnage ignore X niveau d'une affliction donnée, et dispose d'une bonus de +X aux sauvegardes pour y résister.",
+    "slug": "wiki/rules/affliction-resistence",
+    "sourcePath": "wiki/rules/affliction-resistence.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le personnage ignore X niveau d'une affliction donnée, et dispose d'une bonus de +X aux sauvegardes pour y résister."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "rule.canalization",
+    "type": "rule",
+    "name": "Canalisation",
+    "content": "# Canalisation\n\nAction pour canaliser un sort",
+    "slug": "wiki/rules/canalization",
+    "sourcePath": "wiki/rules/canalization.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Canalisation"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Action pour canaliser un sort"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "rule.clumsiness",
+    "type": "rule",
+    "name": "Maladresse",
+    "content": "# Maladresse\n\n> Même les plus grands héros commettent des erreurs.  \n> Plus une action est dangereuse, chaotique ou instable, plus le risque d'effets imprévus augmente.\n\n## Principe\n\nDans ce système, chaque jet utilise **deux dés**.\n\nLa **Maladresse** représente les conséquences inattendues d'une action : faux mouvement, erreur de jugement, ouverture dans sa garde, effet secondaire magique, mauvaise interprétation, etc.\n\nUne maladresse **ne fait pas échouer automatiquement l'action**.  \nUn personnage peut réussir brillamment tout en provoquant des complications.\n\n---\n\n## Règle\n\n### Maladresse X\n\nLors d'un jet, si un dé obtient un résultat de **X ou moins**, une maladresse se déclenche.\n\n- **Un seul dé concerné** → **Maladresse mineure**\n- **Les deux dés concernés** → **Maladresse majeure**\n\n---\n\n## Important\n\nUne maladresse :\n\n- ne remplace pas le résultat du jet\n- ne transforme pas une réussite en échec\n- ajoute une complication narrative ou mécanique\n- est décidée immédiatement par le MJ selon la situation\n\n---\n## Facteurs situationnels augmentant la Maladresse\n\nCertaines situations augmentent temporairement le degré de Maladresse, et sont sont indiquées au cas par cas par le MJ :\n\n- effectuer une action particulièrement risquée\n- être sous un effet de [[nauseous|Nausée]]\n- attaquer avec un allié sur la trajectoire\n- agir dans la précipitation\n- être distrait ou paniqué\n- combattre dans un environnement dangereux\n- utiliser un équipement inadapté\n- lancer un sort puissant ou instable\n- agir sans visibilité claire\n\n---\n\n## Sorts et magie\n\nLes sorts ont toujours un degré minimal de 1 : même les magiciens expérimentés manipulent des forces instables.\n\n---\n## Exemples\n\n### 1 — Réussite avec maladresse mineure\n\nKara tente de sauter entre deux toits.\n\n- Jet : `8` et `2`\n- Maladresse : `2`\n\nLe saut réussit, mais le `2` déclenche une maladresse mineure.\n\nLe MJ décide que Kara :\n- perd un objet durant le saut\n- ou atterrit bruyamment, alertant les brigand quelle tentait de semer\n\n###  2 — Réussite avec maladresse majeure\n\nUne mage lance un sort.\n\n- Jet : `1` et `1`\n- Maladresse : `1`\n\nIl a un bonus de +6, avec un DD 5, c'est donc une réussite.\n\nMais les deux dés déclenchent une maladresse majeure :\n- explosion d'énergie lui infligeant de lourd dégâts\n- il subit une série d'afflictions pour tout le reste de la scène\n\n---\n## Conseils au MJ\n\nLes maladresses doivent :\n- enrichir la scène\n- créer de nouvelles tensions\n- pousser l'action vers l'avant\n\nÉvitez les conséquences qui :\n- bloquent complètement les joueurs\n- annulent systématiquement leurs réussites\n- punissent excessivement les prises d'initiative\n\nUne maladresse doit rendre la situation **plus vivante**, pas simplement plus frustrante.",
+    "slug": "wiki/rules/clumsiness",
+    "sourcePath": "wiki/rules/clumsiness.md",
+    "references": [
+      {
+        "operand": "nauseous",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Nauséeux",
+        "targetEntityId": "affliction.nauseous",
+        "targetEntitySlug": "wiki/compendium/afflictions/nauseous"
+      }
+    ],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Maladresse"
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Même les plus grands héros commettent des erreurs."
+                },
+                {
+                  "type": "break"
+                },
+                {
+                  "type": "text",
+                  "value": "Plus une action est dangereuse, chaotique ou instable, plus le risque d'effets imprévus augmente."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Principe"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Dans ce système, chaque jet utilise "
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "deux dés"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "La "
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Maladresse"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " représente les conséquences inattendues d'une action : faux mouvement, erreur de jugement, ouverture dans sa garde, effet secondaire magique, mauvaise interprétation, etc."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Une maladresse "
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "ne fait pas échouer automatiquement l'action"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "."
+            },
+            {
+              "type": "break"
+            },
+            {
+              "type": "text",
+              "value": "Un personnage peut réussir brillamment tout en provoquant des complications."
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Règle"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "Maladresse X"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Lors d'un jet, si un dé obtient un résultat de "
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "X ou moins"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": ", une maladresse se déclenche."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "strong",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Un seul dé concerné"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": " → "
+                    },
+                    {
+                      "type": "strong",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Maladresse mineure"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "strong",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Les deux dés concernés"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": " → "
+                    },
+                    {
+                      "type": "strong",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Maladresse majeure"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Important"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Une maladresse :"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ne remplace pas le résultat du jet"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ne transforme pas une réussite en échec"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ajoute une complication narrative ou mécanique"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "est décidée immédiatement par le MJ selon la situation"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Facteurs situationnels augmentant la Maladresse"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Certaines situations augmentent temporairement le degré de Maladresse, et sont sont indiquées au cas par cas par le MJ :"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "effectuer une action particulièrement risquée"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "être sous un effet de "
+                    },
+                    {
+                      "type": "wikiLink",
+                      "operand": "nauseous",
+                      "displayLabel": "Nausée",
+                      "value": "Nausée",
+                      "targetEntityId": "affliction.nauseous",
+                      "targetEntitySlug": "wiki/compendium/afflictions/nauseous"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "attaquer avec un allié sur la trajectoire"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "agir dans la précipitation"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "être distrait ou paniqué"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "combattre dans un environnement dangereux"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "utiliser un équipement inadapté"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "lancer un sort puissant ou instable"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "agir sans visibilité claire"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Sorts et magie"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Les sorts ont toujours un degré minimal de 1 : même les magiciens expérimentés manipulent des forces instables."
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Exemples"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "1 — Réussite avec maladresse mineure"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Kara tente de sauter entre deux toits."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Jet : "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "8"
+                    },
+                    {
+                      "type": "text",
+                      "value": " et "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Maladresse : "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le saut réussit, mais le "
+            },
+            {
+              "type": "inlineCode",
+              "value": "2"
+            },
+            {
+              "type": "text",
+              "value": " déclenche une maladresse mineure."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le MJ décide que Kara :"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "perd un objet durant le saut"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ou atterrit bruyamment, alertant les brigand quelle tentait de semer"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "2 — Réussite avec maladresse majeure"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Une mage lance un sort."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Jet : "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "1"
+                    },
+                    {
+                      "type": "text",
+                      "value": " et "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "1"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Maladresse : "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "1"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Il a un bonus de +6, avec un DD 5, c'est donc une réussite."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Mais les deux dés déclenchent une maladresse majeure :"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "explosion d'énergie lui infligeant de lourd dégâts"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "il subit une série d'afflictions pour tout le reste de la scène"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Conseils au MJ"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Les maladresses doivent :"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "enrichir la scène"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "créer de nouvelles tensions"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "pousser l'action vers l'avant"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Évitez les conséquences qui :"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "bloquent complètement les joueurs"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "annulent systématiquement leurs réussites"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "punissent excessivement les prises d'initiative"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Une maladresse doit rendre la situation "
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "plus vivante"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": ", pas simplement plus frustrante."
             }
           ]
         }
@@ -934,10 +2082,36 @@
     "id": "skill.spell.nausea-resistance",
     "type": "spell",
     "name": "Résistance à la nausée",
-    "content": "# Résistance à la nausée",
+    "content": "# Résistance à la nausée\nLe personnage gagne [[affliction-resistence|résistance]] [[nauseous|nausée]] 1 - DD10 + 10 par résistance nausée déjà possédée - pour la scène en cours.\n\n**Echec** - le personnage est affligé par [[nauseous|nausée]] 1\n**Effet néfaste** - le personnage est affligé par des effets de [[nauseous|nausée]] supplémentaires.\n**Effet critique** - le personnage gagne +1 [[affliction-resistence|résistance]] [[nauseous|nausée]] supplémentaire ( requiert 2EF )",
     "slug": "wiki/skills/spells/nausea-resistance",
     "sourcePath": "wiki/skills/spells/nausea-resistance.md",
-    "references": [],
+    "references": [
+      {
+        "operand": "affliction-resistence",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Résistance aux afflictions",
+        "targetEntityId": "rule.affliction-resistence",
+        "targetEntitySlug": "wiki/rules/affliction-resistence"
+      },
+      {
+        "operand": "Magie Mentale",
+        "refSources": [
+          "frontMatter"
+        ],
+        "targetLabel": "Magie Mentale"
+      },
+      {
+        "operand": "nauseous",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Nauséeux",
+        "targetEntityId": "affliction.nauseous",
+        "targetEntitySlug": "wiki/compendium/afflictions/nauseous"
+      }
+    ],
     "data": {},
     "compiledContent": {
       "type": "root",
@@ -949,6 +2123,131 @@
             {
               "type": "text",
               "value": "Résistance à la nausée"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le personnage gagne "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "affliction-resistence",
+              "displayLabel": "résistance",
+              "value": "résistance",
+              "targetEntityId": "rule.affliction-resistence",
+              "targetEntitySlug": "wiki/rules/affliction-resistence"
+            },
+            {
+              "type": "text",
+              "value": " "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "nauseous",
+              "displayLabel": "nausée",
+              "value": "nausée",
+              "targetEntityId": "affliction.nauseous",
+              "targetEntitySlug": "wiki/compendium/afflictions/nauseous"
+            },
+            {
+              "type": "text",
+              "value": " 1 - DD10 + 10 par résistance nausée déjà possédée - pour la scène en cours."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Echec"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - le personnage est affligé par "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "nauseous",
+              "displayLabel": "nausée",
+              "value": "nausée",
+              "targetEntityId": "affliction.nauseous",
+              "targetEntitySlug": "wiki/compendium/afflictions/nauseous"
+            },
+            {
+              "type": "text",
+              "value": " 1\n"
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Effet néfaste"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - le personnage est affligé par des effets de "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "nauseous",
+              "displayLabel": "nausée",
+              "value": "nausée",
+              "targetEntityId": "affliction.nauseous",
+              "targetEntitySlug": "wiki/compendium/afflictions/nauseous"
+            },
+            {
+              "type": "text",
+              "value": " supplémentaires.\n"
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Effet critique"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - le personnage gagne +1 "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "affliction-resistence",
+              "displayLabel": "résistance",
+              "value": "résistance",
+              "targetEntityId": "rule.affliction-resistence",
+              "targetEntitySlug": "wiki/rules/affliction-resistence"
+            },
+            {
+              "type": "text",
+              "value": " "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "nauseous",
+              "displayLabel": "nausée",
+              "value": "nausée",
+              "targetEntityId": "affliction.nauseous",
+              "targetEntitySlug": "wiki/compendium/afflictions/nauseous"
+            },
+            {
+              "type": "text",
+              "value": " supplémentaire ( requiert 2EF )"
             }
           ]
         }
@@ -1088,10 +2387,18 @@
     "id": "skill.spell.psyche-alteration",
     "type": "spell",
     "name": "Altération de la psyché",
-    "content": "# Altération de la psyché",
+    "content": "# Altération de la psyché\nLe lanceur peut altérer l'esprit et la psyché de sa cible, pour l'augmenter ou l'éroder.\n\nAu choix : \n- bonus de +2 à la sauvegarde de mental, focus ou sang-froid pour la scène en cours - DD 10 -(+5 par occurence) - concentre 1\n- malus de -2 à la sauvegarde de mental, focus ou sang-froid - SVG mental | focus | sang-froid\n\n**Echec** - le bonus/malus n'est que de 1, et la cible ne peut pas être ciblée à nouveau pour la scène en cours\n**Effet Néfaste** - +1/-1 à une sauvegarde, inverse du bonus\n**Effet Critique** - +1/-1 supplémentaire \n# Améliorations\n## Altération d'autrui\nLa portée du sort passe à \"contact\", permettant d'altérer la psyché d'autres personnages.\n\n## Extension de portée\nLe lanceur peut canaliser +1/2/3/4 pour modifier la porté à \"courte\" / \"moyenne\" / \"grande\" / \"très grande\". \n\n## Discrétion\nLe lanceur peut canaliser +2 pour que le sort devienne discret.\nLe lanceur est affligé par 'mutisme' et 'assourdi' pendant quelques secondes.",
     "slug": "wiki/skills/spells/psyche-alteration",
     "sourcePath": "wiki/skills/spells/psyche-alteration.md",
-    "references": [],
+    "references": [
+      {
+        "operand": "Magie Mentale",
+        "refSources": [
+          "frontMatter"
+        ],
+        "targetLabel": "Magie Mentale"
+      }
+    ],
     "data": {},
     "compiledContent": {
       "type": "root",
@@ -1103,6 +2410,175 @@
             {
               "type": "text",
               "value": "Altération de la psyché"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le lanceur peut altérer l'esprit et la psyché de sa cible, pour l'augmenter ou l'éroder."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Au choix :"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "bonus de +2 à la sauvegarde de mental, focus ou sang-froid pour la scène en cours - DD 10 -(+5 par occurence) - concentre 1"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "malus de -2 à la sauvegarde de mental, focus ou sang-froid - SVG mental | focus | sang-froid"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Echec"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - le bonus/malus n'est que de 1, et la cible ne peut pas être ciblée à nouveau pour la scène en cours\n"
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Effet Néfaste"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - +1/-1 à une sauvegarde, inverse du bonus\n"
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Effet Critique"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - +1/-1 supplémentaire"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Améliorations"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Altération d'autrui"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "La portée du sort passe à \"contact\", permettant d'altérer la psyché d'autres personnages."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Extension de portée"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le lanceur peut canaliser +1/2/3/4 pour modifier la porté à \"courte\" / \"moyenne\" / \"grande\" / \"très grande\"."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Discrétion"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le lanceur peut canaliser +2 pour que le sort devienne discret.\nLe lanceur est affligé par 'mutisme' et 'assourdi' pendant quelques secondes."
             }
           ]
         }
@@ -1261,6 +2737,13 @@
         "targetLabel": "Aveuglé",
         "targetEntityId": "affliction.blinded",
         "targetEntitySlug": "wiki/compendium/afflictions/blinded"
+      },
+      {
+        "operand": "Magie Crépusculaire",
+        "refSources": [
+          "frontMatter"
+        ],
+        "targetLabel": "Magie Crépusculaire"
       },
       {
         "operand": "radiant",

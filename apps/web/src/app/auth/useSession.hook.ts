@@ -1,5 +1,5 @@
 import { authClient } from "./auth-client";
 
 export const useSession = () => {
-  return authClient.getSession();
+  return authClient.useSession();
 };

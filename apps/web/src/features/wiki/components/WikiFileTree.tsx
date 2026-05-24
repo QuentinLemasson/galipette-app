@@ -19,6 +19,7 @@ export function WikiFileTree() {
   return (
     <FileTree
       root={root}
+      className="group-data-[collapsible=icon]:px-0 group-data-[collapsible=icon]:py-1 group-data-[collapsible=icon]:[&_[role=treeitem]>div]:justify-center group-data-[collapsible=icon]:[&_[role=treeitem]>div]:px-0 group-data-[collapsible=icon]:[&_button]:size-8 group-data-[collapsible=icon]:[&_button]:justify-center group-data-[collapsible=icon]:[&_button]:px-0 group-data-[collapsible=icon]:[&_span.min-w-0]:hidden group-data-[collapsible=icon]:[&_[role=group]]:items-center"
       renderEntityLink={(node) => (
         <Link
           to={buildEntityHref(node.slug)}

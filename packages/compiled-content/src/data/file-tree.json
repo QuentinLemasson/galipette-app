@@ -44,6 +44,14 @@
               },
               {
                 "kind": "entity",
+                "id": "affliction.nauseous",
+                "type": "affliction",
+                "name": "Nauséeux",
+                "slug": "wiki/compendium/afflictions/nauseous",
+                "sourcePath": "wiki/compendium/afflictions/nauseous.md"
+              },
+              {
+                "kind": "entity",
                 "id": "affliction.vulnerable",
                 "type": "affliction",
                 "name": "Vulnérable",
@@ -341,11 +349,35 @@
         "children": [
           {
             "kind": "entity",
+            "id": "rule.canalization",
+            "type": "rule",
+            "name": "Canalisation",
+            "slug": "wiki/rules/canalization",
+            "sourcePath": "wiki/rules/canalization.md"
+          },
+          {
+            "kind": "entity",
             "id": "rule.character.creation",
             "type": "rule",
             "name": "Créer son Personnage",
             "slug": "wiki/rules/creer-son-personnage",
             "sourcePath": "wiki/rules/Creer son Personnage.md"
+          },
+          {
+            "kind": "entity",
+            "id": "rule.clumsiness",
+            "type": "rule",
+            "name": "Maladresse",
+            "slug": "wiki/rules/clumsiness",
+            "sourcePath": "wiki/rules/clumsiness.md"
+          },
+          {
+            "kind": "entity",
+            "id": "rule.affliction-resistence",
+            "type": "rule",
+            "name": "Résistance aux afflictions",
+            "slug": "wiki/rules/affliction-resistence",
+            "sourcePath": "wiki/rules/affliction-resistence.md"
           }
         ]
       }

@@ -2,7 +2,7 @@
  * Application sidebar shell and navigation content.
  */
 
-import { Sidebar, SidebarContent } from "@galipette/ui/components/sidebar";
+import { Sidebar, SidebarContent, SidebarRail } from "@galipette/ui/components/sidebar";
 
 import { WikiFileTree } from "../../features/wiki/components/WikiFileTree";
 
@@ -14,11 +14,12 @@ import { AppSidebarHeader } from "./AppSidebarHeader";
  */
 export function AppSidebar() {
   return (
-    <Sidebar>
+    <Sidebar collapsible="icon">
       <AppSidebarHeader />
       <SidebarContent>
         <WikiFileTree />
       </SidebarContent>
+      <SidebarRail />
     </Sidebar>
   );
 }

@@ -10,11 +10,41 @@
     ]
   },
   {
+    "entityId": "skill.spell.nausea-resistance",
+    "sourcePath": "wiki/skills/spells/nausea-resistance.md",
+    "entitySlug": "wiki/skills/spells/nausea-resistance",
+    "operand": "Magie Mentale",
+    "linkText": "Magie Mentale",
+    "origins": [
+      "frontMatter"
+    ]
+  },
+  {
+    "entityId": "skill.spell.psyche-alteration",
+    "sourcePath": "wiki/skills/spells/psyche-alteration.md",
+    "entitySlug": "wiki/skills/spells/psyche-alteration",
+    "operand": "Magie Mentale",
+    "linkText": "Magie Mentale",
+    "origins": [
+      "frontMatter"
+    ]
+  },
+  {
     "entityId": "skill.spell.puppeteer",
     "sourcePath": "wiki/skills/spells/puppeteer.md",
     "entitySlug": "wiki/skills/spells/puppeteer",
     "operand": "Magie Mentale",
     "linkText": "Magie Mentale",
+    "origins": [
+      "frontMatter"
+    ]
+  },
+  {
+    "entityId": "skill.spell.solar-ray",
+    "sourcePath": "wiki/skills/spells/solar-ray.md",
+    "entitySlug": "wiki/skills/spells/solar-ray",
+    "operand": "Magie Crépusculaire",
+    "linkText": "Magie Crépusculaire",
     "origins": [
       "frontMatter"
     ]
