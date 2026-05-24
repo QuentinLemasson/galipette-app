@@ -2,6 +2,9 @@
  * `/login` — Discord sign-in for everyone; invite link required only to register.
  */
 
+import { Alert, AlertDescription } from "@galipette/ui/components/alert";
+import { Button } from "@galipette/ui/components/button";
+import { Typography } from "@galipette/ui/components/typography";
 import { useSearch } from "@tanstack/react-router";
 import { useCallback, useState } from "react";
 
@@ -57,31 +60,31 @@ export function LoginPage() {
   }, [redirect, invite]);
 
   return (
-    <section className="login-page">
-      <h1>Sign in</h1>
+    <section className="flex max-w-md flex-col gap-4">
+      <Typography variant="h1" as="h1">
+        Sign in
+      </Typography>
 
       {invite ? (
-        <p className="login-page__lead">
+        <Typography variant="body" className="leading-relaxed">
           You have an invitation link — connect Discord to sign in or create your account.
-        </p>
+        </Typography>
       ) : (
-        <p className="login-page__lead">
+        <Typography variant="body" className="leading-relaxed">
           Connect with Discord if you already have an account. New players need an invitation link
           from your DM.
-        </p>
+        </Typography>
       )}
 
-      {error && <p className="login-page__error">{error}</p>}
-      <p className="login-page__actions">
-        <button
-          type="button"
-          className="login-page__primary"
-          disabled={pending}
-          onClick={() => void connectDiscord()}
-        >
-          {pending ? "Redirecting…" : "Connect via Discord"}
-        </button>
-      </p>
+      {error ? (
+        <Alert variant="destructive">
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
+      ) : null}
+
+      <Button type="button" disabled={pending} onClick={() => void connectDiscord()}>
+        {pending ? "Redirecting…" : "Connect via Discord"}
+      </Button>
     </section>
   );
 }

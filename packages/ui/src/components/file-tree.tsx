@@ -9,6 +9,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@galipette/ui/components/collapsible";
+import { EmptyState } from "@galipette/ui/components/empty-state";
 import { cn } from "@galipette/ui/lib/utils";
 
 export type FileTreeEntityNode = {
@@ -170,9 +171,9 @@ function FileTree({
 }: FileTreeProps) {
   if (root.children.length === 0) {
     return (
-      <p className={cn("px-2 py-3 text-xs text-muted-foreground italic", className)}>
+      <EmptyState className={cn("px-2 py-3 text-xs", className)}>
         No entries in the file tree.
-      </p>
+      </EmptyState>
     );
   }
 

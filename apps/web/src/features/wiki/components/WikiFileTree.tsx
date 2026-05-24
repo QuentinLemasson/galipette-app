@@ -3,15 +3,15 @@
  */
 
 import { FileTree } from "@galipette/ui/components/file-tree";
+import { treeNavLinkVariants } from "@galipette/ui/components/tree-nav-link";
 import { Link } from "@tanstack/react-router";
 
-import { buildEntityHref } from "../utils/source-path";
 import { useFileTree } from "../hooks/useFileTree";
+import { buildEntityHref } from "../utils/source-path";
 
 /**
  * @description Renders the vault file tree from {@link contentRepository.getFileTree}
  *   with router links to entity detail pages.
- * @returns Navigation tree for the app sidebar.
  */
 export function WikiFileTree() {
   const { root } = useFileTree();
@@ -22,9 +22,9 @@ export function WikiFileTree() {
       renderEntityLink={(node) => (
         <Link
           to={buildEntityHref(node.slug)}
-          className="block truncate text-inherit no-underline hover:underline"
+          className={treeNavLinkVariants()}
           activeProps={{
-            className: "block truncate font-medium text-sidebar-primary no-underline",
+            className: treeNavLinkVariants({ active: true }),
           }}
           title={node.slug}
         >

@@ -3,6 +3,12 @@
  */
 
 import type { CompiledEntity } from "@galipette/compiled-content";
+import { Article } from "@galipette/ui/components/article";
+import { ArticleHeader } from "@galipette/ui/components/article-header";
+import { CodeBlock } from "@galipette/ui/components/code-block";
+import { ContentSection } from "@galipette/ui/components/content-section";
+import { Prose } from "@galipette/ui/components/prose";
+import { ReferenceList } from "@galipette/ui/components/reference-list";
 import ReactMarkdown from "react-markdown";
 
 import { formatTypeLabel } from "../../../common/utils/format-type-label";
@@ -16,9 +22,6 @@ type EntityContentProps = {
 /**
  * @description Renders the compiled mdast body of a compiled entity along with a
  *   metadata header and a debug dump of the type-specific `data` payload.
- * @param props - Component props.
- * @param props.entity - The compiled entity to display.
- * @returns Article element containing the entity's full content.
  */
 export function EntityContent({ entity }: EntityContentProps) {
   const data = (entity as { data?: unknown }).data;
@@ -28,58 +31,43 @@ export function EntityContent({ entity }: EntityContentProps) {
     typeof data === "object" &&
     Object.keys(data as Record<string, unknown>).length > 0;
 
-  return (
-    <article className="entity-content">
-      <header className="entity-content__header">
-        <span className="entity-content__type">{formatTypeLabel(entity.type)}</span>
-        <h1>{entity.name}</h1>
-        <code className="entity-content__id">{entity.id}</code>
-        <p className="entity-content__slug">{entity.slug}</p>
-      </header>
+  const references = entity.references.map((ref) => ({
+    key: `${ref.operand}:${ref.refSources.join(",")}`,
+    targetLabel: ref.targetLabel,
+    targetEntityId: ref.targetEntityId,
+    targetEntitySlug: ref.targetEntitySlug,
+    operand: ref.operand,
+    refSources: ref.refSources,
+  }));
 
-      <div className="entity-content__body">
+  return (
+    <Article>
+      <ArticleHeader
+        typeLabel={formatTypeLabel(entity.type)}
+        title={entity.name}
+        id={entity.id}
+        slug={entity.slug}
+      />
+
+      <Prose>
         {entity.compiledContent ? (
           <CompiledMdast ast={entity.compiledContent} />
         ) : (
           <ReactMarkdown>{entity.content}</ReactMarkdown>
         )}
-      </div>
+      </Prose>
 
       {hasData ? (
-        <section className="entity-content__data">
-          <h3>Data</h3>
-          <pre>{JSON.stringify(data, null, 2)}</pre>
-        </section>
+        <ContentSection title="Data">
+          <CodeBlock>{JSON.stringify(data, null, 2)}</CodeBlock>
+        </ContentSection>
       ) : null}
 
-      {entity.references.length > 0 ? (
-        <section className="entity-content__references">
-          <h3>References</h3>
-          <ul>
-            {entity.references.map((ref) => (
-              <li key={`${ref.operand}:${ref.refSources.join(",")}`}>
-                <code>{ref.targetLabel}</code>
-                {ref.targetEntityId ? (
-                  <>
-                    {" "}
-                    → <code>{ref.targetEntityId}</code>
-                    {ref.targetEntitySlug ? (
-                      <>
-                        {" "}
-                        · <code>{ref.targetEntitySlug}</code>
-                      </>
-                    ) : null}
-                  </>
-                ) : null}
-                <span className="entity-content__ref-sources">
-                  {" "}
-                  (operand <code>{ref.operand}</code> · {ref.refSources.join(", ")})
-                </span>
-              </li>
-            ))}
-          </ul>
-        </section>
+      {references.length > 0 ? (
+        <ContentSection title="References">
+          <ReferenceList items={references} />
+        </ContentSection>
       ) : null}
-    </article>
+    </Article>
   );
 }

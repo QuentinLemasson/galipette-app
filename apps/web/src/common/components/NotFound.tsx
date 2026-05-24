@@ -3,6 +3,7 @@
  */
 
 import { Button } from "@galipette/ui/components/button";
+import { Typography } from "@galipette/ui/components/typography";
 import { Link } from "@tanstack/react-router";
 
 type NotFoundProps = {
@@ -12,21 +13,24 @@ type NotFoundProps = {
 
 /**
  * @description Renders a "not found" message with a link back to the home page.
- * @param props - Component props.
- * @param props.message - Optional custom message. Falls back to a generic copy.
- * @returns Section element informing the user nothing could be displayed.
  */
 export function NotFound({ message, debug }: NotFoundProps) {
   return (
-    <section className="not-found">
-      <h1>Not found</h1>
-      <p>{message ?? "This route did not match any compiled entity."}</p>
-      <Link to="/app/home">Back to home</Link>
-      {debug && (
+    <section className="flex max-w-lg flex-col gap-3">
+      <Typography variant="h1" as="h1">
+        Not found
+      </Typography>
+      <Typography variant="body">
+        {message ?? "This route did not match any compiled entity."}
+      </Typography>
+      <Link to="/app/home" className="text-sm font-medium text-primary hover:underline">
+        Back to home
+      </Link>
+      {debug ? (
         <Button id="not-found-debug-button" onClick={debug}>
           Debug
         </Button>
-      )}
+      ) : null}
     </section>
   );
 }

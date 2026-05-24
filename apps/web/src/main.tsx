@@ -5,7 +5,6 @@ import { createRoot } from "react-dom/client";
 import { router } from "./app/router";
 import "@galipette/ui/globals.css";
 import "./index.css";
-import "./app/styles/app.css";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {

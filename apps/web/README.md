@@ -6,7 +6,7 @@ Minimal MVP that validates the [`@galipette/compiled-content`](../../packages/co
 
 - **React 19** + **TypeScript**
 - **Vite** (dev server / bundler)
-- **Tailwind CSS v4** (`@tailwindcss/vite`; utilities in `src/index.css` via `@import "tailwindcss"`)
+- **Tailwind CSS v4** (via `@galipette/ui/globals.css`; app shell in `src/index.css`)
 - **TanStack Router** (code-based routes; entity detail uses a splat on **slug**)
 - **Compiled mdast** (`entity.compiledContent`) rendered via small React components (paragraphs, headings, text, wikilinks, thematic breaks, and a generic fallback for other mdast nodes)
 - **react-markdown** (fallback only when an entity has no `compiledContent`)
@@ -47,12 +47,10 @@ src/
 │   │   ├── entity.tsx          # mounts wiki `EntityPage`
 │   │   ├── not-found.tsx
 │   │   └── not-found-search.ts
-│   ├── styles/
-│   │   └── app.css             # Layout + wiki explorer presentation (shared chrome)
 │   └── router.tsx
 ├── features/
 │   ├── wiki/                   # Compiled wiki / vault explorer (entity detail, nav, mdast)
-│   │   ├── components/         # NavigationTree, EntityContent, CompiledMdast, …
+│   │   ├── components/         # EntityContent, CompiledMdast, WikiFileTree, …
 │   │   ├── hooks/              # `useEntityBySlug`, `useNavigationTree`
 │   │   ├── pages/
 │   │   │   └── EntityPage.tsx  # `/entity/$` page
@@ -72,7 +70,7 @@ src/
 │   │   └── constants.ts        # `ENTITY_ROUTE_PREFIX`, `NOT_FOUND_ROUTE`
 │   └── utils/
 │       └── format-type-label.ts
-├── index.css                   # Tailwind import + global tokens + base typography
+├── index.css                   # App shell (#root layout only)
 └── main.tsx                    # Mounts `<RouterProvider>`; imports `app/router`
 ```
 
@@ -87,9 +85,10 @@ flowchart LR
   CC["@galipette/compiled-content"]
   H1["useNavigationTree"]
   H2["useEntityBySlug"]
-  NT["NavigationTree"]
+  WFT["WikiFileTree"]
   EC["EntityContent"]
-  CC -->|getNavigationTree| H1 --> NT
+  CC -->|getNavigationTree| H1
+  CC -->|getFileTree| WFT
   CC -->|getBySlug| H2 --> EC
 ```
 

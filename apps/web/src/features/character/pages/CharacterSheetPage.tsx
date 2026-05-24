@@ -2,8 +2,14 @@
  * Character + sheet editor: loads one character and PATCHes changes (KISS forms + fetch).
  */
 
+import { Alert, AlertDescription } from "@galipette/ui/components/alert";
+import { Button } from "@galipette/ui/components/button";
+import { InlineCode } from "@galipette/ui/components/inline-code";
+import { Input } from "@galipette/ui/components/input";
+import { Typography } from "@galipette/ui/components/typography";
+import { cn } from "@galipette/ui/lib/utils";
 import { Link } from "@tanstack/react-router";
-import { useMemo, useCallback, useEffect, useState } from "react";
+import { useMemo, useCallback, useEffect, useState, type FormEvent } from "react";
 
 import { fetchCharacter, patchCharacter, type CharacterDto } from "../api";
 import { getSkillSelectOptions, SKILL_OPTION_ENTITY_TYPE } from "../skill-select-options";
@@ -11,6 +17,16 @@ import { getSkillSelectOptions, SKILL_OPTION_ENTITY_TYPE } from "../skill-select
 export type CharacterSheetPageProps = {
   characterId: string;
 };
+
+const pageClass = "flex max-w-2xl flex-col gap-4";
+const linkClass = "text-sm font-medium text-primary hover:underline";
+const fieldClass = "flex flex-col gap-1.5 text-sm";
+const labelClass = "font-medium text-foreground";
+const textareaClass = cn(
+  "flex min-h-[120px] w-full rounded-md border border-input bg-transparent px-3 py-2 font-mono text-sm shadow-xs outline-none",
+  "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
+  "disabled:pointer-events-none disabled:opacity-50 dark:bg-input/30",
+);
 
 function formStateFromCharacter(c: CharacterDto) {
   return {
@@ -98,7 +114,7 @@ export function CharacterSheetPage({ characterId }: CharacterSheetPageProps) {
     };
   }, [characterId]);
 
-  async function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: FormEvent) {
     e.preventDefault();
     setSaveMessage(null);
     let attributes: Record<string, number>;
@@ -118,15 +134,13 @@ export function CharacterSheetPage({ characterId }: CharacterSheetPageProps) {
       return;
     }
 
-    const skillIds = selectedSkillIds;
-
     setSaving(true);
     setError(null);
     try {
       const updated = await patchCharacter(characterId, {
         name,
         player,
-        sheet: { attributes, skillIds },
+        sheet: { attributes, skillIds: selectedSkillIds },
       });
       setRow(updated);
       const next = formStateFromCharacter(updated);
@@ -144,64 +158,71 @@ export function CharacterSheetPage({ characterId }: CharacterSheetPageProps) {
 
   if (loading) {
     return (
-      <section className="character-page">
-        <p className="character-page__muted">Loading character…</p>
+      <section className={pageClass}>
+        <Typography variant="muted">Loading character…</Typography>
       </section>
     );
   }
 
   if (error !== null && row === null) {
     return (
-      <section className="character-page">
-        <p>
-          <Link to="/app/characters" className="character-page__link">
-            ← Characters
-          </Link>
-        </p>
-        <h1>Character</h1>
-        <p className="character-page__error" role="alert">
-          {error}
-        </p>
+      <section className={pageClass}>
+        <Link to="/app/characters" className={linkClass}>
+          ← Characters
+        </Link>
+        <Typography variant="h1" as="h1">
+          Character
+        </Typography>
+        <Alert variant="destructive">
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
       </section>
     );
   }
 
   return (
-    <section className="character-page">
-      <p>
-        <Link to="/app/characters" className="character-page__link">
-          ← Characters
-        </Link>
-      </p>
-      <h1>{row?.name ?? "Character"}</h1>
-      <p className="character-page__muted">
-        <code>GET/PATCH /api/characters/{characterId}</code>
-      </p>
+    <section className={pageClass}>
+      <Link to="/app/characters" className={linkClass}>
+        ← Characters
+      </Link>
+      <Typography variant="h1" as="h1">
+        {row?.name ?? "Character"}
+      </Typography>
+      <Typography variant="muted">
+        <InlineCode>
+          GET/PATCH /api/characters/{characterId}
+        </InlineCode>
+      </Typography>
 
-      {saveMessage !== null ? <p className="character-page__ok">{saveMessage}</p> : null}
+      {saveMessage !== null ? (
+        <Typography variant="body" className="text-primary">
+          {saveMessage}
+        </Typography>
+      ) : null}
       {error !== null ? (
-        <p className="character-page__error" role="alert">
-          {error}
-        </p>
+        <Alert variant="destructive">
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
       ) : null}
 
-      <form className="character-form" onSubmit={onSubmit}>
-        <label className="character-form__field">
-          <span>Name</span>
-          <input value={name} onChange={(ev) => setName(ev.target.value)} required minLength={1} />
+      <form className="flex max-w-xl flex-col gap-4" onSubmit={onSubmit}>
+        <label className={fieldClass}>
+          <span className={labelClass}>Name</span>
+          <Input value={name} onChange={(ev) => setName(ev.target.value)} required minLength={1} />
         </label>
-        <label className="character-form__field">
-          <span>Player</span>
-          <input
+        <label className={fieldClass}>
+          <span className={labelClass}>Player</span>
+          <Input
             value={player}
             onChange={(ev) => setPlayer(ev.target.value)}
             required
             minLength={1}
           />
         </label>
-        <label className="character-form__field">
-          <span>Sheet attributes (JSON object: string → number)</span>
+        <label className={fieldClass}>
+          <span className={labelClass}>Sheet attributes (JSON object: string → number)</span>
           <textarea
+            className={textareaClass}
             value={attrsJson}
             onChange={(ev) => setAttrsJson(ev.target.value)}
             rows={8}
@@ -209,52 +230,57 @@ export function CharacterSheetPage({ characterId }: CharacterSheetPageProps) {
           />
         </label>
 
-        <fieldset className="character-form__fieldset">
-          <legend className="character-form__legend">
+        <fieldset className="rounded-lg border border-border bg-card p-4">
+          <legend className="px-1 text-sm font-semibold text-foreground">
             Skills{" "}
-            <span className="character-page__muted">
-              (compiled <code>{SKILL_OPTION_ENTITY_TYPE}</code> entities —{" "}
-              <code>contentRepository.getByType(&quot;{SKILL_OPTION_ENTITY_TYPE}&quot;)</code>)
+            <span className="font-normal text-muted-foreground">
+              (compiled <InlineCode>{SKILL_OPTION_ENTITY_TYPE}</InlineCode> entities)
             </span>
           </legend>
           {skillOptions.length === 0 ? (
-            <p className="character-page__muted">
+            <Typography variant="muted" className="mt-2">
               No compiled spells in the bundle. Run the content builder so entities exist for this
               type.
-            </p>
+            </Typography>
           ) : (
-            <div className="character-form__skill-list" role="group" aria-label="Skill selection">
+            <div
+              className="mt-3 flex max-h-[280px] flex-col gap-1.5 overflow-y-auto"
+              role="group"
+              aria-label="Skill selection"
+            >
               {skillOptions.map((opt) => (
-                <label key={opt.id} className="character-form__skill-row">
+                <label key={opt.id} className="flex cursor-pointer items-center gap-2.5 text-sm">
                   <input
                     type="checkbox"
+                    className="size-4 shrink-0"
                     checked={selectedSkillIds.includes(opt.id)}
                     onChange={(ev) =>
                       setSelectedSkillIds((prev) => toggleSkillId(prev, opt.id, ev.target.checked))
                     }
                   />
-                  <span>{opt.name}</span>
-                  <code className="character-form__skill-id">{opt.id}</code>
+                  <span className="flex-1">{opt.name}</span>
+                  <InlineCode className="max-w-[42%] truncate">{opt.id}</InlineCode>
                 </label>
               ))}
             </div>
           )}
           {orphanSkillIds.length > 0 ? (
-            <div className="character-form__orphan-skills">
-              <p className="character-page__muted">
+            <div className="mt-3 border-t border-dashed border-border pt-3">
+              <Typography variant="muted">
                 Selected ids not present in the current spell catalog (uncheck to remove):
-              </p>
-              <div className="character-form__skill-list">
+              </Typography>
+              <div className="mt-2 flex max-h-[280px] flex-col gap-1.5 overflow-y-auto">
                 {orphanSkillIds.map((id) => (
-                  <label key={id} className="character-form__skill-row">
+                  <label key={id} className="flex cursor-pointer items-center gap-2.5 text-sm">
                     <input
                       type="checkbox"
+                      className="size-4 shrink-0"
                       checked
                       onChange={(ev) =>
                         setSelectedSkillIds((prev) => toggleSkillId(prev, id, ev.target.checked))
                       }
                     />
-                    <code>{id}</code>
+                    <InlineCode>{id}</InlineCode>
                   </label>
                 ))}
               </div>
@@ -262,13 +288,13 @@ export function CharacterSheetPage({ characterId }: CharacterSheetPageProps) {
           ) : null}
         </fieldset>
 
-        <div className="character-form__actions">
-          <button type="submit" disabled={saving}>
+        <div className="flex flex-wrap gap-3">
+          <Button type="submit" disabled={saving}>
             {saving ? "Saving…" : "Save"}
-          </button>
-          <button type="button" disabled={saving} onClick={() => void reload(true)}>
+          </Button>
+          <Button type="button" variant="outline" disabled={saving} onClick={() => void reload(true)}>
             Reload
-          </button>
+          </Button>
         </div>
       </form>
     </section>
