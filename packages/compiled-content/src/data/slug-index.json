@@ -37,7 +37,10 @@
     "wiki/skills/spells/spirit-summoning": "skill.spell.spirit-summoning",
     "wiki/skills/spells/summoning": "skill.spell.summoning",
     "wiki/skills/spells/wind-blessing": "skill.spell.wind-blessing",
+    "wiki/skills/techniques/assault-order": "skill.order.assault-order",
     "wiki/skills/techniques/counter-attack": "skill.technique.counter-attack",
+    "wiki/skills/techniques/defend-order": "skill.canalization.defend-order",
+    "wiki/skills/techniques/grouped-order": "skill.technique.grouped-order",
     "wiki/skills/techniques/lightning-draw": "skill.technique.lightning-draw",
     "wiki/skills/techniques/straight-line": "skill.technique.straight-line"
   },
@@ -79,7 +82,10 @@
     "skill.spell.spirit-summoning": "wiki/skills/spells/spirit-summoning",
     "skill.spell.summoning": "wiki/skills/spells/summoning",
     "skill.spell.wind-blessing": "wiki/skills/spells/wind-blessing",
+    "skill.order.assault-order": "wiki/skills/techniques/assault-order",
     "skill.technique.counter-attack": "wiki/skills/techniques/counter-attack",
+    "skill.canalization.defend-order": "wiki/skills/techniques/defend-order",
+    "skill.technique.grouped-order": "wiki/skills/techniques/grouped-order",
     "skill.technique.lightning-draw": "wiki/skills/techniques/lightning-draw",
     "skill.technique.straight-line": "wiki/skills/techniques/straight-line"
   }

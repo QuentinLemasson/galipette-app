@@ -5,6 +5,7 @@
 import { afflictionSchema } from "./AfflictionSchema.js";
 import { creatureSchema } from "./CreatureSchema.js";
 import { damageTypeSchema } from "./DamageTypeSchema.js";
+import { orderSchema } from "./OrderSchema.js";
 import { ruleSchema } from "./RuleSchema.js";
 import { skillSchema } from "./SkillSchema.js";
 import { spellSchema } from "./SpellSchema.js";
@@ -19,6 +20,7 @@ export const schemaByType = {
   rule: ruleSchema,
   technique: techniqueSchema,
   creature: creatureSchema,
+  order: orderSchema,
 } as const;
 
 /** Union of keys present in {@link schemaByType}. */

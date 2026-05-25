@@ -2194,11 +2194,29 @@
     "id": "skill.spell.elemental-weapon",
     "type": "spell",
     "name": "Arme élémentaire",
-    "content": "# Arme élémentaire",
+    "content": "# Arme élémentaire\nLe lanceur enchante une arme non magique ou focalisatrice de sort.\nCette arme inflige désormais +1 dégâts, et ses dégâts changent pour l'élément en question.\nLes attaques de cette armes comptent également comme des sorts de cet élément.\nLe lanceur concentre 2.\n\nDD 10\n\nEchec - lanceur subit une affliction élémentaire et l'arme perd en durabilité\nEffet néfaste -  lanceur subit une affliction élémentaire et l'arme perd en durabilité\nEffet critique - augmente les dégâts de +1 supplémentaire ( 2 EC) | la prochaine attaque réussie inflige une affliction\n# Amélioration\n## Projection\n[[Canalisation]] +1 et [[concentration]] +1.\nL'arme peu projeter des vagues élémentaires et attaquer à courte portée avec -2 dégâts.\n\n## Décharge finale\n[[Canalisation]] +2\nLe porteur de l'arme ou le lanceur peuvent, par une action, effectuer une attaque de zone (3x3) à +2 dégâts.\nCela met fin à l'enchantement",
     "slug": "wiki/skills/spells/elemental-weapon",
     "sourcePath": "wiki/skills/spells/elemental-weapon.md",
-    "references": [],
-    "data": {},
+    "references": [
+      {
+        "operand": "Canalisation",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Canalisation"
+      },
+      {
+        "operand": "concentration",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "concentration"
+      }
+    ],
+    "data": {
+      "canalization": "2",
+      "range": "touch"
+    },
     "compiledContent": {
       "type": "root",
       "children": [
@@ -2209,6 +2227,103 @@
             {
               "type": "text",
               "value": "Arme élémentaire"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le lanceur enchante une arme non magique ou focalisatrice de sort.\nCette arme inflige désormais +1 dégâts, et ses dégâts changent pour l'élément en question.\nLes attaques de cette armes comptent également comme des sorts de cet élément.\nLe lanceur concentre 2."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "DD 10"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Echec - lanceur subit une affliction élémentaire et l'arme perd en durabilité\nEffet néfaste -  lanceur subit une affliction élémentaire et l'arme perd en durabilité\nEffet critique - augmente les dégâts de +1 supplémentaire ( 2 EC) | la prochaine attaque réussie inflige une affliction"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Amélioration"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Projection"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "wikiLink",
+              "operand": "Canalisation",
+              "displayLabel": "Canalisation",
+              "value": "Canalisation"
+            },
+            {
+              "type": "text",
+              "value": " +1 et "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "concentration",
+              "displayLabel": "concentration",
+              "value": "concentration"
+            },
+            {
+              "type": "text",
+              "value": " +1.\nL'arme peu projeter des vagues élémentaires et attaquer à courte portée avec -2 dégâts."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Décharge finale"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "wikiLink",
+              "operand": "Canalisation",
+              "displayLabel": "Canalisation",
+              "value": "Canalisation"
+            },
+            {
+              "type": "text",
+              "value": " +2\nLe porteur de l'arme ou le lanceur peuvent, par une action, effectuer une attaque de zone (3x3) à +2 dégâts.\nCela met fin à l'enchantement"
             }
           ]
         }
@@ -2446,7 +2561,10 @@
         "targetEntitySlug": "wiki/compendium/afflictions/nauseous"
       }
     ],
-    "data": {},
+    "data": {
+      "canalization": "1",
+      "range": "personal"
+    },
     "compiledContent": {
       "type": "root",
       "children": [
@@ -2733,7 +2851,10 @@
         "targetLabel": "Magie Mentale"
       }
     ],
-    "data": {},
+    "data": {
+      "canalization": "1",
+      "range": "personal"
+    },
     "compiledContent": {
       "type": "root",
       "children": [
@@ -2935,7 +3056,10 @@
         "targetLabel": "Magie Mentale"
       }
     ],
-    "data": {},
+    "data": {
+      "canalization": "2",
+      "range": "touch"
+    },
     "compiledContent": {
       "type": "root",
       "children": [
@@ -3097,7 +3221,9 @@
       },
       "afflictions": [
         "affliction.blinded"
-      ]
+      ],
+      "canalization": "1",
+      "range": "medium"
     },
     "compiledContent": {
       "type": "root",
@@ -3198,7 +3324,10 @@
         "targetEntitySlug": "wiki/compendium/afflictions/vulnerable"
       }
     ],
-    "data": {},
+    "data": {
+      "canalization": "2",
+      "range": "touch"
+    },
     "compiledContent": {
       "type": "root",
       "children": [
@@ -3364,6 +3493,145 @@
     }
   },
   {
+    "id": "skill.order.assault-order",
+    "type": "skill",
+    "name": "Ordre d'assaut",
+    "content": "# Ordre d'assaut\nLe personnage choisi une cible qu'il peut physiquement désigner.\nUn personnage allié - le premier répondant à l'appel - dispose d'une action de mouvement gratuite pour se rapprocher de la cible\n\nLe personnage peut optionnellement l'accompagner d'un jet de Commandement DD10\n\n**Echec** - affligé par [[exposed|Exposé]] 1 | -1 [[sang-froid]] | -1 [[moral]]\n**Effet néfaste** - amplifie l'effet d'échec de 1\n**Effet critique** - +1 vitesse de déplacement",
+    "slug": "wiki/skills/techniques/assault-order",
+    "sourcePath": "wiki/skills/techniques/assault-order.md",
+    "references": [
+      {
+        "operand": "exposed",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "exposed"
+      },
+      {
+        "operand": "moral",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "moral"
+      },
+      {
+        "operand": "sang-froid",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "sang-froid"
+      }
+    ],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Ordre d'assaut"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le personnage choisi une cible qu'il peut physiquement désigner.\nUn personnage allié - le premier répondant à l'appel - dispose d'une action de mouvement gratuite pour se rapprocher de la cible"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le personnage peut optionnellement l'accompagner d'un jet de Commandement DD10"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Echec"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - affligé par "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "exposed",
+              "displayLabel": "Exposé",
+              "value": "Exposé"
+            },
+            {
+              "type": "text",
+              "value": " 1 | -1 "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "sang-froid",
+              "displayLabel": "sang-froid",
+              "value": "sang-froid"
+            },
+            {
+              "type": "text",
+              "value": " | -1 "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "moral",
+              "displayLabel": "moral",
+              "value": "moral"
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Effet néfaste"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - amplifie l'effet d'échec de 1\n"
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Effet critique"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - +1 vitesse de déplacement"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "id": "skill.technique.counter-attack",
     "type": "technique",
     "name": "Contre-Attaque",
@@ -3382,6 +3650,318 @@
             {
               "type": "text",
               "value": "Contre-Attaque"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.canalization.defend-order",
+    "type": "order",
+    "name": "Ordre de protection",
+    "content": "# Ordre de protection\nLe personnage choisi une cible qu'il peut physiquement désigner.\nUn personnage allié - le premier répondant à l'appel - dispose d'une action de protection gratuite pour défendre la cible - [[abnégation]], [[aide à la sauvegarde]], etc\n\nLe personnage peut optionnellement l'accompagner d'un jet de Commandement DD10\n\n**Echec** - affligé par [[exposed|Exposé]] 1 | -1 [[sang-froid]] | -1 [[moral]]\n**Effet néfaste** - amplifie l'effet d'échec de 1\n**Effet critique** - +1 à la sauvegarde pour l'action de défense",
+    "slug": "wiki/skills/techniques/defend-order",
+    "sourcePath": "wiki/skills/techniques/defend-order.md",
+    "references": [
+      {
+        "operand": "abnégation",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "abnégation"
+      },
+      {
+        "operand": "aide à la sauvegarde",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "aide à la sauvegarde"
+      },
+      {
+        "operand": "exposed",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "exposed"
+      },
+      {
+        "operand": "moral",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "moral"
+      },
+      {
+        "operand": "sang-froid",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "sang-froid"
+      }
+    ],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Ordre de protection"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le personnage choisi une cible qu'il peut physiquement désigner.\nUn personnage allié - le premier répondant à l'appel - dispose d'une action de protection gratuite pour défendre la cible - "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "abnégation",
+              "displayLabel": "abnégation",
+              "value": "abnégation"
+            },
+            {
+              "type": "text",
+              "value": ", "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "aide à la sauvegarde",
+              "displayLabel": "aide à la sauvegarde",
+              "value": "aide à la sauvegarde"
+            },
+            {
+              "type": "text",
+              "value": ", etc"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le personnage peut optionnellement l'accompagner d'un jet de Commandement DD10"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Echec"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - affligé par "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "exposed",
+              "displayLabel": "Exposé",
+              "value": "Exposé"
+            },
+            {
+              "type": "text",
+              "value": " 1 | -1 "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "sang-froid",
+              "displayLabel": "sang-froid",
+              "value": "sang-froid"
+            },
+            {
+              "type": "text",
+              "value": " | -1 "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "moral",
+              "displayLabel": "moral",
+              "value": "moral"
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Effet néfaste"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - amplifie l'effet d'échec de 1\n"
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Effet critique"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - +1 à la sauvegarde pour l'action de défense"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.technique.grouped-order",
+    "type": "technique",
+    "name": "Ordre Groupé",
+    "content": "# Ordre groupé\nL'ordre utilisé coûte une action de plus, mais affecte jusqu'à 4 alliés.\nLe personnage effectue un jet Commandement DD 5 + 5 par allié\n\nLe personnage peut optionnellement l'accompagner d'un jet de Commandement DD15\n\n**Echec** - affligé par [[exposed|Exposé]] 2 | -2 [[sang-froid]] | -2 [[moral]]\n**Effet néfaste** - amplifie l'effet d'échec de 2\n**Effet critique** - effet critique de l'ordre sur toutes les cibles",
+    "slug": "wiki/skills/techniques/grouped-order",
+    "sourcePath": "wiki/skills/techniques/grouped-order.md",
+    "references": [
+      {
+        "operand": "exposed",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "exposed"
+      },
+      {
+        "operand": "moral",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "moral"
+      },
+      {
+        "operand": "sang-froid",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "sang-froid"
+      }
+    ],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Ordre groupé"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "L'ordre utilisé coûte une action de plus, mais affecte jusqu'à 4 alliés.\nLe personnage effectue un jet Commandement DD 5 + 5 par allié"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le personnage peut optionnellement l'accompagner d'un jet de Commandement DD15"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Echec"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - affligé par "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "exposed",
+              "displayLabel": "Exposé",
+              "value": "Exposé"
+            },
+            {
+              "type": "text",
+              "value": " 2 | -2 "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "sang-froid",
+              "displayLabel": "sang-froid",
+              "value": "sang-froid"
+            },
+            {
+              "type": "text",
+              "value": " | -2 "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "moral",
+              "displayLabel": "moral",
+              "value": "moral"
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Effet néfaste"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - amplifie l'effet d'échec de 2\n"
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Effet critique"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - effet critique de l'ordre sur toutes les cibles"
             }
           ]
         }

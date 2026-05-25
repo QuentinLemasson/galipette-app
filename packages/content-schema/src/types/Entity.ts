@@ -19,6 +19,7 @@ import type {
   fileTreeSchema,
   folderIndexFrontmatterSchema,
 } from "../schemas/FileTreeSchema.js";
+import type { orderSchema } from "../schemas/OrderSchema.js";
 import type { RegisteredEntityType } from "../schemas/SchemaRegistry.js";
 import type { skillSchema } from "../schemas/SkillSchema.js";
 import type { spellSchema } from "../schemas/SpellSchema.js";
@@ -30,6 +31,7 @@ export type AfflictionEntity = z.infer<typeof afflictionSchema>;
 export type SkillEntity = z.infer<typeof skillSchema>;
 export type TechniqueEntity = z.infer<typeof techniqueSchema>;
 export type CreatureEntity = z.infer<typeof creatureSchema>;
+export type OrderEntity = z.infer<typeof orderSchema>;
 
 export type CompiledEntity =
   | SpellEntity
@@ -37,7 +39,8 @@ export type CompiledEntity =
   | AfflictionEntity
   | SkillEntity
   | TechniqueEntity
-  | CreatureEntity;
+  | CreatureEntity
+  | OrderEntity;
 export type EntityType = RegisteredEntityType;
 
 export type EntityReferenceSource = z.infer<typeof entityReferenceSourceSchema>;

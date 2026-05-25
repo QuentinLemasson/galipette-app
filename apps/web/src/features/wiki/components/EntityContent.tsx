@@ -14,6 +14,7 @@ import ReactMarkdown from "react-markdown";
 import { formatTypeLabel } from "../../../common/utils/format-type-label";
 
 import { CompiledMdast } from "./CompiledMdast";
+import { Badge } from "@galipette/ui/components/badge";
 
 type EntityContentProps = {
   entity: CompiledEntity;
@@ -48,6 +49,22 @@ export function EntityContent({ entity }: EntityContentProps) {
         id={entity.id}
         slug={entity.slug}
       />
+
+      {/* TODO : auto type-cast data */}
+      {/* TODO : translation keys for range */}
+      {/* TODO : specialized data / tag component per entity type */}
+      {hasData && (
+        <div className="flex flex-row gap-2">
+          {(data as { canalization?: string })?.canalization && (
+            <Badge variant="outline">
+              Canalisation - {(data as { canalization?: string })?.canalization}
+            </Badge>
+          )}
+          {(data as { range?: string })?.range && (
+            <Badge variant="outline">Portée: {(data as { range?: string })?.range}</Badge>
+          )}
+        </div>
+      )}
 
       <Prose>
         {entity.compiledContent ? (

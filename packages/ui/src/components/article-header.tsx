@@ -22,8 +22,11 @@ function ArticleHeader({ typeLabel, title, id, slug, className }: ArticleHeaderP
       <Typography variant="h1" as="h1">
         {title}
       </Typography>
-      <Badge variant="outline">{id}</Badge>
-      <Badge variant="outline">{slug}</Badge>
+      {/* TODO : tagList ui component */}
+      <div className="flex flex-row gap-2">
+        <Badge variant="outline">{id}</Badge>
+        <Badge variant="outline">{slug}</Badge>
+      </div>
     </header>
   );
 }

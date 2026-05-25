@@ -109,6 +109,12 @@
       "sourcePath": "wiki/skills/canalization/critical-synergy.md"
     },
     {
+      "id": "skill.canalization.defend-order",
+      "type": "order",
+      "label": "Ordre de protection",
+      "sourcePath": "wiki/skills/techniques/defend-order.md"
+    },
+    {
       "id": "skill.canalization.dry-out",
       "type": "skill",
       "label": "Déssèchement",
@@ -131,6 +137,12 @@
       "type": "skill",
       "label": "Vents Violents",
       "sourcePath": "wiki/skills/canalization/strong-wind.md"
+    },
+    {
+      "id": "skill.order.assault-order",
+      "type": "skill",
+      "label": "Ordre d'assaut",
+      "sourcePath": "wiki/skills/techniques/assault-order.md"
     },
     {
       "id": "skill.spell.clairvoyant-eye",
@@ -229,6 +241,12 @@
       "sourcePath": "wiki/skills/techniques/counter-attack.md"
     },
     {
+      "id": "skill.technique.grouped-order",
+      "type": "technique",
+      "label": "Ordre Groupé",
+      "sourcePath": "wiki/skills/techniques/grouped-order.md"
+    },
+    {
       "id": "skill.technique.lightning-draw",
       "type": "technique",
       "label": "Dégainage Eclair",
@@ -259,6 +277,26 @@
       "nauseous"
     ],
     [
+      "skill.canalization.defend-order",
+      "abnégation"
+    ],
+    [
+      "skill.canalization.defend-order",
+      "aide à la sauvegarde"
+    ],
+    [
+      "skill.canalization.defend-order",
+      "exposed"
+    ],
+    [
+      "skill.canalization.defend-order",
+      "moral"
+    ],
+    [
+      "skill.canalization.defend-order",
+      "sang-froid"
+    ],
+    [
       "skill.canalization.dry-out",
       "Efficacité"
     ],
@@ -269,6 +307,26 @@
     [
       "skill.canalization.erosion",
       "Efficacité"
+    ],
+    [
+      "skill.order.assault-order",
+      "exposed"
+    ],
+    [
+      "skill.order.assault-order",
+      "moral"
+    ],
+    [
+      "skill.order.assault-order",
+      "sang-froid"
+    ],
+    [
+      "skill.spell.elemental-weapon",
+      "Canalisation"
+    ],
+    [
+      "skill.spell.elemental-weapon",
+      "concentration"
     ],
     [
       "skill.spell.fiery-shot",
@@ -325,6 +383,18 @@
     [
       "skill.spell.summoning",
       "vulnerable"
+    ],
+    [
+      "skill.technique.grouped-order",
+      "exposed"
+    ],
+    [
+      "skill.technique.grouped-order",
+      "moral"
+    ],
+    [
+      "skill.technique.grouped-order",
+      "sang-froid"
     ]
   ]
 }

@@ -30,6 +30,26 @@
     ]
   },
   {
+    "entityId": "skill.spell.elemental-weapon",
+    "sourcePath": "wiki/skills/spells/elemental-weapon.md",
+    "entitySlug": "wiki/skills/spells/elemental-weapon",
+    "operand": "Canalisation",
+    "linkText": "Canalisation",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
+    "entityId": "skill.spell.elemental-weapon",
+    "sourcePath": "wiki/skills/spells/elemental-weapon.md",
+    "entitySlug": "wiki/skills/spells/elemental-weapon",
+    "operand": "concentration",
+    "linkText": "concentration",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
     "entityId": "skill.spell.nausea-resistance",
     "sourcePath": "wiki/skills/spells/nausea-resistance.md",
     "entitySlug": "wiki/skills/spells/nausea-resistance",
@@ -75,6 +95,116 @@
     "entitySlug": "wiki/skills/spells/summoning",
     "operand": "invocation-compendium",
     "linkText": "compendium d'invocation",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
+    "entityId": "skill.order.assault-order",
+    "sourcePath": "wiki/skills/techniques/assault-order.md",
+    "entitySlug": "wiki/skills/techniques/assault-order",
+    "operand": "exposed",
+    "linkText": "Exposé",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
+    "entityId": "skill.order.assault-order",
+    "sourcePath": "wiki/skills/techniques/assault-order.md",
+    "entitySlug": "wiki/skills/techniques/assault-order",
+    "operand": "moral",
+    "linkText": "moral",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
+    "entityId": "skill.order.assault-order",
+    "sourcePath": "wiki/skills/techniques/assault-order.md",
+    "entitySlug": "wiki/skills/techniques/assault-order",
+    "operand": "sang-froid",
+    "linkText": "sang-froid",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
+    "entityId": "skill.canalization.defend-order",
+    "sourcePath": "wiki/skills/techniques/defend-order.md",
+    "entitySlug": "wiki/skills/techniques/defend-order",
+    "operand": "abnégation",
+    "linkText": "abnégation",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
+    "entityId": "skill.canalization.defend-order",
+    "sourcePath": "wiki/skills/techniques/defend-order.md",
+    "entitySlug": "wiki/skills/techniques/defend-order",
+    "operand": "aide à la sauvegarde",
+    "linkText": "aide à la sauvegarde",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
+    "entityId": "skill.canalization.defend-order",
+    "sourcePath": "wiki/skills/techniques/defend-order.md",
+    "entitySlug": "wiki/skills/techniques/defend-order",
+    "operand": "exposed",
+    "linkText": "Exposé",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
+    "entityId": "skill.canalization.defend-order",
+    "sourcePath": "wiki/skills/techniques/defend-order.md",
+    "entitySlug": "wiki/skills/techniques/defend-order",
+    "operand": "moral",
+    "linkText": "moral",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
+    "entityId": "skill.canalization.defend-order",
+    "sourcePath": "wiki/skills/techniques/defend-order.md",
+    "entitySlug": "wiki/skills/techniques/defend-order",
+    "operand": "sang-froid",
+    "linkText": "sang-froid",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
+    "entityId": "skill.technique.grouped-order",
+    "sourcePath": "wiki/skills/techniques/grouped-order.md",
+    "entitySlug": "wiki/skills/techniques/grouped-order",
+    "operand": "exposed",
+    "linkText": "Exposé",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
+    "entityId": "skill.technique.grouped-order",
+    "sourcePath": "wiki/skills/techniques/grouped-order.md",
+    "entitySlug": "wiki/skills/techniques/grouped-order",
+    "operand": "moral",
+    "linkText": "moral",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
+    "entityId": "skill.technique.grouped-order",
+    "sourcePath": "wiki/skills/techniques/grouped-order.md",
+    "entitySlug": "wiki/skills/techniques/grouped-order",
+    "operand": "sang-froid",
+    "linkText": "sang-froid",
     "origins": [
       "markdown"
     ]

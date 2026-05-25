@@ -328,6 +328,30 @@
                 "name": "Ligne Droite",
                 "slug": "wiki/skills/techniques/straight-line",
                 "sourcePath": "wiki/skills/techniques/straight-line.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.order.assault-order",
+                "type": "skill",
+                "name": "Ordre d'assaut",
+                "slug": "wiki/skills/techniques/assault-order",
+                "sourcePath": "wiki/skills/techniques/assault-order.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.canalization.defend-order",
+                "type": "order",
+                "name": "Ordre de protection",
+                "slug": "wiki/skills/techniques/defend-order",
+                "sourcePath": "wiki/skills/techniques/defend-order.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.technique.grouped-order",
+                "type": "technique",
+                "name": "Ordre Groupé",
+                "slug": "wiki/skills/techniques/grouped-order",
+                "sourcePath": "wiki/skills/techniques/grouped-order.md"
               }
             ]
           }

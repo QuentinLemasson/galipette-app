@@ -14,6 +14,10 @@ const spellSpecificSchema = {
     })
     .optional(),
   afflictions: z.array(z.string().min(1)).optional(),
+  canalization: z.string().min(1).optional(),
+  range: z
+    .enum(["personal", "touch", "short", "medium", "long", "infinite", "vision", "none"])
+    .optional(),
 } satisfies z.ZodRawShape;
 
 /** Zod schema instance registered under the `spell` type key. */
