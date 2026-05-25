@@ -46,10 +46,12 @@ export const auth = betterAuth({
       disableImplicitSignUp: true,
     },
   },
+  account: {
+    storeStateStrategy: "database",
+  },
   secret: process.env.BETTER_AUTH_SECRET,
   baseURL,
   trustedOrigins,
-  // Allow cross-site cookies for all domains while using HTTPS & keep secure cookies for localhost.
   advanced: {
     useSecureCookies: true,
     defaultCookieAttributes: {
