@@ -26,14 +26,6 @@ inviteLog("auth-init", "Better Auth configuration", {
   hasDiscordClientId: Boolean(process.env.DISCORD_CLIENT_ID),
 });
 
-// #region agent log
-const baseURLIsHttps = baseURL.startsWith("https://");
-inviteLog("auth-init", "useSecureCookies auto-detect prediction", {
-  baseURLIsHttps,
-  note: "Better Auth derives useSecureCookies from request.url at runtime, NOT from baseURL config. Behind Railway proxy, request.url is http:// even though baseURL is https://",
-});
-// #endregion
-
 export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: "postgresql",
@@ -46,19 +38,11 @@ export const auth = betterAuth({
       disableImplicitSignUp: true,
     },
   },
-  account: {
-    storeStateStrategy: "database",
-    skipStateCookieCheck: true,
-  },
   secret: process.env.BETTER_AUTH_SECRET,
   baseURL,
   trustedOrigins,
   advanced: {
-    useSecureCookies: true,
-    defaultCookieAttributes: {
-      sameSite: "none",
-      secure: true,
-    },
+    useSecureCookies: baseURL.startsWith("https://"),
   },
   hooks: {
     before: inviteBeforeHook,

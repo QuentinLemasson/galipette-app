@@ -1,10 +1,14 @@
 /**
  * API server origin (scheme + host + port), without `/api`.
- * REST clients use `${getApiOrigin()}/api/...`; Better Auth uses `getApiOrigin()` as `baseURL`.
+ *
+ * - **Local dev**: set `VITE_API_ORIGIN=http://localhost:3001` (cross-origin).
+ * - **Production (Railway)**: leave unset or empty — the web service's Nginx
+ *   reverse-proxies `/api/*` to the API over private networking, so same-origin
+ *   (`""`) is correct and avoids all cross-site cookie issues.
  */
 export function getApiOrigin(): string {
   const raw =
-    import.meta.env.VITE_API_ORIGIN ?? import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3001";
+    import.meta.env.VITE_API_ORIGIN ?? import.meta.env.VITE_API_BASE_URL ?? "";
   const trimmed = String(raw).replace(/\/$/, "");
   if (trimmed.endsWith("/api")) {
     return trimmed.slice(0, -4);
