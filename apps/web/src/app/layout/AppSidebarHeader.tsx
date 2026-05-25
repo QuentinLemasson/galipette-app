@@ -11,6 +11,14 @@ import { useSession } from "../auth/useSession.hook";
 import { userInitials } from "../auth/user-display";
 
 import { appShellHeaderRowClassName } from "./app-header";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@galipette/ui/components/dropdown-menu";
+import { Link } from "@tanstack/react-router";
 
 /**
  * @description Renders the signed-in user at the top of the app sidebar (Discord avatar + name).
@@ -30,15 +38,8 @@ export function AppSidebarHeader() {
     </Avatar>
   );
 
-  return (
-    <SidebarHeader
-      className={cn(
-        appShellHeaderRowClassName,
-        "flex flex-row items-center justify-start",
-        "gap-2 border-b border-sidebar-border px-3 py-0",
-        "group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-2",
-      )}
-    >
+  const renderMenuTriggerContent = () => (
+    <div className="flex flex-row items-center justify-start gap-2 w-full h-full">
       {user ? (
         <Tooltip>
           <TooltipTrigger asChild>
@@ -61,6 +62,29 @@ export function AppSidebarHeader() {
         <p className="truncate text-sm font-semibold text-sidebar-foreground">{displayName}</p>
         <p className="truncate text-xs text-sidebar-foreground/70">{subtitle}</p>
       </div>
+    </div>
+  );
+
+  return (
+    <SidebarHeader
+      className={cn(
+        appShellHeaderRowClassName,
+        "gap-2 border-b border-sidebar-border px-3 py-0",
+        "group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-2",
+      )}
+    >
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>{renderMenuTriggerContent()}</DropdownMenuTrigger>
+        <DropdownMenuContent>
+          {user ? (
+            <DropdownMenuGroup>
+              <DropdownMenuItem>
+                <Link to="/logout">Se Deconnecter</Link>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+          ) : null}
+        </DropdownMenuContent>
+      </DropdownMenu>
     </SidebarHeader>
   );
 }

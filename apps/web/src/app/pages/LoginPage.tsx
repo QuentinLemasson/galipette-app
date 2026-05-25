@@ -3,6 +3,7 @@
  */
 
 import { Alert, AlertDescription } from "@galipette/ui/components/alert";
+import { Avatar, AvatarFallback, AvatarImage } from "@galipette/ui/components/avatar";
 import { Button } from "@galipette/ui/components/button";
 import { Typography } from "@galipette/ui/components/typography";
 import { useSearch } from "@tanstack/react-router";
@@ -11,6 +12,17 @@ import { useCallback, useState } from "react";
 import { authClient } from "../auth/auth-client";
 import { INVITE_HEADER } from "../auth/invite-header";
 import type { LoginSearch } from "../routes/login-search";
+
+const LABELS = {
+  TITLE: "L'application officielle de la Galipette Cendrée",
+  DESCRIPTION_SIGN_IN:
+    "Connectez-vous avec Discord si vous avez déjà un compte. Les nouveaux joueurs ont besoin d'un lien d'invitation dans vos messages privés.",
+  DESCRIPTION_SIGN_UP:
+    "Connectez-vous avec Discord pour vous inscrire. Les nouveaux joueurs ont besoin d'un lien d'invitation dans vos messages privés.",
+  BUTTON_SIGN_IN: "Se connecter avec Discord",
+  BUTTON_SIGN_UP: "Créer un compte avec Discord",
+  ERROR: "Impossible de démarrer la connexion avec Discord.",
+};
 
 function resolveCallbackURL(redirect: string | undefined): string {
   const fallback = `${window.location.origin}/app/home`;
@@ -50,41 +62,46 @@ export function LoginPage() {
           : {}),
       });
       if (signInError) {
-        setError(signInError.message ?? "Could not start Discord sign-in.");
+        setError(signInError.message ?? LABELS.ERROR);
       }
     } catch {
-      setError("Could not start Discord sign-in.");
+      setError(LABELS.ERROR);
     } finally {
       setPending(false);
     }
   }, [redirect, invite]);
 
   return (
-    <section className="flex max-w-md flex-col gap-4">
-      <Typography variant="h1" as="h1">
-        Sign in
-      </Typography>
+    <div className="w-screen h-screen flex items-center justify-center">
+      <section className="flex max-w-md flex-col gap-4">
+        <div className="flex items-start gap-2">
+          <Avatar className="w-10 h-10">
+            <AvatarImage src="/galipette-logo.png" />
+            <AvatarFallback>GA</AvatarFallback>
+          </Avatar>
+          <Typography variant="h1">{LABELS.TITLE}</Typography>
+        </div>
 
-      {invite ? (
-        <Typography variant="body" className="leading-relaxed">
-          You have an invitation link — connect Discord to sign in or create your account.
-        </Typography>
-      ) : (
-        <Typography variant="body" className="leading-relaxed">
-          Connect with Discord if you already have an account. New players need an invitation link
-          from your DM.
-        </Typography>
-      )}
+        {invite ? (
+          <Typography variant="body" className="leading-relaxed">
+            {LABELS.DESCRIPTION_SIGN_IN}
+          </Typography>
+        ) : (
+          <Typography variant="body" className="leading-relaxed">
+            {LABELS.DESCRIPTION_SIGN_UP}
+          </Typography>
+        )}
 
-      {error ? (
-        <Alert variant="destructive">
-          <AlertDescription>{error}</AlertDescription>
-        </Alert>
-      ) : null}
+        {error ? (
+          <Alert variant="destructive">
+            <AlertDescription>{LABELS.ERROR}</AlertDescription>
+          </Alert>
+        ) : null}
 
-      <Button type="button" disabled={pending} onClick={() => void connectDiscord()}>
-        {pending ? "Redirecting…" : "Connect via Discord"}
-      </Button>
-    </section>
+        <Button type="button" disabled={pending} onClick={() => void connectDiscord()}>
+          {pending ? "Redirection…" : LABELS.BUTTON_SIGN_IN}
+        </Button>
+      </section>
+    </div>
   );
 }

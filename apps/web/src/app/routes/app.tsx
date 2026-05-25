@@ -1,6 +1,7 @@
-import { createRoute, Outlet, redirect } from "@tanstack/react-router";
+import { createRoute, redirect } from "@tanstack/react-router";
 
 import { authClient } from "../auth/auth-client";
+import { AppLayout } from "../layout/AppLayout";
 
 import { rootRoute } from "./root";
 
@@ -13,5 +14,5 @@ export const appRoute = createRoute({
       throw redirect({ to: "/login", search: { redirect: location.href } });
     }
   },
-  component: () => <Outlet />,
+  component: AppLayout,
 });

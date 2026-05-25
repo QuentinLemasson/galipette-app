@@ -9,6 +9,7 @@ import { characterListRoute, characterSheetRoute } from "./routes/characters";
 import { homeRoute } from "./routes/home";
 import { indexRoute } from "./routes/index";
 import { loginRoute } from "./routes/login";
+import { logoutRoute } from "./routes/logout";
 import { notFoundRoute } from "./routes/not-found";
 import { rootRoute } from "./routes/root";
 import { wikiRoute } from "./routes/wiki";
@@ -16,6 +17,7 @@ import { wikiRoute } from "./routes/wiki";
 const routeTree = rootRoute.addChildren([
   indexRoute,
   loginRoute,
+  logoutRoute,
   appRoute.addChildren([homeRoute, characterSheetRoute, characterListRoute, wikiRoute]),
   notFoundRoute,
 ]);
