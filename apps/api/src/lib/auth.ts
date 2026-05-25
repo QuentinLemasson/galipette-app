@@ -49,6 +49,14 @@ export const auth = betterAuth({
   secret: process.env.BETTER_AUTH_SECRET,
   baseURL,
   trustedOrigins,
+  // Allow cross-site cookies for all domains while using HTTPS & keep secure cookies for localhost.
+  advanced: {
+    useSecureCookies: true,
+    defaultCookieAttributes: {
+      sameSite: "none",
+      secure: true,
+    },
+  },
   hooks: {
     before: inviteBeforeHook,
     after: inviteAfterHook,
