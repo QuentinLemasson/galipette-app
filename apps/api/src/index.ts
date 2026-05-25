@@ -7,8 +7,8 @@ const port = Number(process.env.PORT ?? 3001);
 const betterAuthUrl = process.env.BETTER_AUTH_URL ?? `http://localhost:${port}`;
 const app = createApp();
 
-serve({ fetch: app.fetch, port }, (info) => {
-  console.log(`API listening on http://localhost:${info.port}`);
+serve({ fetch: app.fetch, port, hostname: "::" }, (info) => {
+  console.log(`API listening on [::]:${info.port} (dual-stack IPv4+IPv6)`);
   console.log(`OpenAPI: http://localhost:${info.port}/openapi.json`);
   console.log(`Swagger UI: http://localhost:${info.port}/docs`);
   console.log(`Better Auth: ${betterAuthUrl}`);
