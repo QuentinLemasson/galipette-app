@@ -21,7 +21,8 @@ console.log("Invite token:");
 console.log(invite.token);
 
 console.log("");
-console.log("Invite URL:");
+console.log("Invite URL (dev):");
 console.log(`http://localhost:5173/login?invite=${invite.token}`);
+console.log("Invite URL (prod):");
 console.log(`https://galipette-app.up.railway.app/login?invite=${invite.token}`);
 console.log("");
