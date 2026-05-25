@@ -1657,7 +1657,7 @@
     "id": "skill.canalization.canalized-faith",
     "type": "skill",
     "name": "Croyance canalisée",
-    "content": "# Croyance canalisée",
+    "content": "# Croyance canalisée\nSi le personnage possède 5+ points de fois, tous ses sorts de foi canalisent +1",
     "slug": "wiki/skills/canalization/canalized-faith",
     "sourcePath": "wiki/skills/canalization/canalized-faith.md",
     "references": [],
@@ -1674,6 +1674,15 @@
               "value": "Croyance canalisée"
             }
           ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Si le personnage possède 5+ points de fois, tous ses sorts de foi canalisent +1"
+            }
+          ]
         }
       ]
     }
@@ -1682,7 +1691,7 @@
     "id": "skill.canalization.canalized-rage",
     "type": "skill",
     "name": "Rage canalisée",
-    "content": "# Rage canalisée",
+    "content": "# Rage canalisée\nUne fois par sort, permet de dépenser 1 RAGE pour canaliser +1.",
     "slug": "wiki/skills/canalization/canalized-rage",
     "sourcePath": "wiki/skills/canalization/canalized-rage.md",
     "references": [],
@@ -1699,6 +1708,15 @@
               "value": "Rage canalisée"
             }
           ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Une fois par sort, permet de dépenser 1 RAGE pour canaliser +1."
+            }
+          ]
         }
       ]
     }
@@ -1707,7 +1725,7 @@
     "id": "skill.canalization.critical-synergy",
     "type": "skill",
     "name": "Synergie critique",
-    "content": "# Synergie critique",
+    "content": "# Synergie critique\nUn effet critique sur un jet de magie ou ésotérisme pour être utilisé pour gagner +1 canalisation sur le prochain durant dans le même tour.\nUne fois par tour.\n\n# Améliorations\n\n## Synergie intense (répétable)\nPeut être utilisée une fois de plus par tour",
     "slug": "wiki/skills/canalization/critical-synergy",
     "sourcePath": "wiki/skills/canalization/critical-synergy.md",
     "references": [],
@@ -1724,6 +1742,207 @@
               "value": "Synergie critique"
             }
           ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Un effet critique sur un jet de magie ou ésotérisme pour être utilisé pour gagner +1 canalisation sur le prochain durant dans le même tour.\nUne fois par tour."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Améliorations"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Synergie intense (répétable)"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Peut être utilisée une fois de plus par tour"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.canalization.dry-out",
+    "type": "skill",
+    "name": "Déssèchement",
+    "content": "# Déssèchement\nLe lanceur canalise +2 sur un sort de sable.\nLe sort inflige [[vulnerable|vulnérable]] 1 - SVG Robustesse\n[[Efficacité]] 2 contre les créatures aquatiques.",
+    "slug": "wiki/skills/canalization/dry-out",
+    "sourcePath": "wiki/skills/canalization/dry-out.md",
+    "references": [
+      {
+        "operand": "Efficacité",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Efficacité"
+      },
+      {
+        "operand": "vulnerable",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Vulnérable",
+        "targetEntityId": "affliction.vulnerable",
+        "targetEntitySlug": "wiki/compendium/afflictions/vulnerable"
+      }
+    ],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Déssèchement"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le lanceur canalise +2 sur un sort de sable.\nLe sort inflige "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "vulnerable",
+              "displayLabel": "vulnérable",
+              "value": "vulnérable",
+              "targetEntityId": "affliction.vulnerable",
+              "targetEntitySlug": "wiki/compendium/afflictions/vulnerable"
+            },
+            {
+              "type": "text",
+              "value": " 1 - SVG Robustesse\n"
+            },
+            {
+              "type": "wikiLink",
+              "operand": "Efficacité",
+              "displayLabel": "Efficacité",
+              "value": "Efficacité"
+            },
+            {
+              "type": "text",
+              "value": " 2 contre les créatures aquatiques."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.canalization.erosion",
+    "type": "skill",
+    "name": "Erosion",
+    "content": "# Erosion\nLe lanceur canalise +1 sur un sort de sable.\nPermet d'éroder de la pierre en sable pour - assez pour lancer le sort canalisé. \n[[Efficacité]] 2 contre les créatures de pierre.\n\nHors-combat - érode 100 x 100 x 5cm par minute. \n\n# Améliorations\n\n## Erosion d'armure\nCanalisation +1\nRetire un point d'armure et 2 durabilité - SVG Evasion",
+    "slug": "wiki/skills/canalization/erosion",
+    "sourcePath": "wiki/skills/canalization/erosion.md",
+    "references": [
+      {
+        "operand": "Efficacité",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Efficacité"
+      }
+    ],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Erosion"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le lanceur canalise +1 sur un sort de sable.\nPermet d'éroder de la pierre en sable pour - assez pour lancer le sort canalisé.\n"
+            },
+            {
+              "type": "wikiLink",
+              "operand": "Efficacité",
+              "displayLabel": "Efficacité",
+              "value": "Efficacité"
+            },
+            {
+              "type": "text",
+              "value": " 2 contre les créatures de pierre."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Hors-combat - érode 100 x 100 x 5cm par minute."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Améliorations"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Erosion d'armure"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Canalisation +1\nRetire un point d'armure et 2 durabilité - SVG Evasion"
+            }
+          ]
         }
       ]
     }
@@ -1731,8 +1950,8 @@
   {
     "id": "skill.canalization.gift-of-life",
     "type": "skill",
-    "name": "Don de vie",
-    "content": "# Don de vie",
+    "name": "Don de vitalité",
+    "content": "# Don de vitalité\nUne fois par sort, canalise +1.\nLe personnage subit - au choix \n- 1 dégât interne/arcane\n- fatigue 1\n- affaiblissement 1\n- vulnérabilité 1",
     "slug": "wiki/skills/canalization/gift-of-life",
     "sourcePath": "wiki/skills/canalization/gift-of-life.md",
     "references": [],
@@ -1746,7 +1965,122 @@
           "children": [
             {
               "type": "text",
-              "value": "Don de vie"
+              "value": "Don de vitalité"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Une fois par sort, canalise +1.\nLe personnage subit - au choix"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "1 dégât interne/arcane"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "fatigue 1"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "affaiblissement 1"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "vulnérabilité 1"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skill.canalization.strong-wind",
+    "type": "skill",
+    "name": "Vents Violents",
+    "content": "# Vents Violents\nLe lanceur canalise +1 un sort de vent.\nToutes les cibles touchées sont repoussées de deux espaces - SVG Evasion/Robustesse",
+    "slug": "wiki/skills/canalization/strong-wind",
+    "sourcePath": "wiki/skills/canalization/strong-wind.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Vents Violents"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le lanceur canalise +1 un sort de vent.\nToutes les cibles touchées sont repoussées de deux espaces - SVG Evasion/Robustesse"
             }
           ]
         }
@@ -2843,10 +3177,27 @@
     "id": "skill.spell.summoning",
     "type": "spell",
     "name": "Invocation",
-    "content": "# Invocation",
+    "content": "# Invocation\nLe personnage invoque à son contact une créature ou objet accessible dans son [[invocation-compendium|compendium d'invocation]].\nLa canalisation requise augmente de X, en fonction de puissance la créature invoquée.\nLe personnage concentre X.\nLe degré de difficulté dépend la puissance de la créature.\n\n**Echec** : est affligé par [[vulnerable|vulnérabilité]]\n**Effet néfaste** : dégâts d'arcane\n**Effet critique** : +1 aux jets d'influence et ésotérisme contre la créature invoquée\n\n# Améliorations\n## Extension de portée\nLe lanceur peut canaliser +1/2/3/4 pour modifier la porté à \"courte\" / \"moyenne\" / \"grande\" / \"très grande\". \n\n## Assaut\nCanalise +2.\nLa créature ou objet invoquée bénéficie d'une action gratuite pour se déplacer ou effectuer une attaque basique (naturelle ou armée).",
     "slug": "wiki/skills/spells/summoning",
     "sourcePath": "wiki/skills/spells/summoning.md",
-    "references": [],
+    "references": [
+      {
+        "operand": "invocation-compendium",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "invocation-compendium"
+      },
+      {
+        "operand": "vulnerable",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Vulnérable",
+        "targetEntityId": "affliction.vulnerable",
+        "targetEntitySlug": "wiki/compendium/afflictions/vulnerable"
+      }
+    ],
     "data": {},
     "compiledContent": {
       "type": "root",
@@ -2858,6 +3209,129 @@
             {
               "type": "text",
               "value": "Invocation"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le personnage invoque à son contact une créature ou objet accessible dans son "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "invocation-compendium",
+              "displayLabel": "compendium d'invocation",
+              "value": "compendium d'invocation"
+            },
+            {
+              "type": "text",
+              "value": ".\nLa canalisation requise augmente de X, en fonction de puissance la créature invoquée.\nLe personnage concentre X.\nLe degré de difficulté dépend la puissance de la créature."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Echec"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " : est affligé par "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "vulnerable",
+              "displayLabel": "vulnérabilité",
+              "value": "vulnérabilité",
+              "targetEntityId": "affliction.vulnerable",
+              "targetEntitySlug": "wiki/compendium/afflictions/vulnerable"
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Effet néfaste"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " : dégâts d'arcane\n"
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Effet critique"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " : +1 aux jets d'influence et ésotérisme contre la créature invoquée"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Améliorations"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Extension de portée"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le lanceur peut canaliser +1/2/3/4 pour modifier la porté à \"courte\" / \"moyenne\" / \"grande\" / \"très grande\"."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Assaut"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Canalise +2.\nLa créature ou objet invoquée bénéficie d'une action gratuite pour se déplacer ou effectuer une attaque basique (naturelle ou armée)."
             }
           ]
         }

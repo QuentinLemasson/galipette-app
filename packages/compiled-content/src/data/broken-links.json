@@ -10,6 +10,26 @@
     ]
   },
   {
+    "entityId": "skill.canalization.dry-out",
+    "sourcePath": "wiki/skills/canalization/dry-out.md",
+    "entitySlug": "wiki/skills/canalization/dry-out",
+    "operand": "Efficacité",
+    "linkText": "Efficacité",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
+    "entityId": "skill.canalization.erosion",
+    "sourcePath": "wiki/skills/canalization/erosion.md",
+    "entitySlug": "wiki/skills/canalization/erosion",
+    "operand": "Efficacité",
+    "linkText": "Efficacité",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
     "entityId": "skill.spell.nausea-resistance",
     "sourcePath": "wiki/skills/spells/nausea-resistance.md",
     "entitySlug": "wiki/skills/spells/nausea-resistance",
@@ -47,6 +67,16 @@
     "linkText": "Magie Crépusculaire",
     "origins": [
       "frontMatter"
+    ]
+  },
+  {
+    "entityId": "skill.spell.summoning",
+    "sourcePath": "wiki/skills/spells/summoning.md",
+    "entitySlug": "wiki/skills/spells/summoning",
+    "operand": "invocation-compendium",
+    "linkText": "compendium d'invocation",
+    "origins": [
+      "markdown"
     ]
   }
 ]

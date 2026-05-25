@@ -123,11 +123,27 @@
               },
               {
                 "kind": "entity",
+                "id": "skill.canalization.dry-out",
+                "type": "skill",
+                "name": "Déssèchement",
+                "slug": "wiki/skills/canalization/dry-out",
+                "sourcePath": "wiki/skills/canalization/dry-out.md"
+              },
+              {
+                "kind": "entity",
                 "id": "skill.canalization.gift-of-life",
                 "type": "skill",
-                "name": "Don de vie",
+                "name": "Don de vitalité",
                 "slug": "wiki/skills/canalization/gift-of-life",
                 "sourcePath": "wiki/skills/canalization/gift-of-life.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.canalization.erosion",
+                "type": "skill",
+                "name": "Erosion",
+                "slug": "wiki/skills/canalization/erosion",
+                "sourcePath": "wiki/skills/canalization/erosion.md"
               },
               {
                 "kind": "entity",
@@ -144,6 +160,14 @@
                 "name": "Synergie critique",
                 "slug": "wiki/skills/canalization/critical-synergy",
                 "sourcePath": "wiki/skills/canalization/critical-synergy.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.canalization.strong-wind",
+                "type": "skill",
+                "name": "Vents Violents",
+                "slug": "wiki/skills/canalization/strong-wind",
+                "sourcePath": "wiki/skills/canalization/strong-wind.md"
               }
             ]
           },

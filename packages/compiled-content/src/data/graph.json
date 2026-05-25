@@ -109,10 +109,28 @@
       "sourcePath": "wiki/skills/canalization/critical-synergy.md"
     },
     {
+      "id": "skill.canalization.dry-out",
+      "type": "skill",
+      "label": "Déssèchement",
+      "sourcePath": "wiki/skills/canalization/dry-out.md"
+    },
+    {
+      "id": "skill.canalization.erosion",
+      "type": "skill",
+      "label": "Erosion",
+      "sourcePath": "wiki/skills/canalization/erosion.md"
+    },
+    {
       "id": "skill.canalization.gift-of-life",
       "type": "skill",
-      "label": "Don de vie",
+      "label": "Don de vitalité",
       "sourcePath": "wiki/skills/canalization/gift-of-life.md"
+    },
+    {
+      "id": "skill.canalization.strong-wind",
+      "type": "skill",
+      "label": "Vents Violents",
+      "sourcePath": "wiki/skills/canalization/strong-wind.md"
     },
     {
       "id": "skill.spell.clairvoyant-eye",
@@ -241,6 +259,18 @@
       "nauseous"
     ],
     [
+      "skill.canalization.dry-out",
+      "Efficacité"
+    ],
+    [
+      "skill.canalization.dry-out",
+      "vulnerable"
+    ],
+    [
+      "skill.canalization.erosion",
+      "Efficacité"
+    ],
+    [
       "skill.spell.fiery-shot",
       "burned"
     ],
@@ -287,6 +317,14 @@
     [
       "skill.spell.solar-ray",
       "radiant"
+    ],
+    [
+      "skill.spell.summoning",
+      "invocation-compendium"
+    ],
+    [
+      "skill.spell.summoning",
+      "vulnerable"
     ]
   ]
 }
