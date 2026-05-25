@@ -104,3 +104,4 @@ See **[Auth & invite database migrations](../../docs/auth-database-migrations.md
 - [`@galipette/database`](../../packages/database/README.md) — schema, migrations, Prisma
 - [Database cheat sheet](../../docs/database-cheatsheet.md) — local DB workflows
 - [Auth & invite database migrations](../../docs/auth-database-migrations.md) — Better Auth schema + Prisma migrate
+- [Railway reverse-proxy architecture](../../docs/railway-reverse-proxy.md) — why the API is proxied through the web service and how cookies work

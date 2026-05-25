@@ -26,9 +26,9 @@ The entity route uses a TanStack splat (`entity/$`) so the full **slug** (e.g. `
 
 ## HTTP API (characters)
 
-During **`pnpm dev`**, Vite proxies **`/api/*`** → `http://localhost:3001` (see `vite.config.ts`), so the character feature calls paths like **`/api/characters`** without CORS setup. Start the API with **`pnpm dev:api`** from the repo root.
+In **production (Railway)**, the web service's Nginx reverse-proxies `/api/*` to the API over Railway's private network — see **[Railway reverse-proxy architecture](../../docs/railway-reverse-proxy.md)**. All requests are same-origin; no cross-site cookie issues apply.
 
-For **`pnpm preview`** or other hosts without that proxy, set **`VITE_API_BASE_URL`** to the API origin (see `.env.example`).
+In **local dev**, set `VITE_API_ORIGIN=http://localhost:3001` so the SPA calls the API cross-origin on a separate port. Start the API with **`pnpm dev:api`** from the repo root.
 
 ## Source layout (feature-first)
 

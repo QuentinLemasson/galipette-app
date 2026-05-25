@@ -18,6 +18,7 @@ The content stack is split by concern: **schemas** define shared shapes, **parse
 | Web app                           | [apps/web/README.md](apps/web/README.md)                                   |
 | HTTP API (characters CRUD)        | [apps/api/README.md](apps/api/README.md)                                   |
 | Database operations (cheat sheet) | [docs/database-cheatsheet.md](docs/database-cheatsheet.md)                 |
+| Railway reverse-proxy             | [docs/railway-reverse-proxy.md](docs/railway-reverse-proxy.md)             |
 | Changelog                         | [CHANGELOG.md](CHANGELOG.md)                                               |
 
 ## Layout
