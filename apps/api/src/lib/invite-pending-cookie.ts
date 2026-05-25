@@ -34,13 +34,19 @@ function pendingInviteCookieAttributes(): Record<string, unknown> {
   const crossSite = isApiHttps();
   // Cross-origin web (5173) → API (3001): None+Secure on HTTPS; lax on local HTTP.
   // Browsers treat http://localhost as a secure context for Secure cookies.
-  return {
+  const attrs = {
     maxAge: PENDING_INVITE_MAX_AGE_SEC,
-    path: "/api/auth",
+    // path: "/api/auth",
     sameSite: crossSite ? "none" : "lax",
     secure: crossSite,
     httpOnly: true,
   };
+  inviteLog("cookie-attrs", "computed cookie attributes", {
+    crossSite,
+    betterAuthUrl: process.env.BETTER_AUTH_URL,
+    ...attrs,
+  });
+  return attrs;
 }
 
 function getAuthSecret(ctx?: InviteCookieContext): AuthSecret {
@@ -113,6 +119,16 @@ export async function setPendingInviteCookie(
   ctx: InviteCookieContext,
   token: string,
 ): Promise<void> {
+  inviteLog("cookie-set", "setPendingInviteCookie called", {
+    path: ctx.path,
+    hasSetCookie: typeof ctx.setCookie === "function",
+    hasCreateAuthCookie: Boolean(ctx.context?.createAuthCookie),
+    hasSecret: Boolean(
+      ctx.context?.secretConfig ?? ctx.context?.secret ?? process.env.BETTER_AUTH_SECRET,
+    ),
+    requestUrl: ctx.request?.url,
+  });
+
   if (!ctx.setCookie) {
     throw new Error("setCookie is required to store pending invite");
   }
@@ -120,18 +136,29 @@ export async function setPendingInviteCookie(
   const secret = getAuthSecret(ctx);
   const cookie = createPendingInviteCookieDef(ctx);
   const encrypted = await encryptInviteToken(secret, token);
-  ctx.setCookie(cookie.name, encrypted, cookie.attributes);
-  inviteLog("cookie", "set pending invite cookie", {
+
+  inviteLog("cookie-set", "writing cookie via setCookie", {
     path: ctx.path,
     cookieName: cookie.name,
     attributes: cookie.attributes,
+    encryptedLength: encrypted.length,
     token,
   });
+
+  ctx.setCookie(cookie.name, encrypted, cookie.attributes);
 }
 
 export async function readPendingInviteCookie(
   ctx: InviteCookieContext,
 ): Promise<string | undefined> {
+  inviteLog("cookie-read", "readPendingInviteCookie called", {
+    path: ctx.path,
+    hasCreateAuthCookie: Boolean(ctx.context?.createAuthCookie),
+    hasGetCookie: typeof ctx.getCookie === "function",
+    hasRequest: Boolean(ctx.request),
+    requestUrl: ctx.request?.url,
+  });
+
   const secret = getAuthSecret(ctx);
   const cookieNames: string[] = [];
 
@@ -141,14 +168,27 @@ export async function readPendingInviteCookie(
   if (ctx.context?.createAuthCookie) {
     const cookie = createPendingInviteCookieDef(ctx);
     cookieNames.push(cookie.name);
+
     encrypted = ctx.getCookie?.(cookie.name);
     if (encrypted) source = "getCookie";
+    inviteLog("cookie-read", "tried getCookie", {
+      cookieName: cookie.name,
+      found: Boolean(encrypted),
+    });
+
     if (!encrypted && ctx.request) {
       encrypted = getCookieFromRequest(ctx.request, cookie.name);
       if (encrypted) source = "request";
+      inviteLog("cookie-read", "tried raw request header", {
+        cookieName: cookie.name,
+        found: Boolean(encrypted),
+      });
     }
   } else if (ctx.request) {
     const header = ctx.request.headers.get("cookie") ?? "";
+    inviteLog("cookie-read", "fuzzy fallback — no createAuthCookie", {
+      rawCookieHeaderLength: header.length,
+    });
     const match = header
       .split(";")
       .map((s) => s.trim())
@@ -164,11 +204,12 @@ export async function readPendingInviteCookie(
   }
 
   const { present, names } = describeCookieHeader(ctx.request);
-  inviteLog("cookie", "read pending invite cookie", {
+  inviteLog("cookie-read", "read result", {
     path: ctx.path,
     expectedNames: cookieNames,
     source,
     hasEncryptedValue: Boolean(encrypted),
+    encryptedLength: encrypted?.length,
     requestCookiePresent: present,
     requestCookieNames: names,
   });
@@ -176,7 +217,7 @@ export async function readPendingInviteCookie(
   if (!encrypted) return undefined;
 
   const token = await decryptInviteToken(secret, encrypted);
-  inviteLog("cookie", "decrypted pending invite cookie", {
+  inviteLog("cookie-read", "decrypt result", {
     path: ctx.path,
     token,
     decryptOk: Boolean(token),
@@ -185,15 +226,28 @@ export async function readPendingInviteCookie(
 }
 
 export function clearPendingInviteCookie(ctx: InviteCookieContext): void {
+  inviteLog("cookie-clear", "clearPendingInviteCookie called", {
+    path: ctx.path,
+    hasSetCookie: typeof ctx.setCookie === "function",
+    hasCreateAuthCookie: Boolean(ctx.context?.createAuthCookie),
+    requestUrl: ctx.request?.url,
+  });
+
   if (!ctx.setCookie || !ctx.context?.createAuthCookie) {
-    inviteLog("cookie", "clear skipped (no setCookie/createAuthCookie)", { path: ctx.path });
+    inviteLog("cookie-clear", "clear skipped (missing setCookie or createAuthCookie)", {
+      path: ctx.path,
+      hasSetCookie: typeof ctx.setCookie === "function",
+      hasCreateAuthCookie: Boolean(ctx.context?.createAuthCookie),
+    });
     return;
   }
 
   const cookie = createPendingInviteCookieDef(ctx);
-  ctx.setCookie(cookie.name, "", { ...cookie.attributes, maxAge: 0 });
-  inviteLog("cookie", "cleared pending invite cookie", {
+  const clearAttrs = { ...cookie.attributes, maxAge: 0 };
+  ctx.setCookie(cookie.name, "", clearAttrs);
+  inviteLog("cookie-clear", "cleared pending invite cookie", {
     path: ctx.path,
     cookieName: cookie.name,
+    clearAttributes: clearAttrs,
   });
 }

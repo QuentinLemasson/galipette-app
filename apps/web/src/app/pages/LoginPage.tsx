@@ -16,7 +16,7 @@ import type { LoginSearch } from "../routes/login-search";
 const LABELS = {
   TITLE: "L'application officielle de la Galipette Cendrée",
   DESCRIPTION_SIGN_IN:
-    "Connectez-vous avec Discord si vous avez déjà un compte. Les nouveaux joueurs ont besoin d'un lien d'invitation dans vos messages privés.",
+    "Grâce à ce lien d'invitation, vous pouvez liez votre compte Discord à la Galipette Cendrée.",
   DESCRIPTION_SIGN_UP:
     "Connectez-vous avec Discord pour vous inscrire. Les nouveaux joueurs ont besoin d'un lien d'invitation dans vos messages privés.",
   BUTTON_SIGN_IN: "Se connecter avec Discord",

@@ -8,9 +8,23 @@ import {
   inviteBeforeHook,
 } from "./auth-invite-hooks.js";
 import { parseWebOrigins } from "./cors.js";
+import { inviteLog } from "./invite-logger.js";
 
 const port = Number(process.env.PORT ?? 3001);
 const baseURL = process.env.BETTER_AUTH_URL ?? `http://localhost:${port}`;
+const webOrigins = parseWebOrigins();
+const trustedOrigins = [...webOrigins, baseURL];
+const discordRedirectUri = `${baseURL}/api/auth/callback/discord`;
+
+inviteLog("auth-init", "Better Auth configuration", {
+  baseURL,
+  discordRedirectUri,
+  trustedOrigins,
+  webOrigins,
+  port,
+  hasSecret: Boolean(process.env.BETTER_AUTH_SECRET),
+  hasDiscordClientId: Boolean(process.env.DISCORD_CLIENT_ID),
+});
 
 export const auth = betterAuth({
   database: prismaAdapter(prisma, {
@@ -20,13 +34,13 @@ export const auth = betterAuth({
     discord: {
       clientId: process.env.DISCORD_CLIENT_ID!,
       clientSecret: process.env.DISCORD_CLIENT_SECRET!,
-      redirectUri: `${baseURL}/api/auth/callback/discord`,
+      redirectUri: discordRedirectUri,
       disableImplicitSignUp: true,
     },
   },
   secret: process.env.BETTER_AUTH_SECRET,
   baseURL,
-  trustedOrigins: [...parseWebOrigins(), baseURL],
+  trustedOrigins,
   hooks: {
     before: inviteBeforeHook,
     after: inviteAfterHook,

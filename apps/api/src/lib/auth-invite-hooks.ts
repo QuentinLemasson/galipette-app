@@ -11,6 +11,7 @@ import { isExistingOAuthAccount } from "../repositories/oauth-accounts.js";
 import { inviteLog, INVITE_OAUTH_STATE_KEY } from "./invite-logger.js";
 import {
   clearPendingInviteCookie,
+  describeCookieHeader,
   setPendingInviteCookie,
   type InviteCookieContext,
 } from "./invite-pending-cookie.js";
@@ -44,14 +45,21 @@ async function primePendingInviteCookie(ctx: InviteCookieContext, token: string)
 export const inviteBeforeHook = createAuthMiddleware(async (ctx) => {
   if (ctx.path !== "/sign-in/social") return;
 
-  inviteLog("sign-in", "social sign-in started", {
-    path: ctx.path,
-    provider: (ctx.body as SocialSignInBody | undefined)?.provider,
-  });
-
+  const body = ctx.body as SocialSignInBody | undefined;
   const headers = readRequestHeaders(ctx);
   const headerToken = readInviteTokenFromHeaders(headers);
-  const body = ctx.body as SocialSignInBody | undefined;
+
+  inviteLog("sign-in", "social sign-in started", {
+    path: ctx.path,
+    provider: body?.provider,
+    hasInviteHeader: Boolean(headerToken),
+    hasIdToken: Boolean(body?.idToken),
+    requestSignUp: body?.requestSignUp,
+    callbackURL: (body as Record<string, unknown> | undefined)?.callbackURL,
+    requestUrl: ctx.request?.url,
+    origin: headers?.get("origin"),
+    referer: headers?.get("referer"),
+  });
 
   if (body?.idToken && body.provider) {
     const providers = ctx.context.socialProviders as
@@ -87,7 +95,9 @@ export const inviteBeforeHook = createAuthMiddleware(async (ctx) => {
   }
 
   if (!headerToken) {
-    inviteLog("sign-in", "no invite header — sign-in only (no priming, no requestSignUp)");
+    inviteLog("sign-in", "no invite header — sign-in only (no priming, no requestSignUp)", {
+      callbackURL: (body as Record<string, unknown> | undefined)?.callbackURL,
+    });
     return;
   }
 
@@ -102,6 +112,8 @@ export const inviteBeforeHook = createAuthMiddleware(async (ctx) => {
   inviteLog("sign-in", "priming invite (validate + cookie + OAuth state)", {
     token: headerToken,
     requestSignUp: true,
+    callbackURL: (body as Record<string, unknown> | undefined)?.callbackURL,
+    additionalDataKeys: body?.additionalData ? Object.keys(body.additionalData) : [],
   });
 
   await primePendingInviteCookie(ctx as InviteCookieContext, headerToken);
@@ -109,10 +121,25 @@ export const inviteBeforeHook = createAuthMiddleware(async (ctx) => {
 
 /** Clear pending invite cookie after OAuth callback (returning users must not retain it). */
 export const inviteAfterHook = createAuthMiddleware(async (ctx) => {
+  inviteLog("after-hook", "after hook entered", {
+    path: ctx.path,
+    isCallback: ctx.path?.includes("/callback/"),
+    requestUrl: ctx.request?.url,
+    responseStatus: (ctx as Record<string, unknown>).responseStatus,
+  });
+
   if (!ctx.path.includes("/callback/")) return;
+
+  const headers = readRequestHeaders(ctx);
+  const cookieInfo = describeCookieHeader(ctx.request);
 
   inviteLog("callback", "OAuth callback after hook — clearing pending cookie", {
     path: ctx.path,
+    requestUrl: ctx.request?.url,
+    requestCookiePresent: cookieInfo.present,
+    requestCookieNames: cookieInfo.names,
+    hasSetCookie: typeof (ctx as InviteCookieContext).setCookie === "function",
+    redirectTo: headers?.get("location"),
   });
   clearPendingInviteCookie(ctx as InviteCookieContext);
 });
@@ -122,24 +149,42 @@ export function createInviteDatabaseHooks() {
     user: {
       create: {
         before: async (user: Record<string, unknown>, hookCtx?: unknown) => {
+          const ctx = hookCtx && typeof hookCtx === "object" ? (hookCtx as InviteCookieContext) : undefined;
+          const cookieInfo = ctx?.request ? describeCookieHeader(ctx.request) : undefined;
+
           inviteLog("user.create", "before hook — resolving invite", {
             userId: typeof user.id === "string" ? user.id : undefined,
+            userName: typeof user.name === "string" ? user.name : undefined,
+            userEmail: typeof user.email === "string" ? user.email : undefined,
             hookCtxPresent: Boolean(hookCtx),
-            path:
-              hookCtx && typeof hookCtx === "object"
-                ? (hookCtx as InviteCookieContext).path
-                : undefined,
+            hookCtxKeys: hookCtx && typeof hookCtx === "object" ? Object.keys(hookCtx) : [],
+            path: ctx?.path,
+            requestUrl: ctx?.request?.url,
+            hasSetCookie: typeof ctx?.setCookie === "function",
+            hasGetCookie: typeof ctx?.getCookie === "function",
+            hasCreateAuthCookie: Boolean(ctx?.context?.createAuthCookie),
+            requestCookiePresent: cookieInfo?.present,
+            requestCookieNames: cookieInfo?.names,
           });
 
           const inviteToken = await readInviteTokenFromHookContext(hookCtx);
           const userId = typeof user.id === "string" ? user.id : undefined;
 
           if (!inviteToken) {
-            inviteLog("user.create", "rejected — registration requires an invite");
+            inviteLog("user.create", "rejected — registration requires an invite", {
+              userId,
+              path: ctx?.path,
+            });
             throw new APIError("FORBIDDEN", {
               message: "An invitation is required to create an account",
             });
           }
+
+          inviteLog("user.create", "invite token resolved — consuming", {
+            userId,
+            token: inviteToken,
+            path: ctx?.path,
+          });
 
           try {
             await consumeInviteToken(inviteToken, userId);
@@ -151,6 +196,11 @@ export function createInviteDatabaseHooks() {
             });
             throw error;
           }
+
+          inviteLog("user.create", "invite consumed — clearing cookie", {
+            userId,
+            token: inviteToken,
+          });
 
           if (hookCtx && typeof hookCtx === "object") {
             clearPendingInviteCookie(hookCtx as InviteCookieContext);
