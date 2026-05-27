@@ -44,6 +44,30 @@
               },
               {
                 "kind": "entity",
+                "id": "affliction.exposed",
+                "type": "affliction",
+                "name": "Exposé",
+                "slug": "wiki/compendium/afflictions/exposed",
+                "sourcePath": "wiki/compendium/afflictions/exposed.md"
+              },
+              {
+                "kind": "entity",
+                "id": "affliction.exhaustion",
+                "type": "affliction",
+                "name": "Fatigue",
+                "slug": "wiki/compendium/afflictions/exhaustion",
+                "sourcePath": "wiki/compendium/afflictions/exhaustion.md"
+              },
+              {
+                "kind": "entity",
+                "id": "affliction.withering",
+                "type": "affliction",
+                "name": "Flétrissure",
+                "slug": "wiki/compendium/afflictions/withering",
+                "sourcePath": "wiki/compendium/afflictions/withering.md"
+              },
+              {
+                "kind": "entity",
                 "id": "affliction.nauseous",
                 "type": "affliction",
                 "name": "Nauséeux",
@@ -222,8 +246,8 @@
                 "id": "skill.spell.elemental-spark",
                 "type": "spell",
                 "name": "Flammiche élémentaire",
-                "slug": "wiki/skills/spells/elemental-spark",
-                "sourcePath": "wiki/skills/spells/elemental-spark.md"
+                "slug": "wiki/skills/spells/elemental-spark-invocation",
+                "sourcePath": "wiki/skills/spells/elemental-spark-invocation.md"
               },
               {
                 "kind": "entity",
@@ -267,6 +291,14 @@
               },
               {
                 "kind": "entity",
+                "id": "skill.spell.gust",
+                "type": "spell",
+                "name": "Rafale",
+                "slug": "wiki/skills/spells/gust",
+                "sourcePath": "wiki/skills/spells/gust.md"
+              },
+              {
+                "kind": "entity",
                 "id": "skill.spell.solar-ray",
                 "type": "spell",
                 "name": "Rayon Solaire",
@@ -280,6 +312,14 @@
                 "name": "Résistance à la nausée",
                 "slug": "wiki/skills/spells/nausea-resistance",
                 "sourcePath": "wiki/skills/spells/nausea-resistance.md"
+              },
+              {
+                "kind": "entity",
+                "id": "skill.spell.quicksands",
+                "type": "spell",
+                "name": "Sables mouvants",
+                "slug": "wiki/skills/spells/quisksands",
+                "sourcePath": "wiki/skills/spells/quisksands.md"
               },
               {
                 "kind": "entity",
@@ -352,6 +392,14 @@
                 "name": "Ordre Groupé",
                 "slug": "wiki/skills/techniques/grouped-order",
                 "sourcePath": "wiki/skills/techniques/grouped-order.md"
+              },
+              {
+                "kind": "entity",
+                "id": "rule.action.sustain",
+                "type": "rule",
+                "name": "Soutenir",
+                "slug": "wiki/skills/techniques/sustain",
+                "sourcePath": "wiki/skills/techniques/sustain.md"
               }
             ]
           }

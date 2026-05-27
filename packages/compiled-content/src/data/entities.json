@@ -124,6 +124,110 @@
     }
   },
   {
+    "id": "affliction.exhaustion",
+    "type": "affliction",
+    "name": "Fatigue",
+    "content": "# Fatigue\nLe personnage subit un malus de -1 à tous ses jets.\n\nSeul du [[rest|repos]] permet de guérir.",
+    "slug": "wiki/compendium/afflictions/exhaustion",
+    "sourcePath": "wiki/compendium/afflictions/exhaustion.md",
+    "references": [
+      {
+        "operand": "rest",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "rest"
+      }
+    ],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Fatigue"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le personnage subit un malus de -1 à tous ses jets."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Seul du "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "rest",
+              "displayLabel": "repos",
+              "value": "repos"
+            },
+            {
+              "type": "text",
+              "value": " permet de guérir."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "affliction.exposed",
+    "type": "affliction",
+    "name": "Exposé",
+    "content": "# Exposé\nLe personnage est dans une position vulnérable parfaitement exploitable par l'adversaire.\nToute action réussie contre lui a +1 effet critique.\n\nDiminue de 1 à chaque tentative contre lui.",
+    "slug": "wiki/compendium/afflictions/exposed",
+    "sourcePath": "wiki/compendium/afflictions/exposed.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Exposé"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le personnage est dans une position vulnérable parfaitement exploitable par l'adversaire.\nToute action réussie contre lui a +1 effet critique."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Diminue de 1 à chaque tentative contre lui."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "id": "affliction.nauseous",
     "type": "affliction",
     "name": "Nauséeux",
@@ -285,6 +389,54 @@
             {
               "type": "text",
               "value": "Le personnage subit 1 dégât supplémentaire sur le physique."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "affliction.withering",
+    "type": "affliction",
+    "name": "Flétrissure",
+    "content": "# Flétrissure\n-1 PV max pour le personnage.\n\n*Notez que si un personnage tombe à 0 PV max, il meurt*",
+    "slug": "wiki/compendium/afflictions/withering",
+    "sourcePath": "wiki/compendium/afflictions/withering.md",
+    "references": [],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Flétrissure"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "-1 PV max pour le personnage."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "emphasis",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Notez que si un personnage tombe à 0 PV max, il meurt"
+                }
+              ]
             }
           ]
         }
@@ -2091,11 +2243,24 @@
     "id": "skill.spell.clairvoyant-eye",
     "type": "spell",
     "name": "Oeil clairvoyant",
-    "content": "# Oeil clairvoyant\n\nInvoque un œil d'arcane sur une surface au contact. Le lanceur peut voir à travers.\n\n### Œil Flottant\n\nL'œil peut désormais léviter.\nLe lanceur choisi s'il reste en place, ou si l'œil le suit.\nL'œil peut être déplacé volontairement avec une action.",
+    "content": "# Oeil clairvoyant\n\nInvoque un œil d'arcane sur une surface au contact. Le lanceur peut voir à travers.\nConcentre 1 - DD 10\n\nEchec - l'utilisateur est affligé par [[blinded|Aveuglé 1]] mais l'œil est tout de même invoqué\nEffet néfaste - l'utilisateur est affligé par [[blinded|Aveuglé 1]]\nEffet Critique - +1 PV pour l'œil\n### Œil Flottant\n\nL'œil peut désormais léviter.\nLe lanceur choisi s'il reste en place, ou si l'œil le suit.\nL'œil peut être déplacé volontairement avec une action.\nConcentre +1 - Canalise +1",
     "slug": "wiki/skills/spells/clairvoyant-eye",
     "sourcePath": "wiki/skills/spells/clairvoyant-eye.md",
-    "references": [],
-    "data": {},
+    "references": [
+      {
+        "operand": "blinded",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Aveuglé",
+        "targetEntityId": "affliction.blinded",
+        "targetEntitySlug": "wiki/compendium/afflictions/blinded"
+      }
+    ],
+    "data": {
+      "canalization": "1",
+      "range": "touch"
+    },
     "compiledContent": {
       "type": "root",
       "children": [
@@ -2114,7 +2279,40 @@
           "children": [
             {
               "type": "text",
-              "value": "Invoque un œil d'arcane sur une surface au contact. Le lanceur peut voir à travers."
+              "value": "Invoque un œil d'arcane sur une surface au contact. Le lanceur peut voir à travers.\nConcentre 1 - DD 10"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Echec - l'utilisateur est affligé par "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "blinded",
+              "displayLabel": "Aveuglé 1",
+              "value": "Aveuglé 1",
+              "targetEntityId": "affliction.blinded",
+              "targetEntitySlug": "wiki/compendium/afflictions/blinded"
+            },
+            {
+              "type": "text",
+              "value": " mais l'œil est tout de même invoqué\nEffet néfaste - l'utilisateur est affligé par "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "blinded",
+              "displayLabel": "Aveuglé 1",
+              "value": "Aveuglé 1",
+              "targetEntityId": "affliction.blinded",
+              "targetEntitySlug": "wiki/compendium/afflictions/blinded"
+            },
+            {
+              "type": "text",
+              "value": "\nEffet Critique - +1 PV pour l'œil"
             }
           ]
         },
@@ -2133,7 +2331,7 @@
           "children": [
             {
               "type": "text",
-              "value": "L'œil peut désormais léviter.\nLe lanceur choisi s'il reste en place, ou si l'œil le suit.\nL'œil peut être déplacé volontairement avec une action."
+              "value": "L'œil peut désormais léviter.\nLe lanceur choisi s'il reste en place, ou si l'œil le suit.\nL'œil peut être déplacé volontairement avec une action.\nConcentre +1 - Canalise +1"
             }
           ]
         }
@@ -2144,11 +2342,31 @@
     "id": "skill.spell.detect-magic",
     "type": "spell",
     "name": "Détection de la Magie",
-    "content": "# Détection de la Magie",
+    "content": "# Détection de la Magie\nTant qu'il est sous l'effet de ce sort, le lanceur devient aveugle - comme s'il était affligé par [[blinded|aveuglement]].\nLe lanceur peut l'interrompre à tout moment.\nPendant la durée du sort, le lanceur peut percevoir la magie et son intensité, mais pas déterminer sa nature.\n\nS'il doit faire un jet d'observation, il l'effectue contre la sauvegarde de [[focus]] de sa cible.",
     "slug": "wiki/skills/spells/detect-magic",
     "sourcePath": "wiki/skills/spells/detect-magic.md",
-    "references": [],
-    "data": {},
+    "references": [
+      {
+        "operand": "blinded",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Aveuglé",
+        "targetEntityId": "affliction.blinded",
+        "targetEntitySlug": "wiki/compendium/afflictions/blinded"
+      },
+      {
+        "operand": "focus",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "focus"
+      }
+    ],
+    "data": {
+      "canalization": "1",
+      "range": "personal"
+    },
     "compiledContent": {
       "type": "root",
       "children": [
@@ -2161,6 +2379,46 @@
               "value": "Détection de la Magie"
             }
           ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Tant qu'il est sous l'effet de ce sort, le lanceur devient aveugle - comme s'il était affligé par "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "blinded",
+              "displayLabel": "aveuglement",
+              "value": "aveuglement",
+              "targetEntityId": "affliction.blinded",
+              "targetEntitySlug": "wiki/compendium/afflictions/blinded"
+            },
+            {
+              "type": "text",
+              "value": ".\nLe lanceur peut l'interrompre à tout moment.\nPendant la durée du sort, le lanceur peut percevoir la magie et son intensité, mais pas déterminer sa nature."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "S'il doit faire un jet d'observation, il l'effectue contre la sauvegarde de "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "focus",
+              "displayLabel": "focus",
+              "value": "focus"
+            },
+            {
+              "type": "text",
+              "value": " de sa cible."
+            }
+          ]
         }
       ]
     }
@@ -2169,11 +2427,33 @@
     "id": "skill.spell.elemental-spark",
     "type": "spell",
     "name": "Flammiche élémentaire",
-    "content": "# Flammiche élémentaire",
-    "slug": "wiki/skills/spells/elemental-spark",
-    "sourcePath": "wiki/skills/spells/elemental-spark.md",
-    "references": [],
-    "data": {},
+    "content": "# Flammiche élémentaire\nLe lanceur influe de son énergie vitale dans un agrégat d'un élément de taille P pour en faire une [[elemental-spark|Flammiche élémentaire]].\nCette dernière est sous le contrôle du lanceur.\nLe lanceur concentre 1 et est affligé par [[withering|Flétrissure]] 1",
+    "slug": "wiki/skills/spells/elemental-spark-invocation",
+    "sourcePath": "wiki/skills/spells/elemental-spark-invocation.md",
+    "references": [
+      {
+        "operand": "elemental-spark",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Flammiche élémentaire",
+        "targetEntityId": "skill.spell.elemental-spark",
+        "targetEntitySlug": "wiki/skills/spells/elemental-spark-invocation"
+      },
+      {
+        "operand": "withering",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Flétrissure",
+        "targetEntityId": "affliction.withering",
+        "targetEntitySlug": "wiki/compendium/afflictions/withering"
+      }
+    ],
+    "data": {
+      "canalization": "2",
+      "range": "touch"
+    },
     "compiledContent": {
       "type": "root",
       "children": [
@@ -2184,6 +2464,39 @@
             {
               "type": "text",
               "value": "Flammiche élémentaire"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le lanceur influe de son énergie vitale dans un agrégat d'un élément de taille P pour en faire une "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "elemental-spark",
+              "displayLabel": "Flammiche élémentaire",
+              "value": "Flammiche élémentaire",
+              "targetEntityId": "skill.spell.elemental-spark",
+              "targetEntitySlug": "wiki/skills/spells/elemental-spark-invocation"
+            },
+            {
+              "type": "text",
+              "value": ".\nCette dernière est sous le contrôle du lanceur.\nLe lanceur concentre 1 et est affligé par "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "withering",
+              "displayLabel": "Flétrissure",
+              "value": "Flétrissure",
+              "targetEntityId": "affliction.withering",
+              "targetEntitySlug": "wiki/compendium/afflictions/withering"
+            },
+            {
+              "type": "text",
+              "value": " 1"
             }
           ]
         }
@@ -2417,14 +2730,208 @@
     }
   },
   {
+    "id": "skill.spell.gust",
+    "type": "spell",
+    "name": "Rafale",
+    "content": "# Rafale\nLes cibles sur une ligne à portée sont repoussées 2 ou mises au sol.\n\n**Effet néfaste** - le lanceur est affligé par [[exposed|Exposé 1]] ou est [[push|repoussé]] 1 dans l'autre direction\n**Effet critique** - repousse +1\n# Améliorations\n\n## Tourbillon\nLe lanceur canalise +1.\nLe sort affecte désormais une zone de trois espaces.\nLe lanceur choisi si les personnages affectés sont attirés vers ou repoussés par le centre.\n## Appel d'air\nLe lanceur canalise +1, le sort peut désormais être [[sustained|Soutenu]].\nSes effets s'appliquent au début de chaque tour du lanceur, ou quand un personnage entre dans sa zone d'effet.",
+    "slug": "wiki/skills/spells/gust",
+    "sourcePath": "wiki/skills/spells/gust.md",
+    "references": [
+      {
+        "operand": "exposed",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Exposé",
+        "targetEntityId": "affliction.exposed",
+        "targetEntitySlug": "wiki/compendium/afflictions/exposed"
+      },
+      {
+        "operand": "push",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "push"
+      },
+      {
+        "operand": "sustained",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "sustained"
+      }
+    ],
+    "data": {
+      "canalization": "1",
+      "range": "short"
+    },
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Rafale"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Les cibles sur une ligne à portée sont repoussées 2 ou mises au sol."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Effet néfaste"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - le lanceur est affligé par "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "exposed",
+              "displayLabel": "Exposé 1",
+              "value": "Exposé 1",
+              "targetEntityId": "affliction.exposed",
+              "targetEntitySlug": "wiki/compendium/afflictions/exposed"
+            },
+            {
+              "type": "text",
+              "value": " ou est "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "push",
+              "displayLabel": "repoussé",
+              "value": "repoussé"
+            },
+            {
+              "type": "text",
+              "value": " 1 dans l'autre direction\n"
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Effet critique"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - repousse +1"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Améliorations"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Tourbillon"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le lanceur canalise +1.\nLe sort affecte désormais une zone de trois espaces.\nLe lanceur choisi si les personnages affectés sont attirés vers ou repoussés par le centre."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Appel d'air"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le lanceur canalise +1, le sort peut désormais être "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "sustained",
+              "displayLabel": "Soutenu",
+              "value": "Soutenu"
+            },
+            {
+              "type": "text",
+              "value": ".\nSes effets s'appliquent au début de chaque tour du lanceur, ou quand un personnage entre dans sa zone d'effet."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "id": "skill.spell.healing",
     "type": "spell",
     "name": "Soin",
-    "content": "# Soin",
+    "content": "# Soin\nLa cible est soignée de 2 PV et est affligée par [[withering|Flétrissure 1]] ou [[exhaustion|Fatigue 1]]\nDD 10 - augmente de 5 par niveau de [[withering|Flétrissure]]  ou [[exhaustion|Fatigue]].\n\n**Echec** - le lanceur ou la cible subissent [[withering|Flétrissure 1]] ou [[exhaustion|Fatigue 1]]\n**Effet néfaste** - le lanceur ou la cible subissent [[withering|Flétrissure 1]] ou [[exhaustion|Fatigue 1]]\n**Effet critique** - +1 PV soigné",
     "slug": "wiki/skills/spells/healing",
     "sourcePath": "wiki/skills/spells/healing.md",
-    "references": [],
-    "data": {},
+    "references": [
+      {
+        "operand": "exhaustion",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Fatigue",
+        "targetEntityId": "affliction.exhaustion",
+        "targetEntitySlug": "wiki/compendium/afflictions/exhaustion"
+      },
+      {
+        "operand": "withering",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Flétrissure",
+        "targetEntityId": "affliction.withering",
+        "targetEntitySlug": "wiki/compendium/afflictions/withering"
+      }
+    ],
+    "data": {
+      "canalization": "2",
+      "range": "touch"
+    },
     "compiledContent": {
       "type": "root",
       "children": [
@@ -2435,6 +2942,155 @@
             {
               "type": "text",
               "value": "Soin"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "La cible est soignée de 2 PV et est affligée par "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "withering",
+              "displayLabel": "Flétrissure 1",
+              "value": "Flétrissure 1",
+              "targetEntityId": "affliction.withering",
+              "targetEntitySlug": "wiki/compendium/afflictions/withering"
+            },
+            {
+              "type": "text",
+              "value": " ou "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "exhaustion",
+              "displayLabel": "Fatigue 1",
+              "value": "Fatigue 1",
+              "targetEntityId": "affliction.exhaustion",
+              "targetEntitySlug": "wiki/compendium/afflictions/exhaustion"
+            },
+            {
+              "type": "text",
+              "value": "\nDD 10 - augmente de 5 par niveau de "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "withering",
+              "displayLabel": "Flétrissure",
+              "value": "Flétrissure",
+              "targetEntityId": "affliction.withering",
+              "targetEntitySlug": "wiki/compendium/afflictions/withering"
+            },
+            {
+              "type": "text",
+              "value": "  ou "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "exhaustion",
+              "displayLabel": "Fatigue",
+              "value": "Fatigue",
+              "targetEntityId": "affliction.exhaustion",
+              "targetEntitySlug": "wiki/compendium/afflictions/exhaustion"
+            },
+            {
+              "type": "text",
+              "value": "."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Echec"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - le lanceur ou la cible subissent "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "withering",
+              "displayLabel": "Flétrissure 1",
+              "value": "Flétrissure 1",
+              "targetEntityId": "affliction.withering",
+              "targetEntitySlug": "wiki/compendium/afflictions/withering"
+            },
+            {
+              "type": "text",
+              "value": " ou "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "exhaustion",
+              "displayLabel": "Fatigue 1",
+              "value": "Fatigue 1",
+              "targetEntityId": "affliction.exhaustion",
+              "targetEntitySlug": "wiki/compendium/afflictions/exhaustion"
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Effet néfaste"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - le lanceur ou la cible subissent "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "withering",
+              "displayLabel": "Flétrissure 1",
+              "value": "Flétrissure 1",
+              "targetEntityId": "affliction.withering",
+              "targetEntitySlug": "wiki/compendium/afflictions/withering"
+            },
+            {
+              "type": "text",
+              "value": " ou "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "exhaustion",
+              "displayLabel": "Fatigue 1",
+              "value": "Fatigue 1",
+              "targetEntityId": "affliction.exhaustion",
+              "targetEntitySlug": "wiki/compendium/afflictions/exhaustion"
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Effet critique"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " - +1 PV soigné"
             }
           ]
         }
@@ -3180,6 +3836,156 @@
     }
   },
   {
+    "id": "skill.spell.quicksands",
+    "type": "spell",
+    "name": "Sables mouvants",
+    "content": "# Sables mouvants\nUn espace constitué de sablonneux ou terreux devient un [[difficult-terrain|terrain difficile]] type [[quicksand-terrain|sables mouvants]].\nLe lanceur peut [[sustain|soutenir]] et continuer à [[canalization|canaliser]] après avoir lancé le sort. Pour chaque [[canalization|canalisation]] supplémentaire, un autre espace adjacent est affecté.\nInterrompre la [[canalization|canalisation]] ou le [[sustain|soutien]] met fin à la propagation.",
+    "slug": "wiki/skills/spells/quisksands",
+    "sourcePath": "wiki/skills/spells/quisksands.md",
+    "references": [
+      {
+        "operand": "canalization",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Canalisation",
+        "targetEntityId": "rule.canalization",
+        "targetEntitySlug": "wiki/rules/canalization"
+      },
+      {
+        "operand": "difficult-terrain",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "difficult-terrain"
+      },
+      {
+        "operand": "quicksand-terrain",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "quicksand-terrain"
+      },
+      {
+        "operand": "sustain",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Soutenir",
+        "targetEntityId": "rule.action.sustain",
+        "targetEntitySlug": "wiki/skills/techniques/sustain"
+      }
+    ],
+    "data": {
+      "canalization": "2",
+      "range": "touch"
+    },
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Sables mouvants"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Un espace constitué de sablonneux ou terreux devient un "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "difficult-terrain",
+              "displayLabel": "terrain difficile",
+              "value": "terrain difficile"
+            },
+            {
+              "type": "text",
+              "value": " type "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "quicksand-terrain",
+              "displayLabel": "sables mouvants",
+              "value": "sables mouvants"
+            },
+            {
+              "type": "text",
+              "value": ".\nLe lanceur peut "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "sustain",
+              "displayLabel": "soutenir",
+              "value": "soutenir",
+              "targetEntityId": "rule.action.sustain",
+              "targetEntitySlug": "wiki/skills/techniques/sustain"
+            },
+            {
+              "type": "text",
+              "value": " et continuer à "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "canalization",
+              "displayLabel": "canaliser",
+              "value": "canaliser",
+              "targetEntityId": "rule.canalization",
+              "targetEntitySlug": "wiki/rules/canalization"
+            },
+            {
+              "type": "text",
+              "value": " après avoir lancé le sort. Pour chaque "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "canalization",
+              "displayLabel": "canalisation",
+              "value": "canalisation",
+              "targetEntityId": "rule.canalization",
+              "targetEntitySlug": "wiki/rules/canalization"
+            },
+            {
+              "type": "text",
+              "value": " supplémentaire, un autre espace adjacent est affecté.\nInterrompre la "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "canalization",
+              "displayLabel": "canalisation",
+              "value": "canalisation",
+              "targetEntityId": "rule.canalization",
+              "targetEntitySlug": "wiki/rules/canalization"
+            },
+            {
+              "type": "text",
+              "value": " ou le "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "sustain",
+              "displayLabel": "soutien",
+              "value": "soutien",
+              "targetEntityId": "rule.action.sustain",
+              "targetEntitySlug": "wiki/skills/techniques/sustain"
+            },
+            {
+              "type": "text",
+              "value": " met fin à la propagation."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "id": "skill.spell.solar-ray",
     "type": "spell",
     "name": "Rayon Solaire",
@@ -3505,7 +4311,9 @@
         "refSources": [
           "body"
         ],
-        "targetLabel": "exposed"
+        "targetLabel": "Exposé",
+        "targetEntityId": "affliction.exposed",
+        "targetEntitySlug": "wiki/compendium/afflictions/exposed"
       },
       {
         "operand": "moral",
@@ -3574,7 +4382,9 @@
               "type": "wikiLink",
               "operand": "exposed",
               "displayLabel": "Exposé",
-              "value": "Exposé"
+              "value": "Exposé",
+              "targetEntityId": "affliction.exposed",
+              "targetEntitySlug": "wiki/compendium/afflictions/exposed"
             },
             {
               "type": "text",
@@ -3683,7 +4493,9 @@
         "refSources": [
           "body"
         ],
-        "targetLabel": "exposed"
+        "targetLabel": "Exposé",
+        "targetEntityId": "affliction.exposed",
+        "targetEntitySlug": "wiki/compendium/afflictions/exposed"
       },
       {
         "operand": "moral",
@@ -3772,7 +4584,9 @@
               "type": "wikiLink",
               "operand": "exposed",
               "displayLabel": "Exposé",
-              "value": "Exposé"
+              "value": "Exposé",
+              "targetEntityId": "affliction.exposed",
+              "targetEntitySlug": "wiki/compendium/afflictions/exposed"
             },
             {
               "type": "text",
@@ -3842,7 +4656,9 @@
         "refSources": [
           "body"
         ],
-        "targetLabel": "exposed"
+        "targetLabel": "Exposé",
+        "targetEntityId": "affliction.exposed",
+        "targetEntitySlug": "wiki/compendium/afflictions/exposed"
       },
       {
         "operand": "moral",
@@ -3911,7 +4727,9 @@
               "type": "wikiLink",
               "operand": "exposed",
               "displayLabel": "Exposé",
-              "value": "Exposé"
+              "value": "Exposé",
+              "targetEntityId": "affliction.exposed",
+              "targetEntitySlug": "wiki/compendium/afflictions/exposed"
             },
             {
               "type": "text",
@@ -4012,6 +4830,236 @@
             {
               "type": "text",
               "value": "Ligne Droite"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "rule.action.sustain",
+    "type": "rule",
+    "name": "Soutenir",
+    "content": "# Soutenir\n\nCertains sorts, techniques ou effets persistants doivent être **soutenus** pour continuer d’exister.  \nMaintenir un soutien demande une concentration constante : la moindre perturbation peut faire vaciller l’effet.\n\nLorsqu’un personnage qui soutient un effet est ciblé par un jet hostile, ce jet est également comparé à sa sauvegarde de [[save|focus]].\n\n- **Échec** : le personnage perd immédiatement le contrôle de tous les effets soutenus.  \n    Les effets [[unstable-effect|instables]] déclenchent alors une [[fumble|maladresse majeure]].\n- **Effet néfaste** : chaque effet actuellement soutenu inflige son contrecoup ou son effet néfaste au personnage.\n\nUn personnage peut soutenir autant d’effets qu’il le souhaite, mais chaque soutien fragilise sa concentration : il subit un malus de **-5 à sa sauvegarde de [[save|focus]]** tant qu’il soutient au moins un effet.\n\nMettre fin volontairement à un soutien nécessite **une action**.",
+    "slug": "wiki/skills/techniques/sustain",
+    "sourcePath": "wiki/skills/techniques/sustain.md",
+    "references": [
+      {
+        "operand": "fumble",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "fumble"
+      },
+      {
+        "operand": "save",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "save"
+      },
+      {
+        "operand": "unstable-effect",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "unstable-effect"
+      }
+    ],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Soutenir"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Certains sorts, techniques ou effets persistants doivent être "
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "soutenus"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " pour continuer d’exister."
+            },
+            {
+              "type": "break"
+            },
+            {
+              "type": "text",
+              "value": "Maintenir un soutien demande une concentration constante : la moindre perturbation peut faire vaciller l’effet."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Lorsqu’un personnage qui soutient un effet est ciblé par un jet hostile, ce jet est également comparé à sa sauvegarde de "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "save",
+              "displayLabel": "focus",
+              "value": "focus"
+            },
+            {
+              "type": "text",
+              "value": "."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "strong",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Échec"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": " : le personnage perd immédiatement le contrôle de tous les effets soutenus."
+                    },
+                    {
+                      "type": "break"
+                    },
+                    {
+                      "type": "text",
+                      "value": "Les effets "
+                    },
+                    {
+                      "type": "wikiLink",
+                      "operand": "unstable-effect",
+                      "displayLabel": "instables",
+                      "value": "instables"
+                    },
+                    {
+                      "type": "text",
+                      "value": " déclenchent alors une "
+                    },
+                    {
+                      "type": "wikiLink",
+                      "operand": "fumble",
+                      "displayLabel": "maladresse majeure",
+                      "value": "maladresse majeure"
+                    },
+                    {
+                      "type": "text",
+                      "value": "."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "strong",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Effet néfaste"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": " : chaque effet actuellement soutenu inflige son contrecoup ou son effet néfaste au personnage."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Un personnage peut soutenir autant d’effets qu’il le souhaite, mais chaque soutien fragilise sa concentration : il subit un malus de "
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "-5 à sa sauvegarde de "
+                },
+                {
+                  "type": "wikiLink",
+                  "operand": "save",
+                  "displayLabel": "focus",
+                  "value": "focus"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " tant qu’il soutient au moins un effet."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Mettre fin volontairement à un soutien nécessite "
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "une action"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "."
             }
           ]
         }

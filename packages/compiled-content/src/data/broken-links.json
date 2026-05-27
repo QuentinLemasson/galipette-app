@@ -1,5 +1,15 @@
 [
   {
+    "entityId": "affliction.exhaustion",
+    "sourcePath": "wiki/compendium/afflictions/exhaustion.md",
+    "entitySlug": "wiki/compendium/afflictions/exhaustion",
+    "operand": "rest",
+    "linkText": "repos",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
     "entityId": "rule.character.creation",
     "sourcePath": "wiki/rules/Creer son Personnage.md",
     "entitySlug": "wiki/rules/creer-son-personnage",
@@ -30,6 +40,16 @@
     ]
   },
   {
+    "entityId": "skill.spell.detect-magic",
+    "sourcePath": "wiki/skills/spells/detect-magic.md",
+    "entitySlug": "wiki/skills/spells/detect-magic",
+    "operand": "focus",
+    "linkText": "focus",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
     "entityId": "skill.spell.elemental-weapon",
     "sourcePath": "wiki/skills/spells/elemental-weapon.md",
     "entitySlug": "wiki/skills/spells/elemental-weapon",
@@ -45,6 +65,26 @@
     "entitySlug": "wiki/skills/spells/elemental-weapon",
     "operand": "concentration",
     "linkText": "concentration",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
+    "entityId": "skill.spell.gust",
+    "sourcePath": "wiki/skills/spells/gust.md",
+    "entitySlug": "wiki/skills/spells/gust",
+    "operand": "push",
+    "linkText": "repoussé",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
+    "entityId": "skill.spell.gust",
+    "sourcePath": "wiki/skills/spells/gust.md",
+    "entitySlug": "wiki/skills/spells/gust",
+    "operand": "sustained",
+    "linkText": "Soutenu",
     "origins": [
       "markdown"
     ]
@@ -80,6 +120,26 @@
     ]
   },
   {
+    "entityId": "skill.spell.quicksands",
+    "sourcePath": "wiki/skills/spells/quisksands.md",
+    "entitySlug": "wiki/skills/spells/quisksands",
+    "operand": "difficult-terrain",
+    "linkText": "terrain difficile",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
+    "entityId": "skill.spell.quicksands",
+    "sourcePath": "wiki/skills/spells/quisksands.md",
+    "entitySlug": "wiki/skills/spells/quisksands",
+    "operand": "quicksand-terrain",
+    "linkText": "sables mouvants",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
     "entityId": "skill.spell.solar-ray",
     "sourcePath": "wiki/skills/spells/solar-ray.md",
     "entitySlug": "wiki/skills/spells/solar-ray",
@@ -95,16 +155,6 @@
     "entitySlug": "wiki/skills/spells/summoning",
     "operand": "invocation-compendium",
     "linkText": "compendium d'invocation",
-    "origins": [
-      "markdown"
-    ]
-  },
-  {
-    "entityId": "skill.order.assault-order",
-    "sourcePath": "wiki/skills/techniques/assault-order.md",
-    "entitySlug": "wiki/skills/techniques/assault-order",
-    "operand": "exposed",
-    "linkText": "Exposé",
     "origins": [
       "markdown"
     ]
@@ -153,16 +203,6 @@
     "entityId": "skill.canalization.defend-order",
     "sourcePath": "wiki/skills/techniques/defend-order.md",
     "entitySlug": "wiki/skills/techniques/defend-order",
-    "operand": "exposed",
-    "linkText": "Exposé",
-    "origins": [
-      "markdown"
-    ]
-  },
-  {
-    "entityId": "skill.canalization.defend-order",
-    "sourcePath": "wiki/skills/techniques/defend-order.md",
-    "entitySlug": "wiki/skills/techniques/defend-order",
     "operand": "moral",
     "linkText": "moral",
     "origins": [
@@ -183,16 +223,6 @@
     "entityId": "skill.technique.grouped-order",
     "sourcePath": "wiki/skills/techniques/grouped-order.md",
     "entitySlug": "wiki/skills/techniques/grouped-order",
-    "operand": "exposed",
-    "linkText": "Exposé",
-    "origins": [
-      "markdown"
-    ]
-  },
-  {
-    "entityId": "skill.technique.grouped-order",
-    "sourcePath": "wiki/skills/techniques/grouped-order.md",
-    "entitySlug": "wiki/skills/techniques/grouped-order",
     "operand": "moral",
     "linkText": "moral",
     "origins": [
@@ -205,6 +235,36 @@
     "entitySlug": "wiki/skills/techniques/grouped-order",
     "operand": "sang-froid",
     "linkText": "sang-froid",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
+    "entityId": "rule.action.sustain",
+    "sourcePath": "wiki/skills/techniques/sustain.md",
+    "entitySlug": "wiki/skills/techniques/sustain",
+    "operand": "fumble",
+    "linkText": "maladresse majeure",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
+    "entityId": "rule.action.sustain",
+    "sourcePath": "wiki/skills/techniques/sustain.md",
+    "entitySlug": "wiki/skills/techniques/sustain",
+    "operand": "save",
+    "linkText": "focus",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
+    "entityId": "rule.action.sustain",
+    "sourcePath": "wiki/skills/techniques/sustain.md",
+    "entitySlug": "wiki/skills/techniques/sustain",
+    "operand": "unstable-effect",
+    "linkText": "instables",
     "origins": [
       "markdown"
     ]

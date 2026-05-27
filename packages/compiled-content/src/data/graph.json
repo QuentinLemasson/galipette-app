@@ -13,6 +13,18 @@
       "sourcePath": "wiki/compendium/afflictions/burned.md"
     },
     {
+      "id": "affliction.exhaustion",
+      "type": "affliction",
+      "label": "Fatigue",
+      "sourcePath": "wiki/compendium/afflictions/exhaustion.md"
+    },
+    {
+      "id": "affliction.exposed",
+      "type": "affliction",
+      "label": "Exposé",
+      "sourcePath": "wiki/compendium/afflictions/exposed.md"
+    },
+    {
       "id": "affliction.nauseous",
       "type": "affliction",
       "label": "Nauséeux",
@@ -29,6 +41,12 @@
       "type": "affliction",
       "label": "Vulnérable",
       "sourcePath": "wiki/compendium/afflictions/vulnerable.md"
+    },
+    {
+      "id": "affliction.withering",
+      "type": "affliction",
+      "label": "Flétrissure",
+      "sourcePath": "wiki/compendium/afflictions/withering.md"
     },
     {
       "id": "creature.kuromaru",
@@ -65,6 +83,12 @@
       "type": "damage-type",
       "label": "Radiance",
       "sourcePath": "wiki/compendium/damage-types/radiant.md"
+    },
+    {
+      "id": "rule.action.sustain",
+      "type": "rule",
+      "label": "Soutenir",
+      "sourcePath": "wiki/skills/techniques/sustain.md"
     },
     {
       "id": "rule.affliction-resistence",
@@ -160,7 +184,7 @@
       "id": "skill.spell.elemental-spark",
       "type": "spell",
       "label": "Flammiche élémentaire",
-      "sourcePath": "wiki/skills/spells/elemental-spark.md"
+      "sourcePath": "wiki/skills/spells/elemental-spark-invocation.md"
     },
     {
       "id": "skill.spell.elemental-weapon",
@@ -173,6 +197,12 @@
       "type": "spell",
       "label": "Trait de feu",
       "sourcePath": "wiki/skills/spells/fire-bolt.md"
+    },
+    {
+      "id": "skill.spell.gust",
+      "type": "spell",
+      "label": "Rafale",
+      "sourcePath": "wiki/skills/spells/gust.md"
     },
     {
       "id": "skill.spell.healing",
@@ -209,6 +239,12 @@
       "type": "spell",
       "label": "Marionnettiste",
       "sourcePath": "wiki/skills/spells/puppeteer.md"
+    },
+    {
+      "id": "skill.spell.quicksands",
+      "type": "spell",
+      "label": "Sables mouvants",
+      "sourcePath": "wiki/skills/spells/quisksands.md"
     },
     {
       "id": "skill.spell.solar-ray",
@@ -265,8 +301,24 @@
       "fire"
     ],
     [
+      "affliction.exhaustion",
+      "rest"
+    ],
+    [
       "affliction.nauseous",
       "clumsiness"
+    ],
+    [
+      "rule.action.sustain",
+      "fumble"
+    ],
+    [
+      "rule.action.sustain",
+      "save"
+    ],
+    [
+      "rule.action.sustain",
+      "unstable-effect"
     ],
     [
       "rule.character.creation",
@@ -321,6 +373,26 @@
       "sang-froid"
     ],
     [
+      "skill.spell.clairvoyant-eye",
+      "blinded"
+    ],
+    [
+      "skill.spell.detect-magic",
+      "blinded"
+    ],
+    [
+      "skill.spell.detect-magic",
+      "focus"
+    ],
+    [
+      "skill.spell.elemental-spark",
+      "elemental-spark"
+    ],
+    [
+      "skill.spell.elemental-spark",
+      "withering"
+    ],
+    [
       "skill.spell.elemental-weapon",
       "Canalisation"
     ],
@@ -335,6 +407,26 @@
     [
       "skill.spell.fiery-shot",
       "fire"
+    ],
+    [
+      "skill.spell.gust",
+      "exposed"
+    ],
+    [
+      "skill.spell.gust",
+      "push"
+    ],
+    [
+      "skill.spell.gust",
+      "sustained"
+    ],
+    [
+      "skill.spell.healing",
+      "exhaustion"
+    ],
+    [
+      "skill.spell.healing",
+      "withering"
     ],
     [
       "skill.spell.lightning-arc",
@@ -363,6 +455,22 @@
     [
       "skill.spell.puppeteer",
       "Magie Mentale"
+    ],
+    [
+      "skill.spell.quicksands",
+      "canalization"
+    ],
+    [
+      "skill.spell.quicksands",
+      "difficult-terrain"
+    ],
+    [
+      "skill.spell.quicksands",
+      "quicksand-terrain"
+    ],
+    [
+      "skill.spell.quicksands",
+      "sustain"
     ],
     [
       "skill.spell.solar-ray",
