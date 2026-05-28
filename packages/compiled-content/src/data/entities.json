@@ -228,6 +228,169 @@
     }
   },
   {
+    "id": "affliction.infected",
+    "type": "affliction",
+    "name": "Infecté",
+    "content": "# Infecté\n\nLa cible porte une infection active : maladie, parasite, corruption organique, moisissure surnaturelle, malédiction contagieuse ou infestation magique.\n\nL’Infection se lie généralement à une ou plusieurs autres afflictions.  \nTant qu’une cible possède [[infected|Infecté X]], les afflictions liées ne peuvent pas être réduites sous ce niveau.\n\nExemple :  \nUne cible affectée par [[infected|Infecté 2]] lié à [[withering|Flétrissure]] ne peut pas réduire sa [[withering|Flétrissure]] sous 2 tant que l’infection persiste.\n\nMême sans affliction liée, [[infected|Infecté]] compte comme une affliction normale pour toutes les interactions de règles.\n\nPlusieurs infections se cumulent et fusionnent entre elles, représentant l’aggravation et la propagation de la contamination dans l’organisme.",
+    "slug": "wiki/compendium/afflictions/infected",
+    "sourcePath": "wiki/compendium/afflictions/infected.md",
+    "references": [
+      {
+        "operand": "infected",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Infecté",
+        "targetEntityId": "affliction.infected",
+        "targetEntitySlug": "wiki/compendium/afflictions/infected"
+      },
+      {
+        "operand": "withering",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Flétrissure",
+        "targetEntityId": "affliction.withering",
+        "targetEntitySlug": "wiki/compendium/afflictions/withering"
+      }
+    ],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Infecté"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "La cible porte une infection active : maladie, parasite, corruption organique, moisissure surnaturelle, malédiction contagieuse ou infestation magique."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "L’Infection se lie généralement à une ou plusieurs autres afflictions."
+            },
+            {
+              "type": "break"
+            },
+            {
+              "type": "text",
+              "value": "Tant qu’une cible possède "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "infected",
+              "displayLabel": "Infecté X",
+              "value": "Infecté X",
+              "targetEntityId": "affliction.infected",
+              "targetEntitySlug": "wiki/compendium/afflictions/infected"
+            },
+            {
+              "type": "text",
+              "value": ", les afflictions liées ne peuvent pas être réduites sous ce niveau."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Exemple :"
+            },
+            {
+              "type": "break"
+            },
+            {
+              "type": "text",
+              "value": "Une cible affectée par "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "infected",
+              "displayLabel": "Infecté 2",
+              "value": "Infecté 2",
+              "targetEntityId": "affliction.infected",
+              "targetEntitySlug": "wiki/compendium/afflictions/infected"
+            },
+            {
+              "type": "text",
+              "value": " lié à "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "withering",
+              "displayLabel": "Flétrissure",
+              "value": "Flétrissure",
+              "targetEntityId": "affliction.withering",
+              "targetEntitySlug": "wiki/compendium/afflictions/withering"
+            },
+            {
+              "type": "text",
+              "value": " ne peut pas réduire sa "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "withering",
+              "displayLabel": "Flétrissure",
+              "value": "Flétrissure",
+              "targetEntityId": "affliction.withering",
+              "targetEntitySlug": "wiki/compendium/afflictions/withering"
+            },
+            {
+              "type": "text",
+              "value": " sous 2 tant que l’infection persiste."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Même sans affliction liée, "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "infected",
+              "displayLabel": "Infecté",
+              "value": "Infecté",
+              "targetEntityId": "affliction.infected",
+              "targetEntitySlug": "wiki/compendium/afflictions/infected"
+            },
+            {
+              "type": "text",
+              "value": " compte comme une affliction normale pour toutes les interactions de règles."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Plusieurs infections se cumulent et fusionnent entre elles, représentant l’aggravation et la propagation de la contamination dans l’organisme."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "id": "affliction.nauseous",
     "type": "affliction",
     "name": "Nauséeux",
@@ -301,6 +464,88 @@
             {
               "type": "text",
               "value": " majeure met fin au tour."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "affliction.poisoned",
+    "type": "affliction",
+    "name": "Empoisonné",
+    "content": "# # Empoisonné\n\nLe corps de la cible est envahi par une substance toxique : venin, spores, nécrose alchimique, sang corrompu ou essence venimeuse.\n\nÀ la fin de chacun de ses tours, la cible subit 1 dégâts de [[poison-damage|poison]] par niveau d’[[poisoned|Empoisonné]].",
+    "slug": "wiki/compendium/afflictions/poisoned",
+    "sourcePath": "wiki/compendium/afflictions/poisoned.md",
+    "references": [
+      {
+        "operand": "poison-damage",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "poison-damage"
+      },
+      {
+        "operand": "poisoned",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Empoisonné",
+        "targetEntityId": "affliction.poisoned",
+        "targetEntitySlug": "wiki/compendium/afflictions/poisoned"
+      }
+    ],
+    "data": {},
+    "compiledContent": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "# Empoisonné"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Le corps de la cible est envahi par une substance toxique : venin, spores, nécrose alchimique, sang corrompu ou essence venimeuse."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "À la fin de chacun de ses tours, la cible subit 1 dégâts de "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "poison-damage",
+              "displayLabel": "poison",
+              "value": "poison"
+            },
+            {
+              "type": "text",
+              "value": " par niveau d’"
+            },
+            {
+              "type": "wikiLink",
+              "operand": "poisoned",
+              "displayLabel": "Empoisonné",
+              "value": "Empoisonné",
+              "targetEntityId": "affliction.poisoned",
+              "targetEntitySlug": "wiki/compendium/afflictions/poisoned"
+            },
+            {
+              "type": "text",
+              "value": "."
             }
           ]
         }
@@ -399,10 +644,20 @@
     "id": "affliction.withering",
     "type": "affliction",
     "name": "Flétrissure",
-    "content": "# Flétrissure\n-1 PV max pour le personnage.\n\n*Notez que si un personnage tombe à 0 PV max, il meurt*",
+    "content": "# Flétrissure\n\n*Le corps ou l’essence de la cible se détériore lentement : chair qui se dessèche, énergie vitale consumée, organes affaiblis, vieillissement accéléré, corruption interne ou dégradation surnaturelle.*\n\n*La Flétrissure représente un affaiblissement profond et durable.  \nSelon son origine, elle peut prendre la forme d’une maladie, d’un poison rare, d’une malédiction, d’une famine surnaturelle ou d’une corruption magique.*\n\nPour chaque niveau de [[withering|Flétrissure]], la cible réduit ses PV maximum de 1.\n\n*Notez que si un personnage tombe à 0 PV max, il meurt*",
     "slug": "wiki/compendium/afflictions/withering",
     "sourcePath": "wiki/compendium/afflictions/withering.md",
-    "references": [],
+    "references": [
+      {
+        "operand": "withering",
+        "refSources": [
+          "body"
+        ],
+        "targetLabel": "Flétrissure",
+        "targetEntityId": "affliction.withering",
+        "targetEntitySlug": "wiki/compendium/afflictions/withering"
+      }
+    ],
     "data": {},
     "compiledContent": {
       "type": "root",
@@ -421,8 +676,55 @@
           "type": "paragraph",
           "children": [
             {
+              "type": "emphasis",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Le corps ou l’essence de la cible se détériore lentement : chair qui se dessèche, énergie vitale consumée, organes affaiblis, vieillissement accéléré, corruption interne ou dégradation surnaturelle."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "emphasis",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "La Flétrissure représente un affaiblissement profond et durable."
+                },
+                {
+                  "type": "break"
+                },
+                {
+                  "type": "text",
+                  "value": "Selon son origine, elle peut prendre la forme d’une maladie, d’un poison rare, d’une malédiction, d’une famine surnaturelle ou d’une corruption magique."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
               "type": "text",
-              "value": "-1 PV max pour le personnage."
+              "value": "Pour chaque niveau de "
+            },
+            {
+              "type": "wikiLink",
+              "operand": "withering",
+              "displayLabel": "Flétrissure",
+              "value": "Flétrissure",
+              "targetEntityId": "affliction.withering",
+              "targetEntitySlug": "wiki/compendium/afflictions/withering"
+            },
+            {
+              "type": "text",
+              "value": ", la cible réduit ses PV maximum de 1."
             }
           ]
         },

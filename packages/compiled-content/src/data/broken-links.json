@@ -10,6 +10,16 @@
     ]
   },
   {
+    "entityId": "affliction.poisoned",
+    "sourcePath": "wiki/compendium/afflictions/poisoned.md",
+    "entitySlug": "wiki/compendium/afflictions/poisoned",
+    "operand": "poison-damage",
+    "linkText": "poison",
+    "origins": [
+      "markdown"
+    ]
+  },
+  {
     "entityId": "rule.character.creation",
     "sourcePath": "wiki/rules/Creer son Personnage.md",
     "entitySlug": "wiki/rules/creer-son-personnage",

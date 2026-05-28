@@ -25,10 +25,22 @@
       "sourcePath": "wiki/compendium/afflictions/exposed.md"
     },
     {
+      "id": "affliction.infected",
+      "type": "affliction",
+      "label": "Infecté",
+      "sourcePath": "wiki/compendium/afflictions/infected.md"
+    },
+    {
       "id": "affliction.nauseous",
       "type": "affliction",
       "label": "Nauséeux",
       "sourcePath": "wiki/compendium/afflictions/nauseous.md"
+    },
+    {
+      "id": "affliction.poisoned",
+      "type": "affliction",
+      "label": "Empoisonné",
+      "sourcePath": "wiki/compendium/afflictions/poisoned.md"
     },
     {
       "id": "affliction.stunned",
@@ -305,8 +317,28 @@
       "rest"
     ],
     [
+      "affliction.infected",
+      "infected"
+    ],
+    [
+      "affliction.infected",
+      "withering"
+    ],
+    [
       "affliction.nauseous",
       "clumsiness"
+    ],
+    [
+      "affliction.poisoned",
+      "poison-damage"
+    ],
+    [
+      "affliction.poisoned",
+      "poisoned"
+    ],
+    [
+      "affliction.withering",
+      "withering"
     ],
     [
       "rule.action.sustain",

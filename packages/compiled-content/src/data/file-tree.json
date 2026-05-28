@@ -36,6 +36,14 @@
               },
               {
                 "kind": "entity",
+                "id": "affliction.poisoned",
+                "type": "affliction",
+                "name": "Empoisonné",
+                "slug": "wiki/compendium/afflictions/poisoned",
+                "sourcePath": "wiki/compendium/afflictions/poisoned.md"
+              },
+              {
+                "kind": "entity",
                 "id": "affliction.stunned",
                 "type": "affliction",
                 "name": "Étourdi",
@@ -65,6 +73,14 @@
                 "name": "Flétrissure",
                 "slug": "wiki/compendium/afflictions/withering",
                 "sourcePath": "wiki/compendium/afflictions/withering.md"
+              },
+              {
+                "kind": "entity",
+                "id": "affliction.infected",
+                "type": "affliction",
+                "name": "Infecté",
+                "slug": "wiki/compendium/afflictions/infected",
+                "sourcePath": "wiki/compendium/afflictions/infected.md"
               },
               {
                 "kind": "entity",
